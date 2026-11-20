@@ -247,3 +247,30 @@ Each milestone ends in something demonstrable, and each is a separate commit. I 
 - The GitHub repo becomes public before deploy, so Actions minutes are free (architecture §14).
 - The contract `approved_by` field uses the owner's GitHub handle.
 - The Python engine targets 3.11 and later. Pyodide's Python version (3.13 or 3.14) differs from the local 3.11.3, and the parity check (§8) is how that risk is detected.
+
+---
+
+## 11. As built (2026-11-20)
+
+These are the places where the implementation departs from, or adds to, the sections above. Each one is listed so the docs stay current (ADR 0002).
+
+**Integrity rules**
+- **One tuning round.** It ran on the tuning split only, and is logged in `tierA.json` under `tuning_log`. **B2** now counts a top-level `return`, `pytest.skip()` or `if False:` as a guard whenever any statements follow it, not only when visible asserts follow. The reason is that many real tests check through helper functions.
+- **R0, test renamed (info).** This was added to make the "unless renamed" clause of B1 concrete.
+- **Severity order.** The approved-contract-change rule is applied before the info rules, so a V0 finding is also linked to the approved change.
+
+**Limits and report modes**
+- **Two limit profiles.** `Limits.live()` uses the §7 values: 64 KiB, 2,000 lines, nesting 100, indentation 50. `Limits.cli()` raises size to 2 MiB and 50,000 lines, with the same nesting bounds, because real test files in the benchmark exceed 64 KiB.
+- **Report mode `static`.** This mode is added for CLI runs. The site still shows only LIVE, PRECOMPUTED and RECORDED.
+
+**Recorded runs**
+- The sandbox also uses `--read-only`, `--cap-drop ALL`, `no-new-privileges`, a non-root user and `--pids-limit 128`.
+- The repository's tests are recorded as evidence with `owner: repo` and never satisfy a condition on their own.
+
+**Pyodide**
+- **Self-hosted (ADR 0008).** The runtime is served from the site, not from jsDelivr. Pyodide 314.0.8 bundles Python 3.14.2.
+- **Parity.** `benchmark/pyodide_parity.mjs` runs all 168 Tier A cases, not only the held-out ones.
+
+**Artifacts and CI**
+- **Generated outputs.** `regenerate` also writes the live presets (`artifacts/presets/`) and the README results block, and `--check` verifies all of them.
+- **CI.** The Pyodide parity check and a Chrome end-to-end run of the demo story (`web/scripts/e2e.mjs`) are added to CI.

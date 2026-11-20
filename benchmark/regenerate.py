@@ -29,7 +29,7 @@ from provecode import analyzer, contract as contract_mod, pipeline
 from provecode.limits import Limits
 from provecode.model import WEAKENING_RULES
 
-from . import baseline_count, generate_cases, manifest, presets
+from . import baseline_count, generate_cases, manifest, presets, readme_results
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "artifacts" / "benchmark"
@@ -348,7 +348,7 @@ def main(argv: list[str] | None = None) -> int:
         if have != data:
             print("artifacts/benchmark/tierA.json differs from a fresh regeneration", file=sys.stderr)
             return 1
-        problems = presets.check() + manifest.verify()
+        problems = presets.check() + readme_results.check() + manifest.verify()
         for p in problems:
             print(p, file=sys.stderr)
         print("tierA.json reproduced byte-for-byte" if not problems else "manifest problems")
@@ -358,6 +358,7 @@ def main(argv: list[str] | None = None) -> int:
     PERF.write_bytes(dump(perf(rows)))
     presets.write()
     manifest.write()
+    readme_results.write()
     t = json.loads(data)["held_out"]
     print(f"held-out: recall PC {t['recall']['provecode']['rate']} vs BL {t['recall']['baseline']['rate']}; "
           f"count-preserving PC {t['recall_count_preserving']['provecode']['rate']} vs "

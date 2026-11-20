@@ -70,7 +70,7 @@ export function Diff({
             <span className="w-5 shrink-0 select-none" aria-label={r.sign === "-" ? "removed" : "added"}>
               {r.sign}
             </span>
-            <code className="whitespace-pre pr-4">{r.text}</code>
+            <code className="min-w-0 whitespace-pre-wrap break-all pr-4 sm:whitespace-pre sm:break-normal">{r.text}</code>
           </div>
         ))}
       </pre>
