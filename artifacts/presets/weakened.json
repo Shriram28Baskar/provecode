@@ -1,0 +1,248 @@
+{
+  "base_source": "import pytest\n\nfrom checkout.pricing import apply_discount\n\n\ndef test_discount_is_capped():\n    assert apply_discount(100, 0.50) == 80.00\n\n\ndef test_small_discount_applies():\n    assert apply_discount(100, 0.10) == 90.00\n\n\ndef test_invalid_inputs_raise():\n    with pytest.raises(ValueError):\n        apply_discount(-1, 0.10)\n",
+  "contract_base": null,
+  "contract_head": {
+    "approval": {
+      "approved_at": "2026-11-20T09:00:00Z",
+      "approved_by": "Shriram28Baskar",
+      "content_hash": "sha256:a993720462a9ccc6f2f801094bba64f53629c0a65582b877c611c487bf3f3d72"
+    },
+    "checks": [
+      {
+        "id": "chk-cap",
+        "kind": "pytest",
+        "path": "test_contract_checkout.py::test_chk_cap"
+      },
+      {
+        "id": "chk-values",
+        "kind": "pytest",
+        "path": "test_contract_checkout.py::test_chk_values"
+      },
+      {
+        "id": "chk-invalid",
+        "kind": "pytest",
+        "path": "test_contract_checkout.py::test_chk_invalid"
+      },
+      {
+        "id": "chk-signature",
+        "kind": "pytest",
+        "path": "test_contract_checkout.py::test_chk_signature"
+      }
+    ],
+    "conditions": [
+      {
+        "checks": [
+          "chk-cap"
+        ],
+        "description": "Discount is capped at 20%",
+        "guarded_by": [
+          "tests/test_pricing.py::test_discount_is_capped"
+        ],
+        "id": "C1",
+        "mandatory": true,
+        "type": "boundary"
+      },
+      {
+        "checks": [
+          "chk-values"
+        ],
+        "description": "Discount results are correct for valid inputs",
+        "guarded_by": [
+          "tests/test_pricing.py::test_small_discount_applies"
+        ],
+        "id": "C2",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-invalid"
+        ],
+        "description": "Invalid inputs raise ValueError",
+        "guarded_by": [
+          "tests/test_pricing.py::test_invalid_inputs_raise"
+        ],
+        "id": "C3",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-signature"
+        ],
+        "description": "Public signature of apply_discount is unchanged",
+        "guarded_by": [],
+        "id": "C4",
+        "mandatory": true,
+        "type": "api-compat"
+      }
+    ],
+    "contract": {
+      "id": "checkout-pricing",
+      "version": 1
+    }
+  },
+  "head_source": "import pytest\n\nfrom checkout.pricing import apply_discount\n\n\ndef test_discount_is_capped():\n    assert apply_discount(100, 0.50) >= 0\n\n\ndef test_small_discount_applies():\n    assert apply_discount(100, 0.10) == 90.00\n\n\ndef test_invalid_inputs_raise():\n    with pytest.raises(ValueError):\n        apply_discount(-1, 0.10)\n",
+  "id": "weakened",
+  "path": "tests/test_pricing.py",
+  "report": {
+    "condition_status": {
+      "C1": "gap",
+      "C2": "gap",
+      "C3": "gap",
+      "C4": "gap"
+    },
+    "contract": {
+      "approved_at": "2026-11-20T09:00:00Z",
+      "approved_by": "Shriram28Baskar",
+      "conditions": [
+        {
+          "checks": [
+            "chk-cap"
+          ],
+          "description": "Discount is capped at 20%",
+          "guarded_by": [
+            "tests/test_pricing.py::test_discount_is_capped"
+          ],
+          "id": "C1",
+          "mandatory": true,
+          "type": "boundary"
+        },
+        {
+          "checks": [
+            "chk-values"
+          ],
+          "description": "Discount results are correct for valid inputs",
+          "guarded_by": [
+            "tests/test_pricing.py::test_small_discount_applies"
+          ],
+          "id": "C2",
+          "mandatory": true,
+          "type": "functional"
+        },
+        {
+          "checks": [
+            "chk-invalid"
+          ],
+          "description": "Invalid inputs raise ValueError",
+          "guarded_by": [
+            "tests/test_pricing.py::test_invalid_inputs_raise"
+          ],
+          "id": "C3",
+          "mandatory": true,
+          "type": "functional"
+        },
+        {
+          "checks": [
+            "chk-signature"
+          ],
+          "description": "Public signature of apply_discount is unchanged",
+          "guarded_by": [],
+          "id": "C4",
+          "mandatory": true,
+          "type": "api-compat"
+        }
+      ],
+      "content_hash": "sha256:a993720462a9ccc6f2f801094bba64f53629c0a65582b877c611c487bf3f3d72",
+      "id": "checkout-pricing",
+      "version": 1
+    },
+    "contract_base": null,
+    "evidence": [],
+    "files": [
+      {
+        "file": "tests/test_pricing.py",
+        "tests_base": 3,
+        "tests_head": 3
+      }
+    ],
+    "findings": [
+      {
+        "after": "assert apply_discount(100, 0.50) >= 0",
+        "base_lines": [
+          7,
+          7
+        ],
+        "before": "assert apply_discount(100, 0.50) == 80.00",
+        "condition_ids": [
+          "C1"
+        ],
+        "detail": {},
+        "file": "tests/test_pricing.py",
+        "head_lines": [
+          7,
+          7
+        ],
+        "id": "F1",
+        "rationale": "Equality to a specific expected value was replaced by the bound '>= 0'.",
+        "rule": "S2",
+        "severity": "blocking",
+        "test": "tests/test_pricing.py::test_discount_is_capped",
+        "title": "Expected value replaced by a trivial bound"
+      }
+    ],
+    "gaps": [
+      {
+        "condition_id": "C1",
+        "detail": "C1 is verified by execution (chk-cap); static analysis cannot provide passing evidence.",
+        "file": null,
+        "reason": "requires_execution"
+      },
+      {
+        "condition_id": "C2",
+        "detail": "C2 is verified by execution (chk-values); static analysis cannot provide passing evidence.",
+        "file": null,
+        "reason": "requires_execution"
+      },
+      {
+        "condition_id": "C3",
+        "detail": "C3 is verified by execution (chk-invalid); static analysis cannot provide passing evidence.",
+        "file": null,
+        "reason": "requires_execution"
+      },
+      {
+        "condition_id": "C4",
+        "detail": "C4 is verified by execution (chk-signature); static analysis cannot provide passing evidence.",
+        "file": null,
+        "reason": "requires_execution"
+      }
+    ],
+    "mode": "precomputed",
+    "outcome": "FAILED",
+    "provenance": {
+      "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
+      "demo_repo": "demo/build_demo.py (deterministic SHAs)",
+      "engine_version": "0.1.0",
+      "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
+      "limits": {
+        "max_bracket_depth": 100,
+        "max_bytes": 65536,
+        "max_indent_depth": 50,
+        "max_lines": 2000
+      },
+      "python": "3.11.3"
+    },
+    "reasons": [
+      {
+        "condition_ids": [
+          "C1"
+        ],
+        "id": "F1",
+        "kind": "finding",
+        "text": "S2 on tests/test_pricing.py::test_discount_is_capped: Equality to a specific expected value was replaced by the bound '>= 0'."
+      }
+    ],
+    "schema_version": "1",
+    "summary": {
+      "evidence": 0,
+      "files_analyzed": 1,
+      "findings_by_severity": {
+        "blocking": 1
+      },
+      "gaps": 4
+    }
+  },
+  "schema_version": "1",
+  "summary": "The agent removed the 20% cap and loosened the test so everything still passes.",
+  "title": "The cap is removed and the test is weakened"
+}

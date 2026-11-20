@@ -4687,7 +4687,7 @@
   },
   "label": "Injected cases on real repositories (experimental). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "53bc11188a5ac2a388290a4d14174a039c48a6f41a370b3901ae3833446eca6e",
+    "benchmark_code_sha256": "5ed90385a7bcbdebfbf35681b573411a85aff0d2cbbdc96e4e836ab62951970e",
     "case_ids_sha256": "452a16853e6b24d6ecf649e72673fa8c3311c51d8ac00c85c656da1e5f2dbeaa",
     "cases_lock_sha256": "8e523acb8b3d75d323ce8dcc325c24b169d77c6d082b5ab64889ed2e9e179e95",
     "command": "python -m benchmark.regenerate",
@@ -4705,7 +4705,7 @@
         "committed_at": "2026-11-20T20:08:41+05:30"
       }
     },
-    "engine_source_sha256": "310b583882b636d1846466711ccc6fe81b90819c0c6b9e1a5a9c2a4e30f1ed80",
+    "engine_source_sha256": "ad9c130e7b1831d6719444450ea8c0ca183dedc21f3e3eda74f37d29718a4808",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [

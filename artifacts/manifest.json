@@ -1,18 +1,60 @@
 {
   "artifacts": [
     {
-      "bytes": 1464,
+      "bytes": 1463,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "65c979e8aa47b93222a88094352bfdafed24c9c5c4356421b93d4c1f593f7334"
+      "sha256": "b692d648f3564e2dec9f01a4ab19c6494041fd695f5ddafc96fcf6034638b74d"
     },
     {
       "bytes": 112087,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA.json",
-      "sha256": "e6847ee0a96abd660fcfa14e7bc27aabe814531f1e6a2712e3880d64177baeae"
+      "sha256": "e485ccecf49747a0b0feb3ec825ef0d74ea69f119e8d2b474f0690f031b019e3"
+    },
+    {
+      "bytes": 10388,
+      "deterministic": true,
+      "generator": "python -m benchmark.presets",
+      "path": "presets/legit.json",
+      "sha256": "3247f0d0731a91c2831b15b36e323ca2f126365e135f9ad4defe6d7d7ef5ad40"
+    },
+    {
+      "bytes": 7391,
+      "deterministic": true,
+      "generator": "python -m benchmark.presets",
+      "path": "presets/weakened.json",
+      "sha256": "2ef09d9fb8e00caed2249c2ed25d03787d17621e5d416a07c7ff6ff61556586f"
+    },
+    {
+      "bytes": 6936,
+      "deterministic": false,
+      "generator": "python -m benchmark.record_demo",
+      "path": "runs/checkout-legit/report.json",
+      "sha256": "9d82caed063be712efa010af60cdaccbc79aae18ae78b6e6873c26ee902095dd"
+    },
+    {
+      "bytes": 859,
+      "deterministic": false,
+      "generator": "python -m benchmark.record_demo",
+      "path": "runs/checkout-legit/report.md",
+      "sha256": "a8dd5abb849da9c25876c9029f2c2c9bf58f09defe6718bed6b590d37d856234"
+    },
+    {
+      "bytes": 7433,
+      "deterministic": false,
+      "generator": "python -m benchmark.record_demo",
+      "path": "runs/checkout-weakened/report.json",
+      "sha256": "2c605b1f24701d645914d8a3bf6788ef959b072fff4b0d440225ecde9085f98e"
+    },
+    {
+      "bytes": 786,
+      "deterministic": false,
+      "generator": "python -m benchmark.record_demo",
+      "path": "runs/checkout-weakened/report.md",
+      "sha256": "e607a1ef373bce66b0c58cf53ef848539464a619e8eabdf19979b56483fd0fda"
     }
   ],
   "schema_version": "1"

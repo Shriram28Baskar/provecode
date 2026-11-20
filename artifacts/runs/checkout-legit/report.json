@@ -1,0 +1,234 @@
+{
+  "condition_status": {
+    "C1": "pass",
+    "C2": "pass",
+    "C3": "pass",
+    "C4": "pass"
+  },
+  "contract": {
+    "approved_at": "2026-11-20T09:00:00Z",
+    "approved_by": "Shriram28Baskar",
+    "conditions": [
+      {
+        "checks": [
+          "chk-cap"
+        ],
+        "description": "Discount is capped at 25% (raised from 20%, approved by the business)",
+        "guarded_by": [
+          "tests/test_pricing.py::test_discount_is_capped"
+        ],
+        "id": "C1",
+        "mandatory": true,
+        "type": "boundary"
+      },
+      {
+        "checks": [
+          "chk-values"
+        ],
+        "description": "Discount results are correct for valid inputs",
+        "guarded_by": [
+          "tests/test_pricing.py::test_small_discount_applies"
+        ],
+        "id": "C2",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-invalid"
+        ],
+        "description": "Invalid inputs raise ValueError",
+        "guarded_by": [
+          "tests/test_pricing.py::test_invalid_inputs_raise"
+        ],
+        "id": "C3",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-signature"
+        ],
+        "description": "Public signature of apply_discount is unchanged",
+        "guarded_by": [],
+        "id": "C4",
+        "mandatory": true,
+        "type": "api-compat"
+      }
+    ],
+    "content_hash": "sha256:8b78a4dbab8fd55f00006e14b9dcc557b69ff0a8871669c47b3e0ad058cd19a2",
+    "id": "checkout-pricing",
+    "version": 2
+  },
+  "contract_base": {
+    "content_hash": "sha256:a993720462a9ccc6f2f801094bba64f53629c0a65582b877c611c487bf3f3d72",
+    "version": 1
+  },
+  "evidence": [
+    {
+      "check_id": "chk-cap",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_cap",
+      "condition_ids": [
+        "C1"
+      ],
+      "duration_s": 1.58,
+      "exit_code": 0,
+      "id": "E1",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.12s",
+      "output_sha256": "3be6ffcaecf85b5bd3eef3693ab214b0e7c9eb4e36d117fcf1825652de5eb298",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "chk-values",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_values",
+      "condition_ids": [
+        "C2"
+      ],
+      "duration_s": 1.38,
+      "exit_code": 0,
+      "id": "E2",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
+      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "chk-invalid",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_invalid",
+      "condition_ids": [
+        "C3"
+      ],
+      "duration_s": 1.41,
+      "exit_code": 0,
+      "id": "E3",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
+      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "chk-signature",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_signature",
+      "condition_ids": [
+        "C4"
+      ],
+      "duration_s": 1.52,
+      "exit_code": 0,
+      "id": "E4",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
+      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "repo-tests",
+      "command": "pytest -q -p no:cacheprovider",
+      "condition_ids": [],
+      "duration_s": 1.69,
+      "exit_code": 0,
+      "id": "E5",
+      "output_excerpt": "...                                                                      [100%]\n3 passed in 0.11s",
+      "output_sha256": "a0ba7f2fb96adfb2c2564a1053a85160f60c5f008ba0c8c06a58a8cb23d1fc2b",
+      "owner": "repo",
+      "result": "pass"
+    }
+  ],
+  "files": [
+    {
+      "file": "tests/test_pricing.py",
+      "tests_base": 3,
+      "tests_head": 3
+    }
+  ],
+  "findings": [
+    {
+      "after": "assert apply_discount(100, 0.50) == 75.00",
+      "base_lines": [
+        7,
+        7
+      ],
+      "before": "assert apply_discount(100, 0.50) == 80.00",
+      "condition_ids": [
+        "C1"
+      ],
+      "detail": {
+        "approved_contract_change": [
+          "C1"
+        ]
+      },
+      "file": "tests/test_pricing.py",
+      "head_lines": [
+        7,
+        7
+      ],
+      "id": "F1",
+      "rationale": "The expected value changed; comparison strength is unchanged.",
+      "rule": "V0",
+      "severity": "info",
+      "test": "tests/test_pricing.py::test_discount_is_capped",
+      "title": "Expected value changed (strength unchanged)"
+    }
+  ],
+  "gaps": [],
+  "mode": "recorded",
+  "outcome": "VERIFIED",
+  "provenance": {
+    "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
+    "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
+    "engine_version": "0.1.0",
+    "generated_at": "2026-11-20T15:13:27+00:00",
+    "head_sha": "08ca7f23363ccbccd81ef64522de61367057d5fb",
+    "image": "provecode-run:local",
+    "image_id": "sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527",
+    "limits": {
+      "max_bracket_depth": 100,
+      "max_bytes": 2097152,
+      "max_indent_depth": 50,
+      "max_lines": 50000
+    },
+    "python": "3.11.3",
+    "repo": "checkout",
+    "repo_digests": "[\"provecode-run@sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527\"]",
+    "sandbox": {
+      "cpus": 1,
+      "memory": "512m",
+      "network": "none",
+      "pids": 128,
+      "read_only": true,
+      "timeout_s": 120,
+      "user": "65534:65534"
+    }
+  },
+  "reasons": [
+    {
+      "id": "C1",
+      "kind": "verified",
+      "text": "C1: all contract-owned checks passed; no blocking findings."
+    },
+    {
+      "id": "C2",
+      "kind": "verified",
+      "text": "C2: all contract-owned checks passed; no blocking findings."
+    },
+    {
+      "id": "C3",
+      "kind": "verified",
+      "text": "C3: all contract-owned checks passed; no blocking findings."
+    },
+    {
+      "id": "C4",
+      "kind": "verified",
+      "text": "C4: all contract-owned checks passed; no blocking findings."
+    }
+  ],
+  "schema_version": "1",
+  "summary": {
+    "evidence": 5,
+    "files_analyzed": 1,
+    "findings_by_severity": {
+      "info": 1
+    },
+    "gaps": 0
+  }
+}

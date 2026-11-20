@@ -1,0 +1,223 @@
+{
+  "condition_status": {
+    "C1": "fail",
+    "C2": "pass",
+    "C3": "pass",
+    "C4": "pass"
+  },
+  "contract": {
+    "approved_at": "2026-11-20T09:00:00Z",
+    "approved_by": "Shriram28Baskar",
+    "conditions": [
+      {
+        "checks": [
+          "chk-cap"
+        ],
+        "description": "Discount is capped at 20%",
+        "guarded_by": [
+          "tests/test_pricing.py::test_discount_is_capped"
+        ],
+        "id": "C1",
+        "mandatory": true,
+        "type": "boundary"
+      },
+      {
+        "checks": [
+          "chk-values"
+        ],
+        "description": "Discount results are correct for valid inputs",
+        "guarded_by": [
+          "tests/test_pricing.py::test_small_discount_applies"
+        ],
+        "id": "C2",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-invalid"
+        ],
+        "description": "Invalid inputs raise ValueError",
+        "guarded_by": [
+          "tests/test_pricing.py::test_invalid_inputs_raise"
+        ],
+        "id": "C3",
+        "mandatory": true,
+        "type": "functional"
+      },
+      {
+        "checks": [
+          "chk-signature"
+        ],
+        "description": "Public signature of apply_discount is unchanged",
+        "guarded_by": [],
+        "id": "C4",
+        "mandatory": true,
+        "type": "api-compat"
+      }
+    ],
+    "content_hash": "sha256:a993720462a9ccc6f2f801094bba64f53629c0a65582b877c611c487bf3f3d72",
+    "id": "checkout-pricing",
+    "version": 1
+  },
+  "contract_base": null,
+  "evidence": [
+    {
+      "check_id": "chk-cap",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_cap",
+      "condition_ids": [
+        "C1"
+      ],
+      "duration_s": 1.7,
+      "exit_code": 1,
+      "id": "E1",
+      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\n../checks/test_contract_checkout.py:17: AssertionError\n=========================== short test summary info ============================\nFAILED ../checks/test_contract_checkout.py::test_chk_cap - AssertionError: di...\n1 failed in 0.13s",
+      "output_sha256": "457389a7557f748752edf3b7911451de033c1913f456b8b12e97a195df2a6201",
+      "owner": "contract",
+      "result": "fail"
+    },
+    {
+      "check_id": "chk-values",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_values",
+      "condition_ids": [
+        "C2"
+      ],
+      "duration_s": 1.55,
+      "exit_code": 0,
+      "id": "E2",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.07s",
+      "output_sha256": "e8c2ebdecc6c68bd31c948de0b0c1dd4c57dd47d093194a6c1d241c65727824d",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "chk-invalid",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_invalid",
+      "condition_ids": [
+        "C3"
+      ],
+      "duration_s": 1.52,
+      "exit_code": 0,
+      "id": "E3",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
+      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "chk-signature",
+      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_signature",
+      "condition_ids": [
+        "C4"
+      ],
+      "duration_s": 1.28,
+      "exit_code": 0,
+      "id": "E4",
+      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
+      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "owner": "contract",
+      "result": "pass"
+    },
+    {
+      "check_id": "repo-tests",
+      "command": "pytest -q -p no:cacheprovider",
+      "condition_ids": [],
+      "duration_s": 1.52,
+      "exit_code": 0,
+      "id": "E5",
+      "output_excerpt": "...                                                                      [100%]\n3 passed in 0.12s",
+      "output_sha256": "35a1d58c48b74e0e3e7b158b5545a9552f2371583edfef1ea0d022c59f5a0a1c",
+      "owner": "repo",
+      "result": "pass"
+    }
+  ],
+  "files": [
+    {
+      "file": "tests/test_pricing.py",
+      "tests_base": 3,
+      "tests_head": 3
+    }
+  ],
+  "findings": [
+    {
+      "after": "assert apply_discount(100, 0.50) >= 0",
+      "base_lines": [
+        7,
+        7
+      ],
+      "before": "assert apply_discount(100, 0.50) == 80.00",
+      "condition_ids": [
+        "C1"
+      ],
+      "detail": {},
+      "file": "tests/test_pricing.py",
+      "head_lines": [
+        7,
+        7
+      ],
+      "id": "F1",
+      "rationale": "Equality to a specific expected value was replaced by the bound '>= 0'.",
+      "rule": "S2",
+      "severity": "blocking",
+      "test": "tests/test_pricing.py::test_discount_is_capped",
+      "title": "Expected value replaced by a trivial bound"
+    }
+  ],
+  "gaps": [],
+  "mode": "recorded",
+  "outcome": "FAILED",
+  "provenance": {
+    "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
+    "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
+    "engine_version": "0.1.0",
+    "generated_at": "2026-11-20T15:13:19+00:00",
+    "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
+    "image": "provecode-run:local",
+    "image_id": "sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527",
+    "limits": {
+      "max_bracket_depth": 100,
+      "max_bytes": 2097152,
+      "max_indent_depth": 50,
+      "max_lines": 50000
+    },
+    "python": "3.11.3",
+    "repo": "checkout",
+    "repo_digests": "[\"provecode-run@sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527\"]",
+    "sandbox": {
+      "cpus": 1,
+      "memory": "512m",
+      "network": "none",
+      "pids": 128,
+      "read_only": true,
+      "timeout_s": 120,
+      "user": "65534:65534"
+    }
+  },
+  "reasons": [
+    {
+      "condition_ids": [
+        "C1"
+      ],
+      "id": "F1",
+      "kind": "finding",
+      "text": "S2 on tests/test_pricing.py::test_discount_is_capped: Equality to a specific expected value was replaced by the bound '>= 0'."
+    },
+    {
+      "condition_ids": [
+        "C1"
+      ],
+      "id": "E1",
+      "kind": "evidence",
+      "text": "Contract check chk-cap failed for C1."
+    }
+  ],
+  "schema_version": "1",
+  "summary": {
+    "evidence": 5,
+    "files_analyzed": 1,
+    "findings_by_severity": {
+      "blocking": 1
+    },
+    "gaps": 0
+  }
+}
