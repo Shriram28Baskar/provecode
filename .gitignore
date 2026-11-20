@@ -10,3 +10,4 @@ web/node_modules/
 web/.next/
 web/out/
 demo/.build/
+docs/research/.cache/

@@ -1,0 +1,2732 @@
+{
+  "all": {
+    "n_legit": 30,
+    "n_weakening": 138,
+    "only_provecode_caught": 107,
+    "only_ruff_subset_caught": [
+      "W17-02",
+      "W17-05"
+    ],
+    "provecode": {
+      "legit_flagged": {
+        "hi": 0.1135,
+        "k": 0,
+        "lo": 0,
+        "n": 30,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.9159,
+        "k": 120,
+        "lo": 0.8032,
+        "n": 138,
+        "rate": 0.8696
+      },
+      "recall_count_preserving": {
+        "hi": 0.8977,
+        "k": 96,
+        "lo": 0.7642,
+        "n": 114,
+        "rate": 0.8421
+      }
+    },
+    "ruff_all": {
+      "legit_flagged": {
+        "hi": 0.6685,
+        "k": 15,
+        "lo": 0.3315,
+        "n": 30,
+        "rate": 0.5
+      },
+      "recall": {
+        "hi": 0.3245,
+        "k": 34,
+        "lo": 0.182,
+        "n": 138,
+        "rate": 0.2464
+      },
+      "recall_count_preserving": {
+        "hi": 0.3132,
+        "k": 26,
+        "lo": 0.1607,
+        "n": 114,
+        "rate": 0.2281
+      }
+    },
+    "ruff_subset": {
+      "legit_flagged": {
+        "hi": 0.1135,
+        "k": 0,
+        "lo": 0,
+        "n": 30,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.1716,
+        "k": 15,
+        "lo": 0.067,
+        "n": 138,
+        "rate": 0.1087
+      },
+      "recall_count_preserving": {
+        "hi": 0.1433,
+        "k": 9,
+        "lo": 0.0421,
+        "n": 114,
+        "rate": 0.0789
+      }
+    },
+    "union_provecode_ruff_subset": {
+      "legit_flagged": {
+        "hi": 0.1135,
+        "k": 0,
+        "lo": 0,
+        "n": 30,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.9274,
+        "k": 122,
+        "lo": 0.82,
+        "n": 138,
+        "rate": 0.8841
+      }
+    }
+  },
+  "by_pattern": {
+    "L01": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 3,
+      "ruff_subset": 0
+    },
+    "L02": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "L03": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 3,
+      "ruff_subset": 0
+    },
+    "L04": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 3,
+      "ruff_subset": 0
+    },
+    "L05": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 3,
+      "ruff_subset": 0
+    },
+    "L06": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "L07": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "L08": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 3,
+      "ruff_subset": 0
+    },
+    "L09": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "L10": {
+      "n": 3,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W01": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W02": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 6,
+      "ruff_subset": 0
+    },
+    "W03": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W04": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W05": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W06": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W08": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 5,
+      "ruff_subset": 4
+    },
+    "W09": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 3,
+      "ruff_subset": 3
+    },
+    "W10": {
+      "n": 12,
+      "provecode": 12,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W11": {
+      "n": 12,
+      "provecode": 12,
+      "ruff_all": 2,
+      "ruff_subset": 0
+    },
+    "W12": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W13": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W14": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W15": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W16": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 1,
+      "ruff_subset": 0
+    },
+    "W17": {
+      "n": 6,
+      "provecode": 0,
+      "ruff_all": 4,
+      "ruff_subset": 2
+    },
+    "W18": {
+      "n": 6,
+      "provecode": 0,
+      "ruff_all": 6,
+      "ruff_subset": 0
+    },
+    "W19": {
+      "n": 6,
+      "provecode": 0,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W20": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 0,
+      "ruff_subset": 0
+    },
+    "W21": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 1,
+      "ruff_subset": 0
+    },
+    "W22": {
+      "n": 6,
+      "provecode": 6,
+      "ruff_all": 6,
+      "ruff_subset": 6
+    }
+  },
+  "cases": [
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-01",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-02",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-03",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-04",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-05",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W01-06",
+      "kind": "weakening",
+      "pattern": "W01",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-01",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-02",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-03",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-04",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-05",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W02-06",
+      "kind": "weakening",
+      "pattern": "W02",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E711"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-01",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-02",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-03",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-04",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-05",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W03-06",
+      "kind": "weakening",
+      "pattern": "W03",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-01",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-02",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-03",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-04",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-05",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W04-06",
+      "kind": "weakening",
+      "pattern": "W04",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-01",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-02",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-03",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-04",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-05",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "W05-06",
+      "kind": "weakening",
+      "pattern": "W05",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-01",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-02",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-03",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-04",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-05",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "W06-06",
+      "kind": "weakening",
+      "pattern": "W06",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-01",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B017",
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-02",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-03",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B017",
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-04",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-05",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B017",
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W08-06",
+      "kind": "weakening",
+      "pattern": "W08",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B017"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-01",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-02",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-03",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-04",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PT011"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PT011"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-05",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W09-06",
+      "kind": "weakening",
+      "pattern": "W09",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-01",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-02",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-03",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-04",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-05",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-06",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-07",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-08",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-09",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-10",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-11",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-reduced",
+      "count_preserving": true,
+      "id": "W10-12",
+      "kind": "weakening",
+      "pattern": "W10",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-01",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-02",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-03",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-04",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-05",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "F401"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-06",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-07",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-08",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-09",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-10",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "D204"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-11",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "W11-12",
+      "kind": "weakening",
+      "pattern": "W11",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-01",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-02",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-03",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-04",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-05",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W12-06",
+      "kind": "weakening",
+      "pattern": "W12",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-01",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-02",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-03",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-04",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-05",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W13-06",
+      "kind": "weakening",
+      "pattern": "W13",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-01",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-02",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-03",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-04",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-05",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W14-06",
+      "kind": "weakening",
+      "pattern": "W14",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-01",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-02",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-03",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-04",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-05",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W15-06",
+      "kind": "weakening",
+      "pattern": "W15",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-01",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-02",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-03",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-04",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-05",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "D202"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W16-06",
+      "kind": "weakening",
+      "pattern": "W16",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-01",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-02",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PLR0124"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PLR0124"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-03",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "COM812"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-04",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-05",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PLR0124"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "PLR0124"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W17-06",
+      "kind": "weakening",
+      "pattern": "W17",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "COM812"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-01",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-02",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-03",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-04",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-05",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W18-06",
+      "kind": "weakening",
+      "pattern": "W18",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "SIM105"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-01",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-02",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-03",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-04",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-05",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "other",
+      "count_preserving": true,
+      "id": "W19-06",
+      "kind": "weakening",
+      "pattern": "W19",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-01",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-02",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-03",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-04",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-05",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "W20-06",
+      "kind": "weakening",
+      "pattern": "W20",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-01",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E501"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-02",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-03",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-04",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-05",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "W21-06",
+      "kind": "weakening",
+      "pattern": "W21",
+      "provecode": true,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-01",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-02",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "held_out"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-03",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-04",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-05",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "W22-06",
+      "kind": "weakening",
+      "pattern": "W22",
+      "provecode": true,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "B015"
+      ],
+      "ruff_subset": true,
+      "ruff_subset_codes": [
+        "B015"
+      ],
+      "split": "tuning"
+    },
+    {
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "L01-01",
+      "kind": "legit",
+      "pattern": "L01",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "Q000"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "L01-02",
+      "kind": "legit",
+      "pattern": "L01",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "Q000"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "L01-03",
+      "kind": "legit",
+      "pattern": "L01",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "Q000"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "rename",
+      "count_preserving": true,
+      "id": "L02-01",
+      "kind": "legit",
+      "pattern": "L02",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "rename",
+      "count_preserving": true,
+      "id": "L02-02",
+      "kind": "legit",
+      "pattern": "L02",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "rename",
+      "count_preserving": true,
+      "id": "L02-03",
+      "kind": "legit",
+      "pattern": "L02",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "L03-01",
+      "kind": "legit",
+      "pattern": "L03",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "S101"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "L03-02",
+      "kind": "legit",
+      "pattern": "L03",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "S101"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "L03-03",
+      "kind": "legit",
+      "pattern": "L03",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "S101"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-extended",
+      "count_preserving": true,
+      "id": "L04-01",
+      "kind": "legit",
+      "pattern": "L04",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "PT014"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "parametrize-extended",
+      "count_preserving": true,
+      "id": "L04-02",
+      "kind": "legit",
+      "pattern": "L04",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E501",
+        "PT014"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "parametrize-extended",
+      "count_preserving": true,
+      "id": "L04-03",
+      "kind": "legit",
+      "pattern": "L04",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "E501",
+        "PT014"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "L05-01",
+      "kind": "legit",
+      "pattern": "L05",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "D103",
+        "E501",
+        "PT006",
+        "S101"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "L05-02",
+      "kind": "legit",
+      "pattern": "L05",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "ANN001",
+        "ANN201",
+        "D102"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "L05-03",
+      "kind": "legit",
+      "pattern": "L05",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "D103",
+        "S101",
+        "S704"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "L06-01",
+      "kind": "legit",
+      "pattern": "L06",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "L06-02",
+      "kind": "legit",
+      "pattern": "L06",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "L06-03",
+      "kind": "legit",
+      "pattern": "L06",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "L07-01",
+      "kind": "legit",
+      "pattern": "L07",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "L07-02",
+      "kind": "legit",
+      "pattern": "L07",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "L07-03",
+      "kind": "legit",
+      "pattern": "L07",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "L08-01",
+      "kind": "legit",
+      "pattern": "L08",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "RUF043"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "L08-02",
+      "kind": "legit",
+      "pattern": "L08",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "RUF043"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "L08-03",
+      "kind": "legit",
+      "pattern": "L08",
+      "provecode": false,
+      "ruff_all": true,
+      "ruff_all_codes": [
+        "RUF043"
+      ],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "L09-01",
+      "kind": "legit",
+      "pattern": "L09",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "L09-02",
+      "kind": "legit",
+      "pattern": "L09",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "L09-03",
+      "kind": "legit",
+      "pattern": "L09",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "L10-01",
+      "kind": "legit",
+      "pattern": "L10",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "held_out"
+    },
+    {
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "L10-02",
+      "kind": "legit",
+      "pattern": "L10",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    },
+    {
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "L10-03",
+      "kind": "legit",
+      "pattern": "L10",
+      "provecode": false,
+      "ruff_all": false,
+      "ruff_all_codes": [],
+      "ruff_subset": false,
+      "ruff_subset_codes": [],
+      "split": "tuning"
+    }
+  ],
+  "cases_lock_sha256": "91055c1dfb5f440c97df457dfad463eac45965207125c1766e246f5cde4a0bb7",
+  "command": "python docs/research/scripts/ruff_tierA.py",
+  "detection_definition": "a rule code fires more times in head than in base",
+  "held_out": {
+    "n_legit": 6,
+    "n_weakening": 44,
+    "only_provecode_caught": 34,
+    "only_ruff_subset_caught": [],
+    "provecode": {
+      "legit_flagged": {
+        "hi": 0.3903,
+        "k": 0,
+        "lo": 0.0,
+        "n": 6,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.9207,
+        "k": 37,
+        "lo": 0.7063,
+        "n": 44,
+        "rate": 0.8409
+      },
+      "recall_count_preserving": {
+        "hi": 0.9052,
+        "k": 30,
+        "lo": 0.658,
+        "n": 37,
+        "rate": 0.8108
+      }
+    },
+    "ruff_all": {
+      "legit_flagged": {
+        "hi": 0.9032,
+        "k": 4,
+        "lo": 0.3,
+        "n": 6,
+        "rate": 0.6667
+      },
+      "recall": {
+        "hi": 0.4422,
+        "k": 13,
+        "lo": 0.1816,
+        "n": 44,
+        "rate": 0.2955
+      },
+      "recall_count_preserving": {
+        "hi": 0.4298,
+        "k": 10,
+        "lo": 0.154,
+        "n": 37,
+        "rate": 0.2703
+      }
+    },
+    "ruff_subset": {
+      "legit_flagged": {
+        "hi": 0.3903,
+        "k": 0,
+        "lo": 0.0,
+        "n": 6,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.1823,
+        "k": 3,
+        "lo": 0.0235,
+        "n": 44,
+        "rate": 0.0682
+      },
+      "recall_count_preserving": {
+        "hi": 0.177,
+        "k": 2,
+        "lo": 0.015,
+        "n": 37,
+        "rate": 0.0541
+      }
+    },
+    "union_provecode_ruff_subset": {
+      "legit_flagged": {
+        "hi": 0.3903,
+        "k": 0,
+        "lo": 0.0,
+        "n": 6,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.9207,
+        "k": 37,
+        "lo": 0.7063,
+        "n": 44,
+        "rate": 0.8409
+      }
+    }
+  },
+  "ruff_version": "ruff 0.17.6",
+  "schema_version": "1",
+  "subset_codes_by_pattern": {
+    "W08": {
+      "PT011": 4
+    },
+    "W09": {
+      "PT011": 3
+    },
+    "W17": {
+      "PLR0124": 2
+    },
+    "W22": {
+      "B015": 6
+    }
+  },
+  "subset_rules": [
+    "PLR0124",
+    "PLR0133",
+    "F631",
+    "B011",
+    "PT015",
+    "PLW0129",
+    "B015",
+    "PT011",
+    "PT012",
+    "PT018"
+  ]
+}
