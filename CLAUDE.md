@@ -9,6 +9,7 @@ Read docs/source/PROVECODE\_PROJECT\_PRIMER.md before doing anything.
 \## Rules
 
 \- Work in gated stages. Do not write application code until I approve the design docs.
+- Exception (ADR 0003): Gate 0 spike code may be written only in `spike/`. It is throwaway, non-product, not the engine, and must never be imported by product code. Commit `spike/PREREGISTRATION.md` before running any spike code.
 
 \- Ask one question at a time, with your recommended default.
 
