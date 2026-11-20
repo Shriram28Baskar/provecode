@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  engine:
+    name: engine tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e "engine[dev]"
+      - name: Engine tests, including the no-exec and no-LLM import scans
+        run: python -m pytest engine/tests benchmark/test_benchmark.py -q
+
+  benchmark:
+    name: Tier A regenerates byte-for-byte
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # commit_order provenance reads git history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e "engine[dev]"
+      - name: Manifest hashes match committed artifacts (ADR 0005)
+        run: python -m benchmark.manifest
+      - name: Regenerate from pinned commits and compare
+        run: python -m benchmark.regenerate --check

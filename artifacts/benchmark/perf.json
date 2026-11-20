@@ -1,0 +1,69 @@
+{
+  "live_limits": {
+    "max_bracket_depth": 100,
+    "max_bytes": 65536,
+    "max_indent_depth": 50,
+    "max_lines": 2000
+  },
+  "machine": {
+    "implementation": "CPython",
+    "machine": "AMD64",
+    "python": "3.11.3",
+    "system": "Windows"
+  },
+  "note": "Measured on the machine that ran the regenerate command; not deterministic, not CI-diffed.",
+  "per_case": {
+    "max_peak_bytes": 18761887,
+    "max_s": 0.23033,
+    "median_s": 0.02192,
+    "n": 168,
+    "p95_s": 0.13567
+  },
+  "schema_version": "1",
+  "worst_case_live_limits": {
+    "2000_lines": {
+      "bytes": 19934,
+      "findings": 1,
+      "gaps": [],
+      "peak_bytes": 7380818,
+      "seconds": 0.1946
+    },
+    "63KiB_long_lines": {
+      "bytes": 64428,
+      "findings": 20,
+      "gaps": [],
+      "peak_bytes": 1393007,
+      "seconds": 0.0206
+    },
+    "bracket_depth_100": {
+      "bytes": 231,
+      "findings": 1,
+      "gaps": [],
+      "peak_bytes": 72523,
+      "seconds": 0.0018
+    },
+    "indent_depth_49": {
+      "bytes": 5218,
+      "findings": 1,
+      "gaps": [],
+      "peak_bytes": 158768,
+      "seconds": 0.0042
+    },
+    "many_tests_1989_lines": {
+      "bytes": 27515,
+      "findings": 1,
+      "gaps": [],
+      "peak_bytes": 7751011,
+      "seconds": 0.0902
+    },
+    "over_limit_nesting_5000": {
+      "bytes": 10034,
+      "findings": 0,
+      "gaps": [
+        "input_limit"
+      ],
+      "peak_bytes": 54041,
+      "seconds": 0.0006
+    }
+  }
+}

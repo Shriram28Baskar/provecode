@@ -1,0 +1,19 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1464,
+      "deterministic": false,
+      "generator": "python -m benchmark.regenerate",
+      "path": "benchmark/perf.json",
+      "sha256": "65c979e8aa47b93222a88094352bfdafed24c9c5c4356421b93d4c1f593f7334"
+    },
+    {
+      "bytes": 112087,
+      "deterministic": true,
+      "generator": "python -m benchmark.regenerate",
+      "path": "benchmark/tierA.json",
+      "sha256": "e6847ee0a96abd660fcfa14e7bc27aabe814531f1e6a2712e3880d64177baeae"
+    }
+  ],
+  "schema_version": "1"
+}
