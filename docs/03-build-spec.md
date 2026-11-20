@@ -274,3 +274,27 @@ These are the places where the implementation departs from, or adds to, the sect
 **Artifacts and CI**
 - **Generated outputs.** `regenerate` also writes the live presets (`artifacts/presets/`) and the README results block, and `--check` verifies all of them.
 - **CI.** The Pyodide parity check and a Chrome end-to-end run of the demo story (`web/scripts/e2e.mjs`) are added to CI.
+
+**After the engine code review** (also recorded in `tierA.json` under `revision_log`; no Tier A result changed)
+- **S4** now fires whenever any base parametrize case is removed. Previously it fired only when the head cases were a strict subset of the base cases, so dropping hard cases while adding a trivial one escaped.
+- **B2** also covers:
+  - class decorators and class-level `pytestmark`
+  - `from pytest import mark`
+  - `pytest.xfail()` calls
+
+  It no longer treats non-pytest `.skip()` calls as guards.
+- **S1** covers positional `approx` tolerances and non-numeric `approx`.
+- **S3** flags a `match=` loosened to a match-anything pattern.
+- **Robustness:**
+  - An AST deeper than 120 levels is reported as an `input_limit` gap.
+  - Line splitting matches the tokenizer.
+  - Files with a UTF-8 BOM are analyzed.
+  - Renamed test files keep their contract links. A file renamed to a non-test name is treated as deleted (B1).
+- **Recorded runs:**
+  - Checks run through `python -I`, with the candidate tree appended to `sys.path`.
+  - A check counts as **pass** only with exit 0 **and** a JUnit report showing at least one test that ran and passed.
+  - The remaining risk of forgery from inside the same process is stated on the site.
+- **CLI:**
+  - Any internal error exits with 3.
+  - Git failures are never treated as an absent file.
+  - JSON contracts stay JSON when approved.

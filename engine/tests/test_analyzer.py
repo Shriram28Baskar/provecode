@@ -179,8 +179,10 @@ def test_s4_negative_case_added():
     assert rules(PARAM, PARAM.replace("(-1, -2)]", "(-1, -2), (5, 10)]")) == []
 
 
-def test_s4_negative_case_replaced():
-    assert rules(PARAM, PARAM.replace("(-1, -2)", "(-2, -4)")) == []
+def test_s4_case_swapped_for_another_is_still_a_removal():
+    res = run(PARAM, PARAM.replace("(-1, -2)", "(-2, -4)"))
+    assert [f.rule for f in res.findings] == ["S4"]
+    assert "1 new case(s) were added" in res.findings[0].rationale
 
 
 # ---------------------------------------------------------------- B1 / R0

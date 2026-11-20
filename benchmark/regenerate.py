@@ -50,6 +50,23 @@ TUNING_LOG = [
     }
 ]
 
+# Changes made AFTER held-out results were first seen. Disclosed with their measured effect.
+REVISION_LOG = [
+    {
+        "date": "2026-11-20",
+        "source": "independent code review of engine/src/provecode (not benchmark data)",
+        "changes": [
+            "line splitting matches the tokenizer (form feeds no longer misalign lines)",
+            "AST depth limit and RecursionError become input_limit gaps instead of crashes",
+            "S4 flags removed parametrize cases even when others are added",
+            "B2 covers class-level skips, `from pytest import mark`, and pytest.xfail(); ignores non-pytest .skip()",
+            "S1 handles positional approx tolerances and non-numeric approx; S3 flags match= loosened to match-anything",
+            "UTF-8 BOM files are analyzed; renamed test files keep their contract links",
+        ],
+        "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
+    }
+]
+
 
 # --------------------------------------------------------------------------- statistics
 
@@ -247,6 +264,7 @@ def build_tier_a(rows: list[dict], split_lock: dict) -> dict:
         "all": metrics(rows),
         "falsification": falsification(m_held),
         "tuning_log": TUNING_LOG,
+        "revision_log": REVISION_LOG,
         "cases": rows,
         "provenance": provenance(split_lock),
     }

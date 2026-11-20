@@ -141,6 +141,12 @@ export default function AboutPage() {
           <li>Python and pytest only. Benchmark numbers are from injected cases; real-world measurement is pending.</li>
           <li>Docker narrows what untrusted code can do but is not a complete security boundary.</li>
           <li>
+            In recorded runs, a contract check counts as passed only with a test report showing tests that actually ran
+            and passed, never on an exit code alone, and the candidate cannot replace the test runner. Code the candidate
+            supplies still runs inside the same process as the check, so a deliberately malicious change could forge a
+            report. Defending against that needs the check and the code under test in separate processes.
+          </li>
+          <li>
             The browser runtime (Pyodide 314.0.8) is served from this site, not a third-party CDN. Its loader is checked
             against a pinned SHA-384 and the engine files against SHA-256 before use. The other runtime files come from
             the same deployment and are hashed at build time, but the page does not re-check them as they load.

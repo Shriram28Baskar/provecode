@@ -10,6 +10,10 @@ class GitError(Exception):
     pass
 
 
+class DecodeError(GitError):
+    """The file exists but is not UTF-8 text; recorded as an unparseable gap."""
+
+
 def _git(repo: str, *args: str, binary: bool = False):
     try:
         out = subprocess.run(["git", "-C", repo, *args], capture_output=True, timeout=60, check=False)
@@ -49,16 +53,25 @@ def changed_files(repo: str, base: str, head: str) -> list[Change]:
     return changes
 
 
+def exists(repo: str, sha: str, path: str) -> bool:
+    """True if path exists at sha. `git ls-tree` prints nothing for a missing path and fails
+    (raising GitError) only on real errors, so absence is never confused with failure."""
+    return bool(_git(repo, "ls-tree", "--name-only", sha, "--", path).strip())
+
+
 def show(repo: str, sha: str, path: str) -> str | None:
-    """File content at sha, or None if absent. Raises GitError on undecodable content."""
-    try:
-        data = _git(repo, "cat-file", "blob", f"{sha}:{path}", binary=True)
-    except GitError:
+    """File content at sha, or None if the path does not exist there.
+
+    Any other git failure raises GitError (never silently treated as "absent").
+    A leading UTF-8 BOM is removed, as Python does when reading source files.
+    """
+    if not exists(repo, sha, path):
         return None
+    data = _git(repo, "cat-file", "blob", f"{sha}:{path}", binary=True)
     try:
-        return data.decode("utf-8")
+        return data.decode("utf-8-sig")
     except UnicodeDecodeError as exc:
-        raise GitError(f"{path} at {sha[:12]} is not UTF-8") from exc
+        raise DecodeError(f"{path} at {sha[:12]} is not UTF-8") from exc
 
 
 def commit_time(repo: str, sha: str) -> str:

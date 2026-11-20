@@ -10,11 +10,14 @@ from __future__ import annotations
 
 import hashlib
 import io
+import os
 import shutil
 import subprocess
 import tarfile
 import tempfile
+import time
 import uuid
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from . import contract as contract_mod
@@ -54,19 +57,30 @@ def _export_tree(repo: str, sha: str, dest: Path) -> None:
             tf.extractall(dest, members=members)
 
 
-def _run(image: str, src: Path, checks: Path, argv: list[str], timeout: int) -> tuple[int | None, str, float]:
+# Runs inside the container as `python -I -c RUNNER <target> <junit> <rootdir>`.
+# -I ignores PYTHONPATH and user site and does not prepend the working directory, so the
+# candidate cannot shadow pytest or the stdlib, and a candidate sitecustomize.py is never
+# imported at startup. The candidate tree is APPENDED to sys.path, after site-packages.
+RUNNER = (
+    "import sys; sys.path.append('/work/src'); import pytest; "
+    "sys.exit(pytest.main(['-q', '-p', 'no:cacheprovider', '--rootdir', sys.argv[3], "
+    "'--junitxml=' + sys.argv[2], sys.argv[1]]))"
+)
+MAX_JUNIT_BYTES = 1_000_000
+
+
+def _run(image: str, src: Path, checks: Path, results: Path, workdir: str, argv: list[str],
+         timeout: int) -> tuple[int | None, str, float]:
     name = f"provecode-{uuid.uuid4().hex[:12]}"
     cmd = [
         "docker", "run", "--rm", "--name", name,
         "--network", "none", "--read-only", "--tmpfs", "/tmp:rw,size=64m",
         "--memory", "512m", "--memory-swap", "512m", "--cpus", "1", "--pids-limit", "128",
         "--security-opt", "no-new-privileges", "--cap-drop", "ALL", "--user", "65534:65534",
-        "-e", "PYTHONDONTWRITEBYTECODE=1", "-e", "PYTHONPATH=/work/src", "-e", "HOME=/tmp",
-        "-v", f"{src}:/work/src:ro", "-v", f"{checks}:/work/checks:ro", "-w", "/work/src",
-        image, *argv,
+        "-e", "PYTHONDONTWRITEBYTECODE=1", "-e", "HOME=/tmp",
+        "-v", f"{src}:/work/src:ro", "-v", f"{checks}:/work/checks:ro", "-v", f"{results}:/work/results:rw",
+        "-w", workdir, image, *argv,
     ]
-    import time
-
     t0 = time.monotonic()
     try:
         out = subprocess.run(cmd, capture_output=True, timeout=timeout)
@@ -77,13 +91,46 @@ def _run(image: str, src: Path, checks: Path, argv: list[str], timeout: int) -> 
     return out.returncode, text, time.monotonic() - t0
 
 
+def junit_summary(path: Path) -> dict | None:
+    """Counts from a pytest JUnit XML report, or None if it is missing or malformed."""
+    if not path.is_file() or path.stat().st_size > MAX_JUNIT_BYTES:
+        return None
+    try:
+        root = ET.parse(path).getroot()
+    except ET.ParseError:
+        return None
+    suites = [root] if root.tag == "testsuite" else root.findall("testsuite")
+    if not suites:
+        return None
+    total = {"tests": 0, "failures": 0, "errors": 0, "skipped": 0}
+    for s in suites:
+        for k in total:
+            try:
+                total[k] += int(s.get(k, "0"))
+            except ValueError:
+                return None
+    return total
+
+
+def classify(code: int | None, junit: dict | None) -> str:
+    """pass needs positive evidence: exit 0 AND a report with at least one test that actually passed.
+
+    An exit code alone is never trusted (a candidate could exit 0 at import time).
+    """
+    if code == 0 and junit and junit["tests"] > junit["skipped"] and junit["failures"] == 0 and junit["errors"] == 0:
+        return "pass"
+    if code == 1 and junit and junit["failures"] + junit["errors"] > 0:
+        return "fail"
+    return "error"
+
+
 def _evidence(eid: str, check_id: str, cids: list[str], owner: str, code: int | None, text: str,
-              cmd: str, dur: float) -> Evidence:
-    # pytest: 0 all passed, 1 tests failed; anything else (2-5, timeout) is an error, never a pass.
-    result = "pass" if code == 0 else "fail" if code == 1 else "error"
+              cmd: str, dur: float, junit: dict | None) -> Evidence:
     excerpt = "\n".join(text.strip().splitlines()[-EXCERPT_LINES:])
-    return Evidence(eid, check_id, cids, owner, result, code, excerpt, hashlib.sha256(text.encode()).hexdigest(),
-                    cmd, round(dur, 2))
+    if junit is None:
+        excerpt += "\n[provecode] no valid JUnit report was produced, so this result cannot count as a pass."
+    return Evidence(eid, check_id, cids, owner, classify(code, junit), code, excerpt,
+                    hashlib.sha256(text.encode()).hexdigest(), cmd, round(dur, 2))
 
 
 def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evidence], list[Gap], dict]:
@@ -98,8 +145,10 @@ def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evi
     gaps: list[Gap] = []
     work = Path(tempfile.mkdtemp(prefix="provecode-run-"))
     try:
-        src, checks = work / "src", work / "checks"
+        src, checks, results = work / "src", work / "checks", work / "results"
         src.mkdir()
+        results.mkdir()
+        os.chmod(results, 0o777)  # the container runs as nobody (65534)
         _export_tree(args.repo, head_sha, src)
         shutil.copytree(Path(args.checks_dir), checks)
         by_check = {ch["id"]: ch for ch in c.checks}
@@ -111,20 +160,24 @@ def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evi
                     gaps.append(Gap("unsupported", f"{check_id}: kind {ch['kind']} is not supported in Phase 1",
                                     condition_id=cond.id))
                     continue
-                argv = ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider", "--rootdir", "/work/checks",
-                        f"/work/checks/{ch['path']}"]
-                code, text, dur = _run(args.image, src, checks, argv, args.timeout)
                 n += 1
-                ev = _evidence(f"E{n}", check_id, [cond.id], "contract", code, text, " ".join(argv[2:]), dur)
+                junit = f"/work/results/E{n}.xml"
+                argv = ["python", "-I", "-c", RUNNER, f"/work/checks/{ch['path']}", junit, "/work/checks"]
+                code, text, dur = _run(args.image, src, checks, results, "/work/checks", argv, args.timeout)
+                ev = _evidence(f"E{n}", check_id, [cond.id], "contract", code, text,
+                               f"pytest {ch['path']} (isolated runner, JUnit report required)", dur,
+                               junit_summary(results / f"E{n}.xml"))
                 if code is None:
                     gaps.append(Gap("timeout", f"{check_id} exceeded {args.timeout}s", condition_id=cond.id))
                 evidence.append(ev)
-        argv = ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
-        code, text, dur = _run(args.image, src, checks, argv, args.timeout)
         n += 1
-        evidence.append(_evidence(f"E{n}", "repo-tests", [], "repo", code, text, " ".join(argv[2:]), dur))
+        argv = ["python", "-I", "-c", RUNNER, "/work/src", f"/work/results/E{n}.xml", "/work/src"]
+        code, text, dur = _run(args.image, src, checks, results, "/work/src", argv, args.timeout)
+        evidence.append(_evidence(f"E{n}", "repo-tests", [], "repo", code, text,
+                                  "pytest (the repository's own suite)", dur, junit_summary(results / f"E{n}.xml")))
     finally:
         shutil.rmtree(work, ignore_errors=True)
     prov = {**ident, "sandbox": {"network": "none", "memory": "512m", "cpus": 1, "pids": 128, "read_only": True,
-                                 "user": "65534:65534", "timeout_s": args.timeout}}
+                                 "user": "65534:65534", "timeout_s": args.timeout,
+                                 "runner": "python -I, candidate tree appended to sys.path, JUnit report required"}}
     return evidence, gaps, prov

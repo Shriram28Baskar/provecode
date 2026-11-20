@@ -119,6 +119,7 @@ export interface TierA {
     F3: { statement: string; provecode: Interval };
   };
   tuning_log: { round: number; rule: string; change: string; evidence: string[]; split_used: string }[];
+  revision_log: { date: string; source: string; changes: string[]; effect_on_tier_a: string }[];
   baseline_rules: Record<string, string>;
   detection_definition: { provecode: string; baseline: string };
   provenance: {

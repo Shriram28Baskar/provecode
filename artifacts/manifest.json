@@ -8,18 +8,18 @@
       "sha256": "c42b186a365ef4cf1735f68009971aedcce76faa15b5441a5d6e0820736c8fbc"
     },
     {
-      "bytes": 1464,
+      "bytes": 1463,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "821d914b8b8e3accfebe0fd357a7478ed5eb7b0e8fa9b6b52e8e64b8d3a2f514"
+      "sha256": "bd602ae5749e7185d10ae14d4774cbcae9d512814a480e0b6c28783871cb3d79"
     },
     {
-      "bytes": 112087,
+      "bytes": 112931,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA.json",
-      "sha256": "e7cc11226b162ff263ee1e69e0dd2b9488e9d72c1697996284441fd3fc59cab2"
+      "sha256": "e92ec95da768a15526608fde3331e350ae0bdae77eff94beaa7c903d7066d41c"
     },
     {
       "bytes": 10388,
@@ -36,11 +36,11 @@
       "sha256": "2ef09d9fb8e00caed2249c2ed25d03787d17621e5d416a07c7ff6ff61556586f"
     },
     {
-      "bytes": 6936,
+      "bytes": 7369,
       "deterministic": false,
       "generator": "python -m benchmark.record_demo",
       "path": "runs/checkout-legit/report.json",
-      "sha256": "9d82caed063be712efa010af60cdaccbc79aae18ae78b6e6873c26ee902095dd"
+      "sha256": "daeca21b4542459bdef2823007994c1d444f4c43cf65ca88725e022621016106"
     },
     {
       "bytes": 859,
@@ -50,11 +50,11 @@
       "sha256": "a8dd5abb849da9c25876c9029f2c2c9bf58f09defe6718bed6b590d37d856234"
     },
     {
-      "bytes": 7433,
+      "bytes": 7857,
       "deterministic": false,
       "generator": "python -m benchmark.record_demo",
       "path": "runs/checkout-weakened/report.json",
-      "sha256": "2c605b1f24701d645914d8a3bf6788ef959b072fff4b0d440225ecde9085f98e"
+      "sha256": "57569fd651346e517f4bb4c809f1acf40f2b9e7243c3008e11a7e0dbe1638758"
     },
     {
       "bytes": 786,

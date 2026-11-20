@@ -64,69 +64,69 @@
   "evidence": [
     {
       "check_id": "chk-cap",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_cap",
+      "command": "pytest test_contract_checkout.py::test_chk_cap (isolated runner, JUnit report required)",
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.7,
+      "duration_s": 1.12,
       "exit_code": 1,
       "id": "E1",
-      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\n../checks/test_contract_checkout.py:17: AssertionError\n=========================== short test summary info ============================\nFAILED ../checks/test_contract_checkout.py::test_chk_cap - AssertionError: di...\n1 failed in 0.13s",
-      "output_sha256": "457389a7557f748752edf3b7911451de033c1913f456b8b12e97a195df2a6201",
+      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:17: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.14s",
+      "output_sha256": "f73ac1618bec9f8ef97c9ad2f8babe48571a3676a52e7c3ebe69913b805ea4b2",
       "owner": "contract",
       "result": "fail"
     },
     {
       "check_id": "chk-values",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_values",
+      "command": "pytest test_contract_checkout.py::test_chk_values (isolated runner, JUnit report required)",
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.55,
+      "duration_s": 1.22,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.07s",
-      "output_sha256": "e8c2ebdecc6c68bd31c948de0b0c1dd4c57dd47d093194a6c1d241c65727824d",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.11s",
+      "output_sha256": "7f3258af5f3cbd10d945ab1f48e35e5f47dcf91751251a81e71e36e49018da7e",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-invalid",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_invalid",
+      "command": "pytest test_contract_checkout.py::test_chk_invalid (isolated runner, JUnit report required)",
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.52,
+      "duration_s": 1.28,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
-      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.10s",
+      "output_sha256": "7e29509634eb76a3852a1fc3909f2250809dd12f4a5f491f13db3e07ced320c7",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-signature",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_signature",
+      "command": "pytest test_contract_checkout.py::test_chk_signature (isolated runner, JUnit report required)",
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.28,
+      "duration_s": 1.12,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
-      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.09s",
+      "output_sha256": "84e2280a6e1c9ce3f4cef29463c3303c84037154c4bd3d9542d14c3ba4beb25e",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "repo-tests",
-      "command": "pytest -q -p no:cacheprovider",
+      "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.52,
+      "duration_s": 1.19,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n3 passed in 0.12s",
-      "output_sha256": "35a1d58c48b74e0e3e7b158b5545a9552f2371583edfef1ea0d022c59f5a0a1c",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.14s",
+      "output_sha256": "9478334c251bb1b0879428ad72635360c9fd5bbbe67e1cba4601e491032dea6d",
       "owner": "repo",
       "result": "pass"
     }
@@ -170,10 +170,10 @@
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
     "engine_version": "0.1.0",
-    "generated_at": "2026-11-20T15:13:19+00:00",
+    "generated_at": "2026-11-20T15:57:39+00:00",
     "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
     "image": "provecode-run:local",
-    "image_id": "sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527",
+    "image_id": "sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -182,13 +182,14 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527\"]",
+    "repo_digests": "[\"provecode-run@sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",
       "network": "none",
       "pids": 128,
       "read_only": true,
+      "runner": "python -I, candidate tree appended to sys.path, JUnit report required",
       "timeout_s": 120,
       "user": "65534:65534"
     }

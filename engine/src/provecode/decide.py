@@ -51,6 +51,12 @@ def decide(
     """Return the decision and the condition-level gaps it derived."""
     derived: list[Gap] = []
     if contract is None:
+        # FAILED still outranks INCONCLUSIVE: a candidate that touched the contract is blocked
+        # even when no valid contract could be loaded.
+        blocking = [f for f in findings if f.severity == BLOCKING]
+        if blocking:
+            return Decision(FAILED, [{"kind": "finding", "id": f.id, "text": f"{f.rule} on {f.test or f.file}: "
+                                      f"{f.rationale}", "condition_ids": []} for f in blocking]), derived
         reasons = [{"kind": "gap", "id": g.reason, "text": g.detail} for g in gaps if g.condition_id is None]
         return Decision(INCONCLUSIVE, reasons or [{"kind": "gap", "id": "contract_invalid",
                                                     "text": "No valid approved contract."}]), derived

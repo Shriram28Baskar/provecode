@@ -4687,7 +4687,7 @@
   },
   "label": "Injected cases on real repositories (experimental). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "60d190304ceb6b4ca91221e3d5fe74838721f31d54bb1137e5a466e17948121b",
+    "benchmark_code_sha256": "40cf8ffde517e8b369cab18d3b28b85e81af55a729706a47f3c2431fa68cad53",
     "case_ids_sha256": "452a16853e6b24d6ecf649e72673fa8c3311c51d8ac00c85c656da1e5f2dbeaa",
     "cases_lock_sha256": "8e523acb8b3d75d323ce8dcc325c24b169d77c6d082b5ab64889ed2e9e179e95",
     "command": "python -m benchmark.regenerate",
@@ -4705,7 +4705,7 @@
         "committed_at": "2026-11-20T20:08:41+05:30"
       }
     },
-    "engine_source_sha256": "7e5cf731f4012751ffa3d2dd87fa45116d0afc6836aabab7f6f885267e3664b4",
+    "engine_source_sha256": "4892c560ff7e9941861754fd3c4ee5e46ecb0eb7e538f37d0236240c55485f6e",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -4755,6 +4755,21 @@
     ],
     "split_lock_sha256": "bde027edbc0799d7e63a379bf348cd47c7394f0fc04ec8b87d4003f355b167dc"
   },
+  "revision_log": [
+    {
+      "changes": [
+        "line splitting matches the tokenizer (form feeds no longer misalign lines)",
+        "AST depth limit and RecursionError become input_limit gaps instead of crashes",
+        "S4 flags removed parametrize cases even when others are added",
+        "B2 covers class-level skips, `from pytest import mark`, and pytest.xfail(); ignores non-pytest .skip()",
+        "S1 handles positional approx tolerances and non-numeric approx; S3 flags match= loosened to match-anything",
+        "UTF-8 BOM files are analyzed; renamed test files keep their contract links"
+      ],
+      "date": "2026-11-20",
+      "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
+      "source": "independent code review of engine/src/provecode (not benchmark data)"
+    }
+  ],
   "schema_version": "1",
   "tier": "A",
   "tuning": {

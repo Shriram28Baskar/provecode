@@ -207,6 +207,12 @@ export default function BenchmarkPage() {
           <li>
             One tuning round, on the tuning split only: {t.tuning_log.map((l) => `${l.rule}: ${l.change.replaceAll("`", "")}`).join(" ")}
           </li>
+          {t.revision_log.map((r) => (
+            <li key={r.date + r.source}>
+              After the held-out results were first seen, the engine was revised following an {r.source}: {r.changes.join("; ")}.
+              Effect on Tier A: {r.effect_on_tier_a}.
+            </li>
+          ))}
           <li>The baseline is a reimplementation of published rules, not the original tools.</li>
           <li>The real-world feasibility spike (Gate 0) is paused, not finished; no result from it is claimed.</li>
         </ul>

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import ast
 import builtins
+import io
 from collections import defaultdict
 from dataclasses import dataclass, field
 
@@ -36,10 +37,16 @@ _OP_TEXT = {
 # --------------------------------------------------------------------------- parsing
 
 
+# ast.dump and our own recursion are bounded by this AST depth; deeper input is an
+# input_limit gap (an unbracketed 1+1+...+1 chain passes the bracket pre-scan).
+MAX_AST_DEPTH = 120
+
+
 @dataclass
 class TestFn:
     key: str
     node: ast.FunctionDef | ast.AsyncFunctionDef
+    class_marks: frozenset[str] = frozenset()  # skip-like marks on the enclosing class
 
     @property
     def name(self) -> str:
@@ -53,6 +60,7 @@ class Parsed:
     tests: dict[str, TestFn]
     module_skip: bool
     lines: list[str] = field(default_factory=list)
+    pytest_names: frozenset[str] = frozenset()  # names bound by `from pytest import ...`
 
     def text(self, node: ast.AST) -> str:
         """Full source lines spanned by node, including its decorators."""
@@ -75,22 +83,52 @@ def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, 
         tree = ast.parse(source, filename=path)
     except (SyntaxError, ValueError, RecursionError, MemoryError) as exc:
         return None, Gap("unparseable", f"{type(exc).__name__}: {exc}", file=path)
+    depth = _max_depth(tree)
+    if depth > MAX_AST_DEPTH:
+        return None, Gap("input_limit", f"syntax tree depth exceeds {MAX_AST_DEPTH}", file=path)
+    pytest_names = frozenset(
+        (a.asname or a.name) for n in tree.body if isinstance(n, ast.ImportFrom) and n.module == "pytest"
+        for a in n.names
+    )
     tests: dict[str, TestFn] = {}
     for node in tree.body:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test"):
             tests[f"{path}::{node.name}"] = TestFn(f"{path}::{node.name}", node)
         elif isinstance(node, ast.ClassDef) and node.name.startswith("Test"):
+            marks = frozenset(_dump(d) for d in node.decorator_list if _skip_mark(d)) | _pytestmark_skips(node.body)
             for sub in node.body:
                 if isinstance(sub, (ast.FunctionDef, ast.AsyncFunctionDef)) and sub.name.startswith("test"):
                     key = f"{path}::{node.name}::{sub.name}"
-                    tests[key] = TestFn(key, sub)
-    module_skip = any(
-        isinstance(n, ast.Assign)
-        and any(isinstance(t, ast.Name) and t.id == "pytestmark" for t in n.targets)
-        and any(_skip_mark(m) for m in (n.value.elts if isinstance(n.value, (ast.List, ast.Tuple)) else [n.value]))
-        for n in tree.body
-    )
-    return Parsed(source, tree, tests, module_skip, source.splitlines(keepends=True)), None
+                    tests[key] = TestFn(key, sub, marks)
+    module_skip = bool(_pytestmark_skips(tree.body))
+    # Split lines exactly as the tokenizer counts them (\r\n, \r, \n only). str.splitlines
+    # also splits on \f, \x1c-\x1e, \x85 and \u2028, which would misalign ast line numbers.
+    lines = io.StringIO(source, newline="").readlines()
+    return Parsed(source, tree, tests, module_skip, lines, pytest_names), None
+
+
+def _max_depth(tree: ast.AST) -> int:
+    """Iterative maximum depth (stops early), safe on inputs that overflow recursive walkers."""
+    best = 0
+    stack = [(tree, 1)]
+    while stack:
+        node, d = stack.pop()
+        if d > best:
+            best = d
+            if best > MAX_AST_DEPTH:
+                return best
+        stack.extend((c, d + 1) for c in ast.iter_child_nodes(node))
+    return best
+
+
+def _pytestmark_skips(body: list[ast.stmt]) -> frozenset[str]:
+    out = set()
+    for n in body:
+        if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "pytestmark" for t in n.targets):
+            for m in n.value.elts if isinstance(n.value, (ast.List, ast.Tuple)) else [n.value]:
+                if _skip_mark(m):
+                    out.add(_dump(m))
+    return frozenset(out)
 
 
 def _walk_own(func: ast.AST):
@@ -195,6 +233,8 @@ def _classify(node: ast.Assert) -> Check:
             return Check(node, _dump(left), "not_none", None)
         if op == "==" and _is_approx_call(right):
             tol = {k.arg: _num(k.value) for k in right.keywords if k.arg in ("rel", "abs")}
+            for name, arg in zip(("rel", "abs"), right.args[1:3]):  # approx(expected, rel, abs)
+                tol.setdefault(name, _num(arg))
             return Check(node, _dump(left), "approx", right.args[0] if right.args else None, tol)
         return Check(node, _dump(left), op, right)
     if (
@@ -227,7 +267,7 @@ def _compare_pair(b: Check, h: Check) -> tuple[str, str] | None:
             hv, bv = _num(h.expected), _num(b.expected)
             if hv is not None and (hv == 0 or (bv is not None and hv < bv)):
                 return S2, f"Equality to a specific expected value was replaced by the bound '{h.op} {hv:g}'."
-    if b.op == "==" and h.op == "approx" and _num(b.expected) is not None:
+    if b.op == "==" and h.op == "approx" and b.expected_literal:
         return S1, "Exact equality was relaxed to pytest.approx."
     if b.op == "approx" and h.op == "approx":
         bt, ht = _approx_tol(b), _approx_tol(h)
@@ -289,6 +329,9 @@ def _covers(head: str, base: str) -> bool:
     return head in ("Exception", "BaseException")
 
 
+_MATCH_ANY = {"", ".*", ".+", "(?s).*", "(?s).+", "^.*$"}
+
+
 def _s3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out = []
     rb, rh = _raises_calls(tb), _raises_calls(th)
@@ -300,8 +343,13 @@ def _s3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
             widened = [h for h in hn if h not in bn and any(_covers(h, b) for b in bn)]
             if widened:
                 reasons.append(f"expected exception widened from {', '.join(bn)} to include {', '.join(widened)}")
-        if any(k.arg == "match" for k in cb.keywords) and not any(k.arg == "match" for k in ch.keywords):
+        bm = next((k.value for k in cb.keywords if k.arg == "match"), None)
+        hm = next((k.value for k in ch.keywords if k.arg == "match"), None)
+        if bm is not None and hm is None:
             reasons.append("the match= message check was removed")
+        elif (bm is not None and isinstance(hm, ast.Constant) and hm.value in _MATCH_ANY
+              and _dump(bm) != _dump(hm)):
+            reasons.append(f"the match= message check was loosened to {hm.value!r}, which matches any message")
         if reasons:
             out.append(Finding(
                 S3, path, th.key, "pytest.raises: " + "; ".join(reasons) + ".",
@@ -328,11 +376,13 @@ def _s4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
             continue
         base_cases = {_dump(e): e for e in db.args[1].elts}
         head_cases = {_dump(e) for e in dh.args[1].elts}
-        if head_cases < set(base_cases):
-            removed = [base_cases[k] for k in base_cases if k not in head_cases]
+        removed = [base_cases[k] for k in base_cases if k not in head_cases]
+        if removed:
+            added = len(head_cases - set(base_cases))
+            note = f" {added} new case(s) were added, which does not restore the removed ones." if added else ""
             out.append(Finding(
                 S4, path, th.key,
-                f"{len(removed)} of {len(base_cases)} parametrize case(s) were removed.",
+                f"{len(removed)} of {len(base_cases)} parametrize case(s) were removed.{note}",
                 base_lines=_lines(removed[0]), head_lines=_lines(dh),
                 before="\n".join(_seg(pb, e) for e in removed), after=None,
                 detail={"removed_cases": [_seg(pb, e) for e in removed], "base_count": len(base_cases),
@@ -344,7 +394,10 @@ def _s4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
 def _mark_name(d: ast.AST) -> tuple[str | None, ast.Call | None]:
     call = d if isinstance(d, ast.Call) else None
     target = d.func if call else d
-    if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Attribute) and target.value.attr == "mark":
+    if isinstance(target, ast.Attribute) and (
+        (isinstance(target.value, ast.Attribute) and target.value.attr == "mark")
+        or (isinstance(target.value, ast.Name) and target.value.id == "mark")
+    ):
         return target.attr, call
     return None, None
 
@@ -371,7 +424,15 @@ def _body_after_doc(fn: TestFn) -> list[ast.stmt]:
     return body
 
 
-def _guards(fn: TestFn) -> dict[str, ast.stmt]:
+def _is_pytest_stop(call: ast.Call, pytest_names: frozenset[str]) -> bool:
+    """pytest.skip(...) / pytest.xfail(...), or skip/xfail imported from pytest. Not reader.skip()."""
+    f = call.func
+    if isinstance(f, ast.Attribute) and f.attr in ("skip", "xfail"):
+        return isinstance(f.value, ast.Name) and f.value.id == "pytest"
+    return isinstance(f, ast.Name) and f.id in ("skip", "xfail") and f.id in pytest_names
+
+
+def _guards(fn: TestFn, pytest_names: frozenset[str] = frozenset()) -> dict[str, ast.stmt]:
     """Top-level statements that stop the test before the rest of its body runs.
 
     Tuning round 1 (tuning split only): a guard counts whenever statements
@@ -386,9 +447,7 @@ def _guards(fn: TestFn) -> dict[str, ast.stmt]:
         if isinstance(s, ast.Return) and s.value is None and rest:
             is_guard = True
         elif isinstance(s, ast.Expr) and isinstance(s.value, ast.Call):
-            f = s.value.func
-            if ((isinstance(f, ast.Attribute) and f.attr == "skip") or (isinstance(f, ast.Name) and f.id == "skip")) \
-                    and rest:
+            if _is_pytest_stop(s.value, pytest_names) and rest:
                 is_guard = True
         elif isinstance(s, ast.If) and isinstance(s.test, ast.Constant) and not s.test.value and not s.orelse:
             is_guard = True
@@ -406,8 +465,14 @@ def _b2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
                 B2, path, th.key, "An unconditional skip/xfail marker was added; the test no longer gates the change.",
                 head_lines=_lines(d), after="@" + _seg(ph, d),
             ))
-    base_guards = _guards(tb)
-    for k, s in _guards(th).items():
+    new_class_marks = th.class_marks - tb.class_marks
+    if new_class_marks:
+        out.append(Finding(
+            B2, path, th.key, "A skip/xfail marker was added to the test's class; the test no longer gates the change.",
+            detail={"class_marks": sorted(new_class_marks)},
+        ))
+    base_guards = _guards(tb, pb.pytest_names)
+    for k, s in _guards(th, ph.pytest_names).items():
         if k not in base_guards:
             first = _seg(ph, s).splitlines()[0] if _seg(ph, s) else ""
             out.append(Finding(
@@ -480,6 +545,20 @@ def analyze_file(
 ) -> FileResult:
     """Compare one test file between base and head. None means the file is absent on that side."""
     lim = lim or _limits.Limits.cli()
+    try:
+        return _analyze(path, _strip_bom(base_source), _strip_bom(head_source), lim)
+    except (RecursionError, MemoryError) as exc:
+        res = FileResult(path)
+        res.gaps.append(Gap("input_limit", f"{type(exc).__name__} while analyzing; input too complex", file=path))
+        return res
+
+
+def _strip_bom(src: str | None) -> str | None:
+    # Python accepts a UTF-8 BOM in source files; ast.parse on a str does not.
+    return src[1:] if src is not None and src.startswith("\ufeff") else src
+
+
+def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _limits.Limits) -> FileResult:
     res = FileResult(path)
     pb = ph = None
     if base_source is not None:
@@ -525,7 +604,9 @@ def analyze_file(
                     before=_seg(pb, tb.node).splitlines()[0] if _seg(pb, tb.node) else None,
                 ))
             continue
-        if pb.text(tb.node) == ph.text(th.node) or _dump(tb.node) == _dump(th.node):
+        if th.class_marks == tb.class_marks and (
+            pb.text(tb.node) == ph.text(th.node) or _dump(tb.node) == _dump(th.node)
+        ):
             continue
         res.findings.extend(_assert_rules(pb, ph, tb, th, path))
         res.findings.extend(_s3(pb, ph, tb, th, path))

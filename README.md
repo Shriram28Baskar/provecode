@@ -125,5 +125,5 @@ CI runs the tests on Python 3.11 and 3.13. It also checks the Tier A regeneratio
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
 - VERIFIED means no mandatory condition failed within the declared scope. It is not a proof of correctness.
-- Docker is not a complete security boundary.
+- Docker is not a complete security boundary. A contract check passes only with a JUnit report of tests that actually ran, and the candidate cannot shadow the runner. Code the candidate supplies still runs in the same process as the check, though, so deliberately malicious code could forge a report.
 - **Prior art:** MaruCheck already has approved, hashed contracts, contract-owned checks, deterministic decisions and inconclusive evidence. Existing count-based detectors catch deletions and skips. PROVECODE's contribution is the semantic, count-preserving rules and the benchmark (see `docs/00-competitive-audit.md`).

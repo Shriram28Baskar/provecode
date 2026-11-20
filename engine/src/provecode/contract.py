@@ -161,7 +161,20 @@ def load_yaml(path: str | Path) -> dict:
         doc = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     except (OSError, yaml.YAMLError) as exc:
         raise ContractError(f"cannot read contract {path}: {exc}") from exc
-    return doc
+    return _plain(doc)
+
+
+def _plain(obj):
+    """YAML turns unquoted timestamps into date objects; keep everything JSON-representable."""
+    import datetime as _dt
+
+    if isinstance(obj, dict):
+        return {k: _plain(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_plain(v) for v in obj]
+    if isinstance(obj, (_dt.date, _dt.datetime)):
+        return obj.isoformat()
+    return obj
 
 
 def read_any(path: str | Path) -> dict:

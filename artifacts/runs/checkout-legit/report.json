@@ -67,69 +67,69 @@
   "evidence": [
     {
       "check_id": "chk-cap",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_cap",
+      "command": "pytest test_contract_checkout.py::test_chk_cap (isolated runner, JUnit report required)",
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.58,
+      "duration_s": 1.16,
       "exit_code": 0,
       "id": "E1",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.12s",
-      "output_sha256": "3be6ffcaecf85b5bd3eef3693ab214b0e7c9eb4e36d117fcf1825652de5eb298",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E1.xml -------------------\n1 passed in 0.09s",
+      "output_sha256": "a9dd496c2479123f3ef47ed7e0b964f772f8fff87363ddf2422e17a9ee100e73",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-values",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_values",
+      "command": "pytest test_contract_checkout.py::test_chk_values (isolated runner, JUnit report required)",
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.38,
+      "duration_s": 1.23,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
-      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.09s",
+      "output_sha256": "05bff53f71f90aff9197c949e4322133761ffb1b0218c7e79f566dbe3ed190d4",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-invalid",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_invalid",
+      "command": "pytest test_contract_checkout.py::test_chk_invalid (isolated runner, JUnit report required)",
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.41,
+      "duration_s": 1.16,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
-      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.11s",
+      "output_sha256": "c45fa0024eadf1731d6a38c399a17e303608413655f9e77e7127ad7bdf7f5282",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-signature",
-      "command": "pytest -q -p no:cacheprovider --rootdir /work/checks /work/checks/test_contract_checkout.py::test_chk_signature",
+      "command": "pytest test_contract_checkout.py::test_chk_signature (isolated runner, JUnit report required)",
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.52,
+      "duration_s": 1.12,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n1 passed in 0.06s",
-      "output_sha256": "3605abb09038ce24e90d81df8f7c0d87bb6f647a5e016bf461d8a8fcb408f6e9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.12s",
+      "output_sha256": "5bb687982226a098642bbe674c6586f920c4fee736d1c6ebbceb5c460be9fc0f",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "repo-tests",
-      "command": "pytest -q -p no:cacheprovider",
+      "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.69,
+      "duration_s": 1.25,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n3 passed in 0.11s",
-      "output_sha256": "a0ba7f2fb96adfb2c2564a1053a85160f60c5f008ba0c8c06a58a8cb23d1fc2b",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.24s",
+      "output_sha256": "dbcc989b42e8ab172a72bfaeaebacb0dbea1fa774f81079e66303caacabe666f",
       "owner": "repo",
       "result": "pass"
     }
@@ -177,10 +177,10 @@
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
     "engine_version": "0.1.0",
-    "generated_at": "2026-11-20T15:13:27+00:00",
+    "generated_at": "2026-11-20T15:57:46+00:00",
     "head_sha": "08ca7f23363ccbccd81ef64522de61367057d5fb",
     "image": "provecode-run:local",
-    "image_id": "sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527",
+    "image_id": "sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -189,13 +189,14 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:7b3cf5ed1423c9b7a450f1492d17e4616746bf4a3508c0a2a2fefe019d6ed527\"]",
+    "repo_digests": "[\"provecode-run@sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",
       "network": "none",
       "pids": 128,
       "read_only": true,
+      "runner": "python -I, candidate tree appended to sys.path, JUnit report required",
       "timeout_s": 120,
       "user": "65534:65534"
     }

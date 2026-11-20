@@ -12,12 +12,14 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import sys
 from pathlib import Path
 
 from . import contract as contract_mod
 from . import git as git_mod
 from . import pipeline, report as report_mod
+from .analyzer import is_test_path
 from .model import Gap
 
 EXIT = {"VERIFIED": 0, "FAILED": 1, "INCONCLUSIVE": 2}
@@ -38,16 +40,20 @@ def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
     for ch in git_mod.changed_files(repo, base, head):
         if _protected(ch.path, args.protect) or (ch.old_path and _protected(ch.old_path, args.protect)):
             touched.append(ch.path)
+        # Only test files are analyzed; fetching other blobs (binaries, assets) would add noise.
+        if not (is_test_path(ch.path) or (ch.old_path and is_test_path(ch.old_path))):
+            continue
         try:
             if ch.status == "A":
                 files.append((ch.path, None, git_mod.show(repo, head, ch.path)))
             elif ch.status == "D":
                 files.append((ch.path, git_mod.show(repo, base, ch.path), None))
             elif ch.status == "R":
-                files.append((ch.path, git_mod.show(repo, base, ch.old_path), git_mod.show(repo, head, ch.path)))
+                files.append((ch.path, git_mod.show(repo, base, ch.old_path), git_mod.show(repo, head, ch.path),
+                              ch.old_path))
             else:
                 files.append((ch.path, git_mod.show(repo, base, ch.path), git_mod.show(repo, head, ch.path)))
-        except git_mod.GitError as exc:
+        except git_mod.DecodeError as exc:  # other git failures propagate and exit 3
             gaps.append(Gap("unparseable", str(exc), file=ch.path))
     prov = {"repo": str(Path(repo).resolve().name), "base_sha": base, "head_sha": head,
             "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
@@ -105,13 +111,16 @@ def cmd_record(args) -> int:
 
 
 def cmd_approve(args) -> int:
-    import yaml
-
     doc = contract_mod.read_any(args.contract)
     at = args.at or dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     out = contract_mod.approve(doc, args.by, at)
-    Path(args.contract).write_text(yaml.safe_dump(out, sort_keys=False, allow_unicode=True), encoding="utf-8",
-                                   newline="\n")
+    if Path(args.contract).suffix == ".json":  # keep the file's own format
+        text = json.dumps(out, indent=2, ensure_ascii=False) + "\n"
+    else:
+        import yaml  # CLI extra
+
+        text = yaml.safe_dump(out, sort_keys=False, allow_unicode=True)
+    Path(args.contract).write_text(text, encoding="utf-8", newline="\n")
     print(out["approval"]["content_hash"])
     return 0
 
@@ -165,6 +174,9 @@ def main(argv: list[str] | None = None) -> int:
         return args.fn(args)
     except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:
         print(f"provecode: error: {exc}", file=sys.stderr)
+        return 3
+    except Exception as exc:  # noqa: BLE001 - any crash must exit 3, never 1 (1 means FAILED)
+        print(f"provecode: internal error: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 3
 
 
