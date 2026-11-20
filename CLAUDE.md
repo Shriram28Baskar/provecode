@@ -22,3 +22,5 @@ Read docs/source/PROVECODE\_PROJECT\_PRIMER.md before doing anything.
 
 \- After finishing each document, stop and wait for my approval.
 
+\- Never push, force-push, rename branches, or change remotes without asking me first.
+
