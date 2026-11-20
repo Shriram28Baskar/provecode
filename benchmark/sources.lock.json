@@ -1,0 +1,11 @@
+{
+  "selection": "Small, permissively licensed pytest repositories, none of them Gate 0 spike repos (R9: mitmproxy/mitmproxy, plotly/dash, realiti4/claude-swap). Pinned to the default-branch HEAD fetched 2026-11-20. Licenses are verified from the license file at the pinned SHA by benchmark/generate_cases.py.",
+  "sources": [
+    {"repo": "python-humanize/humanize", "sha": "a95004512dde4e8f0269946bb4af754382347441", "licenses": [{"spdx": "MIT", "file": "LICENCE"}]},
+    {"repo": "pallets/itsdangerous", "sha": "672971d66a2ef9f85151e53283113f33d642dabd", "licenses": [{"spdx": "BSD-3-Clause", "file": "LICENSE.txt"}]},
+    {"repo": "pallets/markupsafe", "sha": "4e111271b1494995708a9e878a10829b5e10c7ba", "licenses": [{"spdx": "BSD-3-Clause", "file": "LICENSE.txt"}]},
+    {"repo": "pypa/packaging", "sha": "cf2cdf099375f7e208168cd2d8880699aeef0583", "licenses": [{"spdx": "Apache-2.0", "file": "LICENSE.APACHE"}, {"spdx": "BSD-3-Clause", "file": "LICENSE.BSD"}]},
+    {"repo": "pytest-dev/pluggy", "sha": "93de545c3a31880feaf0f6bb8870b30d602cf681", "licenses": [{"spdx": "MIT", "file": "LICENSE"}]},
+    {"repo": "jazzband/prettytable", "sha": "49c0ecbd0c9edd083081788df68f124dae7fab5d", "licenses": [{"spdx": "BSD-3-Clause", "file": "LICENSE"}]}
+  ]
+}

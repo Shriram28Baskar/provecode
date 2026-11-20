@@ -1,1 +1,8 @@
 spike/** text eol=lf
+benchmark/** text=auto eol=lf
+engine/** text=auto eol=lf
+artifacts/** text=auto eol=lf
+demo/** text=auto eol=lf
+docker/** text=auto eol=lf
+web/** text=auto eol=lf
+.github/** text=auto eol=lf
