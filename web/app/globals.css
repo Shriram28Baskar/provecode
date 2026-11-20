@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* PROVECODE tokens: slate ink on cool inspection paper; verdicts are stamp inks. */
+:root {
+  --paper: #eef1f4;
+  --sheet: #f8f9fb;
+  --ink: #1b2633;
+  --ink-soft: #4a5868;
+  --rule: #cfd6de;
+  --blue: #2a57c0;
+  --failed: #b3242d;
+  --verified: #1e7449;
+  --inconclusive: #a86a12;
+  --del-bg: #f7e3e4;
+  --add-bg: #e1efe6;
+  --focus: #2a57c0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141b24;
+    --sheet: #1b2430;
+    --ink: #e4e9ef;
+    --ink-soft: #a3afbd;
+    --rule: #2f3b49;
+    --blue: #8eabf0;
+    --failed: #f07a80;
+    --verified: #6fcf9c;
+    --inconclusive: #e7b062;
+    --del-bg: #3a2327;
+    --add-bg: #1f3529;
+    --focus: #8eabf0;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-sheet: var(--sheet);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-blue: var(--blue);
+  --color-failed: var(--failed);
+  --color-verified: var(--verified);
+  --color-inconclusive: var(--inconclusive);
+  --color-del: var(--del-bg);
+  --color-add: var(--add-bg);
+  --font-sans: var(--font-text);
+  --font-mono: var(--font-code);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* The stamp's scale-in must never create a sideways scroll on phones. */
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.prose-measure {
+  max-width: 68ch;
+}
+
+a.link {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* The verdict stamp: the one memorable element. */
+.stamp {
+  --stamp: var(--ink);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.55rem 0.9rem 0.6rem;
+  border: 3px solid var(--stamp);
+  border-radius: 6px;
+  color: var(--stamp);
+  box-shadow: inset 0 0 0 2px var(--sheet), inset 0 0 0 3.5px var(--stamp);
+  transform: rotate(-2.5deg);
+  background: color-mix(in srgb, var(--stamp) 6%, transparent);
+}
+.stamp-failed { --stamp: var(--failed); }
+.stamp-verified { --stamp: var(--verified); }
+.stamp-inconclusive { --stamp: var(--inconclusive); border-style: dashed; }
+.stamp-note {
+  max-width: 17rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  white-space: normal;
+}
+.stamp { max-width: 100%; }
+.stamp-word {
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stamp-land {
+    animation: stamp-land 520ms cubic-bezier(0.2, 0.9, 0.25, 1.25) 650ms both;
+  }
+  @keyframes stamp-land {
+    from { opacity: 0; transform: rotate(-9deg) scale(1.6); }
+    60% { opacity: 1; transform: rotate(-1.5deg) scale(0.96); }
+    to { opacity: 1; transform: rotate(-2.5deg) scale(1); }
+  }
+}
+
+/* Result-source badges: told apart by edge shape as well as words. */
+.src {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.src-live { background: var(--blue); color: var(--sheet); }
+.src-precomputed { border: 1.5px dashed var(--ink-soft); color: var(--ink-soft); }
+.src-recorded {
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  border-radius: 3px;
+  background: repeating-linear-gradient(-45deg, transparent 0 6px, color-mix(in srgb, var(--ink) 7%, transparent) 6px 8px);
+}
+.src-static { border: 1.5px solid var(--rule); color: var(--ink-soft); }
+
+.diff {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.diff-del { background: var(--del-bg); }
+.diff-add { background: var(--add-bg); }
+
+/* Code must show exactly what was typed: no ligatures turning >= into a single glyph. */
+code,
+pre,
+textarea,
+.diff {
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+}

@@ -40,3 +40,37 @@ jobs:
         run: python -m benchmark.manifest
       - name: Regenerate from pinned commits and compare
         run: python -m benchmark.regenerate --check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - name: Pyodide parity (browser runtime vs CPython) on every Tier A case
+        run: node benchmark/pyodide_parity.mjs
+      - name: Generated artifacts unchanged
+        run: git diff --exit-code -- artifacts/benchmark/tierA.json artifacts/benchmark/parity.json artifacts/presets
+
+  web:
+    name: site builds and the demo story passes in Chrome
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - name: Build (fails if any rendered artifact does not match the manifest)
+        run: npm run build
+      - name: End-to-end demo story under the production CSP
+        run: |
+          node scripts/serve.mjs 4317 &
+          sleep 1
+          node scripts/e2e.mjs

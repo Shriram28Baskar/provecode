@@ -1,0 +1,16 @@
+{
+  "schema_version": "1",
+  "pyodide_version": "314.0.8",
+  "pyodide_python": "3.14.2",
+  "cpython_reference": "3.11",
+  "cases_compared": 168,
+  "fields_compared": [
+    "flagged",
+    "rules",
+    "outcome",
+    "blocking"
+  ],
+  "mismatches": [],
+  "identical": true,
+  "command": "node benchmark/pyodide_parity.mjs"
+}

@@ -1,6 +1,13 @@
 {
   "artifacts": [
     {
+      "bytes": 323,
+      "deterministic": true,
+      "generator": "node benchmark/pyodide_parity.mjs",
+      "path": "benchmark/parity.json",
+      "sha256": "c42b186a365ef4cf1735f68009971aedcce76faa15b5441a5d6e0820736c8fbc"
+    },
+    {
       "bytes": 1463,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
