@@ -64,7 +64,17 @@ REVISION_LOG = [
             "UTF-8 BOM files are analyzed; renamed test files keep their contract links",
         ],
         "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
-    }
+    },
+    {
+        "date": "2026-11-20",
+        "source": "CI reproducibility check on Linux",
+        "changes": [
+            "case files are read as raw git objects instead of a Windows working tree where core.autocrlf had "
+            "converted LF to CRLF; cases.lock.json byte hashes were regenerated",
+        ],
+        "effect_on_tier_a": "none: same 168 case ids, patterns, sites and split; only base/head byte hashes changed; "
+                            "all case results and metrics identical",
+    },
 ]
 
 

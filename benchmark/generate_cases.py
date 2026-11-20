@@ -86,6 +86,14 @@ def fetch(source: dict) -> Path:
     return d
 
 
+def blob(d: Path, path: str) -> bytes:
+    """Exact bytes of path at HEAD, as stored by git (no line-ending conversion)."""
+    out = subprocess.run(["git", "cat-file", "blob", f"HEAD:{path}"], cwd=d, capture_output=True)
+    if out.returncode != 0:
+        raise RuntimeError(f"git cat-file HEAD:{path} failed in {d}: {out.stderr.decode('utf-8', 'replace')}")
+    return out.stdout
+
+
 def test_files(d: Path) -> list[str]:
     files = _git(["ls-files", "*.py"], d).splitlines()
     out = []
@@ -675,7 +683,9 @@ def load_files(sources: list[dict]) -> dict[str, list[FileInfo]]:
         d = fetch(src)
         infos = []
         for path in test_files(d):
-            fi = parse_file(src["repo"], path, (d / path).read_bytes())
+            # Raw object bytes, not the working tree: core.autocrlf would otherwise turn LF into
+            # CRLF on Windows and make the case hashes platform-dependent.
+            fi = parse_file(src["repo"], path, blob(d, path))
             if fi is not None:
                 infos.append(fi)
         per_repo[src["repo"]] = infos

@@ -1,7 +1,7 @@
 {
   "cases": [
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -46,7 +46,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "7d3297b4b2e56d9728ad3f9d400d7e2b858e34d08172777089e20200880e0219",
+      "head_sha256": "df8bda9cce08a4595e97c483be67c19db88b73bf94103547276448724fed03d5",
       "id": "W01-01",
       "kind": "weakening",
       "line": 145,
@@ -56,7 +56,7 @@
       "test_key": "tests/test_i18n.py::test_intcomma"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -101,7 +101,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "a073bf9bc1fdb7294096d0f130b499731d62a10cbede21bad9ec5ed74e2f2b11",
+      "head_sha256": "70ac26caa0799bd74f03dbbdd5f5ac46f35f8c335a4635786793ff35e0348540",
       "id": "W01-02",
       "kind": "weakening",
       "line": 142,
@@ -111,7 +111,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_signer_kwargs"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -156,7 +156,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "b56151a67d23e2cecd191300d3b158369de17ec0dfdd16ad48fb50ca766f9378",
+      "head_sha256": "94e0daa9ade55467c4169f7bc975bff7637b3edc7cc9fff18c55936e795779b9",
       "id": "W01-03",
       "kind": "weakening",
       "line": 74,
@@ -166,7 +166,7 @@
       "test_key": "tests/test_markupsafe.py::test_dict_interpol"
     },
     {
-      "base_sha256": "4005efd44a89dd3c3ffc32d4a01e1ecb95c3d8be061b8c5af4d4f918844e4736",
+      "base_sha256": "2bd0b17175732c0fa7e37602cd57c405296f7bce425e5018e779e7e632d40d1f",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -211,7 +211,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_specifiers.py",
-      "head_sha256": "679a5582b0ca152911e84a2cbc139ca223b0626bb7fb2642a5e3dab9008156e7",
+      "head_sha256": "9a9ef11799993048173f894d33b251304b335044c5602d6277d43cc2ae142ef8",
       "id": "W01-04",
       "kind": "weakening",
       "line": 1553,
@@ -221,7 +221,7 @@
       "test_key": "tests/test_specifiers.py::TestSpecifierSet::test_match_args"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -266,7 +266,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "30c9f1fc7283844e06d1f4910347021b04f59ed5ff76359b0b7c728fa05703c4",
+      "head_sha256": "aebb2fa3c2052eeef24ed78295e6edd499a2b4b654c274332fcecd747c9e5ad4",
       "id": "W01-05",
       "kind": "weakening",
       "line": 1066,
@@ -276,7 +276,7 @@
       "test_key": "testing/test_pluginmanager.py::test_add_tracefuncs"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -321,7 +321,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "d89d78cf2469890fe1bfd2a910ede347d666b7a7f30421d85ef7ea414c7fd58d",
+      "head_sha256": "6560c667bd5d31a09c59e8b3707a8978251b468ef6010bf4e3052e5c4d9ff3a1",
       "id": "W01-06",
       "kind": "weakening",
       "line": 1207,
@@ -331,7 +331,7 @@
       "test_key": "tests/test_prettytable.py::TestColumnFormattingfromDict::test_set_custom_format"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -376,7 +376,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "3a72d871a7c089278c841566c85083dd4a8f0faaaeb8f932a29edbb5114e7600",
+      "head_sha256": "a0bb9169295f8742165145a732f67b7dcc6a684a59fe56dd255658ee51e579f0",
       "id": "W02-01",
       "kind": "weakening",
       "line": 348,
@@ -386,7 +386,7 @@
       "test_key": "tests/test_time.py::test_naturaldate_tz_aware"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -431,7 +431,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "9fd95ba84f0e7b49d50f71f6d2f124dd938838059b6e4a7ecf0581380ce28062",
+      "head_sha256": "add7ae2c585d6750675ef726b1b28c3c6eb63e4d0f818897a5679ce84305576a",
       "id": "W02-02",
       "kind": "weakening",
       "line": 37,
@@ -441,7 +441,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_max_age"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -486,7 +486,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "86cd82dd85a57c3997211f25471802b20225c68fa8cf74cf931e66452e52e818",
+      "head_sha256": "255644a5105e54d1abdc13fd4cd1f6fdef3d1980841e86806834947cfdcdb8dd",
       "id": "W02-03",
       "kind": "weakening",
       "line": 186,
@@ -496,7 +496,7 @@
       "test_key": "tests/test_markupsafe.py::test_splitting"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -541,7 +541,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "42377a0eb0a489ab5c534e513407f9f0bf502cb9808f392a693f5d4a62486ac4",
+      "head_sha256": "25ad3a279b6d562a42e20d604f5daa477b2c8cc12467d7ccc3145087f9a85e07",
       "id": "W02-04",
       "kind": "weakening",
       "line": 596,
@@ -551,7 +551,7 @@
       "test_key": "tests/test_ranges.py::TestPrereleaseRegion::test_difference_minuend_with_configured_policy"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -596,7 +596,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "553c4087e739c6c4fd4ad2a8ea0feabc7950b0a37f4928912a5d84b8b54f230f",
+      "head_sha256": "4cb6babe2c0d5be4d133d6202afa69b5929b5e6251cdded8de88be7e58dafb0e",
       "id": "W02-05",
       "kind": "weakening",
       "line": 1401,
@@ -606,7 +606,7 @@
       "test_key": "testing/test_pluginmanager.py::test_unregister_plugin_and_name_must_agree"
     },
     {
-      "base_sha256": "158c21a119809994e5ffdeb450e250caf91d3909d0f4976a56d564df605565ae",
+      "base_sha256": "ab75b66b5fd52d52820df6db3599db508824be8b5c30303c701a57e79c1b2cad",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -651,7 +651,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_json.py",
-      "head_sha256": "0ce0937ba81231eb767a18188b0122eeabdc2f9c04660fe1dcb21077fd4888dc",
+      "head_sha256": "dbcbdb37ec8de2c373415db0e5e6a60f7be7b247a315d9e8e7a372c7f1915959",
       "id": "W02-06",
       "kind": "weakening",
       "line": 38,
@@ -661,7 +661,7 @@
       "test_key": "tests/test_json.py::TestJSONOutput::test_json_output"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -706,7 +706,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "ef87a96d4a22a279abb9d13636de4237b34d5112aea13179a2657eac668731b7",
+      "head_sha256": "d8daeb77de8396b5e829079d70054cfbf9b00e45c5ca47ad64b4027e358bc61d",
       "id": "W03-01",
       "kind": "weakening",
       "line": 83,
@@ -716,7 +716,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -761,7 +761,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "ec8975ec07a4fb815836914bf7315c61f4c22790068d67424dd246f880b65a76",
+      "head_sha256": "6b189a5d1c1051971c1a922cd4f13f16adec3261d66c570ec6036de5d2e94305",
       "id": "W03-02",
       "kind": "weakening",
       "line": 89,
@@ -771,7 +771,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_algorithm"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -816,7 +816,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "7e17b019d488fc86e62dfc5bd95e2823ea5049ccc73f043016d4258ec61d8a09",
+      "head_sha256": "3f6e5f8d330829453bb523805353b43de68b586bf4f7a92e438b83b277217339",
       "id": "W03-03",
       "kind": "weakening",
       "line": 50,
@@ -826,7 +826,7 @@
       "test_key": "tests/test_markupsafe.py::test_html_interop"
     },
     {
-      "base_sha256": "9de1bfb0e622196737b8dc593c8f89e32d736f20f9a794ff5c9768ddd7e4d443",
+      "base_sha256": "f5ca1dc0df6deaa9d3e625f2732c7beaa9f24d630cf1c1d54c96f00fa7c63cda",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -871,7 +871,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_errors.py",
-      "head_sha256": "8da7dce9fd8bc5ea43574813243d2e7ce99fdd8625bbd106f2cfad438d7761c6",
+      "head_sha256": "79f7fe21bac56bf13ff936ce9eee27e51f8b5b74f71c06cbfee232b5ff87dae5",
       "id": "W03-04",
       "kind": "weakening",
       "line": 21,
@@ -881,7 +881,7 @@
       "test_key": "tests/test_errors.py::test_error_collector_collect"
     },
     {
-      "base_sha256": "d0f12b4690083bf8031749ca6a57bcc96dfebd0d28ab90f459b11fb91e83016a",
+      "base_sha256": "414810b7e72a9d0dbe32ca6239d72bf8b065cfeb4b1b9c7e7eb3247d2cab68b3",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -926,7 +926,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_helpers.py",
-      "head_sha256": "4b530e50285ba50fb0395dbffdaa4904cf443bd9ac43f434127aaf497d2922bb",
+      "head_sha256": "d9d4b696235a12b96cfae8ac29e4388038f0170fa2af6ff2d8c3c793a19787b9",
       "id": "W03-05",
       "kind": "weakening",
       "line": 257,
@@ -936,7 +936,7 @@
       "test_key": "testing/test_helpers.py::test_varnames_legacy_noself_suppressed_for_timeout_hooks"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -981,7 +981,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "200ec2eb82156d2806930a7c69ab634e3c43b475783363c33e72316ac403d93f",
+      "head_sha256": "3ad86fb0a53bac17fb5d2eadb681f4d3d7f811b73e516afef40d90a3e5cc5773",
       "id": "W03-06",
       "kind": "weakening",
       "line": 726,
@@ -991,7 +991,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_colcount"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1036,7 +1036,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "82f29ca6b29f065020722df568892b960b40107f80534ae64fd65c717a4ba68d",
+      "head_sha256": "b90607115903bce9191b18ef75e08b992043d52d5e5aebd8036068d75c73827f",
       "id": "W04-01",
       "kind": "weakening",
       "line": 96,
@@ -1046,7 +1046,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1091,7 +1091,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "da5d668be2dd9c965a332fe46e23641f8382c028ffcea9b7ebfecb1b35481bd3",
+      "head_sha256": "06c93f3da52291506849cbef6a473546a91051390f5b11fa022b135b260421bd",
       "id": "W04-02",
       "kind": "weakening",
       "line": 72,
@@ -1101,7 +1101,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_key_derivation"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1146,7 +1146,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "4701ce36c821b0d1d3a014850cedfdc65796f1712f5fad39e393f752fe93d0fb",
+      "head_sha256": "a3c2d0b0f606721e389d180bc686327e9debdcfa0a05593d61f0af94a4e6dbec",
       "id": "W04-03",
       "kind": "weakening",
       "line": 109,
@@ -1156,7 +1156,7 @@
       "test_key": "tests/test_markupsafe.py::test_format"
     },
     {
-      "base_sha256": "85557ee2e1765a7f0209dec1d524ce8c0512e964e307cfd845d06b0cab6e8181",
+      "base_sha256": "1da83b945c7c2a53f14bd8af2f87e6cf4e59085ab25787ec89ae864c3e3ccea9",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1201,7 +1201,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_tokenizer.py",
-      "head_sha256": "8ceceeee6ad68dfdd11c2ea637cf93d30a69a20069367170ae5970a40f2f778a",
+      "head_sha256": "3c1d2bee8ab54f798648290c9026bddf32a0a995ce34d38d03a4b37dafac711f",
       "id": "W04-04",
       "kind": "weakening",
       "line": 54,
@@ -1211,7 +1211,7 @@
       "test_key": "tests/test_tokenizer.py::test_enclosing_tokens"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1256,7 +1256,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "f0d15cd1a488a0155d389b73a865c28495176a4a866fd1276fa5a2f763bc7c91",
+      "head_sha256": "c7d89da7bd405f3fc84878afe9192a361fd0f9cb325620ae0e7bf2be74715aea",
       "id": "W04-05",
       "kind": "weakening",
       "line": 92,
@@ -1266,7 +1266,7 @@
       "test_key": "testing/test_pluginmanager.py::test_pm_name"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1311,7 +1311,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "22b97b254f0970e18197e6294d3a41ec2ae93b5ca4340e6a5a944eb814b2245b",
+      "head_sha256": "dce415afcd9226f526fa2e3eb44cfb95a05b44d6ecaa0de8ea4d4075f04518de",
       "id": "W04-06",
       "kind": "weakening",
       "line": 245,
@@ -1321,7 +1321,7 @@
       "test_key": "tests/test_prettytable.py::TestDelete::test_delete_column"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1366,7 +1366,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_number.py",
-      "head_sha256": "c291ec0ea26d40c91abd9ad7a3c7159394eb71d5cbbdea2fb9f9c3da933430c0",
+      "head_sha256": "ed83c76cddc40d04c9e2bd847eeadcce85b3a9915f10f4f3f1df2d8f85a06877",
       "id": "W05-01",
       "kind": "weakening",
       "line": 189,
@@ -1376,7 +1376,7 @@
       "test_key": "tests/test_number.py::test_intword_rounding_rollover"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1421,7 +1421,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "5618aacdad4377a2045dc40ae814917a8d4f053a28e3b2d6e779a0ad7afc16ae",
+      "head_sha256": "c825ee72a9fccd2d086426cffe24cf2d4d6784b86154afdf1dc8cafd1d99d522",
       "id": "W05-02",
       "kind": "weakening",
       "line": 37,
@@ -1431,7 +1431,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_max_age"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1476,7 +1476,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "98dbfec68ce1a4612cc6e6bd52e4427716980fabfb77745481163b52e2b02d40",
+      "head_sha256": "5cf05ff3eb76821788cb62029752dad8be9d5503953105fe21cb5576a41747cf",
       "id": "W05-03",
       "kind": "weakening",
       "line": 52,
@@ -1486,7 +1486,7 @@
       "test_key": "tests/test_markupsafe.py::test_html_interop"
     },
     {
-      "base_sha256": "557c45a6c380a39d035eae1debe5ac35b39d0378681a023ec8e8d76f6848f0ab",
+      "base_sha256": "517226be7fb2f9a6743a11cf26eec55087e6eee580faf449aa596f74d8dbd11f",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1531,7 +1531,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_tags.py",
-      "head_sha256": "2dca6446ca3228b6366c3d38158893723e4e4119dfa2899b95faa7457fa063e0",
+      "head_sha256": "f893b272ee70fa1c50b69e565a0c7ea20292987887f3418e32674ebe145dce9d",
       "id": "W05-04",
       "kind": "weakening",
       "line": 138,
@@ -1541,7 +1541,7 @@
       "test_key": "tests/test_tags.py::TestTag::test_attribute_access"
     },
     {
-      "base_sha256": "4115a45a1b68d010c7b4581d334c5205bb4a68382b43f238f53001c482cafa80",
+      "base_sha256": "1d992e82b1aef041fe962e3b9f149d6274a8ba0215684a4e292f4a40f7b10030",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1586,7 +1586,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_tracer.py",
-      "head_sha256": "6d4e715a9c29551da014d9199a554627789509b836c19772200039b32f193160",
+      "head_sha256": "fc999408a5e7094f756b1ee2dac4104139a5485537626ae06f5e446a49fe0ca8",
       "id": "W05-05",
       "kind": "weakening",
       "line": 66,
@@ -1596,7 +1596,7 @@
       "test_key": "testing/test_tracer.py::test_readable_output_dictargs"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "trivial-expected",
       "contract_base": {
         "checks": [],
@@ -1641,7 +1641,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "cfc249651055c19fbe53405dc55f110ec0e82e098aeccb54a6af86093ff159ff",
+      "head_sha256": "bc84eb8a31529e32c14d9f31ea405508c0e924dc379df51a3ed85d6aef9548a6",
       "id": "W05-06",
       "kind": "weakening",
       "line": 723,
@@ -1651,7 +1651,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_rowcount"
     },
     {
-      "base_sha256": "588c1973c1836d909624d135336d6fa932f05aada10c8ef6343ec1893b80635a",
+      "base_sha256": "38c48f75a272940dcf7bd7b614c350d6f403c75cc0ea542dc308ee39f5a0033e",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1696,7 +1696,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_version.py",
-      "head_sha256": "2a3012aa651850925990cbd9c6c3b0d10399bdbd49fdb33f1ccb597f062b68ad",
+      "head_sha256": "3b410b2a85fe4c0e4343a54fbdc5ef7e0aeaee5b238b9ff4620195a8930d0b04",
       "id": "W06-01",
       "kind": "weakening",
       "line": 992,
@@ -1706,7 +1706,7 @@
       "test_key": "tests/test_version.py::TestVersion::test_micro_version"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1751,7 +1751,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "b848f166acc3e18f77165bdc0d53700ebf703100c2320a92540c91fe5e80867e",
+      "head_sha256": "27d5f1f84f1e887b70ab34b6185293598976f002907a0793f734f83d95982710",
       "id": "W06-02",
       "kind": "weakening",
       "line": 1032,
@@ -1761,7 +1761,7 @@
       "test_key": "testing/test_pluginmanager.py::test_load_setuptools_ignores_declined_plugins"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1806,7 +1806,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "7f53d945cdf02e2b668629a0737832a65ed8ff4fe25edc23b389742dd6e4c779",
+      "head_sha256": "ad8d9fed59f2ce9445cd65462a36a4fbb0a18b2d60d85b91b989cd8308ce00e5",
       "id": "W06-03",
       "kind": "weakening",
       "line": 917,
@@ -1816,7 +1816,7 @@
       "test_key": "tests/test_prettytable.py::TestSlicing::test_slice_last_two_rows"
     },
     {
-      "base_sha256": "6c00906a741bd3ca8f4ea61506634b257117c1cfb69fb22653a503d7104eb2a3",
+      "base_sha256": "157f82c27cf1cab13bed9f10d6ed18884b5be5edef77fdcf7b2befd71233d4f3",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1861,7 +1861,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_metadata.py",
-      "head_sha256": "5d5899b93f2043d015f62fa53e598801f128ecddcdfc40385949117b377310b8",
+      "head_sha256": "3711579161528f06d4e50b22d660ae738e9287576d6b1e087e14a6b3d8141b9f",
       "id": "W06-04",
       "kind": "weakening",
       "line": 136,
@@ -1871,7 +1871,7 @@
       "test_key": "tests/test_metadata.py::TestRawMetadata::test_bytes_input"
     },
     {
-      "base_sha256": "855726132401edf1c3affe82d33cd50d546aa4b331943562310a9d2390040837",
+      "base_sha256": "beaee86007c1227b40673778da69ad59426eff3c9ea48e924353457beef6092f",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1916,7 +1916,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_details.py",
-      "head_sha256": "1263dabb57ed9c7c8828e4af403270803f3848f735a1d7aa000c815912a3a969",
+      "head_sha256": "deae401c24f03db89604d8fad86021044a2eceae41a3f235efcf0ef3675ff680",
       "id": "W06-05",
       "kind": "weakening",
       "line": 61,
@@ -1926,7 +1926,7 @@
       "test_key": "testing/test_details.py::test_parse_hookimpl_override"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "comparison-loosened",
       "contract_base": {
         "checks": [],
@@ -1971,7 +1971,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "f7a7c08caa42ff8daa9580e3bc1311b50daffc2f48f0dfb9fed1ee12cd4d43aa",
+      "head_sha256": "61fedaf2e92c50636319abb99752ab99d49205c73d4020456849665a2b4f7775",
       "id": "W06-06",
       "kind": "weakening",
       "line": 1448,
@@ -1981,7 +1981,7 @@
       "test_key": "tests/test_prettytable.py::TestCustomFormatter::test_can_set_custom_format_from_property_setter"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2026,7 +2026,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "9eb09633444cd031a4c598d036f4a2b4ed0ae0c53de3ff7ef2b0cf331f1d18ca",
+      "head_sha256": "974e5bedca42fc3c9c717b5092a4ac9c80978eb4c159934eece518ca001f9d37",
       "id": "W08-01",
       "kind": "weakening",
       "line": 866,
@@ -2036,7 +2036,7 @@
       "test_key": "tests/test_time.py::test_time_unit"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2081,7 +2081,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "8c5c00064adf37005c1391dfc7fc7d1bc0ac604f2d225b758c5abcb60d59f076",
+      "head_sha256": "58a2b97811f8364ad189487fb61c5e2f60ea7b5ffdba56cf063608d0253db0d1",
       "id": "W08-02",
       "kind": "weakening",
       "line": 53,
@@ -2091,7 +2091,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_timestamp_missing"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2136,7 +2136,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "3898d7a7e9b612df37e314277bb92f1f2b882d3d69aed4f1bde839fc104b732b",
+      "head_sha256": "aaba0c03bfa333104e1d145c911a43babbbd3b67482d6e1a8dc9c2d40d55a260",
       "id": "W08-03",
       "kind": "weakening",
       "line": 57,
@@ -2146,7 +2146,7 @@
       "test_key": "tests/test_markupsafe.py::test_missing_interpol"
     },
     {
-      "base_sha256": "f1c9b3238c31afeae394e677f72c311ed5abb8b8e49cca61c30fdec4264894df",
+      "base_sha256": "64f7e73c972d2bcbbb3c359b5ba28a1705a383475d422f9825e9275f928c5573",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2191,7 +2191,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_dependency_groups.py",
-      "head_sha256": "78faa5405f54324477df768d21042c4f215d9d16d249de3c85d2f3198bc29990",
+      "head_sha256": "b6869dbe59e638e0b6797d5956ee882dbeea20d85bad37d21c5233953a64b466",
       "id": "W08-04",
       "kind": "weakening",
       "line": 563,
@@ -2201,7 +2201,7 @@
       "test_key": "tests/test_dependency_groups.py::test_resolution_can_capture_multiple_errors_at_once"
     },
     {
-      "base_sha256": "a4ebe06e26bd2f72066bae57fc3a1c4bff953323904dfddff4cdebe090664cbb",
+      "base_sha256": "b52358fdd849aa41590236bafdd2fd7f1e86f012f92028ed677edcb6601971b5",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2246,7 +2246,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_invocations.py",
-      "head_sha256": "8a4751172c0818417fc993e8604737389b113f96fc1b21b627bf459e62de8551",
+      "head_sha256": "17589f5de084060a1d40d8d3d3c64736c3f14d59f998885699e31ac0370fbb17",
       "id": "W08-05",
       "kind": "weakening",
       "line": 445,
@@ -2256,7 +2256,7 @@
       "test_key": "testing/test_invocations.py::TestHookspecDefaultArgumentValue::test_old_spec_new_impl"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2301,7 +2301,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "809956f112c448219ae7732a694fe7cc99351f1a1a6b3f886e7e80f45aefe8bb",
+      "head_sha256": "9714ff9f09afd2558fd5bf2bc36a0bbe90c7c892635eed9fa4e376f655b7a9b2",
       "id": "W08-06",
       "kind": "weakening",
       "line": 386,
@@ -2311,7 +2311,7 @@
       "test_key": "tests/test_prettytable.py::TestAlignment::test_aligned_one_column_invalid"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2356,7 +2356,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "658003b82543a536f6573e1c1a81d23d43ace9ece6fb0101f2a92e06fd18c098",
+      "head_sha256": "f1359b4f459978195a04383af3b457a540b183b8bfa14dee16117a8c291ea0bb",
       "id": "W09-01",
       "kind": "weakening",
       "line": 851,
@@ -2366,7 +2366,7 @@
       "test_key": "tests/test_time.py::test_precisedelta_bogus_call"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2411,7 +2411,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "eeda4bd39a68277148d1c0739f55cd6c223a9017f28c938c6c3c3143047f0412",
+      "head_sha256": "a5a85eeddf04b7fe674a6a25765d14d1b7e975fd8d89271c55caec78a55baf42",
       "id": "W09-02",
       "kind": "weakening",
       "line": 41,
@@ -2421,7 +2421,7 @@
       "test_key": "tests/test_ranges.py::TestConstruction::test_cannot_construct_directly"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2466,7 +2466,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "d73da03648833ceeb8e34378da1d07893cac086f4ca860627a8dd53f1c7d8f48",
+      "head_sha256": "2c22a8e14c3752b1e5cb888539811d215c9bccb5077cf4142d294c60bdae05e0",
       "id": "W09-03",
       "kind": "weakening",
       "line": 1390,
@@ -2476,7 +2476,7 @@
       "test_key": "testing/test_pluginmanager.py::test_unregister_plugin_and_name_must_agree"
     },
     {
-      "base_sha256": "e5d3c1cfdcf92a20cd610f645cf15fdf8776d37ee632eb5f1c08480d464e05ed",
+      "base_sha256": "fe3e60e8d420e02b09155617f0c445c47fa2cb783c956183390d94c6cb0d882a",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2521,7 +2521,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_mediawiki.py",
-      "head_sha256": "ea4c440078dfc5b5db466aaf6014303a1632bccff159073369128fd8fdc5b8d2",
+      "head_sha256": "dc13adf9854276ad11c7a4dffb982921a1260090d71d35be3db1ea979f3f5372",
       "id": "W09-04",
       "kind": "weakening",
       "line": 162,
@@ -2531,7 +2531,7 @@
       "test_key": "tests/test_mediawiki.py::TestMediaWikiConstructor::test_from_mediawiki_row_length_mismatch"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2576,7 +2576,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "f5426feba7e3744b921c98a91c8482aadcf6cd129d597ffe145fc2e52ba5305f",
+      "head_sha256": "dbd9770a52a0f54b3ca4c31c5effd50a23d3b4166eb622ca80c1f189fede8b3d",
       "id": "W09-05",
       "kind": "weakening",
       "line": 434,
@@ -2586,7 +2586,7 @@
       "test_key": "tests/test_i18n.py::TestActivate::test_default_locale_path_null__spec__"
     },
     {
-      "base_sha256": "e5c554055755f4e1605e0af33e0bcbcbd8be39711be4bfd49922952f98cbdfbe",
+      "base_sha256": "4fcf6e21518fb746412a075e7934349955fccdd447b22398375b6aeae2945c2d",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -2631,7 +2631,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_pylock_select.py",
-      "head_sha256": "e89b44b5e7dbdbfdb1508dedb0a6106f33d0947cebc8a55eee3fcaac674d3313",
+      "head_sha256": "8e767de39d47f06a5e9fcd8fdef8ff91387bbaab084fd5ab68cd1b74e5a3131e",
       "id": "W09-06",
       "kind": "weakening",
       "line": 262,
@@ -2641,7 +2641,7 @@
       "test_key": "tests/test_pylock_select.py::test_environments_are_evaluated_in_the_requirement_context"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2686,7 +2686,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_number.py",
-      "head_sha256": "ab29291b7e5cd297020674c4b7ebd5b33fcb7083dc9a134a5095239ad00cd8fb",
+      "head_sha256": "ae9e64a181b8e8a2e402f1161ebd71006912232563464f507d8fb242ccacff38",
       "id": "W10-01",
       "kind": "weakening",
       "line": 14,
@@ -2696,7 +2696,7 @@
       "test_key": "tests/test_number.py::test_ordinal"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2741,7 +2741,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "241647e957722ea4d5733bc679d48df6f4f65b8994a20f750fdc2392e4c31a9b",
+      "head_sha256": "a5d0f22440f59a55508302a92001defa9cb8dbc22e743df71439bce8fbc466c8",
       "id": "W10-02",
       "kind": "weakening",
       "line": 67,
@@ -2751,7 +2751,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_key_derivation"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2796,7 +2796,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_escape.py",
-      "head_sha256": "b0a710ae84c2f45f7cebf57be5748283d91b50474f9fee9a640dbdd3012ba520",
+      "head_sha256": "1045eebbbf084b217a4d9ded4e6a4d9bae44a6748ab46cc1511bc2241c2676d5",
       "id": "W10-03",
       "kind": "weakening",
       "line": 11,
@@ -2806,7 +2806,7 @@
       "test_key": "tests/test_escape.py::test_escape"
     },
     {
-      "base_sha256": "588c1973c1836d909624d135336d6fa932f05aada10c8ef6343ec1893b80635a",
+      "base_sha256": "38c48f75a272940dcf7bd7b614c350d6f403c75cc0ea542dc308ee39f5a0033e",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2851,7 +2851,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_version.py",
-      "head_sha256": "cc04c7c0e9a6981a964fd1384bf2959851b70f7b07cad4fb11ec3380936f0cb3",
+      "head_sha256": "6d366416fc216c3ead4ce8276417ece86f03de2eef6b8f29df5001801952a296",
       "id": "W10-04",
       "kind": "weakening",
       "line": 679,
@@ -2861,7 +2861,7 @@
       "test_key": "tests/test_version.py::TestVersion::test_version_dev"
     },
     {
-      "base_sha256": "4115a45a1b68d010c7b4581d334c5205bb4a68382b43f238f53001c482cafa80",
+      "base_sha256": "1d992e82b1aef041fe962e3b9f149d6274a8ba0215684a4e292f4a40f7b10030",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2906,7 +2906,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_tracer.py",
-      "head_sha256": "e514076a8742ee9cfed95248c4820da328d60f3b8bd1deedd610b7995f9db57d",
+      "head_sha256": "2d5cce570e6777bc79e73735493d22d9c6999998939f2220808f6f81e2335838",
       "id": "W10-05",
       "kind": "weakening",
       "line": 196,
@@ -2916,7 +2916,7 @@
       "test_key": "testing/test_tracer.py::test_tracing_impostor_value_is_traced_as_itself"
     },
     {
-      "base_sha256": "73c6025ca3fadbdc7f4684132965f125ed60df1153333320a951779280c8fd97",
+      "base_sha256": "cd3a3bc4fd35aa1c0697137f0f6bdca460d91e04aa55d27e84465c3da4d293bf",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -2961,7 +2961,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_style.py",
-      "head_sha256": "d3746f633293dbff9f05beaf67e552400b6f95eba9b2936281e098251f7e940a",
+      "head_sha256": "a34d572bf593b438bb77dac668176537b5ca8f9d0c491c6e5fddc68c9cb48749",
       "id": "W10-06",
       "kind": "weakening",
       "line": 690,
@@ -2971,7 +2971,7 @@
       "test_key": "tests/test_style.py::test_table_alignment_with_emoji"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3016,7 +3016,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "0708b20af1aac701653eb2c71a6e5bb9714d98e3d94e0b591a672e3443f6de62",
+      "head_sha256": "7d5ea5afba1e508f77f3d4d5ac84b8ad0dddad2538bfef17898b03742de2dc91",
       "id": "W10-07",
       "kind": "weakening",
       "line": 423,
@@ -3026,7 +3026,7 @@
       "test_key": "tests/test_time.py::test_naturaltime_minimum_unit_default"
     },
     {
-      "base_sha256": "09737ba8bfb02128d6559e08f11a1ada45d2b67fe8f54c5b672570074ec7b156",
+      "base_sha256": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3071,7 +3071,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_encoding.py",
-      "head_sha256": "904cdcf0331f41d23fee6d3ca30f973648e10836ee36444c82f411bb7b50dd3a",
+      "head_sha256": "753bcda125be6488732bd3d82c01d260d2196e9e17eb52329b117f6f184cde83",
       "id": "W10-08",
       "kind": "weakening",
       "line": 30,
@@ -3081,7 +3081,7 @@
       "test_key": "tests/test_itsdangerous/test_encoding.py::test_int_bytes"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3126,7 +3126,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "d618af84b5134c9119e6bc2d3b7eac09cbe4060060d071fc8f70bb8d8736b59e",
+      "head_sha256": "6ae6c7b01bce9d8c9b95d318c93dc7e45c5ec2247de6cb1273f3b6f1094e6dab",
       "id": "W10-09",
       "kind": "weakening",
       "line": 55,
@@ -3136,7 +3136,7 @@
       "test_key": "tests/test_markupsafe.py::test_missing_interpol"
     },
     {
-      "base_sha256": "d0aec739136ee13e8824e26f2ec070e93d83da9512dc2b6c9acf640975f53a7a",
+      "base_sha256": "c451c745cd3cfe816a902f9f014d5a8b180564ae5ced16dc521072d7633119e5",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3181,7 +3181,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markers.py",
-      "head_sha256": "5a3099d2324831327bf885197e12f65f07b1ad84a530496af93f028123bef366",
+      "head_sha256": "50ef0478fbd3c870acb0e68e7fce02f7fabda8b17361ebd524bfa6dd7b39a18a",
       "id": "W10-10",
       "kind": "weakening",
       "line": 325,
@@ -3191,7 +3191,7 @@
       "test_key": "tests/test_markers.py::TestMarker::test_parses_invalid_trailing_line_break"
     },
     {
-      "base_sha256": "a4ebe06e26bd2f72066bae57fc3a1c4bff953323904dfddff4cdebe090664cbb",
+      "base_sha256": "b52358fdd849aa41590236bafdd2fd7f1e86f012f92028ed677edcb6601971b5",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3236,7 +3236,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_invocations.py",
-      "head_sha256": "dad38ba9da43d25e4f215f1d12ce12643177284cc035cec088af973e9c29e9e1",
+      "head_sha256": "07a4e3ade2c673fbfacd5bda249f5ba139c6fbc1bf36407f9c3808bbe8ec2598",
       "id": "W10-11",
       "kind": "weakening",
       "line": 553,
@@ -3246,7 +3246,7 @@
       "test_key": "testing/test_invocations.py::TestHookspecDefaultArgumentValue::test_falsy_values_allowed_as_default"
     },
     {
-      "base_sha256": "73c6025ca3fadbdc7f4684132965f125ed60df1153333320a951779280c8fd97",
+      "base_sha256": "cd3a3bc4fd35aa1c0697137f0f6bdca460d91e04aa55d27e84465c3da4d293bf",
       "category": "parametrize-reduced",
       "contract_base": {
         "checks": [],
@@ -3291,7 +3291,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_style.py",
-      "head_sha256": "a8317b40156eec4cb46c9029e7be610a89b20453c5512c547027ade119b7ec3a",
+      "head_sha256": "8cf12792da9c31433f9a0efed5c5df2e44ca4f852e164fda1db3cd8bf801c01f",
       "id": "W10-12",
       "kind": "weakening",
       "line": 155,
@@ -3301,7 +3301,7 @@
       "test_key": "tests/test_style.py::TestStyle::test_style"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3346,7 +3346,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "bb4a8b5efc4b3131ad6691a061f46603a79d1739a1ef34315b049a148fd60a25",
+      "head_sha256": "4561eb2b140aab2ed6566c8b167c35cf0c2f7dc4adf44bf24d1753e1a4ef860b",
       "id": "W11-01",
       "kind": "weakening",
       "line": 124,
@@ -3356,7 +3356,7 @@
       "test_key": "tests/test_i18n.py::test_naturaltime_persian"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3401,7 +3401,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "f733585643eecb5fbccf902c6a498e55bfbfb465b45edc130020e8853f4f0edc",
+      "head_sha256": "1a76b4ac34c36cdb163d6abf3fbfb38be5071c9a4d08f3237d3d4e324d5a76e1",
       "id": "W11-02",
       "kind": "weakening",
       "line": 61,
@@ -3411,7 +3411,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_invalid_separator"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3456,7 +3456,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_escape.py",
-      "head_sha256": "1d1ee1f860c2c653fa5207d6f77521d6694fb8ed589b4fd0d636557ba16f1264",
+      "head_sha256": "e68ace9e6946631106d9c8e5ace548f524f8aec61113a1d6339fe04df3fef662",
       "id": "W11-03",
       "kind": "weakening",
       "line": 50,
@@ -3466,7 +3466,7 @@
       "test_key": "tests/test_escape.py::test_proxy"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3511,7 +3511,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "ca05672796e0f66288658c00d1f72d64a704096dfcee9b32c4db61a0fd4928c8",
+      "head_sha256": "45050b38de84f5f5343272e77126a7a780069fd2c93e0677eb9f6fb7d1eb47ac",
       "id": "W11-04",
       "kind": "weakening",
       "line": 1299,
@@ -3521,7 +3521,7 @@
       "test_key": "tests/test_ranges.py::TestFilter::test_filter_universal"
     },
     {
-      "base_sha256": "4115a45a1b68d010c7b4581d334c5205bb4a68382b43f238f53001c482cafa80",
+      "base_sha256": "1d992e82b1aef041fe962e3b9f149d6274a8ba0215684a4e292f4a40f7b10030",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3566,7 +3566,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "testing/test_tracer.py",
-      "head_sha256": "79c816a4970a962e0e9745df784dc1269ab373b5d23240b13362d6ed74ebfbcb",
+      "head_sha256": "697b3775a6fd12c9368ae13bf05c5bd0be191ceb1adac677f9405c65f187835e",
       "id": "W11-05",
       "kind": "weakening",
       "line": 284,
@@ -3576,7 +3576,7 @@
       "test_key": "testing/test_tracer.py::test_pathlike_shows_its_type"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3621,7 +3621,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "6889583dd03f62fb622c3709faddf51d55a0c6804306f363551faab35c354354",
+      "head_sha256": "81405703db2f560b62ce45a2ba470b2a90970694b2a98648e36e7aaedc0ef138",
       "id": "W11-06",
       "kind": "weakening",
       "line": 710,
@@ -3631,7 +3631,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_no_blank_lines_from_mediawiki"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3676,7 +3676,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "051b8a6359e26ddcd364c805519c71c909c113712311d0bca041b27ed50fa140",
+      "head_sha256": "e48343c5774d3f254e2b423d034addc5d71310d9659947dfee755163f7b24089",
       "id": "W11-07",
       "kind": "weakening",
       "line": 410,
@@ -3686,7 +3686,7 @@
       "test_key": "tests/test_i18n.py::test_default_locale_path_none__spec__"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3731,7 +3731,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "1dc112b89c33f88adbd8383a9c3d1f13e90bf64ea47c7f0a47e21ed22137dd10",
+      "head_sha256": "f2c74aa3c2de8e51a99298d0f99b67c29a8a3d5cb7a56f3c996b88fa01cf2a88",
       "id": "W11-08",
       "kind": "weakening",
       "line": 69,
@@ -3741,7 +3741,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_malformed_future_timestamp"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3786,7 +3786,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "757d8d2302276a4ca45eb4d59ec5eabbc4718a247bd80a6cb88222b35d0987b3",
+      "head_sha256": "18be7fecc7edc3d5b02e13831c3f6c9fb58f8a235e4c0b33691c0f2856b716f4",
       "id": "W11-09",
       "kind": "weakening",
       "line": 42,
@@ -3796,7 +3796,7 @@
       "test_key": "tests/test_markupsafe.py::test_html_interop"
     },
     {
-      "base_sha256": "cabf1885ae92a8a25b261f25ff9933cac842cae3c679b6f123428987ca49158e",
+      "base_sha256": "56eaa4c629a625fd6045b891899254ae5ca227861f998f2fbd97dd756b011a8f",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3841,7 +3841,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/property/test_specifier_implied.py",
-      "head_sha256": "d72d2ed18899b899fa8d8d0db0da5b2eb1eb12f25f6fe2b986bc193d8feacc75",
+      "head_sha256": "0f08ab55a69f0de72c36778eba62ab20abb6992311374a1ff2559d8a5d255b4e",
       "id": "W11-10",
       "kind": "weakening",
       "line": 159,
@@ -3851,7 +3851,7 @@
       "test_key": "tests/property/test_specifier_implied.py::TestVersionPropertyConsistency::test_public_strips_local"
     },
     {
-      "base_sha256": "a4ebe06e26bd2f72066bae57fc3a1c4bff953323904dfddff4cdebe090664cbb",
+      "base_sha256": "b52358fdd849aa41590236bafdd2fd7f1e86f012f92028ed677edcb6601971b5",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3896,7 +3896,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "testing/test_invocations.py",
-      "head_sha256": "f88912ab7f65196772d252db26d92b5d7aa880db120bf7da49661947d8290f24",
+      "head_sha256": "c317cfda87c16d9d6d1ba42441fb2fae600d5b64a38799ab8d966ba7a2fa20f2",
       "id": "W11-11",
       "kind": "weakening",
       "line": 474,
@@ -3906,7 +3906,7 @@
       "test_key": "testing/test_invocations.py::TestHookspecDefaultArgumentValue::test_call_value_overrides_hookimpl_default_in_wrappers"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "test-deleted",
       "contract_base": {
         "checks": [],
@@ -3951,7 +3951,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "4636301ba1ba6a0c306eaaf63f45876abee569dde3345dac5bd4426a0dc3816f",
+      "head_sha256": "1e764f1b715246d4b8419589bdf2772f46133e2baa5d427df6e006f230bb1a4d",
       "id": "W11-12",
       "kind": "weakening",
       "line": 980,
@@ -3961,7 +3961,7 @@
       "test_key": "tests/test_prettytable.py::TestFloatFormat::test_no_decimals"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4006,7 +4006,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "5d6dfc9b9b607984a7e882194191789ac6612c6ec96b0e4c6f86d12f5741853e",
+      "head_sha256": "f6cbb297beae3f139ad3f3c19ab11a998917de9244cf4b663e366adcc12fb992",
       "id": "W12-01",
       "kind": "weakening",
       "line": 527,
@@ -4016,7 +4016,7 @@
       "test_key": "tests/test_time.py::test_naturaltime_timezone"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4061,7 +4061,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "f62a7335346b5e58463757f38ec17cf79c4de88e33fbb724e486e043616ecfd8",
+      "head_sha256": "8dce0ce0f74dbf5a0fcbcb27c71d2cd0c359ceb6b04cdd5d613502d8a74be3ba",
       "id": "W12-02",
       "kind": "weakening",
       "line": 113,
@@ -4071,7 +4071,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimedSerializer::test_return_payload"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4116,7 +4116,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_escape.py",
-      "head_sha256": "447ba3d7726e6257db7f53ef2e7c0aca7fdfcdfaea16efd32f36710b999d83b1",
+      "head_sha256": "71cb2af0db76d2da9270bfb6c64ac19c68e1ea45a3793f0db3bdde96ff6d3d11",
       "id": "W12-03",
       "kind": "weakening",
       "line": 64,
@@ -4126,7 +4126,7 @@
       "test_key": "tests/test_escape.py::test_subclass"
     },
     {
-      "base_sha256": "d0aec739136ee13e8824e26f2ec070e93d83da9512dc2b6c9acf640975f53a7a",
+      "base_sha256": "c451c745cd3cfe816a902f9f014d5a8b180564ae5ced16dc521072d7633119e5",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4171,7 +4171,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markers.py",
-      "head_sha256": "55f3d460df38ad9842e1a0f90e8c4ed00eeda9075821e172ea8957043f9aa10b",
+      "head_sha256": "e323bd57975b28f2fbb26f66f8e37f0225ec5dbfd0affa2b28fe3dbcc3836e58",
       "id": "W12-04",
       "kind": "weakening",
       "line": 1198,
@@ -4181,7 +4181,7 @@
       "test_key": "tests/test_markers.py::TestPrepareEnvironment::test_requirement_context_adds_nothing"
     },
     {
-      "base_sha256": "855726132401edf1c3affe82d33cd50d546aa4b331943562310a9d2390040837",
+      "base_sha256": "beaee86007c1227b40673778da69ad59426eff3c9ea48e924353457beef6092f",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4226,7 +4226,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_details.py",
-      "head_sha256": "e29408873b0e7c809ffe93034521cc3a232e7b39c42d092e3c063c2a203ef115",
+      "head_sha256": "6b2467fdfe31960fc476e529b1bd691cdcbd693048f84c74c7ef7e7d9f6e368e",
       "id": "W12-05",
       "kind": "weakening",
       "line": 274,
@@ -4236,7 +4236,7 @@
       "test_key": "testing/test_details.py::test_dist_facade_identity_equality_and_hash"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4281,7 +4281,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "62f4220051b40d6857cff172e57b499bf3ed9a41e105373eb9d3643046ceaa16",
+      "head_sha256": "d2672723259b9f16ab352531d3ffa551ae87a0c265f54539825a0bf7a254c139",
       "id": "W12-06",
       "kind": "weakening",
       "line": 1377,
@@ -4291,7 +4291,7 @@
       "test_key": "tests/test_prettytable.py::test_autoindex"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4336,7 +4336,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_number.py",
-      "head_sha256": "b3ce2db61bd587e83a704157000a75b8ef6a2db12a3593b1771df171a2c3bd4e",
+      "head_sha256": "f7264c7cbfa77f069d4b8623881d9d1e04c3de82235593c62463d72e5e3b61a4",
       "id": "W13-01",
       "kind": "weakening",
       "line": 151,
@@ -4346,7 +4346,7 @@
       "test_key": "tests/test_number.py::test_intword_rounding_rollover"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4391,7 +4391,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "606ab9e1e2a8d713414f366cc08ed5cf89354dc21ea7394711aa72fbbe40fd9a",
+      "head_sha256": "293cba71b09e42b3a33856f4293b73a32399a71a9dad8cb7f2c7c8ad2ab67708",
       "id": "W13-02",
       "kind": "weakening",
       "line": 69,
@@ -4401,7 +4401,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_malformed_future_timestamp"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4446,7 +4446,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "23e9c0a7313d78afdbfcae679dc8c361b868f002cc630a7c5717a348431b1bd3",
+      "head_sha256": "113272c6f2f2067e87beccde7459b3c1f9c73d1d2cb9f36862e4be9aa0ef9b8a",
       "id": "W13-03",
       "kind": "weakening",
       "line": 144,
@@ -4456,7 +4456,7 @@
       "test_key": "tests/test_markupsafe.py::test_complex_custom_formatting"
     },
     {
-      "base_sha256": "6c00906a741bd3ca8f4ea61506634b257117c1cfb69fb22653a503d7104eb2a3",
+      "base_sha256": "157f82c27cf1cab13bed9f10d6ed18884b5be5edef77fdcf7b2befd71233d4f3",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4501,7 +4501,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_metadata.py",
-      "head_sha256": "57311d1d5210a90365e182268580374e39e1a5a08d1be180f73b3f82a3e1af3d",
+      "head_sha256": "b0f2ee439c8463bea01f2426a164798f05d95c033d63d8a42af2c4766c1c8f87",
       "id": "W13-04",
       "kind": "weakening",
       "line": 895,
@@ -4511,7 +4511,7 @@
       "test_key": "tests/test_metadata.py::TestMetadata::test_invalid_requires_dist"
     },
     {
-      "base_sha256": "855726132401edf1c3affe82d33cd50d546aa4b331943562310a9d2390040837",
+      "base_sha256": "beaee86007c1227b40673778da69ad59426eff3c9ea48e924353457beef6092f",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4556,7 +4556,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_details.py",
-      "head_sha256": "4f55e9576dde0f6e611a3df240680ac6ae07454c46c940f721b79ed14c1bad3a",
+      "head_sha256": "97c7dd33a035e637450a3b6abe3f57ed55a90db004d201da91621223678519e5",
       "id": "W13-05",
       "kind": "weakening",
       "line": 274,
@@ -4566,7 +4566,7 @@
       "test_key": "testing/test_details.py::test_dist_facade_identity_equality_and_hash"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4611,7 +4611,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "2597b7b9d19de644eef6fefeb33bc65a757727c64a2742d8e46634eaca813d6f",
+      "head_sha256": "e5e751c27508b174db04e02c48ee18d3dc58182cdb452bffffb2666346dd0623",
       "id": "W13-06",
       "kind": "weakening",
       "line": 647,
@@ -4621,7 +4621,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_all_lengths_equal_without_header"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4666,7 +4666,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_number.py",
-      "head_sha256": "785ecb609578c3ed500e39468e4301fb81633a96df0dda1e1640fd24908f0950",
+      "head_sha256": "5c4d88acffe3b83547647f7dd7798fe180ac0ae73a35754a47ff6c4a94ce08bd",
       "id": "W14-01",
       "kind": "weakening",
       "line": 189,
@@ -4676,7 +4676,7 @@
       "test_key": "tests/test_number.py::test_intword_rounding_rollover"
     },
     {
-      "base_sha256": "09737ba8bfb02128d6559e08f11a1ada45d2b67fe8f54c5b672570074ec7b156",
+      "base_sha256": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4721,7 +4721,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_encoding.py",
-      "head_sha256": "0eb3f2f23c6a457aebbf1797c481ff3eab867bb2f6652dfa581ef49614cf45a4",
+      "head_sha256": "dd848ea5561d21ab10eabbb0d8772e6ca35bfc41bb64da47a20e920b51a7148f",
       "id": "W14-02",
       "kind": "weakening",
       "line": 20,
@@ -4731,7 +4731,7 @@
       "test_key": "tests/test_itsdangerous/test_encoding.py::test_base64"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4776,7 +4776,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "b45dbfd5c813ad353b115f85ad58cd1cf51b185d774fe86af65d3252c6383749",
+      "head_sha256": "585c272f9701384af43db4d2d82177f80225919b6d20aa2ab7f0a13319a8ba85",
       "id": "W14-03",
       "kind": "weakening",
       "line": 141,
@@ -4786,7 +4786,7 @@
       "test_key": "tests/test_markupsafe.py::test_custom_formatting"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4831,7 +4831,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "0e0b725466f08f4b5c2c68cd466669638d8eff50dd4ce8030f1dd4980eb2da20",
+      "head_sha256": "35cddbe8a608fec7c44628fbe0454ea1b204ece1883d42c89fad0298ba8a9327",
       "id": "W14-04",
       "kind": "weakening",
       "line": 940,
@@ -4841,7 +4841,7 @@
       "test_key": "tests/test_ranges.py::TestSetRelations::test_multi_interval_subset"
     },
     {
-      "base_sha256": "d0f12b4690083bf8031749ca6a57bcc96dfebd0d28ab90f459b11fb91e83016a",
+      "base_sha256": "414810b7e72a9d0dbe32ca6239d72bf8b065cfeb4b1b9c7e7eb3247d2cab68b3",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4886,7 +4886,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "testing/test_helpers.py",
-      "head_sha256": "7a4a4190a6230fe3ede299b0d02611d9170edacb871c32f92aedff7a70b4671d",
+      "head_sha256": "744fd4d275ab54def5501aec9b59c0d2467ba09133cce5d1c3d5854ea853e585",
       "id": "W14-05",
       "kind": "weakening",
       "line": 168,
@@ -4896,7 +4896,7 @@
       "test_key": "testing/test_helpers.py::test_varnames_staticmethod"
     },
     {
-      "base_sha256": "f1f52984bc450ce1e72a7bef9c5b6f244e51038b7f90c3dc0ab1b798e70358c8",
+      "base_sha256": "90342fcb446427fec182cf5630213ef8707fac1a33b531384287af9f8761ad26",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -4941,7 +4941,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_sorting.py",
-      "head_sha256": "c5b35b2fab57041b3364fd6d434cf7ec4bed7a0d51105b123a023b7b2f7e13ee",
+      "head_sha256": "ec482e807b322507c3c1d83e194cd19f07e028f120e5440f14edd0682afa1f09",
       "id": "W14-06",
       "kind": "weakening",
       "line": 124,
@@ -4951,7 +4951,7 @@
       "test_key": "tests/test_sorting.py::TestSorting::test_sort_slice_setter"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -4996,7 +4996,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "7a2c25a87f543cb6e49c2c50a7a50b37e8115100b2fd0feb8a2cc4c0b47e5820",
+      "head_sha256": "a8b9845938531ca59afd8bfc401e7e2b7f65fdd8f7ca3971dc3247acfb98e343",
       "id": "W15-01",
       "kind": "weakening",
       "line": 210,
@@ -5006,7 +5006,7 @@
       "test_key": "tests/test_time.py::test_naturaltime"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5051,7 +5051,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "02e95a803fa3ac1876e0c8e5acb1da906c163f863b20f68a03bee4b7f2b19ad9",
+      "head_sha256": "9a736c040fededce7857ab4471cb65ed0c0b420cacedb4d17794b75faae75757",
       "id": "W15-02",
       "kind": "weakening",
       "line": 49,
@@ -5061,7 +5061,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_timestamp_missing"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5106,7 +5106,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "18b9dfb9ac89d66f27da31d1b173153eebcb1c7d066f5153246cf6edd02f796c",
+      "head_sha256": "c7d228c5a90326c5069d88f3860a4145f2b5d3569e4a085642dbfea64c1b750b",
       "id": "W15-03",
       "kind": "weakening",
       "line": 169,
@@ -5116,7 +5116,7 @@
       "test_key": "tests/test_markupsafe.py::test_formatting_with_objects"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5161,7 +5161,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "5c710dc0d1ba5a8d2ca404d913fb69ce3b73e012391feabdc79f393aef72ab67",
+      "head_sha256": "fb017ced81d2c7a51cd51a43fc4039edacddb459c357e3b4c46779e230828299",
       "id": "W15-04",
       "kind": "weakening",
       "line": 171,
@@ -5171,7 +5171,7 @@
       "test_key": "tests/test_ranges.py::TestToRange::test_explicit_prereleases"
     },
     {
-      "base_sha256": "4115a45a1b68d010c7b4581d334c5205bb4a68382b43f238f53001c482cafa80",
+      "base_sha256": "1d992e82b1aef041fe962e3b9f149d6274a8ba0215684a4e292f4a40f7b10030",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5216,7 +5216,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_tracer.py",
-      "head_sha256": "0205e68bc8f4694ecc1c5912070283788e8d798790f91e298a90f6cc2777283c",
+      "head_sha256": "940c72e555beb68a3cfca6cece26ae3e0ded1e3dcac0ef5a9419a795a48f5213",
       "id": "W15-05",
       "kind": "weakening",
       "line": 334,
@@ -5226,7 +5226,7 @@
       "test_key": "testing/test_tracer.py::test_escape_surrogates_in_labels"
     },
     {
-      "base_sha256": "73c6025ca3fadbdc7f4684132965f125ed60df1153333320a951779280c8fd97",
+      "base_sha256": "cd3a3bc4fd35aa1c0697137f0f6bdca460d91e04aa55d27e84465c3da4d293bf",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5271,7 +5271,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_style.py",
-      "head_sha256": "b6604ff646ed0747bd2bf3e2bbb3406a48e9e5b28e27f0329ed07575f8338870",
+      "head_sha256": "88e9363352f58af10494d6e4db8bc05ec52c30a4d4fbe14f40fb1df77eb4a19b",
       "id": "W15-06",
       "kind": "weakening",
       "line": 733,
@@ -5281,7 +5281,7 @@
       "test_key": "tests/test_style.py::test_ansi_wrap_no_bleed"
     },
     {
-      "base_sha256": "280cef60d7c703a54e7f6b2777aa453a1198627f50c2ca45c7ed43dc92e50948",
+      "base_sha256": "c7cdbe5d290d7a3940a95593d20d0c1f0b924de201d095a3a29f55c066900bbb",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5326,7 +5326,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_benchmarks.py",
-      "head_sha256": "20a076a263c3291ae0b8ac4c770902328bfe37f455cb704d294dbece9df1399b",
+      "head_sha256": "84cb58b54b15464c6694dca42aa3f661e04d5de41b32a6a91f343d1642319aa0",
       "id": "W16-01",
       "kind": "weakening",
       "line": 44,
@@ -5336,7 +5336,7 @@
       "test_key": "tests/test_benchmarks.py::test_metric"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5381,7 +5381,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "34b31ff03543db2e463212fa4f8a74d4c00694f0a3dc9274a15223151e76d42c",
+      "head_sha256": "68a02eec38f00bc51ced6df8e0d744df7034cf526a410c48ca9dc46fbc8ca90a",
       "id": "W16-02",
       "kind": "weakening",
       "line": 112,
@@ -5391,7 +5391,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_file"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5436,7 +5436,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "8b0c8366b4475df51ce6ea7d822b809ca9e25d48d641a99699e488e30feb4656",
+      "head_sha256": "f72649a077dab38e8df8f873b141f7690474ac59ecd4c373f7c87d13a221a308",
       "id": "W16-03",
       "kind": "weakening",
       "line": 183,
@@ -5446,7 +5446,7 @@
       "test_key": "tests/test_markupsafe.py::test_splitting"
     },
     {
-      "base_sha256": "cabf1885ae92a8a25b261f25ff9933cac842cae3c679b6f123428987ca49158e",
+      "base_sha256": "56eaa4c629a625fd6045b891899254ae5ca227861f998f2fbd97dd756b011a8f",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5491,7 +5491,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/property/test_specifier_implied.py",
-      "head_sha256": "ea1c4ee745615f7613574787b93389cab8466e10e8c00b8f7873113fba4a16bf",
+      "head_sha256": "96f12b283dc19ea938efc8e9b8f602d7414fd2dd4b116579860dd1bca96afd0d",
       "id": "W16-04",
       "kind": "weakening",
       "line": 661,
@@ -5501,7 +5501,7 @@
       "test_key": "tests/property/test_specifier_implied.py::TestCrossOperatorConsistency::test_greater_equal_monotonic"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5546,7 +5546,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "47cf58260f4d6b83e0fa65c34068e7949799cc0f754cf558d460a20b4dc2ac40",
+      "head_sha256": "979584892a859442e36ba9329f3b489e9446d734b1d0d2eedf398375356dfc76",
       "id": "W16-05",
       "kind": "weakening",
       "line": 316,
@@ -5556,7 +5556,7 @@
       "test_key": "testing/test_pluginmanager.py::test_register_ignores_non_callable_instance_attributes"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -5601,7 +5601,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "e3cd33c97504e3fffd89c59c41784a32ddc2b4c2b0080d57bbe5f1a50bff73d9",
+      "head_sha256": "9e4fe8b751891bfba3c4af59271a65c8e0566a495f55dcb35816e2d3a4952ab1",
       "id": "W16-06",
       "kind": "weakening",
       "line": 1155,
@@ -5611,7 +5611,7 @@
       "test_key": "tests/test_prettytable.py::TestColumnFormattingfromDict::test_set_float_format"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5656,7 +5656,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "21ebc856b030c3f4f5b8f97ad3c528f0d5fef2e3a2e2da4606066ef8c27e76b1",
+      "head_sha256": "2b2dec7bb8167f3c9272e328762ab3cca18208451919e81b9472a365e1cb295f",
       "id": "W17-01",
       "kind": "weakening",
       "line": 84,
@@ -5666,7 +5666,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "09737ba8bfb02128d6559e08f11a1ada45d2b67fe8f54c5b672570074ec7b156",
+      "base_sha256": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5711,7 +5711,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_encoding.py",
-      "head_sha256": "78eec0221deff37b83b2990753d236828feaf1db6d9e70c7fa7e38de2a4c840e",
+      "head_sha256": "f2b72e072acc341da9e21761aa4d393394f2a235587cce51b80f1c9f5316e97c",
       "id": "W17-02",
       "kind": "weakening",
       "line": 22,
@@ -5721,7 +5721,7 @@
       "test_key": "tests/test_itsdangerous/test_encoding.py::test_base64"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5766,7 +5766,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "ee1377a27ca882f61457bf4685cf2f4b800799ec72dd0cc40cc08d74ec6777d1",
+      "head_sha256": "7bf5fccc4bd89f806670e723be7dbfb14d46ac9fb704b58dc700697d571bb5e7",
       "id": "W17-03",
       "kind": "weakening",
       "line": 79,
@@ -5776,7 +5776,7 @@
       "test_key": "tests/test_markupsafe.py::test_escaping"
     },
     {
-      "base_sha256": "4005efd44a89dd3c3ffc32d4a01e1ecb95c3d8be061b8c5af4d4f918844e4736",
+      "base_sha256": "2bd0b17175732c0fa7e37602cd57c405296f7bce425e5018e779e7e632d40d1f",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5821,7 +5821,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_specifiers.py",
-      "head_sha256": "3ebe8595f4d39d4973fa24b399a0c5e237a6014653fb897f99dfe088e998120c",
+      "head_sha256": "83d6cb0d2d3671d8fdee4899dd960f41c1a3bd64c93e1b9ae75ca1dc1f057c62",
       "id": "W17-04",
       "kind": "weakening",
       "line": 3979,
@@ -5831,7 +5831,7 @@
       "test_key": "tests/test_specifiers.py::TestSpecifierSetToRangeEquivalence::test_contains_equivalent_with_version_objects"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5876,7 +5876,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "ba1e50162fffcb20de8b6e7926d076b4f0435dff4e1bb8e0980343c39b256113",
+      "head_sha256": "2bf9e11f919b698d4812ac2bcc9eda9e066f466582bdf35504ca3a1095f3f299",
       "id": "W17-05",
       "kind": "weakening",
       "line": 542,
@@ -5886,7 +5886,7 @@
       "test_key": "testing/test_pluginmanager.py::test_register_historic"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5931,7 +5931,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "b60a3841b1909534dbd5c78bd8a83d029779d6093132a911166d6d6d3aaef699",
+      "head_sha256": "ca290363d24ae54156406921ae9c94721210ddc66d858f5d48042336c15b037d",
       "id": "W17-06",
       "kind": "weakening",
       "line": 2056,
@@ -5941,7 +5941,7 @@
       "test_key": "tests/test_prettytable.py::TestGeneralOutput::test_csv"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -5986,7 +5986,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "f9a9b6745dc4dcdd73172d5ec2dda1e69a93ffb3077f2cf396acaaf07f8bfbff",
+      "head_sha256": "523799dcf82368a8854e174a214df3b70db84df2d3c8122b1bf91ab615b79d81",
       "id": "W18-01",
       "kind": "weakening",
       "line": 93,
@@ -5996,7 +5996,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6041,7 +6041,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "1a23aa781dff4533c14c9f2b91103edba5008caf5599383bdef3a51eca681afb",
+      "head_sha256": "f0482d6fc29ae9e7b5bce5e2b6d1f832c87856bc4236ea80e0bb93ef8bcacc1e",
       "id": "W18-02",
       "kind": "weakening",
       "line": 180,
@@ -6051,7 +6051,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_iter_unsigners"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6096,7 +6096,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "cc90793723c79fb04e74728262bc30342c0ce15223a2ab7fb3e311b9b5266233",
+      "head_sha256": "a1de4f0d433127920dba7e3a63c1bfe0f07414341cc16a3f1c983217c5bd742c",
       "id": "W18-03",
       "kind": "weakening",
       "line": 93,
@@ -6106,7 +6106,7 @@
       "test_key": "tests/test_markupsafe.py::test_unescape"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6151,7 +6151,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "f7badbb8b3790f304ccbf77627072511e492f4db92b4e7475502a9546cdb4256",
+      "head_sha256": "8f7c4f7c7fd056fc44c1bf36d0150b14ef2a556ea06bd7fc9261e06a26d0dc4e",
       "id": "W18-04",
       "kind": "weakening",
       "line": 2659,
@@ -6161,7 +6161,7 @@
       "test_key": "tests/test_ranges.py::TestCoverageEdges::test_filter_universal_unparsable_after_final"
     },
     {
-      "base_sha256": "4115a45a1b68d010c7b4581d334c5205bb4a68382b43f238f53001c482cafa80",
+      "base_sha256": "1d992e82b1aef041fe962e3b9f149d6274a8ba0215684a4e292f4a40f7b10030",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6206,7 +6206,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_tracer.py",
-      "head_sha256": "47b674681c49c7422a4df309f49a7d05b1b0e6895093c3fed4e30f617022eebb",
+      "head_sha256": "6bbb09400f2f3c9c5eaf95ed5251bce567737da2c9372884e4ca1fb211ff919e",
       "id": "W18-05",
       "kind": "weakening",
       "line": 349,
@@ -6216,7 +6216,7 @@
       "test_key": "testing/test_tracer.py::test_broken_repr_value_does_not_raise"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6261,7 +6261,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "db04c87ae6439558256bb92cdfabcdb2b76ef22b7ff4b82d722d4719e25ebe3a",
+      "head_sha256": "6b66128addce871877054654c4dbed6edb4b0985664d974acbb5930b97c4b70a",
       "id": "W18-06",
       "kind": "weakening",
       "line": 402,
@@ -6271,7 +6271,7 @@
       "test_key": "tests/test_prettytable.py::TestAlignment::test_rename_drops_stale_align_keys"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6316,7 +6316,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_number.py",
-      "head_sha256": "de36d0557600602b31b8b1256292f9ffe9d4202048164752f5f9c093cddfbad6",
+      "head_sha256": "9534e8e2854b0b793a054df1f3f7fbfbfad668a6e79022e9b7f4ec2d1ce79c68",
       "id": "W19-01",
       "kind": "weakening",
       "line": 148,
@@ -6326,7 +6326,7 @@
       "test_key": "tests/test_number.py::test_intword"
     },
     {
-      "base_sha256": "09737ba8bfb02128d6559e08f11a1ada45d2b67fe8f54c5b672570074ec7b156",
+      "base_sha256": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6371,7 +6371,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_encoding.py",
-      "head_sha256": "a671ebee48ea3e9a579857374351a1f19b37279336a390a4e13f53f6fefb40be",
+      "head_sha256": "1db983b28ffd3a07697397ee9599791b651af53776c6aceb7e72962ccd533685",
       "id": "W19-02",
       "kind": "weakening",
       "line": 22,
@@ -6381,7 +6381,7 @@
       "test_key": "tests/test_itsdangerous/test_encoding.py::test_base64"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6426,7 +6426,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "c4ebf418201078a572302bc87533e6b2f9b1dc2f6494927ea56627706bee0f25",
+      "head_sha256": "6b2716c0d3d8b04d386e5795ecb6176ef36e91aaa57bd661975e5ec6a17eaf84",
       "id": "W19-03",
       "kind": "weakening",
       "line": 16,
@@ -6436,7 +6436,7 @@
       "test_key": "tests/test_markupsafe.py::test_adding"
     },
     {
-      "base_sha256": "811b6ba69ddede8aa1d6f61cd125dd08f4fab6fcf7af51913c94973bb7ab79b8",
+      "base_sha256": "996deecf5d747c1de8cb76690595b8f49878f3b1b4b91b463801ff77c1492d55",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6481,7 +6481,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_ranges.py",
-      "head_sha256": "03416c47541f22e6a4f01b34e98b0147e4c07e1c6812d4e372e8c82fff6b01e4",
+      "head_sha256": "b47fc670a340bafe58216494ee921cbd34b9020e42a6e52864fcb87652d9c30a",
       "id": "W19-04",
       "kind": "weakening",
       "line": 2990,
@@ -6491,7 +6491,7 @@
       "test_key": "tests/test_ranges.py::test_copy_and_pickle_preserve_state"
     },
     {
-      "base_sha256": "a4ebe06e26bd2f72066bae57fc3a1c4bff953323904dfddff4cdebe090664cbb",
+      "base_sha256": "b52358fdd849aa41590236bafdd2fd7f1e86f012f92028ed677edcb6601971b5",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6536,7 +6536,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_invocations.py",
-      "head_sha256": "ea52f5f590dd43ba1f6e3fb52868d85d43f9f743befdad7d2982523e41ea1652",
+      "head_sha256": "b9a96145808254725a228edb8256607c9ff97d8ac142f43688694920b97eb802",
       "id": "W19-05",
       "kind": "weakening",
       "line": 573,
@@ -6546,7 +6546,7 @@
       "test_key": "testing/test_invocations.py::TestHookspecDefaultArgumentValue::test_falsy_values_allowed_as_default"
     },
     {
-      "base_sha256": "1eaebee3640deae5511c8b490926da57b63bef91985a9a941b8df64e2669bb18",
+      "base_sha256": "f68898c6414e1d25214c74b41a207b1ef461f84a6a2769224f4bafca79d9cb9c",
       "category": "other",
       "contract_base": {
         "checks": [],
@@ -6591,7 +6591,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_html.py",
-      "head_sha256": "fb1a13ba97af6aeeedceec775b439ece56a345b86f51f1a9a0f0cd264534d46c",
+      "head_sha256": "3bb017b08e6a0aa74bac24e5a76fc2b1fac1fbef888a3d82cf5e4539abdebd7a",
       "id": "W19-06",
       "kind": "weakening",
       "line": 257,
@@ -6601,7 +6601,7 @@
       "test_key": "tests/test_html.py::TestHtmlOutput::test_html_output_with_escaped_header"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6646,7 +6646,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_i18n.py",
-      "head_sha256": "8fdab5945da61ea8364121d0c4f7308b2d62a0ca233276b3b8c0db96e117fc9b",
+      "head_sha256": "3d8155c61375118431e383a4ac39877d29dc184bb743211f682ee1ce5e9fd931",
       "id": "W20-01",
       "kind": "weakening",
       "line": 405,
@@ -6656,7 +6656,7 @@
       "test_key": "tests/test_i18n.py::test_default_locale_path_defined__spec__"
     },
     {
-      "base_sha256": "09737ba8bfb02128d6559e08f11a1ada45d2b67fe8f54c5b672570074ec7b156",
+      "base_sha256": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6701,7 +6701,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_encoding.py",
-      "head_sha256": "4cb8dcf74f1231f7580ce3b88b1ef996898c701014a5e9bde7d6a33e9a90e5b9",
+      "head_sha256": "e58d5e62922de7572df179ade29dd25f1efe7f4fb32f085492427cd81704954f",
       "id": "W20-02",
       "kind": "weakening",
       "line": 33,
@@ -6711,7 +6711,7 @@
       "test_key": "tests/test_itsdangerous/test_encoding.py::test_int_bytes"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6756,7 +6756,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "596b05005bfd81d0af1f4a2d28ec0f7fe7a8d807a4cf6c04666fc074cd150f0a",
+      "head_sha256": "928f1c82dd5b58ff2735f54c612027ab9a2a0492a3dd38f168feebd44f353821",
       "id": "W20-03",
       "kind": "weakening",
       "line": 56,
@@ -6766,7 +6766,7 @@
       "test_key": "tests/test_markupsafe.py::test_missing_interpol"
     },
     {
-      "base_sha256": "557c45a6c380a39d035eae1debe5ac35b39d0378681a023ec8e8d76f6848f0ab",
+      "base_sha256": "517226be7fb2f9a6743a11cf26eec55087e6eee580faf449aa596f74d8dbd11f",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6811,7 +6811,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_tags.py",
-      "head_sha256": "0a051943af5fae5bed97cf83ad0c567778a7ccc721c9f083362f523457e5879d",
+      "head_sha256": "bd3dee8d51d36d6e86f09487fe1921d7a3399ebfad8b8d050e1457be2770e484",
       "id": "W20-04",
       "kind": "weakening",
       "line": 1383,
@@ -6821,7 +6821,7 @@
       "test_key": "tests/test_tags.py::TestGenericTags::test__generic_abi_jp"
     },
     {
-      "base_sha256": "a4ebe06e26bd2f72066bae57fc3a1c4bff953323904dfddff4cdebe090664cbb",
+      "base_sha256": "b52358fdd849aa41590236bafdd2fd7f1e86f012f92028ed677edcb6601971b5",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6866,7 +6866,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_invocations.py",
-      "head_sha256": "670cd057da40b3faccd046044413fc96969aba0daee4a211c9660ad3b3e5aff2",
+      "head_sha256": "1497b1599d6a2c952dff507a5747885216ae084390e6d2c22895a9bf34ab2a43",
       "id": "W20-05",
       "kind": "weakening",
       "line": 243,
@@ -6876,7 +6876,7 @@
       "test_key": "testing/test_invocations.py::test_firstresult_returns_none"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "skip-added",
       "contract_base": {
         "checks": [],
@@ -6921,7 +6921,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "aed2496037738a643101f610eb920ce0c1ec1659b20a53e9a57185ad0594291c",
+      "head_sha256": "462360a70f341aed72254e156d77a888ededbdfb2b892e9628468e8447d88a9b",
       "id": "W20-06",
       "kind": "weakening",
       "line": 746,
@@ -6931,7 +6931,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_header_style_upper"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -6976,7 +6976,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "90a9817e3611c1deaa3c6cc7ded750abb34ad45deab5237398ba9484977dd8c0",
+      "head_sha256": "0e9a9a8f08eeead68f2cf0002372f7a16525c23b24f568427d5367f2b9f13de8",
       "id": "W21-01",
       "kind": "weakening",
       "line": 857,
@@ -6986,7 +6986,7 @@
       "test_key": "tests/test_time.py::test_precisedelta_bogus_call"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -7031,7 +7031,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "016eea9c462d04d4e669a9d29a8f2f3a7f9574e95c4a8ca076e7991c9537042a",
+      "head_sha256": "f4f1116814b3d36077616663486b5e9355ce38cd7a2219c1e41494ce87567723",
       "id": "W21-02",
       "kind": "weakening",
       "line": 85,
@@ -7041,7 +7041,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_bad_payload_exception"
     },
     {
-      "base_sha256": "bd869e9beff132d1ff0d579e84182432df6ea158d80167ea22446af68a7b36ce",
+      "base_sha256": "cff8e9a73e96a3fb4ff0f5ba4e05c5d3bc36236939f519de43b790af8fe8ad1e",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -7086,7 +7086,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_exception_custom_html.py",
-      "head_sha256": "4ba48a293b83a038b98e699a7a568171e66616f03dc3396c464333ae3026986c",
+      "head_sha256": "5bbf9ce18b0935c5bf5ece1f3ccb7243d38524a53fb121100297a445440809db",
       "id": "W21-03",
       "kind": "weakening",
       "line": 22,
@@ -7096,7 +7096,7 @@
       "test_key": "tests/test_exception_custom_html.py::test_exception_custom_html"
     },
     {
-      "base_sha256": "588c1973c1836d909624d135336d6fa932f05aada10c8ef6343ec1893b80635a",
+      "base_sha256": "38c48f75a272940dcf7bd7b614c350d6f403c75cc0ea542dc308ee39f5a0033e",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -7141,7 +7141,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_version.py",
-      "head_sha256": "07b596381ffa4d267082a40bcc64584324d8c307286c61d0e44111c9fccffbbc",
+      "head_sha256": "f668e1640e40a476b19e51182d89986ddd41a0596c259f5975efa8aedc8e30f2",
       "id": "W21-04",
       "kind": "weakening",
       "line": 209,
@@ -7151,7 +7151,7 @@
       "test_key": "tests/test_version.py::TestVersion::test_invalid_versions"
     },
     {
-      "base_sha256": "2e2014adc363c2f012dd6ffc746dedfcbe1db1dcea030a04a4fb0bd1ebadb702",
+      "base_sha256": "6bfdda2d8b23abf96b6a037f23afbf39b1412042c0bb843c39b55bd4c87fb65c",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -7196,7 +7196,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "testing/test_pluginmanager.py",
-      "head_sha256": "c184a5685f8da4417d718178d8def9397d86857af3976f2097368730a91b78d8",
+      "head_sha256": "2629a30dd444fbd4d589795aeb75b721b27f414460076231d89c85eb79eb5241",
       "id": "W21-05",
       "kind": "weakening",
       "line": 426,
@@ -7206,7 +7206,7 @@
       "test_key": "testing/test_pluginmanager.py::test_register_verifies_spec_added_by_historic_replay"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "exception-widened",
       "contract_base": {
         "checks": [],
@@ -7251,7 +7251,7 @@
       "count_preserving_measured": true,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "4bf0bb4b508965db99c4eff73725e99da8ad71f15cc7ee269a95519b9fca6f5e",
+      "head_sha256": "5d7a519266be05e9d4fbb25028f7467cf46c689d963fe6a062e697b9b9d59ddb",
       "id": "W21-06",
       "kind": "weakening",
       "line": 820,
@@ -7261,7 +7261,7 @@
       "test_key": "tests/test_prettytable.py::TestBasic::test_header_style_invalid"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7306,7 +7306,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_time.py",
-      "head_sha256": "0ec22336fbd86875c7379dd1aeb7c36fb56ee1b9f9a61d4e21dfb72f961f4cca",
+      "head_sha256": "87b829053b9c442d442fa51cfcc8470fef983c30387cfb325bad685d46abfd2f",
       "id": "W22-01",
       "kind": "weakening",
       "line": 766,
@@ -7316,7 +7316,7 @@
       "test_key": "tests/test_time.py::test_precisedelta_custom_format"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7361,7 +7361,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "f297b887134e2432ca42b9b2c8810fc8b4131fb7e63c7192966898ad6bb222b8",
+      "head_sha256": "0f2d2299e595e2bdfa4fbc733a56aae44e60bed65d34fe1cf434c89407e68352",
       "id": "W22-02",
       "kind": "weakening",
       "line": 192,
@@ -7371,7 +7371,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::test_digests"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7416,7 +7416,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "1228ebd8040a5b8b634a455f6ddb8c51a322d3a300edbf4e958de07fb4e1756d",
+      "head_sha256": "ff9c0779db4c171382365c4d887c9b093eb17cd2e7968cb2b093daccff8bace5",
       "id": "W22-03",
       "kind": "weakening",
       "line": 178,
@@ -7426,7 +7426,7 @@
       "test_key": "tests/test_markupsafe.py::test_escape_silent"
     },
     {
-      "base_sha256": "588c1973c1836d909624d135336d6fa932f05aada10c8ef6343ec1893b80635a",
+      "base_sha256": "38c48f75a272940dcf7bd7b614c350d6f403c75cc0ea542dc308ee39f5a0033e",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7471,7 +7471,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_version.py",
-      "head_sha256": "306f1e5acf471142c79a89a93f53dd8b3b511a8ca8c72ddd56795f9faf0801c9",
+      "head_sha256": "971815dbe681add6462424d60b4113587140f0c914c3e07cd1629bde541514bb",
       "id": "W22-04",
       "kind": "weakening",
       "line": 647,
@@ -7481,7 +7481,7 @@
       "test_key": "tests/test_version.py::TestVersion::test_version_pre"
     },
     {
-      "base_sha256": "d0f12b4690083bf8031749ca6a57bcc96dfebd0d28ab90f459b11fb91e83016a",
+      "base_sha256": "414810b7e72a9d0dbe32ca6239d72bf8b065cfeb4b1b9c7e7eb3247d2cab68b3",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7526,7 +7526,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "testing/test_helpers.py",
-      "head_sha256": "e2b953a961bc12b8863b5dcf77736ab69fe67ed4805f98f02ef83a1dd9c3f2bd",
+      "head_sha256": "4b91b012c92e87c32f1b68d9f39826e91a5703748502449ebb104fa8263983df",
       "id": "W22-05",
       "kind": "weakening",
       "line": 203,
@@ -7536,7 +7536,7 @@
       "test_key": "testing/test_helpers.py::test_varnames_legacy_noself_warns"
     },
     {
-      "base_sha256": "8eef8ca17dc872a16a00631f0c3de41469ad20e868d25fa90fa041aa6c327619",
+      "base_sha256": "08069222330a15fcf4649999f28a3271feebb7b5fed62a797c953301e6067477",
       "category": "assertion-removed",
       "contract_base": {
         "checks": [],
@@ -7581,7 +7581,7 @@
       "count_preserving_measured": false,
       "expected_weakening": true,
       "file": "tests/test_prettytable.py",
-      "head_sha256": "b6a45261530779ecf91a28e451cb41322bbbc95823c329a9750d72a608668be3",
+      "head_sha256": "837da2f338221a729f0ddad6dae2f5dbd95b316a25e9c9ba0a84b6c8ac748db4",
       "id": "W22-06",
       "kind": "weakening",
       "line": 1597,
@@ -7591,7 +7591,7 @@
       "test_key": "tests/test_prettytable.py::TestBreakOnHyphens::test_break_on_hyphens_on_init"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "expected-updated-with-contract",
       "contract_base": {
         "checks": [],
@@ -7636,7 +7636,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_i18n.py",
-      "head_sha256": "4413bebd5dd83721f8257fd5a0fcfdc49dcb309dee607d6679bf654e07f07ed4",
+      "head_sha256": "23c02d834cdad9dc2a943a6c35e0d91865f9e74cf1c2586e4ac46b365451db91",
       "id": "L01-01",
       "kind": "legit",
       "line": 87,
@@ -7646,7 +7646,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "expected-updated-with-contract",
       "contract_base": {
         "checks": [],
@@ -7691,7 +7691,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "d788b44d9cf7e85e8c273a92deb23437df509b3dbb6c501c4073acc278c3388d",
+      "head_sha256": "4e9090ea71fd83cf7722e337c22809c717957f737acb1c97a6d46592dba21a72",
       "id": "L01-02",
       "kind": "legit",
       "line": 51,
@@ -7701,7 +7701,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_broken_signature"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "expected-updated-with-contract",
       "contract_base": {
         "checks": [],
@@ -7746,7 +7746,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "e1737a0fe6bacb26cceca149605b2bd6b2dcd78dc452954f649d1a453414dcf8",
+      "head_sha256": "0562301f53eba131a8d86ab5cdb471def8d2c5f7ff2da61473bacdacde7d3a45",
       "id": "L01-03",
       "kind": "legit",
       "line": 109,
@@ -7756,7 +7756,7 @@
       "test_key": "tests/test_markupsafe.py::test_format"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "rename",
       "contract_base": {
         "checks": [],
@@ -7801,7 +7801,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_i18n.py",
-      "head_sha256": "38b8dfbc0da10eb96afe15628fdda6443beb84b27f77c4b8633d9f173602692c",
+      "head_sha256": "cf251c1420f371d9b813ff0f32c59f4367dce0704477a0eb13e4752aec16ae3c",
       "id": "L02-01",
       "kind": "legit",
       "line": 428,
@@ -7811,7 +7811,7 @@
       "test_key": "tests/test_i18n.py::TestActivate::test_default_locale_path_null__spec__"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "rename",
       "contract_base": {
         "checks": [],
@@ -7856,7 +7856,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "6030a8fe84cd4ec4c6fb04ad3d000dbfb4703340497c6a3dc67e8423ca7a4b16",
+      "head_sha256": "df6a09637dd57f16f648d3febaab3324e45627c0056c70381c0193d1cf893389",
       "id": "L02-02",
       "kind": "legit",
       "line": 34,
@@ -7866,7 +7866,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_max_age"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "rename",
       "contract_base": {
         "checks": [],
@@ -7911,7 +7911,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_escape.py",
-      "head_sha256": "51e420760e83796b1689691780241c69823f43f38a83295957f8d98cdd5411e4",
+      "head_sha256": "7d7b9ca0b875e91fb3f2a2ab5f4a75b085cb2a43f9b0d82a98379fa7342148f8",
       "id": "L02-03",
       "kind": "legit",
       "line": 50,
@@ -7921,7 +7921,7 @@
       "test_key": "tests/test_escape.py::test_proxy"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "assert-added",
       "contract_base": {
         "checks": [],
@@ -7966,7 +7966,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_time.py",
-      "head_sha256": "f76351167802b0b08d716da93a171e24fd07adaffd3c704e364be9cd89717cab",
+      "head_sha256": "8cb22c2184ec1f042dc861fea83a07fb1925a30a258d5a9e273090cc80df356b",
       "id": "L03-01",
       "kind": "legit",
       "line": 442,
@@ -7976,7 +7976,7 @@
       "test_key": "tests/test_time.py::test_naturaltime_minimum_unit_default"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "assert-added",
       "contract_base": {
         "checks": [],
@@ -8021,7 +8021,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "63538b63bca4c55467ca4b0084092b99f7436ac9536beb08d21ab90b9ca0fe29",
+      "head_sha256": "263f65c4aa3fa280c4eb7e8734412f612786d6a4fd1646b3b8e8c8a6d4b0ae48",
       "id": "L03-02",
       "kind": "legit",
       "line": 82,
@@ -8031,7 +8031,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_digest_method"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "assert-added",
       "contract_base": {
         "checks": [],
@@ -8076,7 +8076,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "3b0d53fc902e97a9db7f1fe905458d49984672b2335641d23103aea4674a8ef1",
+      "head_sha256": "03b80c166034c40e1b49c4de35acdf84d4bfcd76459b60e9d2a9ba0c487407a3",
       "id": "L03-03",
       "kind": "legit",
       "line": 179,
@@ -8086,7 +8086,7 @@
       "test_key": "tests/test_markupsafe.py::test_escape_silent"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "parametrize-extended",
       "contract_base": {
         "checks": [],
@@ -8131,7 +8131,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_time.py",
-      "head_sha256": "c2079baad592c24972f3f8840a242964d28c4f6d0e0bedc2c0e8bee5dafa181d",
+      "head_sha256": "758a8c8674f3ece1c5714d88c8ae606ac45bd5166818a4df9687b5d899acf57c",
       "id": "L04-01",
       "kind": "legit",
       "line": 217,
@@ -8141,7 +8141,7 @@
       "test_key": "tests/test_time.py::test_naturaltime_nomonths"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "parametrize-extended",
       "contract_base": {
         "checks": [],
@@ -8186,7 +8186,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "ee7ccf6bd1d9909b5cd480a4979c78e5677c3dc360c474599472ae6e01296319",
+      "head_sha256": "f471836efc8be41151dbb6ae124cdaceeba241eccc889d7eec6de74188e472c8",
       "id": "L04-02",
       "kind": "legit",
       "line": 54,
@@ -8196,7 +8196,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_changed_value"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "parametrize-extended",
       "contract_base": {
         "checks": [],
@@ -8241,7 +8241,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_escape.py",
-      "head_sha256": "c5ce4e68feb3926ef4fffde704cf638f94d1e1da699b520f4c046930950c7302",
+      "head_sha256": "507fff68f315d1ae607d501f9856ed73e01a2f2e6db41832ce24efcdaf860fab",
       "id": "L04-03",
       "kind": "legit",
       "line": 11,
@@ -8251,7 +8251,7 @@
       "test_key": "tests/test_escape.py::test_escape"
     },
     {
-      "base_sha256": "6eba47a0f0f4b4deb843945f6738e856ebe603984257c5b6bca4a88562e033ad",
+      "base_sha256": "95a7bc63d8100bc8b7a19dce3dbf298b07bef75ffd30c79fd22078d33a9357aa",
       "category": "test-added",
       "contract_base": {
         "checks": [],
@@ -8296,7 +8296,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_filesize.py",
-      "head_sha256": "498a60baa904532e88c30d225193a4ece147418036d9b1977235d2973b78531c",
+      "head_sha256": "1ca234db493133c36e9fb1bae27fb0a9f8b6d9b62bbe15ae7821647d34d034c2",
       "id": "L05-01",
       "kind": "legit",
       "line": 94,
@@ -8306,7 +8306,7 @@
       "test_key": "tests/test_filesize.py::test_naturalsize"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "test-added",
       "contract_base": {
         "checks": [],
@@ -8351,7 +8351,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "79e1e017541f57aaaddb945885aa27ff84865b14c057554d828f1f85f0565687",
+      "head_sha256": "d195df707f5660ab1da003b9f4ae1505e6772a134637729563997d2541e5f1fc",
       "id": "L05-02",
       "kind": "legit",
       "line": 74,
@@ -8361,7 +8361,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_invalid_key_derivation"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "test-added",
       "contract_base": {
         "checks": [],
@@ -8406,7 +8406,7 @@
       "count_preserving_measured": false,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "305a9e7d6e30a72bbcbca6e0235062e5bf49debf5fa0d683ce8d6c1d1bdec671",
+      "head_sha256": "2a63f742df01a9cbc734b591c7c20e333f25a08771f7e8df6d9a741c079d0baa",
       "id": "L05-03",
       "kind": "legit",
       "line": 177,
@@ -8416,7 +8416,7 @@
       "test_key": "tests/test_markupsafe.py::test_escape_silent"
     },
     {
-      "base_sha256": "9769f89ac869637e355d64724c0c377d676085298dd93d581cbb5e5b53b423ce",
+      "base_sha256": "f378030f1fc63525984cea55f0cac26608df7de7379f48f649db7589db68430d",
       "category": "extract-local",
       "contract_base": {
         "checks": [],
@@ -8461,7 +8461,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_i18n.py",
-      "head_sha256": "28f6d4d2bc1f31dde3b18047cca63717fa7bb9508d4a3d3c25576ac0745cdd10",
+      "head_sha256": "f410191eb9b01b58636ac986eceb027ab9ef07b4bf1f94d6c93b41bd043e2343",
       "id": "L06-01",
       "kind": "legit",
       "line": 96,
@@ -8471,7 +8471,7 @@
       "test_key": "tests/test_i18n.py::test_i18n"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "extract-local",
       "contract_base": {
         "checks": [],
@@ -8516,7 +8516,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "ef8655d55fff54bd82250d8e2ccc84230aac7b59c002192bba75869b1cb53a57",
+      "head_sha256": "f5683dcd1d70292cf908373624a65751a02004e202185ae30eab13caf7fc94f4",
       "id": "L06-02",
       "kind": "legit",
       "line": 153,
@@ -8526,7 +8526,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_serializer_kwargs"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "extract-local",
       "contract_base": {
         "checks": [],
@@ -8571,7 +8571,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "f44294bcc4e8e219b7cfb45a7d029e2582bda552a438f7e5f78b59caed67325a",
+      "head_sha256": "82e66e3f14a0b36a4ceac079a66b78d75259c3a5db30c6e6ad80b7c9fc8fb83c",
       "id": "L06-03",
       "kind": "legit",
       "line": 178,
@@ -8581,7 +8581,7 @@
       "test_key": "tests/test_markupsafe.py::test_escape_silent"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "comment-added",
       "contract_base": {
         "checks": [],
@@ -8626,7 +8626,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_time.py",
-      "head_sha256": "e4a7dec6ca2c744a8011c44e82e0e8ddfd7dda1d86230cb78fd2a65596e97584",
+      "head_sha256": "0094a96a1071a1c977cab786044cbdcba5c3970a4345dc6e040b20472d77c42a",
       "id": "L07-01",
       "kind": "legit",
       "line": 595,
@@ -8636,7 +8636,7 @@
       "test_key": "tests/test_time.py::test_precisedelta_one_unit_enough"
     },
     {
-      "base_sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "base_sha256": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
       "category": "comment-added",
       "contract_base": {
         "checks": [],
@@ -8681,7 +8681,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_timed.py",
-      "head_sha256": "83350804382e5e41da3d86e3b6b2d7ed8474c3b429b242eabaf58513e85fff64",
+      "head_sha256": "d0d6f2cb78da1dba8de3ff21635247427d248c07107eebfd48d1abcaa70109ea",
       "id": "L07-02",
       "kind": "legit",
       "line": 57,
@@ -8691,7 +8691,7 @@
       "test_key": "tests/test_itsdangerous/test_timed.py::TestTimestampSigner::test_timestamp_missing"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "comment-added",
       "contract_base": {
         "checks": [],
@@ -8736,7 +8736,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "e09c9fa92ceda2f5a13336abe9f9396a0fa2245968b35c38ec69d61f0bc0d64b",
+      "head_sha256": "3ad14122bc053f08cefae7c6b4bc307652373c710d83ed29c3549ede19d6e2c2",
       "id": "L07-03",
       "kind": "legit",
       "line": 37,
@@ -8746,7 +8746,7 @@
       "test_key": "tests/test_markupsafe.py::test_type_behavior"
     },
     {
-      "base_sha256": "13ca9d3a159f33bf9db74fcf5c706c77883965392d2be3606b52e564dd366d9e",
+      "base_sha256": "1b9cdf76249080e9238050a29e04cf36979e9b5b7f65d56e4c85d62785d2fa2b",
       "category": "exception-narrowed",
       "contract_base": {
         "checks": [],
@@ -8791,7 +8791,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_time.py",
-      "head_sha256": "2d95e2a41a2c86d8c3df4a752588a0c19fdfa40aa41a7e00292bf50941b8f917",
+      "head_sha256": "89692e8c431e9b0a4b204166d0cc7440d3bbee64b4a27453f04eb605a5aa4f53",
       "id": "L08-01",
       "kind": "legit",
       "line": 866,
@@ -8801,7 +8801,7 @@
       "test_key": "tests/test_time.py::test_time_unit"
     },
     {
-      "base_sha256": "5076bbd9be5302c83e94a0510f6fe896b6715c647e9793644f89c357b96e7d58",
+      "base_sha256": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
       "category": "exception-narrowed",
       "contract_base": {
         "checks": [],
@@ -8846,7 +8846,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_signer.py",
-      "head_sha256": "6c264a1eaa85e2c9bfe9cc2fedd332cafadf2a083be5620170292d049b519dfa",
+      "head_sha256": "a185f99b9ed948c32b7bfc209e01fecc53e856783a25d6351d714dec0e04806b",
       "id": "L08-02",
       "kind": "legit",
       "line": 77,
@@ -8856,7 +8856,7 @@
       "test_key": "tests/test_itsdangerous/test_signer.py::TestSigner::test_invalid_key_derivation"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "exception-narrowed",
       "contract_base": {
         "checks": [],
@@ -8901,7 +8901,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "75abdd1b1b3143781afd608df6e1e24e779f1144ea5e0dbef77b1a2360085245",
+      "head_sha256": "f0ab84fbbe043b8146ee5baaa7ddba06ff66ab47d6ad18a19fe1e3013a7335f6",
       "id": "L08-03",
       "kind": "legit",
       "line": 57,
@@ -8911,7 +8911,7 @@
       "test_key": "tests/test_markupsafe.py::test_missing_interpol"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "message-added",
       "contract_base": {
         "checks": [],
@@ -8956,7 +8956,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_number.py",
-      "head_sha256": "561010b7616b064fdf03ab9db2a327f442e8cddb35431777e9f4db240d444ea2",
+      "head_sha256": "7ab3472e2963c6698a4b7b68d1d166e5d3570fe1eda2418c33426562e36bdcfd",
       "id": "L09-01",
       "kind": "legit",
       "line": 189,
@@ -8966,7 +8966,7 @@
       "test_key": "tests/test_number.py::test_intword_rounding_rollover"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "message-added",
       "contract_base": {
         "checks": [],
@@ -9011,7 +9011,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "6a6388a3d24f1af2d65f199182b878e2f1b69e22666910b31c8afd706381063d",
+      "head_sha256": "0cca25bc153f99e06432962c0e1b7221a6a703cf3c776d96ca2425f0a3593ec1",
       "id": "L09-02",
       "kind": "legit",
       "line": 183,
@@ -9021,7 +9021,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_iter_unsigners"
     },
     {
-      "base_sha256": "964e8cff042d1c09ca857f30e385db45c1a9da4ac00afeda160fe3e6ebb0cb49",
+      "base_sha256": "ade5101f1d0e77ccb15718b3aeb9a2afedf45dd38efb82ec2b9fcc4c10125512",
       "category": "message-added",
       "contract_base": {
         "checks": [],
@@ -9066,7 +9066,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_markupsafe.py",
-      "head_sha256": "e287cc15c0cf2b0ef2f46d6a8e12bfd376f3842412d10a463b08e2b1290e2c9b",
+      "head_sha256": "f5d3d2cbf1d8a107399013fb273e71d96fad0833d0a63517d679945e1293ecd1",
       "id": "L09-03",
       "kind": "legit",
       "line": 115,
@@ -9076,7 +9076,7 @@
       "test_key": "tests/test_markupsafe.py::test_format"
     },
     {
-      "base_sha256": "6fa70a9bf87b26674ce30a6c50208340488dbce69d9c20e15b4158487d51dcbd",
+      "base_sha256": "bcdc8f2ae797dab71f84e7ecf7dc54d425792ba65996f4b161e1884495caa323",
       "category": "operands-swapped",
       "contract_base": {
         "checks": [],
@@ -9121,7 +9121,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_number.py",
-      "head_sha256": "fb75793dc37a83fd3a4ca6e6aa2129b0f79265222fa1fdd7968b3cf47731b68b",
+      "head_sha256": "a9cafcb8524a0f0ac9cead9962a5c74ada5d280d21573c5b053c244a651e718d",
       "id": "L10-01",
       "kind": "legit",
       "line": 379,
@@ -9131,7 +9131,7 @@
       "test_key": "tests/test_number.py::test_metric"
     },
     {
-      "base_sha256": "60e150044b51c3403a4a093948f22ae8150abd604e0d79ba06b04fda48dc5e74",
+      "base_sha256": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
       "category": "operands-swapped",
       "contract_base": {
         "checks": [],
@@ -9176,7 +9176,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_itsdangerous/test_serializer.py",
-      "head_sha256": "bfe7d807b56f14ef9076f538e9a3c8e64523fe6aa74c002e487cdb8478e12383",
+      "head_sha256": "0dcd710d3788ce1c39d2a7c4c33322064aa62f41e6a78aceeceaa7bfe6f365dc",
       "id": "L10-02",
       "kind": "legit",
       "line": 135,
@@ -9186,7 +9186,7 @@
       "test_key": "tests/test_itsdangerous/test_serializer.py::TestSerializer::test_signer_cls"
     },
     {
-      "base_sha256": "4ac2de8fdd11b4279e71285da66f15386d790a86c3ea2fccb3501204d90d17d6",
+      "base_sha256": "68b4dac1f27ea365f3ceb9a306bed1543db5e232b7311e319fe82b6fcce722a1",
       "category": "operands-swapped",
       "contract_base": {
         "checks": [],
@@ -9231,7 +9231,7 @@
       "count_preserving_measured": true,
       "expected_weakening": false,
       "file": "tests/test_escape.py",
-      "head_sha256": "141f441a319bcbf50e353273a3f92a04533f2e3ff3bbd171351f37c696d4ee0d",
+      "head_sha256": "e3b8f7a5632f858bbec90eae83d71fe3ccfc2fc1e7de5270f78ee5a527cfcdd7",
       "id": "L10-03",
       "kind": "legit",
       "line": 34,
