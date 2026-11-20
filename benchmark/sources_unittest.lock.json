@@ -1,0 +1,10 @@
+{
+  "selection": "Small, permissively licensed repositories whose tests are unittest.TestCase classes with self.assert* checks; none is a Gate 0 spike repo or in the spike pool snapshot. Pinned to default-branch HEAD fetched 2026-11-20. Licenses verified from the license file at the pinned SHA by benchmark/generate_cases.py.",
+  "sources": [
+    {"repo": "more-itertools/more-itertools", "sha": "e3f79f4fde5f7c107f70a20730b17240a05ba99b", "licenses": [{"spdx": "MIT", "file": "LICENSE"}]},
+    {"repo": "Python-Markdown/markdown", "sha": "5609061bd3359e882b745de184ebfe5ef1c08011", "licenses": [{"spdx": "BSD-3-Clause", "file": "LICENSE.md"}]},
+    {"repo": "tkem/cachetools", "sha": "c5de5137153b301933922e47bc70b598970e0627", "licenses": [{"spdx": "MIT", "file": "LICENSE"}]},
+    {"repo": "kjd/idna", "sha": "d357725082245ff90f5cf8800a3fc297b1f2319a", "licenses": [{"spdx": "BSD-3-Clause", "file": "LICENSE.md"}]},
+    {"repo": "pyparsing/pyparsing", "sha": "810199f89bf916590426e1c5cb3d612584f11a2f", "licenses": [{"spdx": "MIT", "file": "LICENSE"}]}
+  ]
+}
