@@ -615,13 +615,59 @@ These values are **fixed when this document is approved**, before any measuremen
 
 ## 13. Sample SHAs
 
-`<filled in Step B>`, in commit 2:
+**Status:** filled in after the Step B run on 2026-11-20. The sampling script was run once by the owner in plain PowerShell as `python -I -B spike/sampling/build_sample.py`. Exit code 0. The script's own log ends with "self-check passed; run finished". No aborted runs. The full record is `spike/build_sample.log`.
 
-- the selected repos, each with its `full_name`, recorded HEAD SHA, `spdx_id` and R2/R5 values
-- the random stratum SHAs per repo
-- the keyword stratum SHAs per repo
-- the reserve SHAs per repo, as a separate sealed list
-- the SHA-256 of `spike/pool_snapshot.json`
+### 13.1 Run record
+
+| Field | Value |
+|---|---|
+| Run started (UTC) | 2026-11-20T04:15:18Z |
+| Pre-registration commit | `f44e44a3ea88d14743d45eed9b615712b0a8d025` |
+| Repo HEAD when the run started | `9abfe8f60e3308aed45191de572e102bf5ac5c32` |
+| Script | `spike/sampling/build_sample.py`, SHA-256 `463fccc40a1c70734e4659c35d904b6bedb15e79c7e6bb4f9cf23f89a4352fd7` |
+| Regex digest (verified by the script before any network call) | `9dd17bc922488091a9a18eea83b1dd417ffd72f5338fb7395cf6da3330cb5cdc` |
+| Python | 3.11.3 |
+| git | 2.51.0.windows.1 |
+| gh | 2.105.0 |
+
+### 13.2 Selected repos
+
+| Bucket | Repo | HEAD SHA | License (R1) | R2: pytest / unittest / share / parsed / unparseable | R5: qualifying commits / .git bytes |
+|---|---|---|---|---|---|
+| W | mitmproxy/mitmproxy | `c491986978a6280c29977482cb18698d6523a662` | MIT | 4699 / 20 / 0.9957618139436322 / 184 / 0 | 419 / 75007690 |
+| D | plotly/dash | `823ce3a73a8831c779ff6176c278e1cbf0f61f07` | MIT | 3560 / 44 / 0.9877913429522752 / 312 / 0 | 825 / 241489944 |
+| T | realiti4/claude-swap | `ee79e705cf6e1ad3f70621b88b80983a99bb2001` | MIT | 7320 / 1 / 0.9998634066384374 / 55 / 0 | 429 / 5619456 |
+
+All three buckets were filled. There was no clone timeout and there were no manual skips.
+
+### 13.3 Sample sizes drawn
+
+| Repo | Random | Keyword | Reserve (sealed) |
+|---|---|---|---|
+| mitmproxy/mitmproxy | 67 | 15 | 34 |
+| plotly/dash | 67 | 15 | 33 |
+| realiti4/claude-swap | 66 | 15 | 33 |
+| **Total** | **200** | **45** | **100** |
+
+No shortfall in any repo or stratum.
+
+### 13.4 Committed files and SHA-256
+
+| File | Contents | SHA-256 |
+|---|---|---|
+| `spike/sample_random_shas.txt` | 200 SHAs, random stratum | `dec6fbf2439e7ed4c77e5765a462612255a1c5ad691de4319adc86532fa05dfc` |
+| `spike/sample_keyword_shas.txt` | 45 SHAs, keyword stratum | `7f290cdf1b2fd411238658631d6bd0f14e33b196bccfcfae55ed8cbdec5e4cb1` |
+| `spike/sample_reserve_shas.txt` | 100 SHAs, K1 reserve, **sealed** (§7.4) | `4d28d8f13233acd4fdef541a5aca916407e2d993c622212a7da743a72ea0c06a` |
+| `spike/pool_snapshot.json` | Pool, queries, shuffled orders, walk results | `26c5809ad01e67bf1f043db5f619c15d188e061d57de5a0a65e953245570b4ab` |
+| `spike/qualifying_mitmproxy__mitmproxy.json` | 419 qualifying commits | `39ddc1938cf25e8f73512f63be07d638d15f7a3863252be63336d97ce9c5bda1` |
+| `spike/qualifying_plotly__dash.json` | 825 qualifying commits | `bdd9122136470bdf1485cc6bfa9bc83f9e9c77ee883b1e5d00d0bdd01ed5b7af` |
+| `spike/qualifying_realiti4__claude-swap.json` | 429 qualifying commits | `415847807fc24a8c1ca66a05fe9dda202a878309c3b36c60c8f87e2cf37280d6` |
+
+### 13.5 Notes
+
+- **Where the SHAs are.** The random and keyword SHAs are recorded in the two list files above, not inlined in this section, to avoid transcription errors. The list files are committed in the same commit as this section, and their hashes are recorded here. This is an implementation-time interpretation of section 13's "SHAs per repo".
+- **Reserve.** The reserve list is a separate sealed list. Section 7.4 and section 8 govern its use.
+- **Clones.** The three clones are kept outside the repo, at their HEAD SHAs above. Their location is not recorded here.
 
 ---
 

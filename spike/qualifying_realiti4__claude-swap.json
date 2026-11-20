@@ -1,0 +1,7150 @@
+{
+  "full_name": "realiti4/claude-swap",
+  "head_sha": "ee79e705cf6e1ad3f70621b88b80983a99bb2001",
+  "preregistration_commit": "f44e44a3ea88d14743d45eed9b615712b0a8d025",
+  "qualifying_commits": [
+    {
+      "sha": "9b25632d4fe245f0baaef5eef81e9b2dfd798f6d",
+      "parent": "7fecb8663a8eb805609e30db3ee3848861e2677f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9bc2e1ace5afcac15460605c9300df80f5fd21a0",
+      "parent": "5159ca55e2a609826aecee94a7042202bd686f31",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain.py",
+          "new": "tests/test_macos_keychain.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_migrations.py",
+          "new": "tests/test_migrations.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e943c1b2d3b5ff1f68994ed408fbaedfbd94a1a5",
+      "parent": "b0422837d03f3ce6c04fb16aa5feed5efa76c91c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b2dd874aa4c18481b17228652cdbb47cb92bd690",
+      "parent": "b83b910c5b99067593e10dc5eb883c751d9606a9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_login_expiry.py",
+          "new": "tests/test_login_expiry.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fa6c4cb901438f0e316adb9a6d667377d66b24a1",
+      "parent": "8f21f52b363c4eaf734492e5171831f51fd49ead",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f199bb308b44e96d2bd0449990ca0e57af09531e",
+      "parent": "af13d268b593c40cabdca16ed0d4612ec6ae090d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "af13d268b593c40cabdca16ed0d4612ec6ae090d",
+      "parent": "773b5854b03e400968f0e991ea9735f8cebc2ba0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_credentials.py",
+          "new": "tests/test_credentials.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bb519a8ef566b75a4ee3a619824f0f96f828319f",
+      "parent": "773b5854b03e400968f0e991ea9735f8cebc2ba0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "773b5854b03e400968f0e991ea9735f8cebc2ba0",
+      "parent": "0b2e8360600144df24263ba2e3b0b7f194bc5667",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0b2e8360600144df24263ba2e3b0b7f194bc5667",
+      "parent": "0fe22a8acc6f1cc8176552b7f8460b3ed85af3be",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_credentials.py",
+          "new": "tests/test_credentials.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0fe22a8acc6f1cc8176552b7f8460b3ed85af3be",
+      "parent": "7f82e38c82a1703ce42930cc491359c2acb33384",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_real_store_guard.py",
+          "new": "tests/test_real_store_guard.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7f82e38c82a1703ce42930cc491359c2acb33384",
+      "parent": "f25afd63a08939bdc3b56c93af60519079785dbd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f25afd63a08939bdc3b56c93af60519079785dbd",
+      "parent": "21f15ecb2f3279eb1840f7f286d60c39fecd57df",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "21f15ecb2f3279eb1840f7f286d60c39fecd57df",
+      "parent": "d25b26ec3e4ba10f455362592290c4bbd51d517a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d25b26ec3e4ba10f455362592290c4bbd51d517a",
+      "parent": "5c49eb92c04613cfc7615ccfd3f345d6b0dfa073",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_claude_locks.py",
+          "new": "tests/test_claude_locks.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_locking.py",
+          "new": "tests/test_locking.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5c49eb92c04613cfc7615ccfd3f345d6b0dfa073",
+      "parent": "f93ed75398374cac8fb8f361c7e030e6beceb4bb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f93ed75398374cac8fb8f361c7e030e6beceb4bb",
+      "parent": "91fed81d373bc3fd20c2f876c142e39c3ff007eb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "080f4896c1b34f3082204f0d80690fcf304e7be1",
+      "parent": "e82e9998f388a2b6bebcf8be009b615f91627229",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0945163fd04476c4780a2a2371a2818eeb9ddd54",
+      "parent": "37cb3b7f51c79fc0e58b58835ae239d040b0bf03",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "37cb3b7f51c79fc0e58b58835ae239d040b0bf03",
+      "parent": "11cf9691249677954722226b23ff155bbe974893",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c6db711ce989535a9a958e5d707a251c971b7f64",
+      "parent": "86d05cb6bad2ac91ee166a580df4facdb6dd6be7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "373986f6a118779163807f8a5d9006837bcdc0eb",
+      "parent": "7477113a5328186979227235f96840c0c92eb9db",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cecb08cc4b079e9690f21540163189792d304411",
+      "parent": "ad0bfa74052616d5ed0e58eb7d3d5a53c5cd0c10",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch_landing_room.py",
+          "new": "tests/test_autoswitch_landing_room.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ad0bfa74052616d5ed0e58eb7d3d5a53c5cd0c10",
+      "parent": "1964db0ca4b723e3d528da93081af6cf4f3ea03c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch_landing_room.py",
+          "new": "tests/test_autoswitch_landing_room.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1964db0ca4b723e3d528da93081af6cf4f3ea03c",
+      "parent": "7486aed436d309bd89989a9703345a7b623510e4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch_landing_room.py",
+          "new": "tests/test_autoswitch_landing_room.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7486aed436d309bd89989a9703345a7b623510e4",
+      "parent": "3b33f10f0e4712da0bb8ef5fc67a83494d56e09e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch_landing_room.py",
+          "new": "tests/test_autoswitch_landing_room.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_lines.py",
+          "new": "tests/test_lines.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3b33f10f0e4712da0bb8ef5fc67a83494d56e09e",
+      "parent": "7477113a5328186979227235f96840c0c92eb9db",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7477113a5328186979227235f96840c0c92eb9db",
+      "parent": "bf7c6b495e96e4e66e2e4cec057b92f984fe7404",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_login_expiry.py",
+          "new": "tests/test_login_expiry.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui_policy_display.py",
+          "new": "tests/test_tui_policy_display.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bf7c6b495e96e4e66e2e4cec057b92f984fe7404",
+      "parent": "4d6c0e13e06418878a09b6eb53c2305458173df9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui_policy_display.py",
+          "new": "tests/test_tui_policy_display.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5c9ad2826bbfa9744c376b3bdd8949a900630f94",
+      "parent": "30ba6f718cf25ab226fea2b952b7ca10f03ab79b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e2191f1119a133651a5fe88930e21fa327fbb1ff",
+      "parent": "f7e420926c498a78cf90407df8cd06823f4fc0e0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "30ba6f718cf25ab226fea2b952b7ca10f03ab79b",
+      "parent": "6d241d48aeb4138afdde953d92311f1fc0996b31",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6d241d48aeb4138afdde953d92311f1fc0996b31",
+      "parent": "289b0d9ced41bc7af11f4f1b11bd3c9a65259efb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "289b0d9ced41bc7af11f4f1b11bd3c9a65259efb",
+      "parent": "3fec656d64f18cc29b4eca4a75d383c1c0057777",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f7e420926c498a78cf90407df8cd06823f4fc0e0",
+      "parent": "3fec656d64f18cc29b4eca4a75d383c1c0057777",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6a2a18278561550a38dd1aa6bf92d43db3751714",
+      "parent": "bf3f07a0d3f10478ff3a65edebcb8d5f96f5e53e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bf3f07a0d3f10478ff3a65edebcb8d5f96f5e53e",
+      "parent": "7a3168d22e6f39f1d13c994239d4a5dfeac3ebde",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_app_bundle.py",
+          "new": "tests/test_app_bundle.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7a3168d22e6f39f1d13c994239d4a5dfeac3ebde",
+      "parent": "9cb9050f47d0e42912bbb25fe536122121108315",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9cb9050f47d0e42912bbb25fe536122121108315",
+      "parent": "ffb66fb41f680b9ef05bb458ca23df5039d69ce6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ffb66fb41f680b9ef05bb458ca23df5039d69ce6",
+      "parent": "dd6497765d12848bd6a0e3b6b6f08ea42fdfcd0c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a7b8b2af3afe28a775c05c789217df2c7b01234d",
+      "parent": "f044da414401296d33fd0d33de592b058ebcfe67",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "dd6497765d12848bd6a0e3b6b6f08ea42fdfcd0c",
+      "parent": "19f8044200f896c1c20c810996b73bdb3f170ff1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f044da414401296d33fd0d33de592b058ebcfe67",
+      "parent": "c8bfc677b56c3b82337f6d4aa73bd00fde9ed5cc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "19f8044200f896c1c20c810996b73bdb3f170ff1",
+      "parent": "c667bbe79fd933a75e607cef2ee12a771754207b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c667bbe79fd933a75e607cef2ee12a771754207b",
+      "parent": "7b250879c56c6ff962c956c4af8e43324be3aded",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "646e4f1fa5565592192a11946b5b1d056cbbfd9f",
+      "parent": "5f08e030a571cefc9b82345f1acf64f524aeecca",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d5b0933fc26da043e6f635813964dc6bd548fb25",
+      "parent": "6b0888d77084dc00dc5b9af65f08308138667345",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_account_policy_store.py",
+          "new": "tests/test_account_policy_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6b0888d77084dc00dc5b9af65f08308138667345",
+      "parent": "bc8de9d0892d6eed0951c82bd0b3517d4b445f75",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bc8de9d0892d6eed0951c82bd0b3517d4b445f75",
+      "parent": "91432d5e4d39ebfc1ac25f3cceac2d1c8fcf7550",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5f08e030a571cefc9b82345f1acf64f524aeecca",
+      "parent": "ba8b5cdc0255b00f58a27e167d8a25dd64981b1f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "91432d5e4d39ebfc1ac25f3cceac2d1c8fcf7550",
+      "parent": "df8e2ed6dd062f2a17825655cdd4b290d15f8d82",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "df8e2ed6dd062f2a17825655cdd4b290d15f8d82",
+      "parent": "fd728caac43e7e9865245c5e6d8c935bde55f5c9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fd728caac43e7e9865245c5e6d8c935bde55f5c9",
+      "parent": "748d220509fd8b91f7bde6f84647beabf68a002d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "748d220509fd8b91f7bde6f84647beabf68a002d",
+      "parent": "21c45ce724614a3013e8fcd8f0da58d51b6654f4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "21c45ce724614a3013e8fcd8f0da58d51b6654f4",
+      "parent": "ba8b5cdc0255b00f58a27e167d8a25dd64981b1f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6e109e1123984e59f9742d011ad77345e6bf6320",
+      "parent": "dc1979bbbf3a30b77eac9c4b2b00a4d6319e6e58",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_migrations.py",
+          "new": "tests/test_migrations.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0e0fe186a1873310cadbf38728ecd6783a64ee6e",
+      "parent": "f6c89075250abf547dbac67d9d17a518c59e1a46",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f6c89075250abf547dbac67d9d17a518c59e1a46",
+      "parent": "f84ce07b96ff78b429d003a68e6107be5b0834fe",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth_weekly_only.py",
+          "new": "tests/test_oauth_weekly_only.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "88c0f68a860e3f1258663bef6f6d3f447fef2796",
+      "parent": "eda1457e4d3b9334fe378fb77d1ddbc4224c34f9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth_weekly_only.py",
+          "new": "tests/test_oauth_weekly_only.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "123654cd38fff827d829ab84c170e12b4aabbbb2",
+      "parent": "52e92c008347fd52a0f72b6dcf0cd446b7902684",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d26c4761a43ba59d58c41832c26d9e402e5a5c90",
+      "parent": "e2e0a8d41ad6413e89158e3468160844aa044032",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e2e0a8d41ad6413e89158e3468160844aa044032",
+      "parent": "6545d463f89335b357851719ecc638f740d8fa2a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6545d463f89335b357851719ecc638f740d8fa2a",
+      "parent": "80d1b88f75ce18d570687ad5177911bd5f5c2284",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "80d1b88f75ce18d570687ad5177911bd5f5c2284",
+      "parent": "01b088c26aa54a6189536a239c0b87f338a75baf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "01b088c26aa54a6189536a239c0b87f338a75baf",
+      "parent": "048dcfdae8f24a5bf26cca44d076cd16f8864e9c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "56365da82fa3f4e936c2acbdb00b1f11e72ace72",
+      "parent": "ad8d03b9d8b4f4747a466f1578c1b8e2abb14b46",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ad8d03b9d8b4f4747a466f1578c1b8e2abb14b46",
+      "parent": "b2ee71d92c7d6175a8e1608eae46138745f77064",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "44a8cfa86c4db4a07b774869422976fa78d296ea",
+      "parent": "688f7bfe4fb7f2ad201687b0ab85011bef4c40de",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "688f7bfe4fb7f2ad201687b0ab85011bef4c40de",
+      "parent": "a72a0dedadfe6f25b8a72b995b3069d7b23242c8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a72a0dedadfe6f25b8a72b995b3069d7b23242c8",
+      "parent": "24c7a9c5e6a334d49826608478ec79b283561b86",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "24c7a9c5e6a334d49826608478ec79b283561b86",
+      "parent": "b467017396cf89f2d2506469f84ce6d1a05d21b4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b467017396cf89f2d2506469f84ce6d1a05d21b4",
+      "parent": "d2a5dee2ef626cd6bc853eab11144c9a8d433950",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2bbb4fc1e176937c22927be929ca1d92917a7a35",
+      "parent": "13882b3bfbdd3b82ef3c697cf359d935e354914f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "13882b3bfbdd3b82ef3c697cf359d935e354914f",
+      "parent": "e86b19b9612295033dcc18085c64b346eda648a1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b4bae4279e9717bc789a43cd767327c2d6e93fd5",
+      "parent": "b14dfb9ed36881ea78eee7736cb98e376ff959f4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_add_account_identity.py",
+          "new": "tests/test_add_account_identity.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0d1e685f21d8b25bd4e61acce62a2d453e530594",
+      "parent": "884ca68f7015d9024232e8e6eb0c4783d203d8ae",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e33ae4369d2b121d10567f977bd248c495469ec9",
+      "parent": "f277b377f04e26a2d667f10cfd87d41007732368",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f277b377f04e26a2d667f10cfd87d41007732368",
+      "parent": "121e9ddc00e6982cf67f0895ecaec4848a7acb44",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "34367eb69437f25d80b4829ab65df6a6c502148e",
+      "parent": "e8914995ceaea1ae0c47539c3dd9718d2f12a65c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e8914995ceaea1ae0c47539c3dd9718d2f12a65c",
+      "parent": "2538a6c8ba447f609a9c699e228bee838f03eddd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2538a6c8ba447f609a9c699e228bee838f03eddd",
+      "parent": "3464d1840050d5f5092eaf4a066a334728e9bdee",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "121e9ddc00e6982cf67f0895ecaec4848a7acb44",
+      "parent": "3464d1840050d5f5092eaf4a066a334728e9bdee",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_subscription.py",
+          "new": "tests/test_subscription.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3464d1840050d5f5092eaf4a066a334728e9bdee",
+      "parent": "72ccd58612efc8651933b7137deafba28901ef04",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_account_policy_values.py",
+          "new": "tests/test_account_policy_values.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b3319d47b6b0aacb06fb64ac8651cb569338781f",
+      "parent": "72ccd58612efc8651933b7137deafba28901ef04",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c3c1b1e65332f62c4c6894bed0a66a933082571c",
+      "parent": "db303c6454da3b65eeb71c5a34f7f620ea0eaea9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "286f1f03cd95ddb56f6eb3084edab16f9dbcc1e1",
+      "parent": "ec9cf67e3cc5194d0b4112e8728bb9c968b7d902",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cfee4c4cb0be490a78235785bc217642f41a2fa4",
+      "parent": "f50be746505593ce7ff60ba6bf4405e39b41ba86",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_spawn.py",
+          "new": "tests/test_spawn.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "907269fc0ce737d22c040a659bd53a4a974673ab",
+      "parent": "80f07866558c6b6d82112071f6973115132a0288",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "faeae2b361d506f690bd7f25b5a9a185336b87a0",
+      "parent": "5bc0a5c9ff1b9cd44d1c5da0d7da60f2e9fe631f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8b4aae9a5348fb10e9e134103f108aaa147fd30b",
+      "parent": "17cd8303e75f1bde0716a648ddfec05f23cda9a0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5bc0a5c9ff1b9cd44d1c5da0d7da60f2e9fe631f",
+      "parent": "bd8a5cf8e421563547dc975e62f9d45f9be7b9f6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bd8a5cf8e421563547dc975e62f9d45f9be7b9f6",
+      "parent": "17cd8303e75f1bde0716a648ddfec05f23cda9a0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "17cd8303e75f1bde0716a648ddfec05f23cda9a0",
+      "parent": "878ea826b834103d7a634c0a10696df8a2af0234",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_process_detection.py",
+          "new": "tests/test_process_detection.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5d6047456967f67fce756335b957af34e1ae5b57",
+      "parent": "368fefde45258839d42f9fa225b3bdffdf9fd5a3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_priority_strategy.py",
+          "new": "tests/test_priority_strategy.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "07ff70c516e37a5614f9d01bcb29d32c61a3fac7",
+      "parent": "042a36b673d51f4bf990b04f903aee02f1ab07e1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_backup_read_pacing.py",
+          "new": "tests/test_backup_read_pacing.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "368fefde45258839d42f9fa225b3bdffdf9fd5a3",
+      "parent": "b8fb0a56bccff198e557c7a50dd50ae6f36b25d5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_priority_strategy.py",
+          "new": "tests/test_priority_strategy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b8fb0a56bccff198e557c7a50dd50ae6f36b25d5",
+      "parent": "bf63f14a1e05f9bddbc78dc9255c5eb7409994d3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_priority_strategy.py",
+          "new": "tests/test_priority_strategy.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bf63f14a1e05f9bddbc78dc9255c5eb7409994d3",
+      "parent": "042a36b673d51f4bf990b04f903aee02f1ab07e1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_account_policy_values.py",
+          "new": "tests/test_account_policy_values.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "21796361973217838cb0a0d1e6e6d616e6b4307e",
+      "parent": "042a36b673d51f4bf990b04f903aee02f1ab07e1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch_account_threshold.py",
+          "new": "tests/test_autoswitch_account_threshold.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5f89bed6644d406296eeec9ce580a211bce89117",
+      "parent": "34a3b3defcfb60ac8a0d283a878f0ed7541826a4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_credentials.py",
+          "new": "tests/test_credentials.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fbce03080439dbe7308b48900081d798d42a3dca",
+      "parent": "6ad3cd86f5f079f937b108510da1c4d3a5b6ba24",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "465fd357dc8dc2cfcc4bec8fafdea503a6d1fd49",
+      "parent": "6877cf6a31045d0bea089f96cec25108e1106760",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "97657eafb758506341b622177839044b0aca5594",
+      "parent": "f519e463ecf434757253aedfbc83e7763462a94f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_app_bundle.py",
+          "new": "tests/test_app_bundle.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9a03c87148a4cb761330e8b7b0905bbcd166e541",
+      "parent": "9ea59b2c33c455f980c231438468e853e59b5b0d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_claude_locks.py",
+          "new": "tests/test_claude_locks.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f519e463ecf434757253aedfbc83e7763462a94f",
+      "parent": "0f57b7c9e421dc13f1d65f3e1ab8c8dacba5dd80",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_app_bundle.py",
+          "new": "tests/test_app_bundle.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0f57b7c9e421dc13f1d65f3e1ab8c8dacba5dd80",
+      "parent": "2dc17b79748bc10d73d39bfcd18dd8dd0cf81ee9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_app_bundle.py",
+          "new": "tests/test_app_bundle.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "347893c266892a489d52e1cf0de5b68086dd0921",
+      "parent": "e8c9aab56f4177cae1aa93e6693e1f6de6e0e8e0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e8c9aab56f4177cae1aa93e6693e1f6de6e0e8e0",
+      "parent": "9ea59b2c33c455f980c231438468e853e59b5b0d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2a50c8168da389a809e1eae5821755e92ab861ec",
+      "parent": "9ea59b2c33c455f980c231438468e853e59b5b0d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bfac19a7ec718232c9ebf0173ca910ed55c7b00e",
+      "parent": "9ea59b2c33c455f980c231438468e853e59b5b0d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b210ca27b2e4930ab973212f708b463b5f7d7866",
+      "parent": "5a837605947d0ab87a87f471689867ff4288fa5c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_lines.py",
+          "new": "tests/test_lines.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5a837605947d0ab87a87f471689867ff4288fa5c",
+      "parent": "570adb0cb21a4e644154436002fc1ede89aec36e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4523744de197a3ee78f25e9fac08483ee76cc9fa",
+      "parent": "29e94889874813d37ecd6c0d86e98f459c56e6f1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "29e94889874813d37ecd6c0d86e98f459c56e6f1",
+      "parent": "ed70d4300fc13c468d45074f0d6e304d74132946",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ed70d4300fc13c468d45074f0d6e304d74132946",
+      "parent": "b566a7ffcb89b2d7fbc9475f9a7cd3ced0a0368c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b566a7ffcb89b2d7fbc9475f9a7cd3ced0a0368c",
+      "parent": "750b023d3b4bba6d472bdb6305d0a4f20e58b651",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "750b023d3b4bba6d472bdb6305d0a4f20e58b651",
+      "parent": "7ff983fa6a5da74140faea7da108429c155218bd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_mappings.py",
+          "new": "tests/test_mappings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7ff983fa6a5da74140faea7da108429c155218bd",
+      "parent": "55e2cab3dfb53946570326984bff6b37b59aef0f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1ad819218bdac08a7aeb5bb4b8b3ecc41c55218d",
+      "parent": "92ee3fa457f21004ef79d13484bbd2da9c2aca23",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "92ee3fa457f21004ef79d13484bbd2da9c2aca23",
+      "parent": "2e9f0ceee7682acb5ad172f553494416d31a978b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "92270ebcdc9203ac6268e75c06f4d8ce277345d9",
+      "parent": "1373fc39def4e285fdb7744bbe57e55eafd3d258",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1373fc39def4e285fdb7744bbe57e55eafd3d258",
+      "parent": "5fd1043a2c1b5e65ed68a7f98727cae7424edba0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5fd1043a2c1b5e65ed68a7f98727cae7424edba0",
+      "parent": "7e154bcd0fddf023df2423b19beb83193f7ef1b3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7e154bcd0fddf023df2423b19beb83193f7ef1b3",
+      "parent": "5ed01dae5aceea8ded5f8e0c4da6de3727c0c712",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5ed01dae5aceea8ded5f8e0c4da6de3727c0c712",
+      "parent": "34442936745b4c0ed8209aac1ca35b6d4d28dd5e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "34442936745b4c0ed8209aac1ca35b6d4d28dd5e",
+      "parent": "2174e8cf7711f63251914a0ad3edcb315a1aaa01",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2174e8cf7711f63251914a0ad3edcb315a1aaa01",
+      "parent": "0a5b692cc688a7a18a03413c875d5aba5d1d26a8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0a5b692cc688a7a18a03413c875d5aba5d1d26a8",
+      "parent": "8fdc89a3ebc326a22241d5e43eeb6eb794f25fc7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9f72f0713050c0c8e2de57c291110956a645779a",
+      "parent": "7d30991d444315d566fea362662567c10b9d6b2a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a3217b049162529010b0e0d75e21661ceecadcd3",
+      "parent": "907550c6486df4878e3371aab1946b8a5450c4cb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "907550c6486df4878e3371aab1946b8a5450c4cb",
+      "parent": "6145afd6ddfcfa3746a5b5080d48a769532f8e07",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6145afd6ddfcfa3746a5b5080d48a769532f8e07",
+      "parent": "3a4e5c14873eb5b32f182d55c68da98ac8c0db45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "df8174ca19c25d5965105f783f3e3c69f07d583a",
+      "parent": "3a4e5c14873eb5b32f182d55c68da98ac8c0db45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "07c0fbdbc3b57051ab7e6a21d14d6629e08e629a",
+      "parent": "3a4e5c14873eb5b32f182d55c68da98ac8c0db45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b659a4c79a423cde5000cd105bcd813d95cb9607",
+      "parent": "3a4e5c14873eb5b32f182d55c68da98ac8c0db45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6ad3cd86f5f079f937b108510da1c4d3a5b6ba24",
+      "parent": "3a4e5c14873eb5b32f182d55c68da98ac8c0db45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ff1f1b2414781903b763a229c291d28974d553ef",
+      "parent": "45fdcfcbcd14bd50c5128493a704e7cc91840ea8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "56a8c007c0fb7e225cbe52c3e007ccac56446ce4",
+      "parent": "7187ce83b444c6af7b61ec8ee092623566a2d8fa",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "711f2dec1df60ead9b26b09c188587c4deeee7c0",
+      "parent": "7187ce83b444c6af7b61ec8ee092623566a2d8fa",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_process_detection.py",
+          "new": "tests/test_process_detection.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f1ac43a1d4c473ed4ed94c15bf13de9b2abf49ad",
+      "parent": "7187ce83b444c6af7b61ec8ee092623566a2d8fa",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2a0be082b945272ddcd099fcbe36eeb4715294e9",
+      "parent": "7187ce83b444c6af7b61ec8ee092623566a2d8fa",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_add_account_identity.py",
+          "new": "tests/test_add_account_identity.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "45fdcfcbcd14bd50c5128493a704e7cc91840ea8",
+      "parent": "7187ce83b444c6af7b61ec8ee092623566a2d8fa",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7ae904d448819403b588ccc8685eec6361e668c6",
+      "parent": "172da643d88a390960d76b8a55cda8e93edac9a6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "172da643d88a390960d76b8a55cda8e93edac9a6",
+      "parent": "88934c974d92d13833d36543161ee6bc15b3a5ac",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7ab6f5b8f39a485db44ed0a1525497f581060522",
+      "parent": "25c7b84b9dc5184ddf83d062b49bb0bc1f31a77a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "de209e87bd4420411d818a7d142533576d9b7326",
+      "parent": "9a6769af62a4f7e8086ea81e5a97adb932e3e36a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8d7547b38d830da9fdd8988627f0cfb05cf7c871",
+      "parent": "9a6769af62a4f7e8086ea81e5a97adb932e3e36a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9a2f9fb9b00ad85004b47440446a9ce0fa24c9ec",
+      "parent": "bff83f932fe6713ca0ac9359a60e8f75adc7e47a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "76e36ecb6861ba2487a6a3cf1a5f73dbeaa764f9",
+      "parent": "25c7b84b9dc5184ddf83d062b49bb0bc1f31a77a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_process_detection.py",
+          "new": "tests/test_process_detection.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bff83f932fe6713ca0ac9359a60e8f75adc7e47a",
+      "parent": "4c22371f3470445f5be19bfbaaaee1195c31dffe",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "69d1f52ebab1c1513ca2c4b85a17f63cfda4a594",
+      "parent": "70f10589905001329aa9a7877d9895468c0b0171",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "44a96b4381c3f196c43eb2a9a48cf120120f9504",
+      "parent": "70f10589905001329aa9a7877d9895468c0b0171",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c6533f18d4079cb30243768f96cf7cfb4349416f",
+      "parent": "d13fe421f9eb31abc85e07cd473806a7d3fdc164",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d13fe421f9eb31abc85e07cd473806a7d3fdc164",
+      "parent": "56b65955e756227f406dd382d1b4b6fb67f53836",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "56b65955e756227f406dd382d1b4b6fb67f53836",
+      "parent": "f59e14f1e3b549451b732945bc8a339a963286ac",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_launch_agent.py",
+          "new": "tests/test_launch_agent.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "99cdba27cbdf285c59695a3fb43a7e9e55485ce3",
+      "parent": "27c634ea12a73ca3aae72f8ed7d8840779672ddf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_real_store_guard.py",
+          "new": "tests/test_real_store_guard.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f14157d03b80203c0a35ebc41fe42f8739eeecbc",
+      "parent": "2213700b5a1331f50939ce1f41b531e674d612a6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "14da081e7bacfa765ab3955d82397c8fa3bd7d7c",
+      "parent": "2213700b5a1331f50939ce1f41b531e674d612a6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2213700b5a1331f50939ce1f41b531e674d612a6",
+      "parent": "af6a5b24a2305a62f22040f9a0b05425f848dfea",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_add_account_identity.py",
+          "new": "tests/test_add_account_identity.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "af6a5b24a2305a62f22040f9a0b05425f848dfea",
+      "parent": "3c3f2b887a3d46a6457628ac3bf0074c2d975c23",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f8fb143f3c43bfd02f22034086f491ced27e6989",
+      "parent": "3c3f2b887a3d46a6457628ac3bf0074c2d975c23",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3d0f9633d564f3b6f8141c1af1b6ce978daee51a",
+      "parent": "1c3122ed5fdc72946618652a19e29e7a224325d5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f59e14f1e3b549451b732945bc8a339a963286ac",
+      "parent": "1c3122ed5fdc72946618652a19e29e7a224325d5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "03b0ca2b350095b1953563a9aafcd64f47504923",
+      "parent": "7d797118566090fd9055700cfa6ec1dd5835e219",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7d797118566090fd9055700cfa6ec1dd5835e219",
+      "parent": "ad135787f5d7ed4a4749cf71c618782aa80f5288",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ad135787f5d7ed4a4749cf71c618782aa80f5288",
+      "parent": "40eace271b09b36a738f063e5f408af9d2a290ea",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "40eace271b09b36a738f063e5f408af9d2a290ea",
+      "parent": "210a15ab0ca15004258e80776b7164e573025af5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "210a15ab0ca15004258e80776b7164e573025af5",
+      "parent": "60f57d48d28d0960b2a2ff8b3696b3a15e29f016",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "60f57d48d28d0960b2a2ff8b3696b3a15e29f016",
+      "parent": "23d319792e869b4c71a0a68c56daae05dc9d92ba",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "23d319792e869b4c71a0a68c56daae05dc9d92ba",
+      "parent": "021c8feb766dc7b751a0f7ea536ed389177fe99d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "021c8feb766dc7b751a0f7ea536ed389177fe99d",
+      "parent": "bac28e2630d3022e2b37b7495c2cb2aad36af1a9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bac28e2630d3022e2b37b7495c2cb2aad36af1a9",
+      "parent": "c5addc8dc699cd974928f464aae0a05e50ce88ea",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c5addc8dc699cd974928f464aae0a05e50ce88ea",
+      "parent": "c8b0ee4729eedd4ef2c81822c8b7e8f69ea0b2cc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c8b0ee4729eedd4ef2c81822c8b7e8f69ea0b2cc",
+      "parent": "9f625064763d3fb04cbe31e90a7f3f9ef123df99",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "10611a64608a49c6d4919833eb9d5c94910e9c32",
+      "parent": "8bb6566de58c0292f4b635b777667258d77e67d1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ec2522300c12b709de0dee373a845269411381ff",
+      "parent": "f285e22096169ba94736722b998ba15181b83b9e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0ccda15a6619b4775c9627a232e07cc86ad3ff1c",
+      "parent": "ba6f3f9ba1ec9562e57cef58def918c0005a4769",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_fsutil.py",
+          "new": "tests/test_fsutil.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_process_detection.py",
+          "new": "tests/test_process_detection.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ba6f3f9ba1ec9562e57cef58def918c0005a4769",
+      "parent": "bae0889407c932f04db8ee86f68b1e6b81d43170",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1d72a0b952a8cfd7e8392b995aa9c5e9114f3608",
+      "parent": "b872b73f125b596d9e94da5c99a38057b4802c56",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "560dc8e83f19b3f4f96cadc2689a5e35754048ff",
+      "parent": "06a7aa5963b121649fe6fdb27b1fb997924ef73e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "91991f26b5a0d3e0ebecfee741adf7981ac9744a",
+      "parent": "74979dc12901ded51ff1c741d131f5d20fab35bd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "74979dc12901ded51ff1c741d131f5d20fab35bd",
+      "parent": "15e96677eb5c74a73a26483a98fb6269623fd1d4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "15e96677eb5c74a73a26483a98fb6269623fd1d4",
+      "parent": "0b3c373001e4ef184bced71ca4d9be88936b903e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0b3c373001e4ef184bced71ca4d9be88936b903e",
+      "parent": "105f49cf644cdf51b266ae18ba3751b99fcd9427",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "105f49cf644cdf51b266ae18ba3751b99fcd9427",
+      "parent": "06e447acfe549647cc254b40b2711de2687fff29",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "06e447acfe549647cc254b40b2711de2687fff29",
+      "parent": "a3d596d1f13fafd06a554a8404059de65aaa5af7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a3d596d1f13fafd06a554a8404059de65aaa5af7",
+      "parent": "1c210b69d55975671ef75b584f79224afcebf579",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1c210b69d55975671ef75b584f79224afcebf579",
+      "parent": "895d901f7f5bd4cc89128333d5aa7d999496c0ae",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "895d901f7f5bd4cc89128333d5aa7d999496c0ae",
+      "parent": "5cdbf2ceaf8bf178d8101c7ad88495ad8274fe90",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5cdbf2ceaf8bf178d8101c7ad88495ad8274fe90",
+      "parent": "fc9ba320408f82d93141b6d5dd726330a599f219",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fc9ba320408f82d93141b6d5dd726330a599f219",
+      "parent": "cb4f35c7391c724a9e6424d6db37e311d3a60754",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cb4f35c7391c724a9e6424d6db37e311d3a60754",
+      "parent": "0de295676e8e4daa5c372efdc4426c15e404370b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0de295676e8e4daa5c372efdc4426c15e404370b",
+      "parent": "01fc75532e63c8d425fb29f2cd55de44b4ed220b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "01fc75532e63c8d425fb29f2cd55de44b4ed220b",
+      "parent": "7c18dfe14f6dfcaafc9c774f1ca5a9fdf2f51365",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7c18dfe14f6dfcaafc9c774f1ca5a9fdf2f51365",
+      "parent": "e7b5b8ca06ada99cabe577bcf5a46e6483631d27",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e7b5b8ca06ada99cabe577bcf5a46e6483631d27",
+      "parent": "01004b7b58e7bef3686b5855ee4149a88f06d0dc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "01004b7b58e7bef3686b5855ee4149a88f06d0dc",
+      "parent": "0bb1f834eaa651befc5932182f4116961e151d8f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0bb1f834eaa651befc5932182f4116961e151d8f",
+      "parent": "d0c1dee7bab800ee5465e0fb68080e271fe880e9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d0c1dee7bab800ee5465e0fb68080e271fe880e9",
+      "parent": "2d5b0ae4efefd3d0bdc9e0f781568871399baeb3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "72ad34fcff7d6ae8db61002be14b6d5ac3c26595",
+      "parent": "0f2093628ff3bed711892ce91745df9e935a43fb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0f2093628ff3bed711892ce91745df9e935a43fb",
+      "parent": "b6bd089501eb86de750ffad46adf7b582abf77bc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b6bd089501eb86de750ffad46adf7b582abf77bc",
+      "parent": "873d8a181c4394975ab3b1c9ba8c7e8ad1a8f9a2",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "873d8a181c4394975ab3b1c9ba8c7e8ad1a8f9a2",
+      "parent": "7539ce67ba8eab081cc2996134572fc324fee2f9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7539ce67ba8eab081cc2996134572fc324fee2f9",
+      "parent": "a9ca5a0242f284061ed9eac7a2ea2294b554ffbe",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d2775ed97aa8f8996450aa8ce317f9c3687b96e1",
+      "parent": "99aff3cc6bbd4a1659fa63045633f01211d46e2b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "99aff3cc6bbd4a1659fa63045633f01211d46e2b",
+      "parent": "e07d903b8000db6036133eb4eb8dc183e92fbf75",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "994d223ab5d76500dd2c3b1de422985176527b96",
+      "parent": "e7668a33ef88df5e728d59b536c0753453da7900",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3188f20d38c0e9e92f449b7e7ff0d9220dc877cb",
+      "parent": "7bfde2c7d7fe8a5f32436b568e50bdfa214aaec9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7bfde2c7d7fe8a5f32436b568e50bdfa214aaec9",
+      "parent": "081690110e20dce790f23044b6c9a2c2c2dedc78",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0224bf59c9195b317a0f7bf36cfb00e95d8c77c8",
+      "parent": "3d9f59678f7acae682bbb49f514417e834add269",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "635c0f042d1a7e19a9cfd259de54bdc458caa7ac",
+      "parent": "bde73fd78647d12c47b53fe3ce754852d271e4de",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bde73fd78647d12c47b53fe3ce754852d271e4de",
+      "parent": "23da78e2c2a2cc0cd3317069e0a7d7bab811ce94",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "23da78e2c2a2cc0cd3317069e0a7d7bab811ce94",
+      "parent": "4eaf14d488aacab6d2f2abc4052a7c555056a796",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4eaf14d488aacab6d2f2abc4052a7c555056a796",
+      "parent": "0456c6e86eec2583ace9f92faf78295dc6f1abd1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0456c6e86eec2583ace9f92faf78295dc6f1abd1",
+      "parent": "75295818fe2ab4c8f0aeb598ccb7f8bdcc285c3f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "75295818fe2ab4c8f0aeb598ccb7f8bdcc285c3f",
+      "parent": "fbd388b9245e8e2496ffc17abdd7a0a50971a8b2",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fbd388b9245e8e2496ffc17abdd7a0a50971a8b2",
+      "parent": "0deffef25f2764d469170bdeba5a46860d9b8dda",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0deffef25f2764d469170bdeba5a46860d9b8dda",
+      "parent": "efb477b7e371e921e05091b96756cb98e71bdb43",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_appearance.py",
+          "new": "tests/test_appearance.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b847b24091a885f53117dfe246bc9cfa2fc29abd",
+      "parent": "32d45cf21dea6d492fca47ffcd65d7d2b12c497d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "32d45cf21dea6d492fca47ffcd65d7d2b12c497d",
+      "parent": "8ab32b77b90ed691b9a29c8c7e3bd2bee247046f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8ab32b77b90ed691b9a29c8c7e3bd2bee247046f",
+      "parent": "9b9f01286ea973f745f9a017e00a795d0baf2e65",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9b9f01286ea973f745f9a017e00a795d0baf2e65",
+      "parent": "a2fd9014b21c10c03431ddba3f8bc10ab999bfff",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a2fd9014b21c10c03431ddba3f8bc10ab999bfff",
+      "parent": "339e7eea4b4531c258889a3bbdb90fd734e016f0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_colour_cache_isolation.py",
+          "new": "tests/test_colour_cache_isolation.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "102aa95459e8b2b394fd39f595c6fe4c3af9d44e",
+      "parent": "4618a7f8f162ae064218c62515f8c5b140079f86",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4618a7f8f162ae064218c62515f8c5b140079f86",
+      "parent": "15e66bae5700b229d5d5ac747bb2b7ef778dfc9f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "15e66bae5700b229d5d5ac747bb2b7ef778dfc9f",
+      "parent": "d4ff68a56186d8dfd33dd8a607e757ca05d9a6a0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d4ff68a56186d8dfd33dd8a607e757ca05d9a6a0",
+      "parent": "ef5a079890108415741d03b73df3f4d7dce63f8f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ef5a079890108415741d03b73df3f4d7dce63f8f",
+      "parent": "9f35426af3846763e79a304dd53d4ce2f40a07a6",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "521075fe3b9a2c82685f5b6f0b6959721f3ef4ce",
+      "parent": "253877c1343ca31edb0a8facdcbbdb5e53be477f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "253877c1343ca31edb0a8facdcbbdb5e53be477f",
+      "parent": "6f5e0233a4ea95870059ecaceff147b2ed1d1214",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "322d5cbf55784c07f522504415b1121dc710ada0",
+      "parent": "5cc8a4835c1a1ff2e36deb35b3b4a92bab2e8a01",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5cc8a4835c1a1ff2e36deb35b3b4a92bab2e8a01",
+      "parent": "27928117ed283e1bca4cf4c864b7e25dfcdb84c4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "27928117ed283e1bca4cf4c864b7e25dfcdb84c4",
+      "parent": "421648eae31867971ee68798f6b928c108dbab75",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f7804412818e2bafd43470aafbad46cecaa01041",
+      "parent": "55320a76ead6f53725939611fa2e431a114d17d3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "55320a76ead6f53725939611fa2e431a114d17d3",
+      "parent": "c45d9f275d659c5efb082c692b5196c70d46a975",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7c1b6a068af4fc435927d35817e4a847c810c17f",
+      "parent": "c6ce26658b5a9b001aa95c1d8ab7bb4d3cd94e7a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d40334291f9b28a68e7d4122b2e3fd58bc879a60",
+      "parent": "f4a7157e4b6a6fa09fe594c10a1dc2a9c96ade41",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f4a7157e4b6a6fa09fe594c10a1dc2a9c96ade41",
+      "parent": "c6ce26658b5a9b001aa95c1d8ab7bb4d3cd94e7a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c6ce26658b5a9b001aa95c1d8ab7bb4d3cd94e7a",
+      "parent": "02c56066ca9b42c3c62f63eefbf596507b78b3d1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "02f247487690749425572ca42a02bec4b478c42e",
+      "parent": "531b9524af15fd6c8dcaa3fa2024b2b8c62d3ded",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "54905edee5fcccf4f12b65c421860cfdbc1db922",
+      "parent": "65d208081a4985b9fd1786bc258d5172d196bee2",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f0739626168abf5910fd393cdd809235c6a69008",
+      "parent": "d4cd476f73c5d49ddcc69af8d841f555bd22a70e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cf2e4084ef68bd7f4dd6aa992e2d274e41aeb5b5",
+      "parent": "ef277498b649c7efa95a7cb7fa11b215bee5d4d1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ef277498b649c7efa95a7cb7fa11b215bee5d4d1",
+      "parent": "d61c66c6d59a4df2cebf6d885b0655fb665e84b4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d61c66c6d59a4df2cebf6d885b0655fb665e84b4",
+      "parent": "0ff73406642c95de224b1733686a0d151d6cda75",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0ff73406642c95de224b1733686a0d151d6cda75",
+      "parent": "e724c993c0212de8ee365f337ef58c16fa1b2a23",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e724c993c0212de8ee365f337ef58c16fa1b2a23",
+      "parent": "428cc02258577804f658af0b8addc5ec3b8dc577",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "428cc02258577804f658af0b8addc5ec3b8dc577",
+      "parent": "0ce0d51b212cd2c390446b79542ed8ed189a9f4e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0ce0d51b212cd2c390446b79542ed8ed189a9f4e",
+      "parent": "1d017507f8345df8f5ecb6a8b68f43560b8364cf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1d017507f8345df8f5ecb6a8b68f43560b8364cf",
+      "parent": "9c507d0a60570115b05f0fbc0d15b983b27d08b9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9c507d0a60570115b05f0fbc0d15b983b27d08b9",
+      "parent": "f1adcc98fa79110dbd3f42e6ea8fbf87c633e759",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2a5bd73eadea3cbc69b0fe200f8e82508506e8e8",
+      "parent": "55b21aeb0df6143833d53052cf924792b61ca45a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "55b21aeb0df6143833d53052cf924792b61ca45a",
+      "parent": "a203d55d70c8b5a6d3ab1698ecc89279ec8c1a0f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_claude_locks.py",
+          "new": "tests/test_claude_locks.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2d5614c72dc9c10fa4c0d4551177b2bb818674fc",
+      "parent": "8c48997f46865015a74b98fcef68ccbf425aeb1f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e6dd4a732b687c53149debcbb0ecd55af1ae4bda",
+      "parent": "13fb3800fd697178f3c6cff9ba95bed30fb85d7d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "13fb3800fd697178f3c6cff9ba95bed30fb85d7d",
+      "parent": "48a4199832c38b64856bfa1e0c6d26a3c157300d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8385c61cb944dba9fab3cbca7d9db21b44a56270",
+      "parent": "ec89200ab37fe41c5438eff21d29451cb5db8234",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "34a0ba25e35718520296ed25de859c84a5e6cf6a",
+      "parent": "86cd0ef06eead1ae7ed4a767cabb7a8c3fe29902",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "33592fd7259833ff1d98607c304899075925a213",
+      "parent": "86cd0ef06eead1ae7ed4a767cabb7a8c3fe29902",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9c6fc242991baa05220851cebf1aa7804a0b653d",
+      "parent": "db55bc2021ff4d53baed1ecb5cf0a2e4bc5a291d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3314d758a349970b4660d010a0169059d50ee163",
+      "parent": "4164df2882bc02e6361672be7e3f91123a544cff",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "dc7fe5e3666f2cc732a97d5ee555bc13211cbbc1",
+      "parent": "c89e6f93836965286b6720549da247366f06b9ab",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "91463bc3745094f6259797b2030da3ce7122d1f6",
+      "parent": "c89e6f93836965286b6720549da247366f06b9ab",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_appearance.py",
+          "new": "tests/test_appearance.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "366f8cc351bc836422d2cb2d28e39a76beb4879d",
+      "parent": "c097d76f6c8ee24243ba0546539bbc0609196cf7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cf4d63b8109d84cbd196a680a6dab32d0b83ef18",
+      "parent": "2fe9a5049d354130fbfde230ea8b0da76cca2eb5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2fe9a5049d354130fbfde230ea8b0da76cca2eb5",
+      "parent": "019a6a53743c480c931547dd72c0c0e3e6eb616f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "019a6a53743c480c931547dd72c0c0e3e6eb616f",
+      "parent": "a1fcb892a1f67a6eef1a92176119a5d90ce806ba",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0fb37eb9aa257a21b752d317565b3ceb207e7a61",
+      "parent": "b0b6c34ccf4aeb360e1bf18ae2937e79767ad7ad",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7d682a06f5573283379cceb3f0fb2022d84a9e5f",
+      "parent": "dfb47a548e66606a987cfe09d0d345c17915c2ff",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "dfb47a548e66606a987cfe09d0d345c17915c2ff",
+      "parent": "ded82e74f28c6fa9c7282dd2c567154fec622872",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ded82e74f28c6fa9c7282dd2c567154fec622872",
+      "parent": "dd5c9ac1de65ddbf1effcf4c6d65bd36754d31d7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "56f833b147c84d472871f320a2ddf1006ecc318a",
+      "parent": "aca1c17c3b02f4eb01018ce89e2124021d6688c4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "dd5c9ac1de65ddbf1effcf4c6d65bd36754d31d7",
+      "parent": "8abf593567a90e778a749d18949b7340396a8a9e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8abf593567a90e778a749d18949b7340396a8a9e",
+      "parent": "6484095269dc38a82c60a68e37589061c38613bd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6484095269dc38a82c60a68e37589061c38613bd",
+      "parent": "1964097d2209991fcd9c5404b4f42d2a6c23cede",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "aca1c17c3b02f4eb01018ce89e2124021d6688c4",
+      "parent": "b0b6c34ccf4aeb360e1bf18ae2937e79767ad7ad",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1964097d2209991fcd9c5404b4f42d2a6c23cede",
+      "parent": "b0b6c34ccf4aeb360e1bf18ae2937e79767ad7ad",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_pace.py",
+          "new": "tests/test_pace.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2b582521f733963c1b3411e9c605cecd4e0c4fa3",
+      "parent": "2f3f01289b076a72efadbb1f464b4a0e163b5f15",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a897da0ee0a95b535821a8c8425543c1ae97f785",
+      "parent": "3694c209cd96d8e911621e158f8a18ff7d29a428",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3694c209cd96d8e911621e158f8a18ff7d29a428",
+      "parent": "76216f1beedfabefc614dd2fe504c5c7c2ab421d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "76216f1beedfabefc614dd2fe504c5c7c2ab421d",
+      "parent": "a0a171eb1c9a59610ffcbda2c9a1d0be5b9495dc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "43eb33e51ce94ae6addd2782e4a897b9941a5389",
+      "parent": "878dee1ab776b14cf509ddcdc3fc3cbcc911cf40",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2f3f01289b076a72efadbb1f464b4a0e163b5f15",
+      "parent": "abeab81a79dc0a38876ff5c08f3fae80c1c43b73",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_pace.py",
+          "new": "tests/test_pace.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "abeab81a79dc0a38876ff5c08f3fae80c1c43b73",
+      "parent": "5523be99257fb203555ce24777a388e090a56a51",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f5f8dc100a708fb28435e4d40bd800d2c86ab696",
+      "parent": "cbfe5f81e3e65d50a272a49d0bbc008588d50946",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1444fb65583572f56f1d379f59d4c68d1c100f06",
+      "parent": "e7bf349560f1cad75c1c2fc5f15ef6dd6ac34587",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e7bf349560f1cad75c1c2fc5f15ef6dd6ac34587",
+      "parent": "9270402a087cfe6645d7c93131b8c95f12388c1c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "878dee1ab776b14cf509ddcdc3fc3cbcc911cf40",
+      "parent": "f848eb6580c787177ab66cf8e2039315378587f8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9270402a087cfe6645d7c93131b8c95f12388c1c",
+      "parent": "f848eb6580c787177ab66cf8e2039315378587f8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_swap_accounts.py",
+          "new": "tests/test_swap_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f848eb6580c787177ab66cf8e2039315378587f8",
+      "parent": "487412861731752989bf925c921aed3bfc600243",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_move_accounts.py",
+          "new": "tests/test_move_accounts.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a82afc3aefe3418bd516ceb139d9f95ca6df3951",
+      "parent": "2d75f657883ac4e49e10447a504eb017d9ce85b3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "97c0ae8c98d2eb47d24fea7972f9a0a5bc13cb08",
+      "parent": "b4e3a03ed4b4a6a26275c1050b9274cd45531c66",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ff2de397de2469aca3fa02d740f83f621e69de89",
+      "parent": "1e2515a291942a7a8eec5209e2b38fd25aac7c13",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1b4420951bf1ad9f9c6196f6a4a3fe0e21445975",
+      "parent": "1e2515a291942a7a8eec5209e2b38fd25aac7c13",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4bc75869842be129a8121885e19ddfa446f5075b",
+      "parent": "1e2515a291942a7a8eec5209e2b38fd25aac7c13",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2c03a7b2d0f001b6f1c82044f7f87df5a72a1bb3",
+      "parent": "a9c6a211609f10f69376a08e3d0063912ad5037a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4dc80351f51420146df7b8f987b901d2c43fa269",
+      "parent": "4f525c9cb3f490b6fbc6d0b3a469f07232eab0b0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4f525c9cb3f490b6fbc6d0b3a469f07232eab0b0",
+      "parent": "45d5585eaf59d3c76f9327e97fbabbec4dca4a07",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "45d5585eaf59d3c76f9327e97fbabbec4dca4a07",
+      "parent": "553e2cb9ba3dbee4f92ec11c6de9fbd4ec0f1325",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "553e2cb9ba3dbee4f92ec11c6de9fbd4ec0f1325",
+      "parent": "be77bc280faeaf4946475e8a7405417e1ccd9d85",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "03ce93a19c26ee2cf7224b0614059e4d2a0dcb1a",
+      "parent": "03ccc98be009921a924d97ad25f0673f126b41bc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "03ccc98be009921a924d97ad25f0673f126b41bc",
+      "parent": "0a2125c4c95a55650a407910fbd11154f539f9c3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ad074858a83156c8ba4f485751cbcc8eb9818293",
+      "parent": "abd4aef3636db4fa460489513b2aaa9fc3cd4735",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "abd4aef3636db4fa460489513b2aaa9fc3cd4735",
+      "parent": "07e8cc0163cf50de78046e1ec405e01ff51aeac5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "07e8cc0163cf50de78046e1ec405e01ff51aeac5",
+      "parent": "2f0d33807aef2eff6d9454214755f8a42d886ee0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8632574897efbd04d5fa16b0bfe4ab75fbc5bf03",
+      "parent": "76db3de211cad07130751b761d67dbcf81d50d84",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9be9cbae9390b08d046a5b762f49d2afc78b70b5",
+      "parent": "5e8f8e41215856f7908d4410e8da2847f108d05b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b053947a70d09a27e690b9fe17e059b617f25287",
+      "parent": "5e8f8e41215856f7908d4410e8da2847f108d05b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_poll_policy.py",
+          "new": "tests/test_poll_policy.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "245f5bae8444daaecc5fbc97007e6f6af43989a3",
+      "parent": "3d1c5b4ceafdd649156a4c48d2e8512c8279aba4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "294e14f600dc6a40bdcff861c6978399cd270dae",
+      "parent": "e42b53f556f3c6bd8948ed6e54963de70319a94d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ca852bc47a62d8cd330dd8f91d02031fc9bb768f",
+      "parent": "460e9270f9850a8ebc0a1adfa82e627dcce56df5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "460e9270f9850a8ebc0a1adfa82e627dcce56df5",
+      "parent": "1905d459485a8b9f2121c5ae584495caa646c9c4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3576f769b89a3ec405bcc5853c797d33a6e52a5d",
+      "parent": "3c7100735dc10e5cf59939143fac486cd2fb2101",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3c7100735dc10e5cf59939143fac486cd2fb2101",
+      "parent": "1d0a2b35f3585589aa18f3662273c1f126c6e2dd",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1d0a2b35f3585589aa18f3662273c1f126c6e2dd",
+      "parent": "12fa71d7a20c632a1aad0d2ac1b0d688a24db13b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "11321b6c789989bd4bd73d5e7f9fa28125ebff4f",
+      "parent": "26def0a74319804dc3e32c2867f62dd55bedbfc4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "26def0a74319804dc3e32c2867f62dd55bedbfc4",
+      "parent": "584eb0cbcc20cad08f553c5b46ebd60be4ef9502",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1d38e67fb78bb99753f25acb5800502baae5ddc9",
+      "parent": "ae9720139ddf620e5e6adc96c4bf71c5a1f24234",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ae9720139ddf620e5e6adc96c4bf71c5a1f24234",
+      "parent": "584eb0cbcc20cad08f553c5b46ebd60be4ef9502",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_menubar.py",
+          "new": "tests/test_menubar.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a5b5b60b892f1b832b42467cc1cb4605230987a0",
+      "parent": "584eb0cbcc20cad08f553c5b46ebd60be4ef9502",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "584eb0cbcc20cad08f553c5b46ebd60be4ef9502",
+      "parent": "cf63f8260b403652f7c27ee436492d711e65a173",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a86f6bec568b1bc0e4bb657a84d33499be7ddbe6",
+      "parent": "5884f0c6cf77bf7a2c19008652bc20bec17667ce",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5884f0c6cf77bf7a2c19008652bc20bec17667ce",
+      "parent": "77f73d92ce512b54f3faa40ffba17a0b34a7d39f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "77f73d92ce512b54f3faa40ffba17a0b34a7d39f",
+      "parent": "64ebbb222e855fcf1e38760a5ceeca29c8c164ed",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e144dc6715beca3db693d59abafd7c513e60ed2d",
+      "parent": "b3559ba7c901061cd6f8f56470f076b78e053d03",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b3559ba7c901061cd6f8f56470f076b78e053d03",
+      "parent": "64ebbb222e855fcf1e38760a5ceeca29c8c164ed",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "eb6a665ff60cc8b5a3faf29fc9ea601adb2db834",
+      "parent": "6ea08c05a68249a3c545f1ced7c3ed3cbf218b2c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9e65e7f63265146345efe35d06a560734f4eedc7",
+      "parent": "297ab87063e17ced099dd50b9ed8a72186efda69",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "57a018e0a9132d63fa27cdaaec5afbcee41b7a84",
+      "parent": "7a9fa31d4a2a16bf8bb3ba1950641d18a7629ad9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7a9fa31d4a2a16bf8bb3ba1950641d18a7629ad9",
+      "parent": "d4876b885a221439439ec4f871710099a10d8c05",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_config_cli.py",
+          "new": "tests/test_config_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "7b9a01647fea5e1c010209908e9165bbb4f4b26d",
+      "parent": "d4876b885a221439439ec4f871710099a10d8c05",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fca109f7f6cc642db7d7c55fa930c4d741a9cc7a",
+      "parent": "8c31ecda5222de6f65caacd7b8021e996003ea47",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4152d47cc06a405d3546b3bee730b57e5a60238b",
+      "parent": "774d9472c27785691f609d1b21a7798af05add69",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "774d9472c27785691f609d1b21a7798af05add69",
+      "parent": "e9109f8f3a21a638333f9d1284cc3a5366ef40d7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e9109f8f3a21a638333f9d1284cc3a5366ef40d7",
+      "parent": "dcc2403df7068d7e89d1ebfa3ee23649201d66b8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9be2ff4fa7db929008f3480ddbc31aa9966342ec",
+      "parent": "26faa7ec1573725cace041d95984baa7214468f9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "904e1b6a79260d16b1dc66a900e42c55e1b6d39a",
+      "parent": "d3909e169630a9fcb28aced968aabf4f867854e1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "04d14c0d355573837b07add4023c5937c7f945e6",
+      "parent": "e879e084aa0523c7967fcb32e011190854dced5c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e879e084aa0523c7967fcb32e011190854dced5c",
+      "parent": "870293ab27cac19c68828216bf9a10048087dbb1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1b8f802b54f8132a4107d332c9da436c664223d7",
+      "parent": "6f8549d5acb0d1aad1cc0064a2e76fa5aa94c4fe",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6b821bc1e5cbd8d703291dd787b674c2168af993",
+      "parent": "44a18e0d492db78dce4efcb69f09c3ac6bf25a16",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "44a18e0d492db78dce4efcb69f09c3ac6bf25a16",
+      "parent": "c8a2ef6248b3552f8937305fb9e2efccf05f5ab8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c8a2ef6248b3552f8937305fb9e2efccf05f5ab8",
+      "parent": "2999883e35dc4f2cc5bcafa52c9f984d5f8e3be0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_usage_store.py",
+          "new": "tests/test_usage_store.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "378285d7b005b107a5abb5fcc015d7552e87e7e3",
+      "parent": "5354484615b4c8527640afe2693ff4888440e288",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5354484615b4c8527640afe2693ff4888440e288",
+      "parent": "910bcdfac990ba96f1a82b97aef4c06c6f5a3869",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "657efeed77a2dd69e5c7dd1a8029c27fca844a95",
+      "parent": "411def6c56d631e98106875f5d9bdf001780505e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e2f4601849ab75569663137cef3e14e243a8b1bf",
+      "parent": "4b948c176d659681c9e1ce60f31055aa0e3c3b9b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "4b948c176d659681c9e1ce60f31055aa0e3c3b9b",
+      "parent": "095b0ca2e00f556b26b92e6706d582678752a76c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_autoswitch.py",
+          "new": "tests/test_autoswitch.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "095b0ca2e00f556b26b92e6706d582678752a76c",
+      "parent": "71a1220cf9efaa30c8e10fcac891f450508d1fbc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_api_key_accounts.py",
+          "new": "tests/test_api_key_accounts.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1b591d416a0b09a96b8d2c204974fe7adb461dc8",
+      "parent": "b5318175eb61bd31a078acba569ce034188fe471",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6e07e9f1044485c8a89470616d825610a4402c84",
+      "parent": "531b80fbd417c5396edd53a86bb7ffcf41e45f5b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "531b80fbd417c5396edd53a86bb7ffcf41e45f5b",
+      "parent": "b5318175eb61bd31a078acba569ce034188fe471",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_settings.py",
+          "new": "tests/test_settings.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b5318175eb61bd31a078acba569ce034188fe471",
+      "parent": "c20e7c828e921f4e30139fef7226a18992e2774d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f703ef51f5a28ef373678aebcf4e48e2f875f26b",
+      "parent": "9fa672fa3b7627ec36431f4532ba45159947190e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f1ef52118932965f9bf4d971ff1c577096d2dcd6",
+      "parent": "9fa672fa3b7627ec36431f4532ba45159947190e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ca285b20c7fc5ff725c0df65e703cca1721c82ca",
+      "parent": "296619b5e9b0f556a633bf98db545838dbdf14ec",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c9dd82476286801e50d119118fbc09b4f38418d6",
+      "parent": "c5e1a7e59b45293b9ed785aa2f1bc0f315c18f6a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f43d812b88fca7a61bb1f537c0dc65fb3b3869b5",
+      "parent": "30d1b238e994481f48e280fd2fdefa2a82a51a94",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_process_detection.py",
+          "new": "tests/test_process_detection.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "850837a1576ac75f9f242ba193090d35986f63eb",
+      "parent": "acb0644e784c61b657c069e5b98390d08bce7a21",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "acb0644e784c61b657c069e5b98390d08bce7a21",
+      "parent": "4351e3c56cf77be06aff73f07870d0f232b1055d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "15effb894e456357ef788e108e9034b94323d70d",
+      "parent": "4351e3c56cf77be06aff73f07870d0f232b1055d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0a437d2385ed7fe7f51da31dcf6a17ea2787412f",
+      "parent": "eabc9d8b2a781e4f0d222293e213bba87e3bca37",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d01d83cf6857b83223e723828da4b67769549436",
+      "parent": "16cd82d19a0ac83479b82ce128b53a6228739021",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_printer.py",
+          "new": "tests/test_printer.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "16cd82d19a0ac83479b82ce128b53a6228739021",
+      "parent": "8fea1c6b08070414e6889d999e87cf44fa735d6a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b3b559a2c8c68a94a859c659e459d4f8429c1ce5",
+      "parent": "6279b247d09dfba6725af300092fd43e86d759ac",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "adc0ae4bec49cf6cd7cacf03a760721c2e4fa3f5",
+      "parent": "46b8aa232c8a57570512730a0d94173b4a3fc281",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_json_output.py",
+          "new": "tests/test_json_output.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f36e6391549824b6657a7d6e32d2f6824f2d879b",
+      "parent": "0b646a445e2b9562a7c43fff4fbcfaa9ee4e8c45",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "42a357526854b56681b04c5214655032cd6c6322",
+      "parent": "2b795bf07074de0de6cd37073e7c55c88a2f18cb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d962866564ef157eafc57cf3fe29c5de503e8742",
+      "parent": "790de90033fa165f9a7384253ae717e48585977e",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a39d96adbc542d126fb120e7bb2ebb05a9b2a17e",
+      "parent": "2637ce26053d96da6a1215238a3d2871f901b377",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain.py",
+          "new": "tests/test_macos_keychain.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_migrations.py",
+          "new": "tests/test_migrations.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f07df9eda8f78e6f9e4bfbc1def548ea2eee03b2",
+      "parent": "84b46f4792c00aadc512c716e885434c8c54a2a1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c7e39bc5db35a68d302f280742f340e272340cbf",
+      "parent": "d315a06c428d5ca1dbccbe7843e833af0f8c305b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d315a06c428d5ca1dbccbe7843e833af0f8c305b",
+      "parent": "49e4a9bf3fc475b6b6a0de35c467575b09ce6574",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d3880a6b28f376fdbb254241f71ce8d32d2f8aec",
+      "parent": "18125b08fda56edb15f5cd64270b3bfa7e623820",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "18125b08fda56edb15f5cd64270b3bfa7e623820",
+      "parent": "f41e1c1bdd9c9e9189c18ab1214626a10ec55389",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9d9aa96a5fb75716aa9e39b4482fe7b35b34fa82",
+      "parent": "8cb43d14559975033299617dd9024a6eb56ec4fb",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "0eeb7fb53b06eab221508f58a04474cddf0a6e67",
+      "parent": "df970dac509d423449f371ab8241832e0f02228f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_session.py",
+          "new": "tests/test_session.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "899fc55ae426922fe0e923db866813d0b878c3ce",
+      "parent": "b5aeaad2fd63ae2a23b1a533e6b512261aad503c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "d7e768967bc15e243fe54c592c34fa5478f37e40",
+      "parent": "cd66b234dadb8561c383a5d1456faaba7e43bdd5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain.py",
+          "new": "tests/test_macos_keychain.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_migrations.py",
+          "new": "tests/test_migrations.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "97777b653fff6dbbbc8c917cc3cc6f5aaa693c4d",
+      "parent": "d88eeb27d1cae73143f354a48b54fa2da8aa5706",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain.py",
+          "new": "tests/test_macos_keychain.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "cde0b74fa0da968d6333b454d74e3fab5d8e7c37",
+      "parent": "435b67f8383f2d122a6af83775c49c6bf5b25db2",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain.py",
+          "new": "tests/test_macos_keychain.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "435b67f8383f2d122a6af83775c49c6bf5b25db2",
+      "parent": "6752b56c59deababa13caf80e6bd6c577878abbf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_migrations.py",
+          "new": "tests/test_migrations.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6752b56c59deababa13caf80e6bd6c577878abbf",
+      "parent": "dd3cd125b6f851e2e4234f31c47f10677fc8c7b0",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "06c87884a5004bc9280f48fad9402f467eef133f",
+      "parent": "76b54ef576a70560480de57750abc68652d36852",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "27f44af7af14e77a1522845cdde5562ba2239681",
+      "parent": "577981f203fc4ffd3e7061a3baeca67963f85f7f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_tui.py",
+          "new": "tests/test_tui.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "76b54ef576a70560480de57750abc68652d36852",
+      "parent": "577981f203fc4ffd3e7061a3baeca67963f85f7f",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "5988cda801f4d3eb4a30b7787cba5cce14da51ed",
+      "parent": "061316afb8c57e629fff777d68211d7bb6b91381",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "34d3108c86f3a29a314627334a8b1fb07317c3c8",
+      "parent": "8f3788c4b3beddc4c63f93d7489ef258eef5a758",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "3a6e18890341662b9ed59c79541a2fa11d344ff9",
+      "parent": "8f3788c4b3beddc4c63f93d7489ef258eef5a758",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "91f42715d669bc70c720c011dba73d3a12298fb1",
+      "parent": "e1edd114cc607c197b2109080ee55345cb2ee0dc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c95889317c5b000498ce020ab06c7d6e4e9d59c2",
+      "parent": "897af73902c7efaa451a0bd116b59073de4aebaf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "897af73902c7efaa451a0bd116b59073de4aebaf",
+      "parent": "c5c403a43d750bf95b647c61a24ed7c8ed269873",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9a782b78f72841ecda8c01ff9417239c43a8bb27",
+      "parent": "ab4757b8af55cc8cf2ac60cfe44476746aaa17e4",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ab4757b8af55cc8cf2ac60cfe44476746aaa17e4",
+      "parent": "e11823498a8f979c109a0bca59e1862aa5994554",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2244ee992751e436bf2d05375b3dd1983a43472e",
+      "parent": "2828f5c92a2b6772638b88e74f360bbee7e6331d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "928fd6f062b58df821e842d77825ecebcd7e5217",
+      "parent": "f86ce5f3d17029e2f3d302766f2d3727684c2b82",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f16e3f91ec9e305d5f3844305f97c21eab8c2499",
+      "parent": "04565ed68c3e133d8454a11bbb9f6454f4daefc7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "04565ed68c3e133d8454a11bbb9f6454f4daefc7",
+      "parent": "1f4153650a7a484c8ed20d41de2903868835ec9d",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f86ce5f3d17029e2f3d302766f2d3727684c2b82",
+      "parent": "5c993990746cfffbc6124e66867de5b85b7e8e69",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b34ae17efab6f8506ea2e45dc9e4fe0cf77c2cc2",
+      "parent": "5c993990746cfffbc6124e66867de5b85b7e8e69",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_paths.py",
+          "new": "tests/test_paths.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a7bae1a2b6e01f79fe9ab870fe6026fe6d87b396",
+      "parent": "9380f7ae692bb941a8e341ddcddbed0b45e6d661",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_transfer.py",
+          "new": "tests/test_transfer.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "79ed19d70574816707ec9decec5c0b04f82e99ca",
+      "parent": "38462318503ad8945c688a948ae90619f2590d1c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "588480d15bbd3d61a79488ac2ff66dacd063f6dc",
+      "parent": "b64603bfc51777ba710d2935475c0bc92ace8d38",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_macos_keychain_contract.py",
+          "new": "tests/test_macos_keychain_contract.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "339ac4ff8259d06419fce2fb2bee698f6ccaafea",
+      "parent": "e0b7186779962c863442dd8f71c2b104d95341e7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a07c7677ba97f2f93c1d3dc53e76e0ddeda2bb50",
+      "parent": "1325e1618b2c3b0be59c6a194df30a5eeae38932",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "8ce76312f1ef4d5f6cca6b763978fcd06c9ba410",
+      "parent": "fe6fe19eb5193a61f46cc1c5310c2e7d6f3cd7b3",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "08d00563d94ffd63431b77fec477b24488248e39",
+      "parent": "a6120262daefacf848812371b7f01b2b71b3fc2b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "607c6ee87abcfdae44e338457f8d6c492fce7ccd",
+      "parent": "c63e3ca20cb87312b5a7e9e38c7c138455ed0291",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "68f3ce74eb55b1a22f2fed33d39ca8d18c142ce5",
+      "parent": "b98ec256a3b4ce4a170eabb03c4b44a1f92a38e5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "fb1fb8fe70e71550545439e01b67dcbe4c294f81",
+      "parent": "ee2563cdd59e784bbd35cb59dac39db5ab490dd7",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ee2563cdd59e784bbd35cb59dac39db5ab490dd7",
+      "parent": "f9c12aa4e29b25cc7bcb14c10f062cad4d94da27",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "f9c12aa4e29b25cc7bcb14c10f062cad4d94da27",
+      "parent": "4f4cb2e76ce1c8bc995755f2135e6c3a83541dac",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_oauth.py",
+          "new": "tests/test_oauth.py",
+          "similarity": null
+        },
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "90865307b2aba75702a9bfadda8131f3062fa7b2",
+      "parent": "bb30881a2b02e5cedb43d78368c5898d0600b527",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "bb30881a2b02e5cedb43d78368c5898d0600b527",
+      "parent": "2e9539c70823c8e5fabd7f8c2986839593a7e73a",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "2e9539c70823c8e5fabd7f8c2986839593a7e73a",
+      "parent": "400fc90b69869c2792d0421edeecae7cc1a6e3cf",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "ec8e27e41c52ea4ac2a63d621bb837c5d6bda5cc",
+      "parent": "3e7c2f8ca527808f7288781e6765cfbb50606a53",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "9167c4fc8a572fc0bb1c3df11483090816b475ff",
+      "parent": "95703bd67c54f3caace1bce6382b68f34a376f82",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "59e6d0361920bbb3d93e2978bf82ca2849ef9a3a",
+      "parent": "92094c96afc477998ce98e15428d44cb9d7fe1b5",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "60e7da344bb64ee4db1ad3c8f19b81d1b0f25fbd",
+      "parent": "6b928e57bc281cd14df5fbfa6d711dbe62ecc8dc",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6b928e57bc281cd14df5fbfa6d711dbe62ecc8dc",
+      "parent": "a38ebf4d61e41a1c7d3650cf6e28632e50a17207",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "a38ebf4d61e41a1c7d3650cf6e28632e50a17207",
+      "parent": "e30b00c18f328394ba30161cd5bdb397fc6b5515",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e30b00c18f328394ba30161cd5bdb397fc6b5515",
+      "parent": "3558e2be48c3ebb5e85d4b16d0bc1a9aee09447b",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "b6afcd359217a5332f6642b37d6f7c5624325353",
+      "parent": "63319dee17742014fc50dc2b2abf7c8d647d3f4c",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "63319dee17742014fc50dc2b2abf7c8d647d3f4c",
+      "parent": "707ac1d912b8adc955fdb2d7c144d6bdb0745a88",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "1010eb825559a886f01491c2ea9d5767de6690b7",
+      "parent": "7f06a4dd75d15d8d06f13757cd4a1b4e3bad34c1",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "dfbe79e387050d27b74f93c34355e763a82b9ee7",
+      "parent": "321a41f5cb0258d4ac1a7284a3f94bc822d6c3f9",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "c21d1faa3527bd89c0578b242f192629d48193d3",
+      "parent": "1a02416ce10efd2af6b73afc625c12c653993da8",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_update_check.py",
+          "new": "tests/test_update_check.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "6f249f5cb97a6b2a826bae2c00d77b8b8551f108",
+      "parent": "0e8aa92e3d32ae8e3e6bd86066b0f70916149756",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_cli.py",
+          "new": "tests/test_cli.py",
+          "similarity": null
+        }
+      ]
+    },
+    {
+      "sha": "e8bc8667a3f4a462cb78d39b8f4acec8237f7705",
+      "parent": "ce26eea35a203383bb75cbe0682a404109b13c56",
+      "d_only": false,
+      "files": [
+        {
+          "status": "M",
+          "old": "tests/test_switcher.py",
+          "new": "tests/test_switcher.py",
+          "similarity": null
+        }
+      ]
+    }
+  ]
+}
