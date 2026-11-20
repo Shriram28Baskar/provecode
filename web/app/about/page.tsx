@@ -88,6 +88,27 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section aria-labelledby="use" className="space-y-4">
+        <h2 id="use" className="text-2xl font-bold tracking-tight">
+          Use it on your own pull requests
+        </h2>
+        <p className="prose-measure">
+          The same engine runs from the command line on any machine with Python 3.11 or later, and as a GitHub Action.
+          The Action reads the contract from the pull request&apos;s base commit, so the change under review cannot edit
+          the requirements it is judged by. A pull request that tries is blocked.
+        </p>
+        <pre className="diff overflow-x-auto rounded-md border border-rule bg-sheet p-4">{`- uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+- uses: Shriram28Baskar/provecode@main
+  with:
+    contract: contracts/checkout.yaml`}</pre>
+        <p className="prose-measure text-sm text-ink-soft">
+          From a terminal: <code className="font-mono">provecode check --base main --head my-branch --contract contracts/checkout.yaml</code>.
+          Exit code 1 means FAILED, 2 INCONCLUSIVE, 0 VERIFIED.
+        </p>
+      </section>
+
       <section aria-labelledby="prior" className="space-y-4">
         <h2 id="prior" className="text-2xl font-bold tracking-tight">
           Prior art
