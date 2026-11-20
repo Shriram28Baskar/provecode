@@ -1,0 +1,52 @@
+contract:
+  id: checkout-pricing
+  version: 1
+conditions:
+- id: C1
+  description: Discount is capped at 20%
+  type: boundary
+  mandatory: true
+  guarded_by:
+  - tests/test_pricing.py::test_discount_is_capped
+  checks:
+  - chk-cap
+- id: C2
+  description: Discount results are correct for valid inputs
+  type: functional
+  mandatory: true
+  guarded_by:
+  - tests/test_pricing.py::test_small_discount_applies
+  checks:
+  - chk-values
+- id: C3
+  description: Invalid inputs raise ValueError
+  type: functional
+  mandatory: true
+  guarded_by:
+  - tests/test_pricing.py::test_invalid_inputs_raise
+  checks:
+  - chk-invalid
+- id: C4
+  description: Public signature of apply_discount is unchanged
+  type: api-compat
+  mandatory: true
+  guarded_by: []
+  checks:
+  - chk-signature
+checks:
+- id: chk-cap
+  kind: pytest
+  path: test_contract_checkout.py::test_chk_cap
+- id: chk-values
+  kind: pytest
+  path: test_contract_checkout.py::test_chk_values
+- id: chk-invalid
+  kind: pytest
+  path: test_contract_checkout.py::test_chk_invalid
+- id: chk-signature
+  kind: pytest
+  path: test_contract_checkout.py::test_chk_signature
+approval:
+  approved_by: Shriram28Baskar
+  approved_at: '2026-11-20T09:00:00Z'
+  content_hash: sha256:a993720462a9ccc6f2f801094bba64f53629c0a65582b877c611c487bf3f3d72

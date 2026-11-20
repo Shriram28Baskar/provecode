@@ -1,0 +1,172 @@
+"""provecode command line.
+
+  provecode check   --repo . --base REF --head REF --contract C.yaml [--contract-base C0.yaml]
+  provecode record  ...same as check, plus contract checks and repo tests in Docker
+  provecode approve C.yaml --by NAME [--at ISO8601]
+  provecode compile C.yaml [-o C.json]
+
+Exit codes: 0 VERIFIED, 1 FAILED, 2 INCONCLUSIVE, 3 usage or internal error.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import sys
+from pathlib import Path
+
+from . import contract as contract_mod
+from . import git as git_mod
+from . import pipeline, report as report_mod
+from .model import Gap
+
+EXIT = {"VERIFIED": 0, "FAILED": 1, "INCONCLUSIVE": 2}
+DEFAULT_PROTECTED = ("contracts/", ".provecode/", "contract_checks/")
+
+
+def _protected(path: str, extra: list[str]) -> bool:
+    p = path.replace("\\", "/")
+    return any(p == x.rstrip("/") or p.startswith(x if x.endswith("/") else x + "/") or p == x
+               for x in (*DEFAULT_PROTECTED, *extra))
+
+
+def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
+    repo = args.repo
+    base = git_mod.rev_parse(repo, args.base)
+    head = git_mod.rev_parse(repo, args.head)
+    files, touched, gaps = [], [], []
+    for ch in git_mod.changed_files(repo, base, head):
+        if _protected(ch.path, args.protect) or (ch.old_path and _protected(ch.old_path, args.protect)):
+            touched.append(ch.path)
+        try:
+            if ch.status == "A":
+                files.append((ch.path, None, git_mod.show(repo, head, ch.path)))
+            elif ch.status == "D":
+                files.append((ch.path, git_mod.show(repo, base, ch.path), None))
+            elif ch.status == "R":
+                files.append((ch.path, git_mod.show(repo, base, ch.old_path), git_mod.show(repo, head, ch.path)))
+            else:
+                files.append((ch.path, git_mod.show(repo, base, ch.path), git_mod.show(repo, head, ch.path)))
+        except git_mod.GitError as exc:
+            gaps.append(Gap("unparseable", str(exc), file=ch.path))
+    prov = {"repo": str(Path(repo).resolve().name), "base_sha": base, "head_sha": head,
+            "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
+    return files, touched, prov, gaps
+
+
+def _contracts(args) -> tuple[dict | None, dict | None, list[Gap]]:
+    gaps = []
+    head = base = None
+    try:
+        head = contract_mod.read_any(args.contract)
+    except contract_mod.ContractError as exc:
+        gaps.append(Gap("contract_invalid", str(exc)))
+    if args.contract_base:
+        try:
+            base = contract_mod.read_any(args.contract_base)
+        except contract_mod.ContractError as exc:
+            gaps.append(Gap("contract_invalid", f"base contract: {exc}"))
+    return head, base, gaps
+
+
+def _emit(rep: dict, args) -> int:
+    text = report_mod.dumps(rep)
+    if args.json:
+        Path(args.json).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.json).write_text(text, encoding="utf-8", newline="\n")
+    if args.md:
+        Path(args.md).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.md).write_text(report_mod.to_markdown(rep), encoding="utf-8", newline="\n")
+    if not args.json and not args.md:
+        sys.stdout.write(report_mod.to_markdown(rep))
+    else:
+        print(f"{rep['outcome']}: {len(rep['findings'])} finding(s), {len(rep['gaps'])} gap(s)")
+    return EXIT[rep["outcome"]]
+
+
+def cmd_check(args) -> int:
+    files, touched, prov, gaps = _collect(args)
+    head, base, cgaps = _contracts(args)
+    rep = pipeline.run(files, head, base, mode="static", touched_protected=touched,
+                       extra_gaps=gaps + cgaps, provenance=prov)
+    return _emit(rep, args)
+
+
+def cmd_record(args) -> int:
+    from . import exec as exec_mod  # Docker path; CLI/CI only
+
+    files, touched, prov, gaps = _collect(args)
+    head, base, cgaps = _contracts(args)
+    evidence, egaps, eprov = exec_mod.run_checks(args, head, prov["head_sha"])
+    prov.update(eprov)
+    rep = pipeline.run(files, head, base, mode="recorded", touched_protected=touched, evidence=evidence,
+                       executed=True, extra_gaps=gaps + cgaps + egaps, provenance=prov)
+    return _emit(rep, args)
+
+
+def cmd_approve(args) -> int:
+    import yaml
+
+    doc = contract_mod.read_any(args.contract)
+    at = args.at or dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    out = contract_mod.approve(doc, args.by, at)
+    Path(args.contract).write_text(yaml.safe_dump(out, sort_keys=False, allow_unicode=True), encoding="utf-8",
+                                   newline="\n")
+    print(out["approval"]["content_hash"])
+    return 0
+
+
+def cmd_compile(args) -> int:
+    data = contract_mod.compile_json(contract_mod.read_any(args.contract))
+    if args.output:
+        Path(args.output).write_bytes(data)
+    else:
+        sys.stdout.write(data.decode("utf-8"))
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    ap = argparse.ArgumentParser(prog="provecode", description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    for name, fn in (("check", cmd_check), ("record", cmd_record)):
+        p = sub.add_parser(name)
+        p.add_argument("--repo", default=".")
+        p.add_argument("--base", required=True)
+        p.add_argument("--head", required=True)
+        p.add_argument("--contract", required=True, help="trusted, approved contract (outside the candidate)")
+        p.add_argument("--contract-base", help="contract version in effect at base, to detect approved changes")
+        p.add_argument("--protect", action="append", default=[], help="extra protected path (repeatable)")
+        p.add_argument("--json")
+        p.add_argument("--md")
+        if name == "record":
+            p.add_argument("--image", required=True, help="Docker image reference pinned by digest")
+            p.add_argument("--checks-dir", required=True, help="trusted directory holding contract-owned checks")
+            p.add_argument("--timeout", type=int, default=120)
+        p.set_defaults(fn=fn)
+    p = sub.add_parser("approve")
+    p.add_argument("contract")
+    p.add_argument("--by", required=True)
+    p.add_argument("--at")
+    p.set_defaults(fn=cmd_approve)
+    p = sub.add_parser("compile")
+    p.add_argument("contract")
+    p.add_argument("-o", "--output")
+    p.set_defaults(fn=cmd_compile)
+    return ap
+
+
+def main(argv: list[str] | None = None) -> int:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+    args = build_parser().parse_args(argv)
+    try:
+        return args.fn(args)
+    except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:
+        print(f"provecode: error: {exc}", file=sys.stderr)
+        return 3
+
+
+if __name__ == "__main__":
+    sys.exit(main())
