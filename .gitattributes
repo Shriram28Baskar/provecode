@@ -6,3 +6,5 @@ demo/** text=auto eol=lf
 docker/** text=auto eol=lf
 web/** text=auto eol=lf
 .github/** text=auto eol=lf
+action/** text eol=lf
+action.yml text eol=lf

@@ -66,6 +66,30 @@ provecode check --repo demo/.build/checkout --base main --head candidate-legit \
 - **Outputs:** add `--json report.json --md report.md` to write the report files.
 - **Contracts:** `provecode approve <contract.yaml> --by <name>` records an approval over the contract's current hash.
 
+## Use it on pull requests (GitHub Action)
+
+```yaml
+# .github/workflows/provecode.yml in your repository
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  provecode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: Shriram28Baskar/provecode@main   # pin to a commit SHA in production
+        with:
+          contract: contracts/checkout.yaml   # read from the PR's base commit, so the PR cannot edit it
+```
+
+- **Failing the PR:** a FAILED verdict fails the check. Set `fail-on-inconclusive: "true"` to fail on INCONCLUSIVE as well.
+- **Where the report appears:** the Markdown report is written to the job summary.
+- **Static only:** the Action runs static analysis and never executes PR code.
+- **Protecting the contract:** pair it with CODEOWNERS and branch protection on `contracts/`.
+
 ## Reproduce every number
 
 ```bash

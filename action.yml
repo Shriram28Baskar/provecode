@@ -1,0 +1,63 @@
+name: PROVECODE
+description: Fail a pull request when it weakens tests that guard approved requirements (static analysis; no code is executed).
+branding:
+  icon: shield
+  color: red
+
+inputs:
+  contract:
+    description: Path of the approved contract YAML. Read from the base commit by default.
+    required: true
+  contract-base:
+    description: Optional path of the contract version in effect at base, to recognise approved contract changes.
+    required: false
+    default: ""
+  contract-from-base:
+    description: Read contract files from the base commit (recommended), so the PR cannot edit them.
+    required: false
+    default: "true"
+  base:
+    description: Base ref or SHA. Defaults to the pull request base.
+    required: false
+    default: ""
+  head:
+    description: Head ref or SHA. Defaults to the checked-out commit.
+    required: false
+    default: HEAD
+  fail-on-inconclusive:
+    description: Also fail when the verdict is INCONCLUSIVE. FAILED always fails.
+    required: false
+    default: "false"
+  python-version:
+    description: Python version used to run PROVECODE.
+    required: false
+    default: "3.11"
+
+outputs:
+  outcome:
+    description: VERIFIED, FAILED or INCONCLUSIVE.
+    value: ${{ steps.run.outputs.outcome }}
+  report-json:
+    description: Path of the JSON report.
+    value: ${{ steps.run.outputs.report-json }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+    - name: Install PROVECODE
+      shell: bash
+      run: python -m pip install --quiet "${{ github.action_path }}/engine[cli]"
+    - name: Check the change
+      id: run
+      shell: bash
+      env:
+        PC_CONTRACT: ${{ inputs.contract }}
+        PC_CONTRACT_BASE: ${{ inputs.contract-base }}
+        PC_CONTRACT_FROM_BASE: ${{ inputs.contract-from-base }}
+        PC_BASE: ${{ inputs.base || github.event.pull_request.base.sha }}
+        PC_HEAD: ${{ inputs.head }}
+        PC_FAIL_ON_INCONCLUSIVE: ${{ inputs.fail-on-inconclusive }}
+      run: bash "${{ github.action_path }}/action/run.sh"
