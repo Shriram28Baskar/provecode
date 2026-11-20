@@ -247,6 +247,18 @@ def test_b2_guard_added(head_body):
     assert rules(base, "import pytest\ndef test_a():\n" + head_body) == ["B2"]
 
 
+@pytest.mark.parametrize("guard", ['pytest.skip("x")', "return"])
+def test_b2_guard_before_helper_based_checks(guard):
+    base = "import pytest\ndef test_a(t):\n    t.header = False\n    check_lengths(t)\n"
+    head = base.replace("    t.header", f"    {guard}\n    t.header")
+    assert rules(base, head) == ["B2"]
+
+
+def test_b2_negative_trailing_return():
+    base = "def test_a():\n    assert f() == 1\n"
+    assert rules(base, base + "    return\n") == []
+
+
 def test_b2_module_pytestmark():
     base = "import pytest\ndef test_a():\n    assert f() == 1\n"
     head = 'import pytest\npytestmark = pytest.mark.skip(reason="x")\ndef test_a():\n    assert f() == 1\n'

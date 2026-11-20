@@ -52,6 +52,12 @@ class Parsed:
     tree: ast.Module
     tests: dict[str, TestFn]
     module_skip: bool
+    lines: list[str] = field(default_factory=list)
+
+    def text(self, node: ast.AST) -> str:
+        """Full source lines spanned by node, including its decorators."""
+        start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
+        return "".join(self.lines[start - 1:node.end_lineno])
 
 
 def _dump(node: ast.AST | None) -> str:
@@ -84,7 +90,7 @@ def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, 
         and any(_skip_mark(m) for m in (n.value.elts if isinstance(n.value, (ast.List, ast.Tuple)) else [n.value]))
         for n in tree.body
     )
-    return Parsed(source, tree, tests, module_skip), None
+    return Parsed(source, tree, tests, module_skip, source.splitlines(keepends=True)), None
 
 
 def _walk_own(func: ast.AST):
@@ -99,10 +105,16 @@ def _walk_own(func: ast.AST):
 
 
 def _seg(p: Parsed, node: ast.AST) -> str:
-    seg = ast.get_source_segment(p.source, node)
-    if seg is None:
+    """Exact source of node (columns are UTF-8 byte offsets, as in ast.get_source_segment)."""
+    lineno, end = getattr(node, "lineno", None), getattr(node, "end_lineno", None)
+    if lineno is None or end is None or end > len(p.lines):
         return ""
-    return seg
+    col, end_col = node.col_offset, node.end_col_offset
+    if lineno == end:
+        return p.lines[lineno - 1].encode("utf-8")[col:end_col].decode("utf-8", "replace")
+    first = p.lines[lineno - 1].encode("utf-8")[col:].decode("utf-8", "replace")
+    last = p.lines[end - 1].encode("utf-8")[:end_col].decode("utf-8", "replace")
+    return first + "".join(p.lines[lineno:end - 1]) + last
 
 
 def _lines(node: ast.AST) -> tuple[int, int]:
@@ -359,32 +371,26 @@ def _body_after_doc(fn: TestFn) -> list[ast.stmt]:
     return body
 
 
-def _contains_check(stmts) -> bool:
-    for s in stmts:
-        for n in ast.walk(s):
-            if isinstance(n, ast.Assert):
-                return True
-            if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == "raises":
-                return True
-    return False
-
-
 def _guards(fn: TestFn) -> dict[str, ast.stmt]:
-    """Top-level statements that stop the test before its checks run."""
+    """Top-level statements that stop the test before the rest of its body runs.
+
+    Tuning round 1 (tuning split only): a guard counts whenever statements
+    follow it (or sit inside an `if False:`), not only when visible asserts
+    follow, because many tests check through helper calls.
+    """
     out = {}
     body = _body_after_doc(fn)
     for i, s in enumerate(body):
-        later = body[i:]
+        rest = body[i + 1:]
         is_guard = False
-        if isinstance(s, ast.Return) and _contains_check(body[i + 1:]):
+        if isinstance(s, ast.Return) and s.value is None and rest:
             is_guard = True
         elif isinstance(s, ast.Expr) and isinstance(s.value, ast.Call):
             f = s.value.func
             if ((isinstance(f, ast.Attribute) and f.attr == "skip") or (isinstance(f, ast.Name) and f.id == "skip")) \
-                    and _contains_check(body[i + 1:]):
+                    and rest:
                 is_guard = True
-        elif isinstance(s, ast.If) and isinstance(s.test, ast.Constant) and not s.test.value and not s.orelse \
-                and _contains_check(later):
+        elif isinstance(s, ast.If) and isinstance(s.test, ast.Constant) and not s.test.value and not s.orelse:
             is_guard = True
         if is_guard:
             out[_dump(s)] = s
@@ -519,7 +525,7 @@ def analyze_file(
                     before=_seg(pb, tb.node).splitlines()[0] if _seg(pb, tb.node) else None,
                 ))
             continue
-        if _dump(tb.node) == _dump(th.node):
+        if pb.text(tb.node) == ph.text(th.node) or _dump(tb.node) == _dump(th.node):
             continue
         res.findings.extend(_assert_rules(pb, ph, tb, th, path))
         res.findings.extend(_s3(pb, ph, tb, th, path))
