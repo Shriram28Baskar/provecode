@@ -12,7 +12,7 @@
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "7eaaf1731a0e425d66ed5749b60992eb7ee22b3fe7083f4150933d0f2574e137"
+      "sha256": "11b9d2cef7393c97c84996f577f05d6f467e35827683b41ff2fb2d7bae0c5aac"
     },
     {
       "bytes": 113382,
@@ -22,18 +22,18 @@
       "sha256": "a8dfedfd743824d5148586ebf0d20a6079df8f2023ccdbf80fad7a97176c8dee"
     },
     {
-      "bytes": 10388,
+      "bytes": 10386,
       "deterministic": true,
       "generator": "python -m benchmark.presets",
       "path": "presets/legit.json",
-      "sha256": "3247f0d0731a91c2831b15b36e323ca2f126365e135f9ad4defe6d7d7ef5ad40"
+      "sha256": "5a7ae21aa12579839b8a21a86654ff669b67df44bfe25ab2ca9d2aeb546e28e3"
     },
     {
-      "bytes": 7391,
+      "bytes": 7389,
       "deterministic": true,
       "generator": "python -m benchmark.presets",
       "path": "presets/weakened.json",
-      "sha256": "2ef09d9fb8e00caed2249c2ed25d03787d17621e5d416a07c7ff6ff61556586f"
+      "sha256": "523e1b452c004b15ce4637c5c049072fa532f96d5594419fd0dcee4111eea454"
     },
     {
       "bytes": 7369,

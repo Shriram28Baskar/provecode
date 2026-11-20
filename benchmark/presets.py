@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import platform
 from pathlib import Path
 
 from provecode import contract as contract_mod, pipeline
@@ -54,7 +55,10 @@ def build() -> dict[str, bytes]:
         rep = pipeline.run([(TEST_PATH, base_src, head_src)], p["contract_head"], p["contract_base"],
                            mode="precomputed", limits=Limits.live(),
                            provenance={"base_sha": shas["base"], "head_sha": p["head_sha"],
-                                       "demo_repo": "demo/build_demo.py (deterministic SHAs)"})
+                                       "demo_repo": "demo/build_demo.py (deterministic SHAs)",
+                                       # major.minor only: a deterministic artifact must not vary
+                                       # with the CPython patch release that regenerated it.
+                                       "python": ".".join(platform.python_version_tuple()[:2])})
         doc = {"schema_version": "1", "id": p["id"], "title": p["title"], "summary": p["summary"], "path": TEST_PATH,
                "base_source": base_src, "head_source": head_src, "contract_head": p["contract_head"],
                "contract_base": p["contract_base"], "report": rep}

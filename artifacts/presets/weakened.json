@@ -220,7 +220,7 @@
         "max_indent_depth": 50,
         "max_lines": 2000
       },
-      "python": "3.11.3"
+      "python": "3.11"
     },
     "reasons": [
       {
