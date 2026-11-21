@@ -9,14 +9,16 @@ S1 = "S1"  # comparison weakened
 S2 = "S2"  # expected value replaced by a trivial bound
 S3 = "S3"  # exception widened
 S4 = "S4"  # parametrize cases removed
+S5 = "S5"  # check made vacuous (ADR 0011)
 B1 = "B1"  # test deleted
 B2 = "B2"  # skip / xfail / guard added
 B3 = "B3"  # assertion removed
+B4 = "B4"  # assertion failure swallowed (ADR 0011)
 V0 = "V0"  # expected value changed, strength unchanged (info only)
 R0 = "R0"  # test renamed with identical body (info only)
 CONTRACT_TOUCHED = "CONTRACT_TOUCHED"
 
-WEAKENING_RULES = frozenset({S1, S2, S3, S4, B1, B2, B3})
+WEAKENING_RULES = frozenset({S1, S2, S3, S4, S5, B1, B2, B3, B4})
 INFO_RULES = frozenset({V0, R0})
 
 RULE_TITLES = {
@@ -24,9 +26,11 @@ RULE_TITLES = {
     S2: "Expected value replaced by a trivial bound",
     S3: "Exception widened",
     S4: "Parametrize cases removed",
+    S5: "Check made vacuous",
     B1: "Test deleted",
     B2: "Skip, xfail or guard added",
     B3: "Assertion removed",
+    B4: "Assertion failure swallowed",
     V0: "Expected value changed (strength unchanged)",
     R0: "Test renamed (body unchanged)",
     CONTRACT_TOUCHED: "Candidate modified the contract",

@@ -14,7 +14,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 
 from . import limits as _limits
-from .model import B1, B2, B3, R0, S1, S2, S3, S4, V0, FileResult, Finding, Gap
+from .model import B1, B2, B3, B4, R0, S1, S2, S3, S4, S5, V0, FileResult, Finding, Gap
 
 # Builtin exception classes by name, resolved once at import from the
 # interpreter's own namespace (never looked up from analyzed input).
@@ -607,6 +607,175 @@ def _b2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     return out
 
 
+# --------------------------------------------------------------------------- S5 and B4 (ADR 0011)
+
+_REFLEXIVE_OPS = {"==", "is", ">=", "<=", "approx"}
+
+
+def _truthy_const(n: ast.AST) -> bool:
+    return isinstance(n, ast.Constant) and bool(n.value)
+
+
+def _checked_expr(c: Check) -> ast.AST | None:
+    """The expression a truthiness-style check evaluates: the assert's test, or assertTrue's arg."""
+    if isinstance(c.node, ast.Assert):
+        return c.node.test
+    if isinstance(c.node, ast.Call) and c.node.func.attr == "assertTrue" and c.node.args:
+        return c.node.args[0]
+    return None
+
+
+def _vacuous(c: Check) -> tuple[str, ast.AST | None] | None:
+    """("self", None) for a comparison of an expression with itself; ("or", rest) for an `or` with a
+    truthy constant operand, where rest is what the check would test without the constant."""
+    if c.op in _REFLEXIVE_OPS and c.expected is not None and _dump(c.expected) == c.subject:
+        return "self", None
+    e = _checked_expr(c)
+    if isinstance(e, ast.BoolOp) and isinstance(e.op, ast.Or) and any(_truthy_const(v) for v in e.values):
+        rest = [v for v in e.values if not _truthy_const(v)]
+        if not rest:
+            return "or", None
+        return "or", rest[0] if len(rest) == 1 else ast.BoolOp(op=ast.Or(), values=rest)
+    return None
+
+
+def _key(c: Check) -> tuple:
+    return c.subject, c.op, _dump(c.expected)
+
+
+def _replaced_by_vacuous(b: Check, h: Check, v: tuple[str, ast.AST | None]) -> bool:
+    kind, rest = v
+    if kind == "self":
+        return b.subject == h.subject
+    if rest is None:
+        return False
+    under = (_classify(ast.Assert(test=rest)) if isinstance(h.node, ast.Assert)
+             else Check(h.node, _dump(rest), "truthy", None))
+    return _key(under) == _key(b)
+
+
+def _s5_pairs(rem_base: list[Check], rem_head: list[Check]) -> list[tuple[Check, Check, str]]:
+    """Pair each head check that became vacuous with the non-vacuous base check it replaced, and
+    take both out of further pairing. A vacuous check with no such partner was added, not swapped
+    in, and weakens nothing."""
+    pairs = []
+    for h in list(rem_head):
+        v = _vacuous(h)
+        if v is None:
+            continue
+        # A base self-comparison (`c == c`) still exercises a custom __eq__, so only an `or`-vacuous
+        # base check is treated as already vacuous.
+        b = next((b for b in rem_base if (_vacuous(b) or ("",))[0] != "or" and _replaced_by_vacuous(b, h, v)), None)
+        if b is None:
+            continue
+        rem_base.remove(b)
+        rem_head.remove(h)
+        why = ("The check now compares the value with itself instead of the expected value, so it no longer "
+               "checks the result." if v[0] == "self"
+               else "An `or` with a true constant was added to the check, so it always passes.")
+        pairs.append((b, h, why))
+    return pairs
+
+
+_CATCHES_ASSERTION = {"AssertionError", "Exception", "BaseException"}
+
+
+def _catches_assertion(t: ast.AST | None) -> bool:
+    if t is None:
+        return True  # bare except:
+    if isinstance(t, ast.Tuple):
+        return any(_catches_assertion(e) for e in t.elts)
+    name = t.attr if isinstance(t, ast.Attribute) else t.id if isinstance(t, ast.Name) else None
+    return name in _CATCHES_ASSERTION
+
+
+def _propagates(body: list[ast.stmt]) -> bool:
+    """A handler body that re-raises, or fails the test explicitly (pytest.fail / self.fail)."""
+    for stmt in body:
+        for n in ast.walk(stmt):
+            if isinstance(n, ast.Raise):
+                return True
+            if isinstance(n, ast.Call):
+                f = n.func
+                if isinstance(f, ast.Attribute) and f.attr == "fail" and isinstance(f.value, ast.Name) \
+                        and f.value.id in ("pytest", "self"):
+                    return True
+    return False
+
+
+def _swallows(node: ast.AST) -> bool:
+    if isinstance(node, (ast.Try, ast.TryStar)):
+        return any(_catches_assertion(h.type) and not _propagates(h.body) for h in node.handlers)
+    if isinstance(node, (ast.With, ast.AsyncWith)):
+        for item in node.items:
+            c = item.context_expr
+            if isinstance(c, ast.Call):
+                name = c.func.attr if isinstance(c.func, ast.Attribute) else getattr(c.func, "id", None)
+                if name == "suppress" and any(_catches_assertion(a) for a in c.args):
+                    return True
+    return False
+
+
+def _is_check(n: ast.AST) -> bool:
+    return isinstance(n, ast.Assert) or (_is_self_assert(n) and n.func.attr not in _UT_RAISES)
+
+
+def _swallowed(fn: TestFn) -> list[tuple[ast.AST, ast.AST]]:
+    """(check, swallowing statement) for every check whose failure a surrounding try/except or
+    contextlib.suppress would swallow. Only a try's body is covered, not its else/finally."""
+    out: list[tuple[ast.AST, ast.AST]] = []
+
+    def visit_one(n: ast.AST, guard: ast.AST | None) -> None:
+        if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Lambda)):
+            return
+        if isinstance(n, (ast.Try, ast.TryStar)):
+            g = guard or (n if _swallows(n) else None)
+            for st in n.body:
+                visit_one(st, g)
+            for part in (*n.handlers, *n.orelse, *n.finalbody):
+                visit_one(part, guard)
+            return
+        if isinstance(n, (ast.With, ast.AsyncWith)):
+            g = guard or (n if _swallows(n) else None)
+            for item in n.items:
+                visit_one(item, guard)
+            for st in n.body:
+                visit_one(st, g)
+            return
+        if guard is not None and _is_check(n):
+            out.append((n, guard))
+        for child in ast.iter_child_nodes(n):
+            visit_one(child, guard)
+
+    for st in fn.node.body:
+        visit_one(st, None)
+    return out
+
+
+def _b4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    base = defaultdict(int)
+    for n, _ in _swallowed(tb):
+        base[_dump(n)] += 1
+    base_checks = {}
+    for c in _checks(tb):
+        base_checks.setdefault(_dump(c.node), c.node)
+    out = []
+    for n, guard in _swallowed(th):
+        k = _dump(n)
+        if base[k] > 0:
+            base[k] -= 1
+            continue
+        b = base_checks.get(k)
+        out.append(Finding(
+            B4, path, th.key,
+            "The check now sits inside a try/except (or suppress) that catches AssertionError and does not "
+            "re-raise, so a failing check can no longer fail the test.",
+            base_lines=_lines(b) if b is not None else None, head_lines=_lines(guard),
+            before=_seg(pb, b) if b is not None else None, after=_seg(ph, guard),
+        ))
+    return out
+
+
 def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out: list[Finding] = []
     base = _checks(tb)
@@ -623,6 +792,12 @@ def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> 
             rem_base.append(b)
     left = {id(x) for lst in pool.values() for x in lst}
     rem_head = [h for h in head if id(h) in left]
+    # 1b. S5: a check replaced by a vacuous one (ADR 0011).
+    for b, h, why in _s5_pairs(rem_base, rem_head):
+        out.append(Finding(
+            S5, path, th.key, why, base_lines=_lines(b.node), head_lines=_lines(h.node),
+            before=_seg(pb, b.node), after=_seg(ph, h.node),
+        ))
     # 2. Pair the rest by subject, in order.
     by_subject: dict[str, list[Check]] = defaultdict(list)
     for h in rem_head:
@@ -737,6 +912,7 @@ def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _
         res.findings.extend(_s3(pb, ph, tb, th, path))
         res.findings.extend(_s4(pb, ph, tb, th, path))
         res.findings.extend(_b2(pb, ph, tb, th, path))
+        res.findings.extend(_b4(pb, ph, tb, th, path))
     if ph.module_skip and not pb.module_skip:
         for key in sorted(k for k in ph.tests if k in pb.tests):
             res.findings.append(Finding(

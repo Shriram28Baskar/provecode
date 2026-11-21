@@ -30,12 +30,14 @@ from provecode import analyzer, contract as contract_mod, pipeline
 from provecode.limits import Limits
 from provecode.model import WEAKENING_RULES
 
-from . import baseline_count, generate_cases, generate_cases_unittest, manifest, presets, readme_results
+from . import (baseline_count, generate_cases, generate_cases_blindspots, generate_cases_unittest, manifest, presets,
+               readme_results)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "artifacts" / "benchmark"
 TIER_A = OUT / "tierA.json"
 TIER_A_U = OUT / "tierA_u.json"
+TIER_A_B = OUT / "tierA_b.json"
 PERF = OUT / "perf.json"
 APPROVER, APPROVED_AT = "tierA-harness (out of band)", "2026-11-20T00:00:00Z"
 Z = 1.959963984540054
@@ -88,6 +90,19 @@ REVISION_LOG = [
         ],
         "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
     },
+]
+
+# Tier A-b: rule development rounds, on the tuning split only (ADR 0011).
+TUNING_LOG_BLINDSPOTS: list[dict] = [
+    {
+        "round": 1,
+        "rule": "S5",
+        "change": "A base self-comparison such as `c == c` is a real reflexivity test of a custom __eq__, not a "
+                  "vacuous check, so adding `or True` to it is S5; only an `or`-vacuous base check counts as "
+                  "already vacuous.",
+        "evidence": ["X03-01"],
+        "split_used": "tuning",
+    }
 ]
 
 # Tier A-u: changes made after its held-out results were first seen (2026-11-21).
@@ -273,18 +288,27 @@ def commit_order() -> dict:
             "first_detector_code": _first_added("engine/src/provecode/analyzer.py")}
 
 
-def commit_order_unittest() -> dict:
-    """Tier A-u: the split and patterns were committed before the ADR 0009 analyzer change. The
-    detector change is the first commit after the split freeze, on its ancestry path, that touches
-    analyzer.py, so by construction it descends from the freeze."""
-    split = _first_added("benchmark/split_unittest.lock.json")
+def _frozen_before_change(split_path: str, patterns_path: str) -> dict:
+    """The split and patterns were committed before the detector change. The detector change is the
+    first commit after the split freeze, on its ancestry path, that touches analyzer.py, so by
+    construction it descends from the freeze."""
+    split = _first_added(split_path)
     change = None
     if split:
         lines = _git_lines(["log", "--format=%H %cI", "--ancestry-path", f"{split['commit']}..HEAD",
                             "--", "engine/src/provecode/analyzer.py"])
         change = _commit(lines[-1]) if lines else None
-    return {"split_frozen": split, "patterns_frozen": _first_added("benchmark/patterns_unittest.md"),
-            "detector_change": change}
+    return {"split_frozen": split, "patterns_frozen": _first_added(patterns_path), "detector_change": change}
+
+
+def commit_order_unittest() -> dict:
+    """Tier A-u: frozen before the ADR 0009 analyzer change."""
+    return _frozen_before_change("benchmark/split_unittest.lock.json", "benchmark/patterns_unittest.md")
+
+
+def commit_order_blindspots() -> dict:
+    """Tier A-b: frozen before the ADR 0011 rule code."""
+    return _frozen_before_change("benchmark/split_blindspots.lock.json", "benchmark/patterns_blindspots.md")
 
 
 TIERS = {
@@ -297,6 +321,12 @@ TIERS = {
             "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). "
                      "Not real-world performance.",
             "tuning_log": [], "revision_log": REVISION_LOG_UNITTEST},
+    "A-b": {"gen": generate_cases_blindspots, "out": TIER_A_B, "commit_order": commit_order_blindspots,
+            "bench_code": ("baseline_count.py", "generate_cases.py", "generate_cases_unittest.py",
+                           "generate_cases_blindspots.py", "regenerate.py"),
+            "label": "Injected vacuous and swallowed checks on real repositories (experimental, ADR 0011). "
+                     "Not real-world performance.",
+            "tuning_log": TUNING_LOG_BLINDSPOTS, "revision_log": []},
 }
 
 
