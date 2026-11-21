@@ -1,0 +1,240 @@
+{
+  "blobs_pyyaml_accepts": 3494,
+  "command": "python docs/research/scripts/yaml_subset_differential.py",
+  "drop": false,
+  "drop_criterion": "identical_rate < 0.95 or totals.different > 0",
+  "examples": {
+    "different": [],
+    "invalid_accepted": [],
+    "refused": []
+  },
+  "identical_rate": 1.0,
+  "pyyaml": "6.0.3",
+  "refusal_reasons": {},
+  "repos": [
+    {
+      "different": 0,
+      "identical": 104,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "different": 0,
+      "identical": 52,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "different": 0,
+      "identical": 167,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "agronholm/anyio"
+    },
+    {
+      "different": 0,
+      "identical": 414,
+      "invalid": 4,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "aio-libs/multidict"
+    },
+    {
+      "different": 0,
+      "identical": 49,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "arrow-py/arrow"
+    },
+    {
+      "different": 0,
+      "identical": 49,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "hukkin/tomli"
+    },
+    {
+      "different": 0,
+      "identical": 148,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "hynek/stamina"
+    },
+    {
+      "different": 0,
+      "identical": 258,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "hynek/structlog"
+    },
+    {
+      "different": 0,
+      "identical": 159,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "different": 0,
+      "identical": 61,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "different": 0,
+      "identical": 85,
+      "invalid": 1,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "kjd/idna"
+    },
+    {
+      "different": 0,
+      "identical": 50,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "different": 0,
+      "identical": 57,
+      "invalid": 1,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "different": 0,
+      "identical": 99,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "different": 0,
+      "identical": 61,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pallets/jinja"
+    },
+    {
+      "different": 0,
+      "identical": 175,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "different": 0,
+      "identical": 248,
+      "invalid": 6,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "different": 0,
+      "identical": 30,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "different": 0,
+      "identical": 106,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "different": 0,
+      "identical": 317,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "different": 0,
+      "identical": 77,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "python-attrs/cattrs"
+    },
+    {
+      "different": 0,
+      "identical": 238,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "different": 0,
+      "identical": 257,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "different": 0,
+      "identical": 29,
+      "invalid": 1,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "python-poetry/tomlkit"
+    },
+    {
+      "different": 0,
+      "identical": 104,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "different": 0,
+      "identical": 39,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "theskumar/python-dotenv"
+    },
+    {
+      "different": 0,
+      "identical": 61,
+      "invalid": 0,
+      "invalid_but_subset_accepts": 0,
+      "refused": 0,
+      "repo": "tkem/cachetools"
+    }
+  ],
+  "schema_version": "1",
+  "totals": {
+    "different": 0,
+    "identical": 3494,
+    "invalid": 13,
+    "invalid_but_subset_accepts": 0,
+    "refused": 0
+  }
+}
