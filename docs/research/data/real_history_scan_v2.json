@@ -180,13 +180,6 @@
           "rule": "H5",
           "severity": "warning",
           "test": null
-        },
-        {
-          "file": ".github/workflows/release.yml",
-          "rationale": "A workflow that ran the tests was deleted.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
         }
       ],
       "owner_label": null,
@@ -217,27 +210,6 @@
       "repo": "Delgan/loguru",
       "rules": [
         "T1"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "ae3ed2cd54f3908bcf49d2b52253c07eae11e3b5",
-      "findings": [
-        {
-          "file": "tox.ini",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "Delgan/loguru",
-      "rules": [
-        "H4"
       ]
     },
     {
@@ -489,27 +461,6 @@
       "owner_label": null,
       "populations": [
         "T"
-      ],
-      "repo": "Python-Markdown/markdown",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "498776588990bbf151248584e6c23ca1935bed98",
-      "findings": [
-        {
-          "file": ".coveragerc",
-          "rationale": "Coverage now omits markdown/__main__.py, so code there no longer counts toward the coverage requirement.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
       ],
       "repo": "Python-Markdown/markdown",
       "rules": [
@@ -1298,27 +1249,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "59ef302962a27d5f21bc47428c2564351c223407",
-      "findings": [
-        {
-          "file": ".coveragerc",
-          "rationale": "Coverage now omits **/__main__.py, so code there no longer counts toward the coverage requirement.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jazzband/prettytable",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "676087b1476ddf936ff8b09bcc69b3e012da308a",
       "findings": [
         {
@@ -1340,27 +1270,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "681ba7c487c8a7457e8a7962ce0df35fcab2874c",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "Coverage now omits **/__main__.py, so code there no longer counts toward the coverage requirement.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jazzband/prettytable",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "696a30d891f89aa94ebff41db2af2ea0da158f54",
       "findings": [
         {
@@ -1378,48 +1287,6 @@
       "repo": "jazzband/prettytable",
       "rules": [
         "H7"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "9b1f7292f634de8192b9a11fc23de3899a534d1c",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jazzband/prettytable",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "e0bdf68ff848ab2fcbaf3e05994bd6321e7eebcc",
-      "findings": [
-        {
-          "file": ".github/workflows/lint.yml",
-          "rationale": "In job 'build', the step that ran `tox -e lint` was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jazzband/prettytable",
-      "rules": [
-        "H5"
       ]
     },
     {
@@ -1510,27 +1377,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "635c8d89dd8b8bea1813fe8830a26d0274a4e724",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jpadilla/pyjwt",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "96ae3563b9db8f5e18621c4d612f622cf476c92b",
       "findings": [
         {
@@ -1568,13 +1414,6 @@
           "rule": "H7",
           "severity": "warning",
           "test": null
-        },
-        {
-          "file": "tox.ini",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
         }
       ],
       "owner_label": null,
@@ -1584,30 +1423,8 @@
       ],
       "repo": "jpadilla/pyjwt",
       "rules": [
-        "H4",
         "H5",
         "H7"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "bf03705cb2e278f3e03a379dc1d021567be4ffa8",
-      "findings": [
-        {
-          "file": ".coveragerc",
-          "rationale": "Coverage now omits */__main__.py, so code there no longer counts toward the coverage requirement.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "jpadilla/pyjwt",
-      "rules": [
-        "H6"
       ]
     },
     {
@@ -3490,28 +3307,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "793470ebdb2d832350cff64cdcba5479ecc92d77",
-      "findings": [
-        {
-          "file": "setup.cfg",
-          "rationale": "norecursedirs now skips tests/mypy_test_cases; tests there are no longer collected.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T",
-        "H"
-      ],
-      "repo": "marshmallow-code/marshmallow",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "7cc1de477bbd4833da541a334459a0b20b79da2b",
       "findings": [
         {
@@ -3558,7 +3353,7 @@
       "findings": [
         {
           "file": ".github/workflows/build-release.yml",
-          "rationale": "In job 'docs', the test step now runs fewer tests: -e docs.",
+          "rationale": "In job 'docs', the step that ran `tox -edocs` was removed.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -3622,27 +3417,6 @@
       "repo": "marshmallow-code/marshmallow",
       "rules": [
         "H7"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "eb863228f5273244c19388fb6161ffdb90cb04d1",
-      "findings": [
-        {
-          "file": ".github/workflows/build-release.yml",
-          "rationale": "Job 'docs', which ran the tests, was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "marshmallow-code/marshmallow",
-      "rules": [
-        "H5"
       ]
     },
     {
@@ -3942,91 +3716,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "91952b90cd5c9e8b36f20a2bf05e0496e55c13c3",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "Coverage now excludes lines matching : \\.{3}.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pallets/itsdangerous",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "c9fa8050870e342ef3c3f31e5eb28c50ef9dfcd8",
-      "findings": [
-        {
-          "file": "setup.cfg",
-          "rationale": "testpaths was introduced (tests.py); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pallets/itsdangerous",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "d4950c0913f7f5695b5af299c55ba40a79195b98",
-      "findings": [
-        {
-          "file": "setup.cfg",
-          "rationale": "testpaths no longer includes tests.py.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T",
-        "H"
-      ],
-      "repo": "pallets/itsdangerous",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "4d4fa0dd1ae28599c1dde5658cb3dcd7b8f75c71",
-      "findings": [
-        {
-          "file": "setup.cfg",
-          "rationale": "testpaths no longer includes tests.py.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T"
-      ],
-      "repo": "pallets/markupsafe",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "58cde05bdcb0a53d87213b4a5bb605937f178171",
       "findings": [
         {
@@ -4061,48 +3750,6 @@
       "owner_label": null,
       "populations": [
         "H"
-      ],
-      "repo": "pallets/markupsafe",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "f38ca06034499d140849d9d0715356f7e169c59a",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "Coverage now excludes lines matching : \\.{3}.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pallets/markupsafe",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "fe626819d10e063270bf0ed3b183249482b1a0e7",
-      "findings": [
-        {
-          "file": "setup.cfg",
-          "rationale": "testpaths was introduced (tests.py); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T"
       ],
       "repo": "pallets/markupsafe",
       "rules": [
@@ -4217,27 +3864,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "2f8fe4c5f2c5e7f2221226c780a78c50113df0fb",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pypa/packaging",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "3223f8ca4ed2b2aa431c7ff9e526f6e543dea2f4",
       "findings": [
         {
@@ -4262,27 +3888,6 @@
       "repo": "pypa/packaging",
       "rules": [
         "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "3b598e8a01d3c0f54cf6067382cf3f2e113191d2",
-      "findings": [
-        {
-          "file": ".github/workflows/docs.yml",
-          "rationale": "The test workflow's pull_request trigger now runs only for docs/**, which excludes Python source.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pypa/packaging",
-      "rules": [
-        "H5"
       ]
     },
     {
@@ -4694,34 +4299,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "93f1df24aec50453bf2a85e5e7b443a8adae54aa",
-      "findings": [
-        {
-          "file": ".github/workflows/docs.yml",
-          "rationale": "In job 'docs', the test step 'Build documentation' now runs fewer tests: -m nox, -s docs.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        },
-        {
-          "file": ".github/workflows/lint.yml",
-          "rationale": "In job 'lint', the test step 'Run `nox -s lint`' now runs fewer tests: -m nox, -s lint.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pypa/packaging",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "971ae00e1dd12553d1b9004449223b0161eb26fe",
       "findings": [
         {
@@ -5072,77 +4649,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "3202c881e60d18f8ae6c7bb886de4cc354bc33be",
-      "findings": [
-        {
-          "file": ".coveragerc",
-          "rationale": "Coverage now excludes lines matching ^\\s*def.*:\\ \\.\\.\\.\\s*$.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pytest-dev/pluggy",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "4223913f11d986dba7edfb9665979b122cef5d18",
-      "findings": [
-        {
-          "file": "tox.ini",
-          "rationale": "testpaths was introduced (testing); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        },
-        {
-          "file": "tox.ini",
-          "rationale": "norecursedirs now skips *.egg, .*, _darcs, build, CVS, dist, node_modules, venv, {arch}; tests there are no longer collected.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pytest-dev/pluggy",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "5a75b1e5b63e9fb7d58b276f6c1c493ee9b27829",
-      "findings": [
-        {
-          "file": "tox.ini",
-          "rationale": "norecursedirs now skips .env*; tests there are no longer collected.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T",
-        "H"
-      ],
-      "repo": "pytest-dev/pluggy",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "5d1ffb9a769b2dbeaaab0d05455c66aa7aa5ecf4",
       "findings": [
         {
@@ -5165,27 +4671,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "c5d57862985bd25752b1c6eae88f56fd1fa4455f",
-      "findings": [
-        {
-          "file": ".coveragerc",
-          "rationale": "Coverage now excludes lines matching ^\\s*\\.\\.\\.\\s*$.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pytest-dev/pluggy",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "d52233200b2c0aa40a42f7c45820be58db03c795",
       "findings": [
         {
@@ -5193,13 +4678,6 @@
           "rationale": "A module named 'pluggy' was added where it is importable ahead of the real one; it shadows a test dependency, so tests can import this file instead.",
           "rule": "H3",
           "severity": "blocking",
-          "test": null
-        },
-        {
-          "file": "tox.ini",
-          "rationale": "norecursedirs now skips .tox, ja, .hg; tests there are no longer collected.",
-          "rule": "H4",
-          "severity": "warning",
           "test": null
         }
       ],
@@ -5210,8 +4688,7 @@
       ],
       "repo": "pytest-dev/pluggy",
       "rules": [
-        "H3",
-        "H4"
+        "H3"
       ]
     },
     {
@@ -5233,27 +4710,6 @@
       "repo": "pytest-dev/pluggy",
       "rules": [
         "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "e0ad9554751117fc15e2417af44254810304d729",
-      "findings": [
-        {
-          "file": "tox.ini",
-          "rationale": "testpaths was introduced (testing); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pytest-dev/pluggy",
-      "rules": [
-        "H4"
       ]
     },
     {
@@ -5372,27 +4828,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "7cbc77f21b534cf7cd3b3e2cf007455ebe7ed3ba",
-      "findings": [
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'docs', the test step now runs fewer tests: -e docs-doctests,changelog.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-attrs/attrs",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "8613af97bb9b81526ca1e8385f1f48916f607588",
       "findings": [
         {
@@ -5439,14 +4874,7 @@
       "findings": [
         {
           "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'tests', the test step now runs fewer tests: -e ${{.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'tests', the test step now runs fewer tests: -e ${{.",
+          "rationale": "In job 'tests', the step that ran `python -Im tox run -f $V` was removed.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -5542,70 +4970,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "b1dc8f673579137e14e44afdf0e40e4b4f1b9e3c",
-      "findings": [
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "Job 'pyright', which ran the tests, was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T",
-        "H"
-      ],
-      "repo": "python-attrs/attrs",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "c824bbe103881db59d1f8f45d7cef1f8497d8147",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "Coverage now excludes lines matching : \\.\\.\\.$, ^ +\\.\\.\\.$.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T"
-      ],
-      "repo": "python-attrs/attrs",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "d4934b14f13645a144224d2a8281820da568cbe6",
-      "findings": [
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'docs', the test step now runs fewer tests: -e docs,changelog.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T"
-      ],
-      "repo": "python-attrs/attrs",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "0f2ff42cbe632c47ddb6ac255c61890ab8a46fd4",
       "findings": [
         {
@@ -5660,69 +5024,6 @@
         {
           "file": ".github/workflows/test.yml",
           "rationale": "In job 'build', the step that ran `python -m pytest --cov humanize --cov tests --cov-report xml` was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-humanize/humanize",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "a2dc87e86ac54efd47c2cbf4b071207adb0f32b0",
-      "findings": [
-        {
-          "file": ".github/workflows/lint.yml",
-          "rationale": "In job 'lint', the step that ran `tox -e mypy` was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-humanize/humanize",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "ad031d6be7f27623c2a8b577bc057358de777fe9",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "testpaths was introduced (tests); pytest now collects only there instead of from the whole rootdir.",
-          "rule": "H4",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-humanize/humanize",
-      "rules": [
-        "H4"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "d8f70bb77768655ac6d4029faa0b0422be6c5410",
-      "findings": [
-        {
-          "file": ".github/workflows/lint.yml",
-          "rationale": "Job 'build', which ran the tests, was removed.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -5867,27 +5168,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "4e0a4dc5e3b4fa8451637806d9e3cfd98d419287",
-      "findings": [
-        {
-          "file": "pyproject.toml",
-          "rationale": "Coverage now excludes lines matching \\s*\\.\\.\\.\\s*.",
-          "rule": "H6",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-jsonschema/jsonschema",
-      "rules": [
-        "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "7a5fd08611cb2fb07b8200860a4e352eb33ae7bf",
       "findings": [
         {
@@ -5955,7 +5235,7 @@
       "findings": [
         {
           "file": "pyproject.toml",
-          "rationale": "Coverage now omits */jsonschema/__main__.py, */jsonschema/benchmarks/*, so code there no longer counts toward the coverage requirement.",
+          "rationale": "Coverage now omits */jsonschema/benchmarks/*, so code there no longer counts toward the coverage requirement.",
           "rule": "H6",
           "severity": "warning",
           "test": null
@@ -6056,28 +5336,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "0095205999912624f638d122547a7f10c6412a54",
-      "findings": [
-        {
-          "file": ".github/workflows/codspeed.yml",
-          "rationale": "In job 'benchmark', the test step 'Install dependencies' now runs fewer tests: -e benchmark.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "T",
-        "H"
-      ],
-      "repo": "scrapy/w3lib",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "0d2eab0fc4bf17619555be96d07bb59fc5d816e3",
       "findings": [
         {
@@ -6095,27 +5353,6 @@
       "repo": "scrapy/w3lib",
       "rules": [
         "H6"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "261de8ffb0ea6a792dbbcbefba6faa27c7cfc367",
-      "findings": [
-        {
-          "file": ".github/workflows/codspeed.yml",
-          "rationale": "In job 'benchmark', the step that ran `tox -n -e benchmark-${{ matrix.python-version }}` was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "scrapy/w3lib",
-      "rules": [
-        "H5"
       ]
     },
     {
@@ -6339,27 +5576,6 @@
       "repo": "scrapy/w3lib",
       "rules": [
         "H1"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "d4f47bee65f7a6edaa84c1764a438165a7fd086c",
-      "findings": [
-        {
-          "file": ".github/workflows/codspeed.yml",
-          "rationale": "In job 'benchmark', the step that ran `tox -n -e benchmark-${{ matrix.python-version }}` was removed.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "scrapy/w3lib",
-      "rules": [
-        "H5"
       ]
     },
     {
@@ -6799,7 +6015,7 @@
           "B2": 1,
           "B3": 1,
           "H1": 3,
-          "H4": 3,
+          "H4": 2,
           "H5": 4,
           "S3": 1,
           "S4": 7,
@@ -6827,7 +6043,7 @@
         "H": {
           "B1": 2,
           "H5": 1,
-          "H6": 10,
+          "H6": 9,
           "H7": 2
         },
         "T": {
@@ -6872,9 +6088,8 @@
         "H": {
           "B1": 2,
           "B3": 2,
-          "H4": 1,
-          "H5": 2,
-          "H6": 3,
+          "H5": 1,
+          "H6": 1,
           "H7": 2,
           "S4": 1
         },
@@ -6895,16 +6110,16 @@
         "H": {
           "B1": 5,
           "B3": 2,
-          "H4": 4,
+          "H4": 2,
           "H5": 1,
-          "H6": 4,
+          "H6": 3,
           "H7": 1,
           "T4": 1
         },
         "T": {
           "B1": 24,
           "B3": 6,
-          "H4": 3,
+          "H4": 2,
           "H5": 1,
           "H7": 1,
           "S3": 2,
@@ -6940,15 +6155,15 @@
       "commits_by_rule": {
         "H": {
           "B1": 3,
-          "H4": 2,
-          "H5": 5,
+          "H4": 1,
+          "H5": 4,
           "H7": 2,
           "S4": 4
         },
         "T": {
           "B1": 36,
           "B3": 16,
-          "H4": 2,
+          "H4": 1,
           "H5": 1,
           "S3": 1,
           "S4": 9,
@@ -6985,14 +6200,12 @@
       "commits_by_rule": {
         "H": {
           "B1": 1,
-          "H4": 3,
-          "H6": 1,
+          "H4": 1,
           "H7": 1,
           "S4": 1
         },
         "T": {
           "B1": 6,
-          "H4": 1,
           "S4": 1
         }
       },
@@ -7005,13 +6218,11 @@
       "commits_by_rule": {
         "H": {
           "B1": 1,
-          "H4": 1,
-          "H6": 1
+          "H4": 1
         },
         "T": {
           "B1": 5,
           "B3": 1,
-          "H4": 2,
           "S1": 1,
           "S4": 1,
           "T4": 1
@@ -7029,8 +6240,8 @@
           "B3": 1,
           "H1": 2,
           "H2": 2,
-          "H4": 2,
-          "H5": 14,
+          "H4": 1,
+          "H5": 12,
           "H6": 7,
           "H7": 1,
           "S4": 2
@@ -7072,15 +6283,13 @@
         "H": {
           "B1": 2,
           "H3": 1,
-          "H4": 4,
           "H5": 1,
-          "H6": 4
+          "H6": 2
         },
         "T": {
           "B1": 27,
           "B3": 8,
           "H3": 1,
-          "H4": 2,
           "H6": 2,
           "S4": 1
         }
@@ -7096,7 +6305,7 @@
           "B1": 3,
           "H1": 1,
           "H4": 1,
-          "H5": 6,
+          "H5": 4,
           "H7": 1,
           "S4": 1
         },
@@ -7105,8 +6314,8 @@
           "B3": 5,
           "H1": 3,
           "H4": 1,
-          "H5": 4,
-          "H6": 2,
+          "H5": 2,
+          "H6": 1,
           "S4": 4
         }
       },
@@ -7119,8 +6328,8 @@
       "commits_by_rule": {
         "H": {
           "B3": 1,
-          "H4": 3,
-          "H5": 4,
+          "H4": 2,
+          "H5": 2,
           "S4": 1
         },
         "T": {
@@ -7139,7 +6348,7 @@
         "H": {
           "B1": 3,
           "H5": 5,
-          "H6": 2
+          "H6": 1
         },
         "T": {
           "B1": 14,
@@ -7161,7 +6370,7 @@
           "B2": 1,
           "B3": 1,
           "H1": 4,
-          "H5": 4,
+          "H5": 1,
           "H6": 2,
           "S4": 1,
           "T1": 3,
@@ -7173,7 +6382,6 @@
           "B2": 1,
           "B3": 4,
           "H1": 1,
-          "H5": 1,
           "H6": 3,
           "S4": 3,
           "T1": 4,
@@ -7215,9 +6423,9 @@
         "H1": 10,
         "H2": 2,
         "H3": 1,
-        "H4": 25,
-        "H5": 55,
-        "H6": 40,
+        "H4": 12,
+        "H5": 44,
+        "H6": 31,
         "H7": 12,
         "S1": 2,
         "S3": 1,
@@ -7230,8 +6438,8 @@
         "ai_trailer_commits": 17,
         "commits_scanned": 2815,
         "commits_with_gaps": 6,
-        "flagged_commits": 197,
-        "new_rule_flagged_commits": 143
+        "flagged_commits": 168,
+        "new_rule_flagged_commits": 112
       }
     },
     "T": {
@@ -7241,9 +6449,9 @@
         "B3": 77,
         "H1": 4,
         "H3": 1,
-        "H4": 14,
-        "H5": 12,
-        "H6": 42,
+        "H4": 7,
+        "H5": 9,
+        "H6": 41,
         "H7": 4,
         "S1": 5,
         "S3": 4,
@@ -7256,11 +6464,11 @@
         "ai_trailer_commits": 55,
         "commits_scanned": 3032,
         "commits_with_gaps": 13,
-        "flagged_commits": 502,
-        "new_rule_flagged_commits": 106
+        "flagged_commits": 495,
+        "new_rule_flagged_commits": 97
       }
     }
   },
   "schema_version": "1",
-  "seconds": 3542.8
+  "seconds": 2517.5
 }

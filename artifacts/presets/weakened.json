@@ -232,7 +232,7 @@
         "text": "S2 on tests/test_pricing.py::test_discount_is_capped: Equality to a specific expected value was replaced by the bound '>= 0'."
       }
     ],
-    "schema_version": "1",
+    "schema_version": "2",
     "summary": {
       "evidence": 0,
       "files_analyzed": 1,

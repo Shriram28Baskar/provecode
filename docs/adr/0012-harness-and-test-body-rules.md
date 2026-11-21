@@ -142,3 +142,7 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
   - ruff clean (rules in `engine/pyproject.toml`);
   - a corpus test runs every `.py`, config and workflow file of the 27 pinned repositories through the engine;
   - a seeded fuzz test mutates real files 1,500 times. No crashes.
+- **Real-history flag rate after these fixes** (same scan, engine `f7f87ed`; a flag rate, not precision):
+  - Population T: 495 of 3,032 flagged (16.3%), 97 with an H or T finding (was 502 and 106).
+  - Population H: 168 of 2,815 (6.0%), 112 with an H or T finding (was 197 and 143). By rule: H4 25 → 12, H5 55 → 44, H6 40 → 31.
+  - **175 commits** are listed for the owner to label (was 210).

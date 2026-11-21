@@ -56,11 +56,11 @@
             "rate": 1.0
           },
           "provecode": {
-            "hi": 1.0,
-            "k": 129,
-            "lo": 0.9711,
+            "hi": 0.9682,
+            "k": 121,
+            "lo": 0.8824,
             "n": 129,
-            "rate": 1.0
+            "rate": 0.938
           }
         }
       },
@@ -306,7 +306,7 @@
         "harness_touched_flagged": 6,
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 6
+        "provecode_flagged": 4
       },
       "HW02": {
         "baseline_flagged": 0,
@@ -316,7 +316,7 @@
         "harness_touched_flagged": 6,
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 6
+        "provecode_flagged": 5
       },
       "HW03": {
         "baseline_flagged": 0,
@@ -326,7 +326,7 @@
         "harness_touched_flagged": 6,
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 6
+        "provecode_flagged": 4
       },
       "HW04": {
         "baseline_flagged": 0,
@@ -336,7 +336,7 @@
         "harness_touched_flagged": 6,
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 6
+        "provecode_flagged": 3
       },
       "HW05": {
         "baseline_flagged": 0,
@@ -612,8 +612,8 @@
     "n_legit": 80,
     "n_weakening": 163,
     "outcomes": {
-      "FAILED": 135,
-      "INCONCLUSIVE": 108
+      "FAILED": 127,
+      "INCONCLUSIVE": 116
     },
     "paired_legit": {
       "baseline": {
@@ -634,18 +634,18 @@
     },
     "paired_recall": {
       "baseline": {
-        "mcnemar_exact_p": 1.71e-49,
+        "mcnemar_exact_p": 4.38e-47,
         "only_baseline": 0,
-        "only_provecode": 163
+        "only_provecode": 155
       },
       "engine_at_freeze": {
-        "mcnemar_exact_p": 1.71e-49,
+        "mcnemar_exact_p": 4.38e-47,
         "only_engine_at_freeze": 0,
-        "only_provecode": 163
+        "only_provecode": 155
       },
       "harness_touched": {
-        "mcnemar_exact_p": 1.16e-10,
-        "only_harness_touched": 0,
+        "mcnemar_exact_p": 6.88e-05,
+        "only_harness_touched": 8,
         "only_provecode": 34
       }
     },
@@ -672,11 +672,11 @@
         "rate": 0.7914
       },
       "provecode": {
-        "hi": 1.0,
-        "k": 163,
-        "lo": 0.977,
+        "hi": 0.9749,
+        "k": 155,
+        "lo": 0.9062,
         "n": 163,
-        "rate": 1.0
+        "rate": 0.9509
       }
     }
   },
@@ -2651,13 +2651,11 @@
       "kind": "weakening",
       "pattern": "HW01",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "arrow-py/arrow",
       "split": "held_out"
@@ -2741,13 +2739,11 @@
       "kind": "weakening",
       "pattern": "HW01",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "pallets/jinja",
       "split": "tuning"
@@ -2921,13 +2917,11 @@
       "kind": "weakening",
       "pattern": "HW02",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "pallets/jinja",
       "split": "tuning"
@@ -3011,13 +3005,11 @@
       "kind": "weakening",
       "pattern": "HW03",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "arrow-py/arrow",
       "split": "tuning"
@@ -3101,13 +3093,11 @@
       "kind": "weakening",
       "pattern": "HW03",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "pallets/jinja",
       "split": "held_out"
@@ -3161,13 +3151,11 @@
       "kind": "weakening",
       "pattern": "HW04",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "hynek/structlog",
       "split": "tuning"
@@ -3191,13 +3179,11 @@
       "kind": "weakening",
       "pattern": "HW04",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "arrow-py/arrow",
       "split": "held_out"
@@ -3281,13 +3267,11 @@
       "kind": "weakening",
       "pattern": "HW04",
       "provecode": {
-        "blocking": true,
-        "flagged": true,
+        "blocking": false,
+        "flagged": false,
         "gaps": [],
-        "outcome": "FAILED",
-        "rules": [
-          "H5"
-        ]
+        "outcome": "INCONCLUSIVE",
+        "rules": []
       },
       "repo": "pallets/jinja",
       "split": "tuning"
@@ -7907,11 +7891,11 @@
             "rate": 1.0
           },
           "provecode": {
-            "hi": 1.0,
-            "k": 37,
-            "lo": 0.9059,
+            "hi": 0.972,
+            "k": 34,
+            "lo": 0.787,
             "n": 37,
-            "rate": 1.0
+            "rate": 0.9189
           }
         }
       },
@@ -8127,7 +8111,7 @@
         "harness_touched_flagged": 2,
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 2
+        "provecode_flagged": 1
       },
       "HW02": {
         "baseline_flagged": 0,
@@ -8147,7 +8131,7 @@
         "harness_touched_flagged": 2,
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 2
+        "provecode_flagged": 1
       },
       "HW04": {
         "baseline_flagged": 0,
@@ -8157,7 +8141,7 @@
         "harness_touched_flagged": 2,
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 2
+        "provecode_flagged": 1
       },
       "HW05": {
         "baseline_flagged": 0,
@@ -8393,8 +8377,8 @@
     "n_legit": 26,
     "n_weakening": 47,
     "outcomes": {
-      "FAILED": 40,
-      "INCONCLUSIVE": 33
+      "FAILED": 37,
+      "INCONCLUSIVE": 36
     },
     "paired_legit": {
       "baseline": {
@@ -8415,18 +8399,18 @@
     },
     "paired_recall": {
       "baseline": {
-        "mcnemar_exact_p": 1.42e-14,
+        "mcnemar_exact_p": 1.14e-13,
         "only_baseline": 0,
-        "only_provecode": 47
+        "only_provecode": 44
       },
       "engine_at_freeze": {
-        "mcnemar_exact_p": 1.42e-14,
+        "mcnemar_exact_p": 1.14e-13,
         "only_engine_at_freeze": 0,
-        "only_provecode": 47
+        "only_provecode": 44
       },
       "harness_touched": {
-        "mcnemar_exact_p": 0.00195,
-        "only_harness_touched": 0,
+        "mcnemar_exact_p": 0.0923,
+        "only_harness_touched": 3,
         "only_provecode": 10
       }
     },
@@ -8453,17 +8437,17 @@
         "rate": 0.7872
       },
       "provecode": {
-        "hi": 1.0,
-        "k": 47,
-        "lo": 0.9244,
+        "hi": 0.9781,
+        "k": 44,
+        "lo": 0.8284,
         "n": 47,
-        "rate": 1.0
+        "rate": 0.9362
       }
     }
   },
   "label": "Injected harness and test-body weakenings on real repositories (experimental, ADR 0012). The patterns mirror the rules' stated targets, so this shows the rules work as specified, not real-world recall.",
   "provenance": {
-    "benchmark_code_sha256": "fb101eff3c1861d2349a3e7dd58e71e572e7ec48c1680c619ce01d9c7e2d2d6c",
+    "benchmark_code_sha256": "5643a010d33abadb62842b5f7c560437f6d72dfa144470dc02fb427b47aa238e",
     "case_ids_sha256": "463923ba4f9e41a0b2ecd93a62e8a0f51710126d4f9fc33c7880760f2ceb4e8c",
     "cases_lock_sha256": "1821f045d9104a38c47ff14c167a696ee6f5c2faf4d3f4b915fea727cf92e0f7",
     "command": "python -m benchmark.regenerate",
@@ -8482,7 +8466,7 @@
       }
     },
     "engine_at_freeze_commit": "9eca74a58a55bcc5b01dd16ce8f4712fa3853d56",
-    "engine_source_sha256": "6fcfb47a84d6b0972471f2c10637daa68b5cd431f94e68f3689670aa6d852722",
+    "engine_source_sha256": "899088490ae183a7e38c4f4fb7adf2d38dc8426e1fc867fb6eee0c47fa65eb8a",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -8552,7 +8536,29 @@
     ],
     "split_lock_sha256": "1cf56b5bcfe41fc7d0528ac2a88bb6439c31b6c9dd5602180b375ac5bebad782"
   },
-  "revision_log": [],
+  "revision_log": [
+    {
+      "changes": [
+        "H5: a tox/nox call counts as a test command unless every selected env or session is a non-test one (lint, typing, docs, docset, build, ...); `docs-doctests` and other names containing 'test' still count",
+        "H4: with the repository's file list, testpaths/python_files/norecursedirs changes are reported only when pytest would stop collecting a test file it collected before, and those files are named",
+        "H6: regex spellings of an ellipsis in exclude patterns, and omitting __main__.py or version files, are boilerplate",
+        "analyzed source is parsed with Python's warnings silenced (they describe the input, not PROVECODE)"
+      ],
+      "date": "2026-11-22",
+      "disputed_labels": [
+        "HW01-03",
+        "HW01-06",
+        "HW02-06",
+        "HW03-03",
+        "HW03-06",
+        "HW04-02",
+        "HW04-03",
+        "HW04-06"
+      ],
+      "effect": "8 case results changed, all of them workflow weakening cases whose edited step runs `tox -e docs`, `tox run -e typing`, `tox -e lint` or `tox run -e docset` (HW01-03, HW01-06, HW02-06, HW03-03, HW03-06, HW04-02, HW04-03, HW04-06; 3 of them held-out). They are no longer flagged. The frozen pattern definition treated any tox call as a test command; under the corrected definition these are not test steps, so their 'weakening' labels are disputed and listed for the owner to relabel. Held-out recall against the frozen labels: 47 -> 44 of 47 (44 of 44 if the 3 disputed labels are set aside). No legitimate case changed; no other tier changed.",
+      "source": "review of the real-history scan (docs/research/data/real_history_scan_v2.json) and of real workflows, not Tier H data"
+    }
+  ],
   "schema_version": "1",
   "tier": "H",
   "tuning": {
@@ -8612,11 +8618,11 @@
             "rate": 1.0
           },
           "provecode": {
-            "hi": 1.0,
-            "k": 92,
-            "lo": 0.9599,
+            "hi": 0.9766,
+            "k": 87,
+            "lo": 0.879,
             "n": 92,
-            "rate": 1.0
+            "rate": 0.9457
           }
         }
       },
@@ -8862,7 +8868,7 @@
         "harness_touched_flagged": 4,
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 4
+        "provecode_flagged": 3
       },
       "HW02": {
         "baseline_flagged": 0,
@@ -8872,7 +8878,7 @@
         "harness_touched_flagged": 5,
         "kind": "weakening",
         "n": 5,
-        "provecode_flagged": 5
+        "provecode_flagged": 4
       },
       "HW03": {
         "baseline_flagged": 0,
@@ -8882,7 +8888,7 @@
         "harness_touched_flagged": 4,
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 4
+        "provecode_flagged": 3
       },
       "HW04": {
         "baseline_flagged": 0,
@@ -8892,7 +8898,7 @@
         "harness_touched_flagged": 4,
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 4
+        "provecode_flagged": 2
       },
       "HW05": {
         "baseline_flagged": 0,
@@ -9168,8 +9174,8 @@
     "n_legit": 54,
     "n_weakening": 116,
     "outcomes": {
-      "FAILED": 95,
-      "INCONCLUSIVE": 75
+      "FAILED": 90,
+      "INCONCLUSIVE": 80
     },
     "paired_legit": {
       "baseline": {
@@ -9190,18 +9196,18 @@
     },
     "paired_recall": {
       "baseline": {
-        "mcnemar_exact_p": 2.41e-35,
+        "mcnemar_exact_p": 7.7e-34,
         "only_baseline": 0,
-        "only_provecode": 116
+        "only_provecode": 111
       },
       "engine_at_freeze": {
-        "mcnemar_exact_p": 2.41e-35,
+        "mcnemar_exact_p": 7.7e-34,
         "only_engine_at_freeze": 0,
-        "only_provecode": 116
+        "only_provecode": 111
       },
       "harness_touched": {
-        "mcnemar_exact_p": 1.19e-07,
-        "only_harness_touched": 0,
+        "mcnemar_exact_p": 0.000546,
+        "only_harness_touched": 5,
         "only_provecode": 24
       }
     },
@@ -9228,11 +9234,11 @@
         "rate": 0.7931
       },
       "provecode": {
-        "hi": 1.0,
-        "k": 116,
-        "lo": 0.9679,
+        "hi": 0.9815,
+        "k": 111,
+        "lo": 0.9031,
         "n": 116,
-        "rate": 1.0
+        "rate": 0.9569
       }
     }
   },

@@ -343,7 +343,7 @@
         "text": "C4 is verified by execution (chk-signature); static analysis cannot provide passing evidence."
       }
     ],
-    "schema_version": "1",
+    "schema_version": "2",
     "summary": {
       "evidence": 0,
       "files_analyzed": 1,
