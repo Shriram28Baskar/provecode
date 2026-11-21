@@ -2,6 +2,7 @@
 
   provecode check   --repo . --base REF --head REF --contract C.yaml [--contract-base C0.yaml]
   provecode record  ...same as check, plus contract checks and repo tests in Docker
+  provecode guard   [--staged] [--base HEAD]   uncommitted/staged changes; pre-commit and agent hooks
   provecode approve C.yaml --by NAME [--at ISO8601]
   provecode compile C.yaml [-o C.json]
 
@@ -153,6 +154,9 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--checks-dir", required=True, help="trusted directory holding contract-owned checks")
             p.add_argument("--timeout", type=int, default=120)
         p.set_defaults(fn=fn)
+    from . import guard  # local and agent-loop gate (ADR 0010)
+
+    guard.add_parser(sub)
     p = sub.add_parser("approve")
     p.add_argument("contract")
     p.add_argument("--by", required=True)

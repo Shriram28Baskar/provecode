@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Stamp } from "@/components/marks";
+import { guardEval } from "@/lib/data";
 
 export const metadata: Metadata = { title: "How it works | PROVECODE" };
 
@@ -23,6 +24,8 @@ const RULES = [
 ] as const;
 
 export default function AboutPage() {
+  const g = guardEval();
+  const lat = g.latency;
   return (
     <div className="space-y-16 pt-12">
       <header className="space-y-4">
@@ -107,6 +110,37 @@ export default function AboutPage() {
           From a terminal: <code className="font-mono">provecode check --base main --head my-branch --contract contracts/checkout.yaml</code>.
           Exit code 1 means FAILED, 2 INCONCLUSIVE, 0 VERIFIED.
         </p>
+      </section>
+
+      <section aria-labelledby="agent" className="space-y-4">
+        <h2 id="agent" className="text-2xl font-bold tracking-tight">
+          Inside the agent loop
+        </h2>
+        <p className="prose-measure">
+          A pull request is late. <code className="font-mono">provecode guard</code> checks uncommitted changes in the
+          working tree, or the staged ones with <code className="font-mono">--staged</code>, so a weakened test is caught
+          before it becomes a commit. As a Claude Code Stop hook, it sends the agent back to work with the findings when
+          it tries to finish with weaker tests. It needs no contract. If one exists, it is read from the base commit, so
+          editing it does not help. MaruCheck also gates agents; see the prior art below.
+        </p>
+        <pre className="diff overflow-x-auto rounded-md border border-rule bg-sheet p-4">{`"Stop": [{ "hooks": [{ "type": "command",
+  "command": "provecode guard --hook claude-stop" }] }]`}</pre>
+        <ul className="prose-measure list-disc space-y-1 pl-5 text-ink-soft">
+          <li>
+            On {g.parity.cases_compared} benchmark edits, each applied in its real repository, the working-tree check
+            gave the same report as checking the committed edit in {g.parity.identical} of {g.parity.cases_compared}.
+          </li>
+          <li>
+            The full command, Python start-up included, took a median {(lat.median_s * 1000).toFixed(0)} ms and at most{" "}
+            {(lat.max_s * 1000).toFixed(0)} ms per check ({lat.machine.system}, Python {lat.machine.python}).
+          </li>
+          <li>
+            Without any contract, it blocked {lat.blocked_without_contract.weakening.blocked} of{" "}
+            {lat.blocked_without_contract.weakening.n} injected weakenings and {lat.blocked_without_contract.legit.blocked}{" "}
+            of {lat.blocked_without_contract.legit.n} legitimate edits.
+          </li>
+          <li>It is an early, cheap catch, not a tamper-proof one: an agent with a shell can edit its own hook settings.</li>
+        </ul>
       </section>
 
       <section aria-labelledby="prior" className="space-y-4">

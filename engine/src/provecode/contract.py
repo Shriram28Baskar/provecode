@@ -177,6 +177,23 @@ def _plain(obj):
     return obj
 
 
+def parse_text(text: str, name: str) -> dict:
+    """A contract from text, e.g. read from a git blob. JSON if name ends in .json, else YAML."""
+    if name.endswith(".json"):
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise ContractError(f"cannot read contract {name}: {exc}") from exc
+    try:
+        import yaml  # CLI extra only
+    except ImportError as exc:  # pragma: no cover - exercised only without the extra
+        raise ContractError("reading YAML contracts needs the 'cli' extra: pip install provecode[cli]") from exc
+    try:
+        return _plain(yaml.safe_load(text))
+    except yaml.YAMLError as exc:
+        raise ContractError(f"cannot read contract {name}: {exc}") from exc
+
+
 def read_any(path: str | Path) -> dict:
     p = Path(path)
     if p.suffix == ".json":

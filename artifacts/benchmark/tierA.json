@@ -4687,7 +4687,7 @@
   },
   "label": "Injected cases on real repositories (experimental). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "418bb0b05f9103243efbafecf28bcd4b62d75505ca111a2e7ec02b92d6c970ac",
+    "benchmark_code_sha256": "8fc5016db24f41721775de6b9c4672010ee6f82796b475e52baa9d772516d4ed",
     "case_ids_sha256": "452a16853e6b24d6ecf649e72673fa8c3311c51d8ac00c85c656da1e5f2dbeaa",
     "cases_lock_sha256": "91055c1dfb5f440c97df457dfad463eac45965207125c1766e246f5cde4a0bb7",
     "command": "python -m benchmark.regenerate",
@@ -4705,7 +4705,7 @@
         "committed_at": "2026-11-20T20:08:41+05:30"
       }
     },
-    "engine_source_sha256": "dcf5e4f2c53adad8c03cbb102370dddab4717a161bf6e71b59e5fbf9d0c9482d",
+    "engine_source_sha256": "c640030e1bb3e171db71a8092f102e4ae768b53676110596425a91162afe121a",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -4782,7 +4782,7 @@
         "TestCase subclasses are test classes; self.assert* calls are checks mapped onto S1/S2/B3",
         "self.assertRaises*/assertWarns* feed S3; the Regex argument counts as match=",
         "unittest.skip/skipIf/skipUnless/expectedFailure and a leading self.skipTest() are B2",
-        "tests.py and modules under tests/ or test/ are test files; renames to uncollected names are B1"
+        "tests.py and modules under tests/ are test files; renames to uncollected names are B1"
       ],
       "date": "2026-11-21",
       "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",

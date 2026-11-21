@@ -1,6 +1,13 @@
 {
   "artifacts": [
     {
+      "bytes": 1263,
+      "deterministic": false,
+      "generator": "python -m benchmark.guard_eval",
+      "path": "benchmark/guard.json",
+      "sha256": "34cc45f21934257ca77c194007a78ff38cb8c8c5eb888f3a0c2b914a3756a9ae"
+    },
+    {
       "bytes": 462,
       "deterministic": true,
       "generator": "node benchmark/pyodide_parity.mjs",
@@ -8,25 +15,25 @@
       "sha256": "8a71e587a59e4d504d56a899440f1a12a5f0e26499c9e1176af76b20d9808233"
     },
     {
-      "bytes": 1464,
+      "bytes": 1462,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "e9956489c35ff3b19e5823682176053e6e0715bee1fcec4a0c5eb3a0ff9dbeba"
+      "sha256": "5132f7bbe9a142f78ac104ecf23bc95501efe3db7fd685999fa02a5c2afc7ba8"
     },
     {
-      "bytes": 114052,
+      "bytes": 114043,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA.json",
-      "sha256": "775a771fe0277b3a00ae5ff0b2c8edae5e8a7892a144dc98b460c193fd9d3ff6"
+      "sha256": "435c894d6125663e1482912f91ea06bdc61fd648980fbd4c211fa8a498fdb4b5"
     },
     {
-      "bytes": 92205,
+      "bytes": 92716,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA_u.json",
-      "sha256": "18aa3c79f01878f8e87023f002f2bac26749b97da7969fbf10e3dfb387bb6822"
+      "sha256": "7fb9b20aa055069f803b9f6a3dc30a16b2add8d47645aaf6e87472129f2156ac"
     },
     {
       "bytes": 10386,

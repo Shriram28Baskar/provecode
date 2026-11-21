@@ -142,6 +142,18 @@ export interface Perf {
   live_limits: Record<string, number>;
 }
 
+export interface GuardEval {
+  parity: { cases_compared: number; identical: number; mismatches: unknown[] };
+  latency: {
+    machine: Record<string, string>;
+    n: number;
+    median_s: number;
+    p95_s: number;
+    max_s: number;
+    blocked_without_contract: Record<"weakening" | "legit", { blocked: number; n: number }>;
+  };
+}
+
 export interface Parity {
   pyodide_version: string;
   pyodide_python: string;

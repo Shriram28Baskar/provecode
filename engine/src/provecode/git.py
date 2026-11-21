@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import subprocess
 from dataclasses import dataclass
+from pathlib import Path
 
 
 class GitError(Exception):
@@ -16,7 +17,9 @@ class DecodeError(GitError):
 
 def _git(repo: str, *args: str, binary: bool = False):
     try:
-        out = subprocess.run(["git", "-C", repo, *args], capture_output=True, timeout=60, check=False)
+        # --no-optional-locks: even `git diff` must not refresh the index's stat cache.
+        out = subprocess.run(["git", "--no-optional-locks", "-C", repo, *args], capture_output=True, timeout=60,
+                             check=False)
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise GitError(f"git {' '.join(args)}: {exc}") from exc
     if out.returncode != 0:
@@ -38,7 +41,24 @@ class Change:
 
 
 def changed_files(repo: str, base: str, head: str) -> list[Change]:
-    out = _git(repo, "diff", "--name-status", "-z", "-M", base, head, "--")
+    return _name_status(_git(repo, "diff", "--name-status", "-z", "-M", base, head, "--"))
+
+
+def changed_files_local(repo: str, base: str, staged: bool) -> list[Change]:
+    """Changes from base to the index (staged) or to the working tree, including untracked files
+    (as additions) in working-tree mode. Paths are relative to the repository top level."""
+    if staged:
+        return _name_status(_git(repo, "diff", "--cached", "--name-status", "-z", "-M", base, "--"))
+    changes = _name_status(_git(repo, "diff", "--name-status", "-z", "-M", base, "--"))
+    known = {c.path for c in changes}
+    top = toplevel(repo)
+    for path in _git(top, "ls-files", "--others", "--exclude-standard", "-z").split("\0"):
+        if path and path not in known:
+            changes.append(Change("A", path))
+    return changes
+
+
+def _name_status(out: str) -> list[Change]:
     parts = out.split("\0")
     changes: list[Change] = []
     i = 0
@@ -72,6 +92,43 @@ def show(repo: str, sha: str, path: str) -> str | None:
         return data.decode("utf-8-sig")
     except UnicodeDecodeError as exc:
         raise DecodeError(f"{path} at {sha[:12]} is not UTF-8") from exc
+
+
+def has_commits(repo: str) -> bool:
+    """False for a freshly initialised repository whose HEAD is unborn."""
+    return bool(_git(repo, "rev-list", "-n", "1", "--all").strip())
+
+
+def toplevel(repo: str) -> str:
+    return _git(repo, "rev-parse", "--show-toplevel").strip()
+
+
+def show_index(repo: str, path: str) -> str | None:
+    """Staged content of path (index stage 0), or None if it is not in the index."""
+    entries = [e for e in _git(repo, "ls-files", "--stage", "-z", "--", path).split("\0") if e]
+    if not entries:
+        return None
+    if any(not e.split("\t", 1)[0].endswith(" 0") for e in entries):
+        raise DecodeError(f"{path} has unresolved merge conflicts in the index")
+    data = _git(repo, "cat-file", "blob", f":0:{path}", binary=True)
+    try:
+        return data.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise DecodeError(f"{path} in the index is not UTF-8") from exc
+
+
+def show_worktree(top: str, path: str) -> str | None:
+    """Working-tree content of path (relative to the top level), or None if absent. Symlinks are
+    not followed, so a test file cannot be pointed at content outside the repository."""
+    p = Path(top) / path
+    if p.is_symlink():
+        raise DecodeError(f"{path} is a symlink; symlinks are not followed")
+    if not p.is_file():
+        return None
+    try:
+        return p.read_bytes().decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise DecodeError(f"{path} in the working tree is not UTF-8") from exc
 
 
 def commit_time(repo: str, sha: str) -> str:

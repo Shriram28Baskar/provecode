@@ -213,6 +213,12 @@ export default function BenchmarkPage() {
           <li>
             Legitimate held-out edits blocked: {frac(uh.legit_blocking.provecode)} ({ci(uh.legit_blocking.provecode)}).
           </li>
+          {u.revision_log.map((r) => (
+            <li key={r.date + r.source}>
+              After the Tier A-u held-out results were first seen, the engine was revised following the {r.source}:{" "}
+              {r.changes.join("; ")}. Effect on Tier A-u: {r.effect_on_tier_a}.
+            </li>
+          ))}
           {uMisses.map(([id, v]) => (
             <li key={id}>
               Missed, all splits: <strong>{id}</strong>, {PATTERN_TEXT[id] ?? CATEGORY[v.category]}: caught{" "}

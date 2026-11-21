@@ -3817,7 +3817,7 @@
   },
   "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "2d1f2d1165ca5a565aeb9876b5fb10527e1581235e366ddce06c5406fb34a3b1",
+    "benchmark_code_sha256": "6c27b679f33626760bf6e84957d54bf4682ce9410ddd46a813085f6d63c9d0e3",
     "case_ids_sha256": "acc756330c9f7bb680af820e9b9578e8f510b1dcb3830dff42073f99bc39be99",
     "cases_lock_sha256": "1989ceedec34e8d7e6fd6b8f222f587ee8bb829c92ec92ab9534933eb8cf035b",
     "command": "python -m benchmark.regenerate",
@@ -3835,7 +3835,7 @@
         "committed_at": "2026-11-20T23:00:44+05:30"
       }
     },
-    "engine_source_sha256": "dcf5e4f2c53adad8c03cbb102370dddab4717a161bf6e71b59e5fbf9d0c9482d",
+    "engine_source_sha256": "c640030e1bb3e171db71a8092f102e4ae768b53676110596425a91162afe121a",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -3877,7 +3877,16 @@
     ],
     "split_lock_sha256": "8be466a309dddb807d318213368499c312afbaeef3910f23140cf2f7cd2738a0"
   },
-  "revision_log": [],
+  "revision_log": [
+    {
+      "changes": [
+        "a singular test/ directory no longer makes every module a test file (django/test/testcases.py is framework code); tests/ directories and test_*.py / *_test.py / tests.py names are unchanged"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "none: no Tier A-u case is in a test/ directory; all 132 case results and all metrics identical before and after",
+      "source": "SWE-bench Verified gold test-file measurement (docs/research), not Tier A-u data"
+    }
+  ],
   "schema_version": "1",
   "tier": "A-u",
   "tuning": {

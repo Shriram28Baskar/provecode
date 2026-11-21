@@ -300,10 +300,20 @@ These are the places where the implementation departs from, or adds to, the sect
   - JSON contracts stay JSON when approved.
 
 **unittest-style tests (ADR 0009, 2026-11-21; recorded in `tierA.json` under `revision_log`; no Tier A result changed)**
-- **Test files.** `test_*.py`, `*_test.py`, `tests.py`, and any `.py` file under a `tests/` or `test/` directory. `conftest.py` and `__init__.py` are excluded.
+- **Test files.** `test_*.py`, `*_test.py`, `tests.py`, and any `.py` file under a `tests/` directory. `conftest.py` and `__init__.py` are excluded. A singular `test/` directory is not enough, because it is often framework code such as `django/test/` (ADR 0009 amendment).
 - **Test classes.** `Test*` classes, plus any class with a base whose final name ends in `TestCase` (`TestCase`, `SimpleTestCase`, `test.TransactionTestCase`, ...). Bases are judged by name only, without import resolution. ADR 0009 also mentions bases ending in `Tests`; that part was **not** built, to keep the false-positive surface small.
 - **Checks.** `self.assert*` calls are mapped onto the existing check model: `assertEqual`→`==`, `assertGreaterEqual`→`>=`, `assertIs`→`is`, `assertIsNotNone`→not-None, `assertTrue`→truthy, `assertIsInstance`→isinstance, `assertAlmostEqual`→approx (`delta`, or `places` with a default of 7). Project helpers such as `assertMarkdownRenders` count only for B3: their strength is unknown, so argument changes are not judged.
 - **S3.** `self.assertRaises*` and `self.assertWarns*` are exception checks. The regex argument of `assertRaisesRegex` counts as `match=`.
 - **B2.** `@unittest.skip`, `@expectedFailure`, `@skipIf(<truthy constant>)`, `@skipUnless(<falsy constant>)` (as `unittest.X` or imported from `unittest`), and a leading `self.skipTest()`.
 - **Renames.** A rename from a name default runners collect (`test*.py`, `*_test.py`) to one they don't is B1, even inside `tests/`.
 - **Tier A-u.** A second injected benchmark (`benchmark/patterns_unittest.md`, `generate_cases_unittest.py`, `*_unittest.lock.json`) was frozen in `bb6f3d5`, before the detector change. `regenerate` writes `artifacts/benchmark/tierA_u.json`, with the same metrics, baseline and held-out split, and with `commit_order.detector_change` in provenance. Pyodide parity covers both tiers.
+
+**Agent-loop gate (ADR 0010, 2026-11-21)**
+- **`provecode guard`** compares the working tree (default) or the index (`--staged`) with `--base` (default `HEAD`). Untracked files count as additions. A deleted test file and an added one are paired as a rename at 50% or more line similarity. Git runs with `--no-optional-locks`, and nothing is written to the repository, its index or its object store; a test checks this.
+- **Contract** is read from the base commit (default `.provecode/contract.yaml`, optional). Without one, findings are ungraded warnings.
+- **Exit codes:** `--block-on weakening` (default) exits 1 on any warning or blocking S1–S4/B1–B3 finding, or on FAILED. `--block-on failed` exits 1 on FAILED only. A repository with no commits yet is allowed.
+- **Hooks:** `--hook claude-stop` answers Claude Code's Stop event with `{"decision": "block", ...}`. `--hook claude-session-start` records the session's starting commit in the temp directory (`PROVECODE_STATE_DIR` overrides). Both fail open, with a `systemMessage`.
+- **`guard.py` is host-specific**, like `git`, `exec` and `cli`, and is not part of the browser core.
+- **Measured** by `python -m benchmark.guard_eval` → `artifacts/benchmark/guard.json`, on all 300 benchmark cases applied in copies of their real repositories:
+  - Reports identical to commit mode in 300/300 cases.
+  - The latency is end to end, Python start-up included. It is machine-dependent: median 0.57 s on the Windows development machine. The slowest repo is `kjd/idna`, whose 1.4 MB test file takes about 4 s, most of it in the input-limit tokenizer pass and the AST depth check.

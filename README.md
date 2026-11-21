@@ -103,12 +103,51 @@ jobs:
 - **Static only:** the Action runs static analysis and never executes PR code.
 - **Protecting the contract:** pair it with CODEOWNERS and branch protection on `contracts/`.
 
+## Use it in the agent loop (pre-commit, Claude Code)
+
+`provecode guard` checks **uncommitted** test changes, from the working tree or the index. It catches a weakening before it becomes a commit or a PR. It uses the same engine and rules as `check`, and writes nothing to the repository.
+
+```bash
+provecode guard                 # working tree vs HEAD; exit 1 blocks
+provecode guard --staged        # the index, i.e. what the next commit would contain
+```
+
+- **Zero configuration.** It works without a contract: any S1–S4/B1–B3 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
+- **Pre-commit** (`.pre-commit-config.yaml`):
+
+  ```yaml
+  repos:
+    - repo: local
+      hooks:
+        - id: provecode
+          name: provecode guard (test weakening)
+          entry: provecode guard --staged
+          language: system
+          pass_filenames: false
+          always_run: true
+  ```
+
+- **Claude Code** (`.claude/settings.json`; `provecode` must be on the hook's `PATH`):
+
+  ```json
+  {
+    "hooks": {
+      "SessionStart": [{ "hooks": [{ "type": "command", "command": "provecode guard --hook claude-session-start" }] }],
+      "Stop": [{ "hooks": [{ "type": "command", "command": "provecode guard --hook claude-stop", "timeout": 60 }] }]
+    }
+  }
+  ```
+
+  When Claude tries to finish with weakened tests, the Stop hook blocks it. Claude gets the findings, with before and after, as the reason to keep working, and you get a one-line warning. The session's starting commit is recorded outside the repository, so a weakening Claude commits during the session is still caught.
+- **Not tamper-proof.** An agent with a shell can edit hook settings. The local gate is the early, cheap catch; the PR check, with the contract read outside the candidate, is the enforcement point. Hooks fail open on errors and say so (ADR 0010).
+
 ## Reproduce every number
 
 ```bash
 pip install -e "engine[dev]"
 python -m pytest engine/tests benchmark/test_benchmark.py      # engine and benchmark tests
-python -m benchmark.regenerate --check     # rebuild Tier A from pinned commits; byte-for-byte compare
+python -m benchmark.regenerate --check     # rebuild Tier A and A-u from pinned commits; byte-for-byte compare
+python -m benchmark.guard_eval             # guard vs commit mode on every case, plus guard latency
 python -m benchmark.record_demo            # recorded Docker runs (FAILED and VERIFIED)
 cd web && npm ci && npm run parity         # Pyodide vs CPython on every case
 npm run build                              # site; fails if an artifact doesn't match the manifest
@@ -122,18 +161,18 @@ CI runs the tests on Python 3.11 and 3.13. It also checks the Tier A regeneratio
 
 | Path | Contents |
 |---|---|
-| `engine/` | The `provecode` package. The core (`analyzer`, `limits`, `contract`, `decide`, `report`, `pipeline`) is standard library only, and a CI scan forbids exec, eval and LLM imports. `git`, `exec` and `cli` hold the host-specific parts. |
+| `engine/` | The `provecode` package. The core (`analyzer`, `limits`, `contract`, `decide`, `report`, `pipeline`) is standard library only, and a CI scan forbids exec, eval and LLM imports. `git`, `exec`, `guard` and `cli` hold the host-specific parts. |
 | `benchmark/` | Tier A pattern list, pinned sources, case generator, count-based baseline, `regenerate`, parity |
 | `demo/` | The checkout scenario: deterministic repo builder, contracts v1 and v2, contract-owned checks |
 | `docker/` | The recorded-run image, with its base pinned by digest |
 | `artifacts/` | Generated reports, benchmark results, presets and the manifest. Never edited by hand. |
 | `web/` | The Next.js static site and the Pyodide worker |
-| `docs/` | Competitive audit, PRD, architecture, build spec, ADRs 0001–0008 |
+| `docs/` | Competitive audit, PRD, architecture, build spec, research report, ADRs 0001–0010 |
 | `spike/` | The Gate 0 feasibility spike, paused by ADR 0007. Never imported by product code. |
 
 ## Honest scope
 
-- Python and pytest only.
+- Python only: pytest-style and unittest-style tests.
 - Tier A cases are injected. Real-world recall (Tier B) and precision (Tier C) aren't measured yet.
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
