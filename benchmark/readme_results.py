@@ -51,10 +51,37 @@ def block() -> str:
         f"{sum(v['provecode_flagged'] for k, v in t['all']['by_pattern'].items() if k in ('W17', 'W18', 'W19'))} of "
         f"{sum(v['n'] for k, v in t['all']['by_pattern'].items() if k in ('W17', 'W18', 'W19'))} cases.",
     ]
+    u_path = ROOT / "artifacts/benchmark/tierA_u.json"
+    if u_path.exists():
+        u = json.loads(u_path.read_text(encoding="utf-8"))
+        uh = u["held_out"]
+        ub = u["all"]["by_pattern"]
+        lines += [
+            "",
+            f"Tier A-u (unittest-style tests, ADR 0009), held-out split: {uh['n_weakening']} injected weakenings and "
+            f"{uh['n_legit']} legitimate edits in {len(u['provenance']['sources'])} other real repositories, frozen "
+            "before the detector change. **Experimental, injected cases; not real-world performance.**",
+            "",
+            "| Held-out (Tier A-u) | PROVECODE | Count-based baseline (reimplementation) |",
+            "|---|---|---|",
+            f"| Count-preserving weakenings caught | {_cell(uh['recall_count_preserving']['provecode'])} | "
+            f"{_cell(uh['recall_count_preserving']['baseline'])} |",
+            f"| All weakenings caught | {_cell(uh['recall']['provecode'])} | {_cell(uh['recall']['baseline'])} |",
+            f"| Count-reducing weakenings caught | {_cell(uh['recall_not_count_preserving']['provecode'])} | "
+            f"{_cell(uh['recall_not_count_preserving']['baseline'])} |",
+            f"| Legitimate edits blocked (PROVECODE) / flagged (baseline) | {_cell(uh['legit_blocking']['provecode'])} | "
+            f"{_cell(uh['legit_flagged']['baseline'])} |",
+            "",
+            "Same blind spots in unittest form: tautologies and swallowed assertions are caught in "
+            f"{sum(v['provecode_flagged'] for k, v in ub.items() if k in ('U13', 'U14'))} of "
+            f"{sum(v['n'] for k, v in ub.items() if k in ('U13', 'U14'))} cases.",
+        ]
     if par:
         lines.append(
             f"Browser parity: Pyodide {par['pyodide_version']} (Python {par['pyodide_python']}) matches CPython "
             f"{par['cpython_reference']} on {par['cases_compared']} of {par['cases_compared']} cases"
+            + (" (" + " and ".join(f"Tier {t['tier']}: {t['cases_compared']}" for t in par["tiers"]) + ")"
+               if par.get("tiers") else "")
             if par["identical"] else f"Browser parity: {len(par['mismatches'])} mismatches against CPython"
         )
         lines[-1] += "."

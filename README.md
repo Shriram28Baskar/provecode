@@ -32,7 +32,18 @@ Tier A, held-out split: 44 injected weakenings and 6 legitimate edits in 6 real 
 
 F1 (count-preserving recall above the baseline) is **supported** on Tier A (exact McNemar p = 2.4e-07).
 Known blind spots, by design: tautologies (`A == A`), swallowed assertions and `or True` are caught in 0 of 18 cases.
-Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 168 of 168 cases.
+
+Tier A-u (unittest-style tests, ADR 0009), held-out split: 28 injected weakenings and 12 legitimate edits in 5 other real repositories, frozen before the detector change. **Experimental, injected cases; not real-world performance.**
+
+| Held-out (Tier A-u) | PROVECODE | Count-based baseline (reimplementation) |
+|---|---|---|
+| Count-preserving weakenings caught | 16/21 (76%, 95% CI 55% to 89%) | 3/21 (14%, 95% CI 5% to 35%) |
+| All weakenings caught | 23/28 (82%, 95% CI 64% to 92%) | 10/28 (36%, 95% CI 21% to 54%) |
+| Count-reducing weakenings caught | 7/7 (100%, 95% CI 65% to 100%) | 7/7 (100%, 95% CI 65% to 100%) |
+| Legitimate edits blocked (PROVECODE) / flagged (baseline) | 0/12 (0%, 95% CI 0% to 24%) | 1/12 (8%, 95% CI 1% to 35%) |
+
+Same blind spots in unittest form: tautologies and swallowed assertions are caught in 0 of 12 cases.
+Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 300 of 300 cases (Tier A: 168 and Tier A-u: 132).
 <!-- results:end -->
 
 Full benchmark, method and limitations: the site's **Benchmark** page, or `artifacts/benchmark/tierA.json`.

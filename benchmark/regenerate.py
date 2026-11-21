@@ -1,12 +1,13 @@
-"""Regenerate every Tier A benchmark result from pinned inputs (PRD section 5.4).
+"""Regenerate every Tier A and Tier A-u benchmark result from pinned inputs (PRD section 5.4).
 
-  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,perf}.json and the manifest
-  python -m benchmark.regenerate --check       recompute tierA.json and fail if it differs from the committed file
+  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,tierA_u,perf}.json and the manifest
+  python -m benchmark.regenerate --check       recompute tierA.json and tierA_u.json; fail if either differs
   python -m benchmark.regenerate --tuning-only print tuning-split results only; writes nothing
 
-Inputs: benchmark/{cases,split,sources}.lock.json (frozen in M1, before any
-detector code). Cases are regenerated from the pinned repos and verified
-against the locks first. Headline numbers use the held-out split only.
+Inputs: benchmark/{cases,split,sources}.lock.json (Tier A, frozen in M1, before any
+detector code) and benchmark/{cases,split,sources}_unittest.lock.json (Tier A-u, frozen
+before the ADR 0009 detector change). Cases are regenerated from the pinned repos and
+verified against the locks first. Headline numbers use the held-out split only.
 """
 
 from __future__ import annotations
@@ -29,11 +30,12 @@ from provecode import analyzer, contract as contract_mod, pipeline
 from provecode.limits import Limits
 from provecode.model import WEAKENING_RULES
 
-from . import baseline_count, generate_cases, manifest, presets, readme_results
+from . import baseline_count, generate_cases, generate_cases_unittest, manifest, presets, readme_results
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "artifacts" / "benchmark"
 TIER_A = OUT / "tierA.json"
+TIER_A_U = OUT / "tierA_u.json"
 PERF = OUT / "perf.json"
 APPROVER, APPROVED_AT = "tierA-harness (out of band)", "2026-11-20T00:00:00Z"
 Z = 1.959963984540054
@@ -74,6 +76,17 @@ REVISION_LOG = [
         ],
         "effect_on_tier_a": "none: same 168 case ids, patterns, sites and split; only base/head byte hashes changed; "
                             "all case results and metrics identical",
+    },
+    {
+        "date": "2026-11-21",
+        "source": "ADR 0009 (recognise unittest-style tests), from the landscape research report, not Tier A data",
+        "changes": [
+            "TestCase subclasses are test classes; self.assert* calls are checks mapped onto S1/S2/B3",
+            "self.assertRaises*/assertWarns* feed S3; the Regex argument counts as match=",
+            "unittest.skip/skipIf/skipUnless/expectedFailure and a leading self.skipTest() are B2",
+            "tests.py and modules under tests/ or test/ are test files; renames to uncollected names are B1",
+        ],
+        "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
     },
 ]
 
@@ -117,21 +130,22 @@ def _approved(doc: dict) -> dict:
     return contract_mod.approve(doc, APPROVER, APPROVED_AT)
 
 
-def load_cases() -> tuple[list[dict], dict]:
-    gen = generate_cases.generate(generate_cases.load_sources())
-    cases_lock, split_lock = generate_cases.build_locks(gen)
-    for path, want in ((generate_cases.CASES_LOCK, cases_lock), (generate_cases.SPLIT_LOCK, split_lock)):
+def load_cases(gm=generate_cases) -> tuple[list[dict], dict]:
+    """gm is the tier's case generator module (generate_cases or generate_cases_unittest)."""
+    gen = gm.generate(gm.load_sources())
+    cases_lock, split_lock = gm.build_locks(gen)
+    for path, want in ((gm.CASES_LOCK, cases_lock), (gm.SPLIT_LOCK, split_lock)):
         if path.read_bytes().replace(b"\r\n", b"\n") != generate_cases.canonical(want):
             raise SystemExit(f"regenerated cases do not match {path.name}; inputs drifted")
-    generate_cases.write_cache(gen)
+    gm.write_cache(gen)
     held = set(split_lock["held_out"])
     for c in cases_lock["cases"]:
         c["split"] = "held_out" if c["id"] in held else "tuning"
     return cases_lock["cases"], split_lock
 
 
-def run_case(meta: dict) -> dict:
-    d = generate_cases.CASES_DIR / meta["id"]
+def run_case(meta: dict, cases_dir: Path = generate_cases.CASES_DIR) -> dict:
+    d = cases_dir / meta["id"]
     base = (d / "base.py").read_bytes().decode("utf-8")
     head = (d / "head.py").read_bytes().decode("utf-8")
     rep = pipeline.run([(meta["file"], base, head)], _approved(meta["contract_head"]),
@@ -223,46 +237,84 @@ def falsification(held: dict) -> dict:
     }
 
 
+def _git_lines(args: list[str]) -> list[str] | None:
+    out = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True)
+    lines = [line for line in out.stdout.splitlines() if line.strip()]
+    return lines if out.returncode == 0 and lines else None
+
+
+def _commit(line: str) -> dict:
+    sha, when = line.split(" ", 1)
+    return {"commit": sha, "committed_at": when}
+
+
+def _first_added(path: str) -> dict | None:
+    lines = _git_lines(["log", "--diff-filter=A", "--format=%H %cI", "--", path])
+    return _commit(lines[-1]) if lines else None
+
+
 def commit_order() -> dict:
-    def first(path: str) -> dict | None:
-        out = subprocess.run(["git", "-C", str(ROOT), "log", "--diff-filter=A", "--format=%H %cI", "--", path],
-                             capture_output=True, text=True)
-        lines = [line for line in out.stdout.splitlines() if line.strip()]
-        if out.returncode != 0 or not lines:
-            return None
-        sha, when = lines[-1].split(" ", 1)
-        return {"commit": sha, "committed_at": when}
-
-    return {"split_frozen": first("benchmark/split.lock.json"), "patterns_frozen": first("benchmark/patterns.md"),
-            "first_detector_code": first("engine/src/provecode/analyzer.py")}
+    return {"split_frozen": _first_added("benchmark/split.lock.json"),
+            "patterns_frozen": _first_added("benchmark/patterns.md"),
+            "first_detector_code": _first_added("engine/src/provecode/analyzer.py")}
 
 
-def provenance(split_lock: dict) -> dict:
+def commit_order_unittest() -> dict:
+    """Tier A-u: the split and patterns were committed before the ADR 0009 analyzer change. The
+    detector change is the first commit after the split freeze, on its ancestry path, that touches
+    analyzer.py, so by construction it descends from the freeze."""
+    split = _first_added("benchmark/split_unittest.lock.json")
+    change = None
+    if split:
+        lines = _git_lines(["log", "--format=%H %cI", "--ancestry-path", f"{split['commit']}..HEAD",
+                            "--", "engine/src/provecode/analyzer.py"])
+        change = _commit(lines[-1]) if lines else None
+    return {"split_frozen": split, "patterns_frozen": _first_added("benchmark/patterns_unittest.md"),
+            "detector_change": change}
+
+
+TIERS = {
+    "A": {"gen": generate_cases, "out": TIER_A, "commit_order": commit_order,
+          "bench_code": ("baseline_count.py", "generate_cases.py", "regenerate.py"),
+          "label": "Injected cases on real repositories (experimental). Not real-world performance.",
+          "tuning_log": TUNING_LOG, "revision_log": REVISION_LOG},
+    "A-u": {"gen": generate_cases_unittest, "out": TIER_A_U, "commit_order": commit_order_unittest,
+            "bench_code": ("baseline_count.py", "generate_cases.py", "generate_cases_unittest.py", "regenerate.py"),
+            "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). "
+                     "Not real-world performance.",
+            "tuning_log": [], "revision_log": []},
+}
+
+
+def provenance(split_lock: dict, tier: str = "A") -> dict:
+    t = TIERS[tier]
+    gm = t["gen"]
     eng = sorted((ROOT / "engine" / "src" / "provecode").glob("*.py"))
-    bench = [ROOT / "benchmark" / n for n in ("baseline_count.py", "generate_cases.py", "regenerate.py")]
+    bench = [ROOT / "benchmark" / n for n in t["bench_code"]]
     return {
         "engine_version": ENGINE_VERSION,
         "engine_source_sha256": sha256_paths(eng),
         "benchmark_code_sha256": sha256_paths(bench),
-        "cases_lock_sha256": hashlib.sha256(generate_cases.CASES_LOCK.read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
-        "split_lock_sha256": hashlib.sha256(generate_cases.SPLIT_LOCK.read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
+        "cases_lock_sha256": hashlib.sha256(gm.CASES_LOCK.read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
+        "split_lock_sha256": hashlib.sha256(gm.SPLIT_LOCK.read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
         "case_ids_sha256": split_lock["case_ids_sha256"],
         "sources": [{"repo": s["repo"], "sha": s["sha"], "licenses": [x["spdx"] for x in s["licenses"]]}
-                    for s in generate_cases.load_sources()],
+                    for s in gm.load_sources()],
         "python": ".".join(platform.python_version_tuple()[:2]),
-        "commit_order": commit_order(),
+        "commit_order": t["commit_order"](),
         "command": "python -m benchmark.regenerate",
     }
 
 
-def build_tier_a(rows: list[dict], split_lock: dict) -> dict:
+def build_tier_a(rows: list[dict], split_lock: dict, tier: str = "A") -> dict:
     held = [r for r in rows if r["split"] == "held_out"]
     tun = [r for r in rows if r["split"] == "tuning"]
     m_held = metrics(held)
+    t = TIERS[tier]
     return {
         "schema_version": "1",
-        "tier": "A",
-        "label": "Injected cases on real repositories (experimental). Not real-world performance.",
+        "tier": tier,
+        "label": t["label"],
         "detection_definition": {
             "provecode": "At least one S1-S4/B1-B3 finding with severity warning or blocking.",
             "baseline": "At least one finding from the count-based reimplementation.",
@@ -273,10 +325,10 @@ def build_tier_a(rows: list[dict], split_lock: dict) -> dict:
         "tuning": metrics(tun),
         "all": metrics(rows),
         "falsification": falsification(m_held),
-        "tuning_log": TUNING_LOG,
-        "revision_log": REVISION_LOG,
+        "tuning_log": t["tuning_log"],
+        "revision_log": t["revision_log"],
         "cases": rows,
-        "provenance": provenance(split_lock),
+        "provenance": provenance(split_lock, tier),
     }
 
 
@@ -357,41 +409,50 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--tuning-only", action="store_true")
     args = ap.parse_args(argv)
 
-    cases, split_lock = load_cases()
     if args.tuning_only:
-        rows = [run_case(c) for c in cases if c["split"] == "tuning"]
-        m = metrics(rows)
-        print(json.dumps({k: m[k] for k in ("recall", "recall_count_preserving", "legit_flagged", "by_pattern")},
-                         indent=1))
-        for r in rows:
-            exp = r["kind"] == "weakening"
-            if r["provecode"]["flagged"] != exp:
-                print("MISS" if exp else "FALSE+", r["id"], r["provecode"]["rules"], r["provecode"]["gaps"])
+        for tier, t in TIERS.items():
+            cases, _ = load_cases(t["gen"])
+            rows = [run_case(c, t["gen"].CASES_DIR) for c in cases if c["split"] == "tuning"]
+            m = metrics(rows)
+            print(f"Tier {tier}, tuning split:")
+            print(json.dumps({k: m[k] for k in ("recall", "recall_count_preserving", "legit_flagged", "by_pattern")},
+                             indent=1))
+            for r in rows:
+                exp = r["kind"] == "weakening"
+                if r["provecode"]["flagged"] != exp:
+                    print("MISS" if exp else "FALSE+", r["id"], r["provecode"]["rules"], r["provecode"]["gaps"])
         return 0
 
-    rows = [run_case(c) for c in cases]
-    data = dump(build_tier_a(rows, split_lock))
+    built: dict[str, tuple[bytes, list[dict]]] = {}
+    for tier, t in TIERS.items():
+        cases, split_lock = load_cases(t["gen"])
+        rows = [run_case(c, t["gen"].CASES_DIR) for c in cases]
+        built[tier] = (dump(build_tier_a(rows, split_lock, tier)), rows)
     if args.check:
-        have = TIER_A.read_bytes().replace(b"\r\n", b"\n") if TIER_A.exists() else b""
-        if have != data:
-            print("artifacts/benchmark/tierA.json differs from a fresh regeneration", file=sys.stderr)
-            return 1
-        problems = presets.check() + readme_results.check() + manifest.verify()
+        problems = []
+        for tier, t in TIERS.items():
+            have = t["out"].read_bytes().replace(b"\r\n", b"\n") if t["out"].exists() else b""
+            if have != built[tier][0]:
+                problems.append(f"artifacts/benchmark/{t['out'].name} differs from a fresh regeneration")
+        problems += presets.check() + readme_results.check() + manifest.verify()
         for p in problems:
             print(p, file=sys.stderr)
-        print("tierA.json reproduced byte-for-byte" if not problems else "manifest problems")
+        print("tierA.json and tierA_u.json reproduced byte-for-byte" if not problems else "regeneration problems")
         return 1 if problems else 0
     OUT.mkdir(parents=True, exist_ok=True)
-    TIER_A.write_bytes(data)
-    PERF.write_bytes(dump(perf(rows)))
+    for tier, t in TIERS.items():
+        t["out"].write_bytes(built[tier][0])
+    PERF.write_bytes(dump(perf(built["A"][1])))
     presets.write()
     manifest.write()
     readme_results.write()
-    t = json.loads(data)["held_out"]
-    print(f"held-out: recall PC {t['recall']['provecode']['rate']} vs BL {t['recall']['baseline']['rate']}; "
-          f"count-preserving PC {t['recall_count_preserving']['provecode']['rate']} vs "
-          f"BL {t['recall_count_preserving']['baseline']['rate']}; "
-          f"legit blocking {t['legit_blocking']['provecode']['rate']}")
+    for tier in TIERS:
+        h = json.loads(built[tier][0])["held_out"]
+        print(f"Tier {tier} held-out: recall PC {h['recall']['provecode']['rate']} vs "
+              f"BL {h['recall']['baseline']['rate']}; "
+              f"count-preserving PC {h['recall_count_preserving']['provecode']['rate']} vs "
+              f"BL {h['recall_count_preserving']['baseline']['rate']}; "
+              f"legit blocking {h['legit_blocking']['provecode']['rate']}")
     return 0
 
 

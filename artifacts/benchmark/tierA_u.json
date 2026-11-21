@@ -1,0 +1,4297 @@
+{
+  "all": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-removed": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 12,
+          "lo": 0.7575,
+          "n": 12,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 12,
+          "lo": 0.7575,
+          "n": 12,
+          "rate": 1.0
+        }
+      },
+      "comparison-loosened": {
+        "baseline": {
+          "hi": 0.2425,
+          "k": 0,
+          "lo": 0.0,
+          "n": 12,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 12,
+          "lo": 0.7575,
+          "n": 12,
+          "rate": 1.0
+        }
+      },
+      "exception-widened": {
+        "baseline": {
+          "hi": 0.2425,
+          "k": 0,
+          "lo": 0.0,
+          "n": 12,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 0.9851,
+          "k": 11,
+          "lo": 0.6461,
+          "n": 12,
+          "rate": 0.9167
+        }
+      },
+      "other": {
+        "baseline": {
+          "hi": 0.2425,
+          "k": 0,
+          "lo": 0.0,
+          "n": 12,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 0.2425,
+          "k": 0,
+          "lo": 0.0,
+          "n": 12,
+          "rate": 0.0
+        }
+      },
+      "skip-added": {
+        "baseline": {
+          "hi": 0.6857,
+          "k": 12,
+          "lo": 0.3143,
+          "n": 24,
+          "rate": 0.5
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 24,
+          "lo": 0.862,
+          "n": 24,
+          "rate": 1.0
+        }
+      },
+      "test-deleted": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 12,
+          "lo": 0.7575,
+          "n": 12,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 12,
+          "lo": 0.7575,
+          "n": 12,
+          "rate": 1.0
+        }
+      },
+      "trivial-expected": {
+        "baseline": {
+          "hi": 0.1759,
+          "k": 0,
+          "lo": 0.0,
+          "n": 18,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 18,
+          "lo": 0.8241,
+          "n": 18,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "U01": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U02": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U03": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U04": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U05": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U06": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 5
+      },
+      "U07": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U08": {
+        "baseline_flagged": 12,
+        "category": "test-deleted",
+        "kind": "weakening",
+        "n": 12,
+        "provecode_flagged": 12
+      },
+      "U09": {
+        "baseline_flagged": 6,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U10": {
+        "baseline_flagged": 0,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U11": {
+        "baseline_flagged": 6,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U12": {
+        "baseline_flagged": 6,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U13": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 0
+      },
+      "U14": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 0
+      },
+      "U15": {
+        "baseline_flagged": 6,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "U16": {
+        "baseline_flagged": 0,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "V01": {
+        "baseline_flagged": 0,
+        "category": "expected-updated-with-contract",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V02": {
+        "baseline_flagged": 3,
+        "category": "rename",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V03": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V04": {
+        "baseline_flagged": 0,
+        "category": "test-added",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V05": {
+        "baseline_flagged": 0,
+        "category": "extract-local",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V06": {
+        "baseline_flagged": 0,
+        "category": "comment-added",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V07": {
+        "baseline_flagged": 0,
+        "category": "exception-narrowed",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V08": {
+        "baseline_flagged": 0,
+        "category": "message-added",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V09": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "V10": {
+        "baseline_flagged": 0,
+        "category": "stricter-check",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.1135,
+        "k": 0,
+        "lo": 0.0,
+        "n": 30,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.2562,
+        "k": 3,
+        "lo": 0.0346,
+        "n": 30,
+        "rate": 0.1
+      },
+      "provecode": {
+        "hi": 0.1135,
+        "k": 0,
+        "lo": 0.0,
+        "n": 30,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 132,
+    "n_count_preserving": 78,
+    "n_legit": 30,
+    "n_weakening": 102,
+    "outcomes": {
+      "FAILED": 89,
+      "INCONCLUSIVE": 43
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": 0.9735,
+        "k": 36,
+        "lo": 0.7968,
+        "n": 39,
+        "rate": 0.9231
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 89,
+        "lo": 0.9586,
+        "n": 89,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.4495,
+        "k": 36,
+        "lo": 0.2671,
+        "n": 102,
+        "rate": 0.3529
+      },
+      "paired": {
+        "mcnemar_exact_p": 2.22e-16,
+        "only_baseline": 0,
+        "only_provecode": 53
+      },
+      "provecode": {
+        "hi": 0.924,
+        "k": 89,
+        "lo": 0.7941,
+        "n": 102,
+        "rate": 0.8725
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.2499,
+        "k": 12,
+        "lo": 0.0903,
+        "n": 78,
+        "rate": 0.1538
+      },
+      "paired": {
+        "mcnemar_exact_p": 2.22e-16,
+        "only_baseline": 0,
+        "only_provecode": 53
+      },
+      "provecode": {
+        "hi": 0.8999,
+        "k": 65,
+        "lo": 0.7354,
+        "n": 78,
+        "rate": 0.8333
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": 1.0,
+        "k": 24,
+        "lo": 0.862,
+        "n": 24,
+        "rate": 1.0
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 24,
+        "lo": 0.862,
+        "n": 24,
+        "rate": 1.0
+      }
+    }
+  },
+  "baseline_rules": {
+    "C1": "Test file deleted [CP][CM][MH]",
+    "C2": "Test definition removed or renamed [RF][CM]",
+    "C3": "Unconditional skip/xfail marker or skip call added [CP][RF][CM][MH]",
+    "C4": "Bare return added to a test [CP]",
+    "C5": "Net drop in assertion count [RF][CM][MH]; counted forms from [CP]",
+    "C6": "__test__ = False or collect_ignore added [CP]",
+    "C7": "Trivial assertion added, interpreted as assert <truthy constant> [MH]"
+  },
+  "cases": [
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-01",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-02",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-03",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-04",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-05",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U01-06",
+      "kind": "weakening",
+      "pattern": "U01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-01",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-02",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-03",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-04",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-05",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U02-06",
+      "kind": "weakening",
+      "pattern": "U02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-01",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-02",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-03",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-04",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-05",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U03-06",
+      "kind": "weakening",
+      "pattern": "U03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-01",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-02",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-03",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-04",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-05",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "trivial-expected",
+      "count_preserving": true,
+      "id": "U04-06",
+      "kind": "weakening",
+      "pattern": "U04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-01",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-02",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-03",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-04",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-05",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comparison-loosened",
+      "count_preserving": true,
+      "id": "U05-06",
+      "kind": "weakening",
+      "pattern": "U05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-01",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-02",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-03",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-04",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-05",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U06-06",
+      "kind": "weakening",
+      "pattern": "U06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-01",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-02",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-03",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-04",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-05",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-widened",
+      "count_preserving": true,
+      "id": "U07-06",
+      "kind": "weakening",
+      "pattern": "U07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-01",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-02",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-03",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-04",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-05",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-06",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-07",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-08",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-09",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-10",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-11",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2",
+          "C5"
+        ]
+      },
+      "category": "test-deleted",
+      "count_preserving": false,
+      "id": "U08-12",
+      "kind": "weakening",
+      "pattern": "U08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B1"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-01",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-02",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-03",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-04",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-05",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C3"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U09-06",
+      "kind": "weakening",
+      "pattern": "U09",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-01",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-02",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-03",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-04",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-05",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U10-06",
+      "kind": "weakening",
+      "pattern": "U10",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-01",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-02",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-03",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-04",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-05",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U11-06",
+      "kind": "weakening",
+      "pattern": "U11",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-01",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-02",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-03",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-04",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-05",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C4"
+        ]
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U12-06",
+      "kind": "weakening",
+      "pattern": "U12",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-01",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-02",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-03",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-04",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-05",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U13-06",
+      "kind": "weakening",
+      "pattern": "U13",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-01",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-02",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-03",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-04",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "kjd/idna",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-05",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "other",
+      "count_preserving": true,
+      "id": "U14-06",
+      "kind": "weakening",
+      "pattern": "U14",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-01",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-02",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-03",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-04",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-05",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C5"
+        ]
+      },
+      "category": "assertion-removed",
+      "count_preserving": false,
+      "id": "U15-06",
+      "kind": "weakening",
+      "pattern": "U15",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B3"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-01",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-02",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-03",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-04",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "pyparsing/pyparsing",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-05",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "skip-added",
+      "count_preserving": true,
+      "id": "U16-06",
+      "kind": "weakening",
+      "pattern": "U16",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B2"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "V01-01",
+      "kind": "legit",
+      "pattern": "V01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "V01-02",
+      "kind": "legit",
+      "pattern": "V01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "expected-updated-with-contract",
+      "count_preserving": true,
+      "id": "V01-03",
+      "kind": "legit",
+      "pattern": "V01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "V0"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2"
+        ]
+      },
+      "category": "rename",
+      "count_preserving": true,
+      "id": "V02-01",
+      "kind": "legit",
+      "pattern": "V02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "R0"
+        ]
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2"
+        ]
+      },
+      "category": "rename",
+      "count_preserving": true,
+      "id": "V02-02",
+      "kind": "legit",
+      "pattern": "V02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "R0"
+        ]
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": true,
+        "rules": [
+          "C2"
+        ]
+      },
+      "category": "rename",
+      "count_preserving": true,
+      "id": "V02-03",
+      "kind": "legit",
+      "pattern": "V02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": [
+          "R0"
+        ]
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "V03-01",
+      "kind": "legit",
+      "pattern": "V03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "V03-02",
+      "kind": "legit",
+      "pattern": "V03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "V03-03",
+      "kind": "legit",
+      "pattern": "V03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "V04-01",
+      "kind": "legit",
+      "pattern": "V04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "V04-02",
+      "kind": "legit",
+      "pattern": "V04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "test-added",
+      "count_preserving": false,
+      "id": "V04-03",
+      "kind": "legit",
+      "pattern": "V04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "V05-01",
+      "kind": "legit",
+      "pattern": "V05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "V05-02",
+      "kind": "legit",
+      "pattern": "V05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "extract-local",
+      "count_preserving": true,
+      "id": "V05-03",
+      "kind": "legit",
+      "pattern": "V05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "V06-01",
+      "kind": "legit",
+      "pattern": "V06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "V06-02",
+      "kind": "legit",
+      "pattern": "V06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "comment-added",
+      "count_preserving": true,
+      "id": "V06-03",
+      "kind": "legit",
+      "pattern": "V06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "V07-01",
+      "kind": "legit",
+      "pattern": "V07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "V07-02",
+      "kind": "legit",
+      "pattern": "V07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "exception-narrowed",
+      "count_preserving": true,
+      "id": "V07-03",
+      "kind": "legit",
+      "pattern": "V07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "V08-01",
+      "kind": "legit",
+      "pattern": "V08",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "V08-02",
+      "kind": "legit",
+      "pattern": "V08",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "V08-03",
+      "kind": "legit",
+      "pattern": "V08",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "V09-01",
+      "kind": "legit",
+      "pattern": "V09",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "V09-02",
+      "kind": "legit",
+      "pattern": "V09",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "V09-03",
+      "kind": "legit",
+      "pattern": "V09",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "tkem/cachetools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "stricter-check",
+      "count_preserving": true,
+      "id": "V10-01",
+      "kind": "legit",
+      "pattern": "V10",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "more-itertools/more-itertools",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "stricter-check",
+      "count_preserving": true,
+      "id": "V10-02",
+      "kind": "legit",
+      "pattern": "V10",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Python-Markdown/markdown",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "stricter-check",
+      "count_preserving": true,
+      "id": "V10-03",
+      "kind": "legit",
+      "pattern": "V10",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "kjd/idna",
+      "split": "tuning"
+    }
+  ],
+  "detection_definition": {
+    "baseline": "At least one finding from the count-based reimplementation.",
+    "provecode": "At least one S1-S4/B1-B3 finding with severity warning or blocking."
+  },
+  "falsification": {
+    "F1": {
+      "baseline": {
+        "hi": 0.3464,
+        "k": 3,
+        "lo": 0.0498,
+        "n": 21,
+        "rate": 0.1429
+      },
+      "mcnemar_exact_p": 0.000244,
+      "provecode": {
+        "hi": 0.8937,
+        "k": 16,
+        "lo": 0.5491,
+        "n": 21,
+        "rate": 0.7619
+      },
+      "statement": "On count-preserving held-out cases, PROVECODE recall exceeds the count-based baseline's.",
+      "supported": true
+    },
+    "F2": {
+      "baseline": {
+        "hi": 1.0,
+        "k": 7,
+        "lo": 0.6457,
+        "n": 7,
+        "rate": 1.0
+      },
+      "baseline_outperforms": false,
+      "provecode": {
+        "hi": 1.0,
+        "k": 7,
+        "lo": 0.6457,
+        "n": 7,
+        "rate": 1.0
+      },
+      "statement": "On non-count-preserving cases (deletions, removed asserts), parity is expected; the baseline outperforming PROVECODE is reported."
+    },
+    "F3": {
+      "provecode": {
+        "hi": 0.2425,
+        "k": 0,
+        "lo": 0.0,
+        "n": 12,
+        "rate": 0.0
+      },
+      "statement": "Share of legitimate held-out changes flagged as blocking (wide interval at this n; Tier C is the stronger evidence)."
+    }
+  },
+  "headline": "held_out",
+  "held_out": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-removed": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 4,
+          "lo": 0.5101,
+          "n": 4,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 4,
+          "lo": 0.5101,
+          "n": 4,
+          "rate": 1.0
+        }
+      },
+      "comparison-loosened": {
+        "baseline": {
+          "hi": 0.5615,
+          "k": 0,
+          "lo": 0.0,
+          "n": 3,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 3,
+          "lo": 0.4385,
+          "n": 3,
+          "rate": 1.0
+        }
+      },
+      "exception-widened": {
+        "baseline": {
+          "hi": 0.6576,
+          "k": 0,
+          "lo": 0.0,
+          "n": 2,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 2,
+          "lo": 0.3424,
+          "n": 2,
+          "rate": 1.0
+        }
+      },
+      "other": {
+        "baseline": {
+          "hi": 0.4345,
+          "k": 0,
+          "lo": 0.0,
+          "n": 5,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 0.4345,
+          "k": 0,
+          "lo": 0.0,
+          "n": 5,
+          "rate": 0.0
+        }
+      },
+      "skip-added": {
+        "baseline": {
+          "hi": 0.9544,
+          "k": 3,
+          "lo": 0.3006,
+          "n": 4,
+          "rate": 0.75
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 4,
+          "lo": 0.5101,
+          "n": 4,
+          "rate": 1.0
+        }
+      },
+      "test-deleted": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 3,
+          "lo": 0.4385,
+          "n": 3,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 3,
+          "lo": 0.4385,
+          "n": 3,
+          "rate": 1.0
+        }
+      },
+      "trivial-expected": {
+        "baseline": {
+          "hi": 0.3543,
+          "k": 0,
+          "lo": 0.0,
+          "n": 7,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 7,
+          "lo": 0.6457,
+          "n": 7,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "U01": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U02": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U03": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U04": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U05": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 2,
+        "provecode_flagged": 2
+      },
+      "U06": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U07": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U08": {
+        "baseline_flagged": 3,
+        "category": "test-deleted",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U09": {
+        "baseline_flagged": 1,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U10": {
+        "baseline_flagged": 0,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "U11": {
+        "baseline_flagged": 3,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U12": {
+        "baseline_flagged": 2,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 2,
+        "provecode_flagged": 2
+      },
+      "U13": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "U14": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "U15": {
+        "baseline_flagged": 1,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "V01": {
+        "baseline_flagged": 0,
+        "category": "expected-updated-with-contract",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V02": {
+        "baseline_flagged": 1,
+        "category": "rename",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V03": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V04": {
+        "baseline_flagged": 0,
+        "category": "test-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V05": {
+        "baseline_flagged": 0,
+        "category": "extract-local",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V06": {
+        "baseline_flagged": 0,
+        "category": "comment-added",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V07": {
+        "baseline_flagged": 0,
+        "category": "exception-narrowed",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V08": {
+        "baseline_flagged": 0,
+        "category": "message-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V09": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V10": {
+        "baseline_flagged": 0,
+        "category": "stricter-check",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.2425,
+        "k": 0,
+        "lo": 0.0,
+        "n": 12,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.3539,
+        "k": 1,
+        "lo": 0.0149,
+        "n": 12,
+        "rate": 0.0833
+      },
+      "provecode": {
+        "hi": 0.2425,
+        "k": 0,
+        "lo": 0.0,
+        "n": 12,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 40,
+    "n_count_preserving": 21,
+    "n_legit": 12,
+    "n_weakening": 28,
+    "outcomes": {
+      "FAILED": 23,
+      "INCONCLUSIVE": 17
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": 0.9838,
+        "k": 10,
+        "lo": 0.6226,
+        "n": 11,
+        "rate": 0.9091
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 23,
+        "lo": 0.8569,
+        "n": 23,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.5417,
+        "k": 10,
+        "lo": 0.2071,
+        "n": 28,
+        "rate": 0.3571
+      },
+      "paired": {
+        "mcnemar_exact_p": 0.000244,
+        "only_baseline": 0,
+        "only_provecode": 13
+      },
+      "provecode": {
+        "hi": 0.9212,
+        "k": 23,
+        "lo": 0.6441,
+        "n": 28,
+        "rate": 0.8214
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.3464,
+        "k": 3,
+        "lo": 0.0498,
+        "n": 21,
+        "rate": 0.1429
+      },
+      "paired": {
+        "mcnemar_exact_p": 0.000244,
+        "only_baseline": 0,
+        "only_provecode": 13
+      },
+      "provecode": {
+        "hi": 0.8937,
+        "k": 16,
+        "lo": 0.5491,
+        "n": 21,
+        "rate": 0.7619
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": 1.0,
+        "k": 7,
+        "lo": 0.6457,
+        "n": 7,
+        "rate": 1.0
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 7,
+        "lo": 0.6457,
+        "n": 7,
+        "rate": 1.0
+      }
+    }
+  },
+  "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). Not real-world performance.",
+  "provenance": {
+    "benchmark_code_sha256": "2d1f2d1165ca5a565aeb9876b5fb10527e1581235e366ddce06c5406fb34a3b1",
+    "case_ids_sha256": "acc756330c9f7bb680af820e9b9578e8f510b1dcb3830dff42073f99bc39be99",
+    "cases_lock_sha256": "1989ceedec34e8d7e6fd6b8f222f587ee8bb829c92ec92ab9534933eb8cf035b",
+    "command": "python -m benchmark.regenerate",
+    "commit_order": {
+      "detector_change": {
+        "commit": "6ed0cac06bf37ca7f27f561951c9655be554007e",
+        "committed_at": "2026-11-21T07:49:49+05:30"
+      },
+      "patterns_frozen": {
+        "commit": "bb6f3d5d2b838fde778939b436049befcc33d5c1",
+        "committed_at": "2026-11-20T23:00:44+05:30"
+      },
+      "split_frozen": {
+        "commit": "bb6f3d5d2b838fde778939b436049befcc33d5c1",
+        "committed_at": "2026-11-20T23:00:44+05:30"
+      }
+    },
+    "engine_source_sha256": "dcf5e4f2c53adad8c03cbb102370dddab4717a161bf6e71b59e5fbf9d0c9482d",
+    "engine_version": "0.1.0",
+    "python": "3.11",
+    "sources": [
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "more-itertools/more-itertools",
+        "sha": "e3f79f4fde5f7c107f70a20730b17240a05ba99b"
+      },
+      {
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "repo": "Python-Markdown/markdown",
+        "sha": "5609061bd3359e882b745de184ebfe5ef1c08011"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "tkem/cachetools",
+        "sha": "c5de5137153b301933922e47bc70b598970e0627"
+      },
+      {
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "repo": "kjd/idna",
+        "sha": "d357725082245ff90f5cf8800a3fc297b1f2319a"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "pyparsing/pyparsing",
+        "sha": "810199f89bf916590426e1c5cb3d612584f11a2f"
+      }
+    ],
+    "split_lock_sha256": "8be466a309dddb807d318213368499c312afbaeef3910f23140cf2f7cd2738a0"
+  },
+  "revision_log": [],
+  "schema_version": "1",
+  "tier": "A-u",
+  "tuning": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-removed": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 8,
+          "lo": 0.6756,
+          "n": 8,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 8,
+          "lo": 0.6756,
+          "n": 8,
+          "rate": 1.0
+        }
+      },
+      "comparison-loosened": {
+        "baseline": {
+          "hi": 0.2991,
+          "k": 0,
+          "lo": 0.0,
+          "n": 9,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 9,
+          "lo": 0.7009,
+          "n": 9,
+          "rate": 1.0
+        }
+      },
+      "exception-widened": {
+        "baseline": {
+          "hi": 0.2775,
+          "k": 0,
+          "lo": 0.0,
+          "n": 10,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 0.9821,
+          "k": 9,
+          "lo": 0.5958,
+          "n": 10,
+          "rate": 0.9
+        }
+      },
+      "other": {
+        "baseline": {
+          "hi": 0.3543,
+          "k": 0,
+          "lo": 0.0,
+          "n": 7,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 0.3543,
+          "k": 0,
+          "lo": 0.0,
+          "n": 7,
+          "rate": 0.0
+        }
+      },
+      "skip-added": {
+        "baseline": {
+          "hi": 0.6579,
+          "k": 9,
+          "lo": 0.2582,
+          "n": 20,
+          "rate": 0.45
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 20,
+          "lo": 0.8389,
+          "n": 20,
+          "rate": 1.0
+        }
+      },
+      "test-deleted": {
+        "baseline": {
+          "hi": 1.0,
+          "k": 9,
+          "lo": 0.7009,
+          "n": 9,
+          "rate": 1.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 9,
+          "lo": 0.7009,
+          "n": 9,
+          "rate": 1.0
+        }
+      },
+      "trivial-expected": {
+        "baseline": {
+          "hi": 0.2588,
+          "k": 0,
+          "lo": 0.0,
+          "n": 11,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 11,
+          "lo": 0.7412,
+          "n": 11,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "U01": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U02": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U03": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U04": {
+        "baseline_flagged": 0,
+        "category": "trivial-expected",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U05": {
+        "baseline_flagged": 0,
+        "category": "comparison-loosened",
+        "kind": "weakening",
+        "n": 4,
+        "provecode_flagged": 4
+      },
+      "U06": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 4
+      },
+      "U07": {
+        "baseline_flagged": 0,
+        "category": "exception-widened",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U08": {
+        "baseline_flagged": 9,
+        "category": "test-deleted",
+        "kind": "weakening",
+        "n": 9,
+        "provecode_flagged": 9
+      },
+      "U09": {
+        "baseline_flagged": 5,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U10": {
+        "baseline_flagged": 0,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U11": {
+        "baseline_flagged": 3,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "U12": {
+        "baseline_flagged": 4,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 4,
+        "provecode_flagged": 4
+      },
+      "U13": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "U14": {
+        "baseline_flagged": 0,
+        "category": "other",
+        "kind": "weakening",
+        "n": 4,
+        "provecode_flagged": 0
+      },
+      "U15": {
+        "baseline_flagged": 5,
+        "category": "assertion-removed",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "U16": {
+        "baseline_flagged": 0,
+        "category": "skip-added",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "V01": {
+        "baseline_flagged": 0,
+        "category": "expected-updated-with-contract",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V02": {
+        "baseline_flagged": 2,
+        "category": "rename",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V03": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V04": {
+        "baseline_flagged": 0,
+        "category": "test-added",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V05": {
+        "baseline_flagged": 0,
+        "category": "extract-local",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V06": {
+        "baseline_flagged": 0,
+        "category": "comment-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V07": {
+        "baseline_flagged": 0,
+        "category": "exception-narrowed",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V08": {
+        "baseline_flagged": 0,
+        "category": "message-added",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "V09": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "V10": {
+        "baseline_flagged": 0,
+        "category": "stricter-check",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.1759,
+        "k": 0,
+        "lo": 0.0,
+        "n": 18,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.328,
+        "k": 2,
+        "lo": 0.031,
+        "n": 18,
+        "rate": 0.1111
+      },
+      "provecode": {
+        "hi": 0.1759,
+        "k": 0,
+        "lo": 0.0,
+        "n": 18,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 92,
+    "n_count_preserving": 57,
+    "n_legit": 18,
+    "n_weakening": 74,
+    "outcomes": {
+      "FAILED": 66,
+      "INCONCLUSIVE": 26
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": 0.9802,
+        "k": 26,
+        "lo": 0.7735,
+        "n": 28,
+        "rate": 0.9286
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 66,
+        "lo": 0.945,
+        "n": 66,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.465,
+        "k": 26,
+        "lo": 0.2524,
+        "n": 74,
+        "rate": 0.3514
+      },
+      "paired": {
+        "mcnemar_exact_p": 1.82e-12,
+        "only_baseline": 0,
+        "only_provecode": 40
+      },
+      "provecode": {
+        "hi": 0.9442,
+        "k": 66,
+        "lo": 0.8009,
+        "n": 74,
+        "rate": 0.8919
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.2736,
+        "k": 9,
+        "lo": 0.0854,
+        "n": 57,
+        "rate": 0.1579
+      },
+      "paired": {
+        "mcnemar_exact_p": 1.82e-12,
+        "only_baseline": 0,
+        "only_provecode": 40
+      },
+      "provecode": {
+        "hi": 0.9271,
+        "k": 49,
+        "lo": 0.7468,
+        "n": 57,
+        "rate": 0.8596
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": 1.0,
+        "k": 17,
+        "lo": 0.8157,
+        "n": 17,
+        "rate": 1.0
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 17,
+        "lo": 0.8157,
+        "n": 17,
+        "rate": 1.0
+      }
+    }
+  },
+  "tuning_log": []
+}

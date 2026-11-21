@@ -26,7 +26,7 @@ jobs:
         run: python -m pytest engine/tests benchmark/test_benchmark.py -q
 
   benchmark:
-    name: Tier A regenerates byte-for-byte
+    name: Tier A and Tier A-u regenerate byte-for-byte
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,10 +47,10 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - run: npm ci
         working-directory: web
-      - name: Pyodide parity (browser runtime vs CPython) on every Tier A case
+      - name: Pyodide parity (browser runtime vs CPython) on every Tier A and Tier A-u case
         run: node benchmark/pyodide_parity.mjs
       - name: Generated artifacts unchanged
-        run: git diff --exit-code -- artifacts/benchmark/tierA.json artifacts/benchmark/parity.json artifacts/presets
+        run: git diff --exit-code -- artifacts/benchmark/tierA.json artifacts/benchmark/tierA_u.json artifacts/benchmark/parity.json artifacts/presets
 
   web:
     name: site builds and the demo story passes in Chrome

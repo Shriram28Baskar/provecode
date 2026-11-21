@@ -15,6 +15,7 @@ MANIFEST = ARTIFACTS / "manifest.json"
 
 GENERATORS = {
     "benchmark/tierA.json": ("python -m benchmark.regenerate", True),
+    "benchmark/tierA_u.json": ("python -m benchmark.regenerate", True),
     "benchmark/perf.json": ("python -m benchmark.regenerate", False),
     "benchmark/parity.json": ("node benchmark/pyodide_parity.mjs", True),
     "runs/": ("python -m benchmark.record_demo", False),

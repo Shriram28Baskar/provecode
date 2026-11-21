@@ -3,7 +3,17 @@
   "pyodide_version": "314.0.8",
   "pyodide_python": "3.14.2",
   "cpython_reference": "3.11",
-  "cases_compared": 168,
+  "cases_compared": 300,
+  "tiers": [
+    {
+      "tier": "A",
+      "cases_compared": 168
+    },
+    {
+      "tier": "A-u",
+      "cases_compared": 132
+    }
+  ],
   "fields_compared": [
     "flagged",
     "rules",
