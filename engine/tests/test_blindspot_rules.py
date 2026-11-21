@@ -138,3 +138,49 @@ def test_s5_or_true_on_a_reflexivity_check():
     # `c == c` exercises a custom __eq__ (a real reflexivity test); `or True` makes it vacuous.
     base = "def test_eq():\n    c = make()\n    assert c == c\n"
     assert rules(base, base.replace("assert c == c", "assert c == c or True")) == ["S5"]
+
+
+# --- found on real commits (docs/research/data/real_history_scan.json) ---------------------------
+
+def test_s5_not_fired_when_a_truthiness_check_becomes_a_reflexivity_check():
+    # more-itertools 5c715d813a: assertTrue(r, r) (a no-op) -> assertEqual(r, r)
+    base = UT_TRUE.replace("self.assertTrue(ok(x))", "self.assertTrue(r, r)")
+    assert rules(base, base.replace("self.assertTrue(r, r)", "self.assertEqual(r, r)")) == []
+
+
+def test_s5_or_true_on_a_truthiness_check_still_fires():
+    assert rules(UT_TRUE, UT_TRUE.replace("assertTrue(ok(x))", "assertTrue(ok(x) or True)")) == ["S5"]
+
+
+def test_b4_not_fired_when_only_the_message_of_an_already_swallowed_check_changes():
+    # pyparsing e0a6f21205: .format() -> f-string inside an existing try/except
+    base = """def test_a():
+    x = 1
+    try:
+        assert total(x) == 5, 'bad {}'.format(x)
+    except Exception:
+        pass
+"""
+    head = base.replace("'bad {}'.format(x)", "f'bad {x}'")
+    assert head != base
+    assert rules(base, head) == []
+
+
+def test_b4_fires_when_more_checks_are_swallowed():
+    base = """def test_a():
+    x = 1
+    assert total(2) == 7
+    try:
+        assert total(x) == 5
+    except Exception:
+        pass
+"""
+    head = """def test_a():
+    x = 1
+    try:
+        assert total(x) == 5
+        assert total(2) == 7
+    except Exception:
+        pass
+"""
+    assert rules(base, head) == ["B4"]

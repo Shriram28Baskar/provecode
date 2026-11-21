@@ -189,6 +189,38 @@ Whether that edit is a weakening or the intended behaviour change is **for the o
 - Pilot (§1.8): `django__django-11815`'s `test_writer.py` now has 46 recognised tests, and `django__django-14608`'s `tests/admin_views/tests.py` is now visible, with 336. Findings on the 7 Gemini files are unchanged: one S4, on `test_dates.py`.
 - **A false positive, found and removed.** As first built, a singular `test/` directory also made every module a test file. That counted GPT-5.2's edit to Django's test-framework source `django/test/testcases.py` (`django__django-14011`) as a test edit. It was the only gold file the rule added (1 of 652), so the rule was dropped (ADR 0009 amendment). With it gone, GPT-5.2 is back to 0 test-file edits, and the figures above are after the fix.
 
+
+### 1.10 Measurement: how often does PROVECODE fire on real, mostly human, test edits? (Tier C precursor)
+
+**Command:** `python docs/research/scripts/real_history_scan.py` → `docs/research/data/real_history_scan.json`. Follow-ups: `s4_replaced_cases.py` and `b1_moved_tests.py`, with outputs of the same names.
+
+**Data:** the 18 benchmark source repositories (Tier A, A-u, A-b), with full history cloned into the git-ignored cache. In each, the most recent 200 non-merge commits that change a test file, reachable from the pinned SHA: **3,032 commits** in all. 55 of them carry an AI co-author trailer. Each commit is compared with its first parent, as `provecode check` would compare a PR, with no contract, so findings are ungraded.
+
+| Commits (of 3,032) | Flagged | Share |
+|---|---|---|
+| Any weakening finding | 422 | 13.9% |
+| A semantic rule (S1–S5) | 84 | 2.8% |
+| Standard rules only (B1–B4) | 338 | 11.1% |
+| Count-based baseline | 409 | 13.5% |
+
+By rule, in commits: B1 299, B3 78, S4 76, S1 5, S3 4, B2 3, S5 0, B4 0.
+
+**This is a flag rate, not precision.** Humans do sometimes weaken tests on purpose, and deleting obsolete tests is usually legitimate. All 422 flagged commits are listed for the owner to label (ids, paths and rules only).
+
+What the inspection showed, without labeling anything:
+- **Two detector false positives were found and fixed** (disclosed in every tier's `revision_log`; no benchmark case changed).
+  - more-itertools `5c715d813a` (S5): `assertTrue(r, r)` → `assertEqual(r, r)`. A truthiness check became a reflexivity check, which is not a weakening.
+  - pyparsing `e0a6f21205` (B4): a `.format()` → f-string rewrite inside an existing `try/except`. Only the message changed.
+  - Before the fixes, the totals were 424 flagged and 85 semantic, with S5 1 and B4 1.
+- **S4 is the noisiest semantic rule (76 commits).** In 37 of them, every "removed" case is a *replaced* case: same inputs, only the last value (usually the expected result) changed. Examples are humanize's translation fixes. Treating replaced cases like V0 (expected value changed, info) would remove the semantic flag from those 37 commits, taking semantic flags from 84 to 47 (1.6%). 32 of the 37 would then have no finding at all, taking total flags from 422 to 390. That is the owner's pending S4 decision; the engine is unchanged.
+- **The S1 and S3 hits read as genuine loosenings with stated reasons:**
+  - markupsafe `ceccb11b79`: `len(counts) == 1` → `< 3`, "adjust leak test for jit".
+  - tomli `149547d2ec`: `assertEqual(msg, …)` → `assertIn(msg, (…, …))`, for mypyc wheels.
+  - loguru `11cc211966`: `match=` dropped.
+
+  These are what an approved contract change is for; whether each was acceptable is the owner's label.
+- **B1 is mostly real deletions.** Only 94 of 2,591 B1 findings, in 8 commits, are tests moved to another file with an identical body. Whether a deletion should block is policy: yes in an agent loop, and arguably noisy as a human pre-commit default.
+
 ---
 
 ## Part 2: Gap analysis
@@ -207,7 +239,7 @@ Whether that edit is a weakening or the intended behaviour change is **for the o
 
 | Problem | Status in PROVECODE | Evidence |
 |---|---|---|
-| Noise / false positives | **Measured, on injected data only.** 0/30 legitimate Tier A edits flagged (CI 0–11%) | §1.7. Real-world precision (Tier C) is **unmeasured** |
+| Noise / false positives | **Measured on injected data**: 0/30 legitimate Tier A edits flagged (CI 0–11%). **Real-world flag rate measured** (2026-11-21): 422/3,032 real test-editing commits (13.9%), of which 84 involve semantic rules (2.8%) | §1.7, §1.10. Real-world *precision* (Tier C) needs owner labels and is still **unmeasured** |
 | Non-reproducible verdicts | **Addressed by design and tested.** Deterministic engine; byte-identical regeneration in CI on Linux and Windows; 168/168 Pyodide/CPython parity | CI run on `8d3a2b8`; `artifacts/benchmark/parity.json` |
 | Cost | **Addressed.** $0, with no LLM in the path | By construction |
 | Agents editing tests | **Partly.** Semantic rules catch 120/138 injected weakenings, and contract protection blocks edits to the contract | Tier A. In real agent data, 1 finding across 7 real test edits (§1.8), owner labels pending |
@@ -326,6 +358,19 @@ ordinary prompts is unknown (landscape §1.8).
 - **Gate.** Gate 1a maintenance.
 - **Drop if.** The fresh held-out shows any legitimate-edit false positive from the new rules, or the Ruff-import variant reaches the same recall (then adopt Ruff and skip custom rules).
 - **Warning.** Adding rules for W17–W19 and then reporting the *existing* Tier A held-out would be tuning on test data. Do not do that.
+- **Done 2026-11-21 (ADR 0011).** Measured by `python docs/research/scripts/adr0011_heldout.py` → `docs/research/data/adr0011_heldout.json`.
+  - Order: Tier A-b (99 cases, 7 new repositories) was frozen in `5b8a20a`, and the rule code was committed in `b6eeede`. Development used the tuning split only, with one logged round.
+  - Tier A-b held-out:
+    - S5/B4 catch **22/22** weakenings and flag **0/8** legitimate edits.
+    - "Existing rules plus Ruff 0.17.6's `PLR0124`, `SIM222`, `B015`, `B011`, `PT015`, `S110`, `SIM105`" catches 13/22 and flags 1/8. The false positive is an added reflexivity check, flagged by `PLR0124`, and Ruff misses every unittest-form vacuous check.
+    - The engine before ADR 0011 and the count-based baseline catch 0/22.
+  - Neither drop criterion is met, so the custom rules stay.
+  - Caveat: the patterns mirror the rules' stated targets, so this shows the rules work as specified on injected edits, not real-world recall.
+  - Effect on the seen tiers (disclosed in their `revision_log`):
+    - Tier A: 17 W17–W19 results changed, and held-out recall went from 37 to 43 of 44.
+    - Tier A-u: 11 U13–U14 results changed, and held-out recall went from 23 to 27 of 28.
+    - No legitimate case changed in either tier.
+  - Known B4 gap: a swallowed `self.assertRaises` (U14-04, Tier A-u held-out). It is deliberately not fixed on seen data.
 
 ```markdown
 # ADR 0011 — Blind-spot rules gated on a fresh held-out set

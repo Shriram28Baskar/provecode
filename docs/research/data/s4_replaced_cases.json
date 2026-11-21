@@ -1,0 +1,644 @@
+{
+  "all_replaced_and_no_other_rule": 32,
+  "all_replaced_commits": 37,
+  "command": "python docs/research/scripts/s4_replaced_cases.py",
+  "commits": [
+    {
+      "all_replaced": true,
+      "commit": "57fbacc7c3b08d81456d41f8009b3f707ec6aab7",
+      "other_rules": [],
+      "removed_cases": 25,
+      "replaced_cases": 25,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "b8b32583d1958f41bbc8b96d50c6bef0b393e930",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "ad74ae2ea0b51fa8613a44b5bc1859df7385c3db",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 4,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "906a38cb957e37ada2cb3574102b56a3dbc5e4e9",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "6d89dfa96779eeca96654c48a3d6106942cf1a6c",
+      "other_rules": [],
+      "removed_cases": 27,
+      "replaced_cases": 26,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "38c99686b9c9e211a3e27c5e1ad99bfdc8e82f04",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "0f5d2948d674a88a611f8e341c0df520767b1b80",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "e87c23621494290cd05ee73e097e1cd75bab034e",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "ff11540ea6104b4709a177b7fef0624143abfaa7",
+      "other_rules": [],
+      "removed_cases": 25,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "ec99f299f1b7542aa19ddc216394c77393fb734c",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "7941145c62d834185a968a3b89578fcd2d58a931",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "067a70f4232c6db4a99a35b349da2e425fcbd750",
+      "other_rules": [],
+      "removed_cases": 5,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "497355a2dc5049899e8318447c3645670b122d82",
+      "other_rules": [],
+      "removed_cases": 10,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "77112a4cf39d57e233848f15cc0520776744d087",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 4,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "af6dad019ba6c473fed7e8cedf2d06aca369193c",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "b239865493e2676f3961af43a1085c29aa5428b1",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 4,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "43ebe21b5f55f0218a75074227020fb63dd45e4d",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "e8f0e85631adb1d1476dd2a06d9037990391d624",
+      "other_rules": [
+        "B3"
+      ],
+      "removed_cases": 12,
+      "replaced_cases": 12,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "1f3663eb8cef765161c04e3bfa6da8c32cbaa6ce",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 4,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": true,
+      "commit": "1afc39e78689ef2d735d2f7bbb4ce5eb6bd31705",
+      "other_rules": [],
+      "removed_cases": 13,
+      "replaced_cases": 13,
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_replaced": false,
+      "commit": "7104e55812bb4a75ccbe5efcf55ad2dc692a849f",
+      "other_rules": [],
+      "removed_cases": 3,
+      "replaced_cases": 0,
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_replaced": false,
+      "commit": "337a79f8caeff25422b28771e851c140d5d744ac",
+      "other_rules": [],
+      "removed_cases": 10,
+      "replaced_cases": 0,
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_replaced": true,
+      "commit": "bddb69038b25b974bdf27d06d500dc05b1f8f97e",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "abf000549c2ec5b31357046498d6e4f0f9d7d743",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "5d3d16451e77e2e4b7f5224c9812f308b6ac3cb0",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": true,
+      "commit": "45d15309ac4a2411196e800378f257ade132483d",
+      "other_rules": [],
+      "removed_cases": 7,
+      "replaced_cases": 7,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": true,
+      "commit": "fdef61f4499e1df036ac7c9c4721a87248ce0d7f",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "00b7e7585715c808687ca2be0cd5fffefc38408f",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": true,
+      "commit": "39ce7d47a83ad399c0f7d7322a951078a12dd6d4",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 6,
+      "replaced_cases": 6,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "a2d3fa4119e80fc936d556af5d19e6a5467a6eb7",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "6da1c50d1354284da3b1cfe3ba6cf495162421ee",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_replaced": false,
+      "commit": "a10dbae8ffd427f56cc0e1f4445615a1814d6baf",
+      "other_rules": [
+        "B3"
+      ],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_replaced": true,
+      "commit": "f9880120b30d27793c75c6e2df6fdacb1c9fff4b",
+      "other_rules": [],
+      "removed_cases": 8,
+      "replaced_cases": 8,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": false,
+      "commit": "bffacf7c144d3617f803376ef455f339c9424d49",
+      "other_rules": [],
+      "removed_cases": 12,
+      "replaced_cases": 0,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "fc473a1cf8d91cbb4df8865a756ba664c6542682",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "fd24cf6b4dbde6b25ed79f8188d64f98e63b0cf7",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "5eee1766812b811b851aacf20190948629365624",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "1992893baf72432c73181923393a71760d96b53c",
+      "other_rules": [],
+      "removed_cases": 9,
+      "replaced_cases": 9,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": false,
+      "commit": "0fb1c7ca9f5f091f4e6a3892d5caddbb28b2f665",
+      "other_rules": [],
+      "removed_cases": 9,
+      "replaced_cases": 0,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "8cee2e01d0b9b9b96b8536dc7437ff1918a5be45",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "7a1630f02b9163fe9ee7322dbf5e7a94409801f5",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "8570d9a52aee69478512250d37ba45e6736b6240",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "b9826420fa03643040af5e37561852eff007ed2f",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "cc803f148905a38f9b083833d7608be57142ed8d",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": false,
+      "commit": "8b0a93a1503bb7346c0dd32b9397311eb0fc78fb",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "7d9cd6b340f230baf565a305c6fc109dfa7e5fac",
+      "other_rules": [],
+      "removed_cases": 6,
+      "replaced_cases": 6,
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_replaced": true,
+      "commit": "9181707c5b4ffc51646c87f4b45f29220582577c",
+      "other_rules": [],
+      "removed_cases": 3,
+      "replaced_cases": 3,
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_replaced": false,
+      "commit": "c44b8b0052ca3a4594219efa702129e1537d8966",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_replaced": false,
+      "commit": "74007f67d203f902e88bdecba169786bf44a8aa2",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_replaced": false,
+      "commit": "bde3f58cfe7bfe29e8dbf3fa8b86e819fe7a93e4",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_replaced": false,
+      "commit": "e7345584ffb8de9016e2ccf736e702d0289b0401",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 0,
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_replaced": true,
+      "commit": "a63d75cb7f6b9716206d61ad643943a977cd147e",
+      "other_rules": [],
+      "removed_cases": 6,
+      "replaced_cases": 6,
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_replaced": false,
+      "commit": "b65e1ac6dc4d11801f3642eaab34ae6a54162c18",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_replaced": true,
+      "commit": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": false,
+      "commit": "2abeb0fa6d7be4b0455c6e0b580b1e9dab19005e",
+      "other_rules": [],
+      "removed_cases": 3,
+      "replaced_cases": 0,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "2a2c59e1c47d02c6f28e92cd0161e3f01fd74b31",
+      "other_rules": [],
+      "removed_cases": 3,
+      "replaced_cases": 3,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "92952b912c6e32866f2ec3dd6bee2aa5403d418b",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 2,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": false,
+      "commit": "11cc211966bbdd8c8a98b541c5ed841574753c6d",
+      "other_rules": [
+        "B1",
+        "S3"
+      ],
+      "removed_cases": 3,
+      "replaced_cases": 0,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": false,
+      "commit": "940b7cfea0be455a3f060aaccd216871b41becd0",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "f1e94ab838df3f6cf84ccc72fad6bfbc4ae0d99c",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "d37531b3d2cf38d6edba1d9645aea5eef7d6adbb",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "28749e78347ff013c36d6c74d85a2351062912af",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 1,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": false,
+      "commit": "fa1c6ad67d0ce53a9f4cb702166535a261586dea",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": true,
+      "commit": "7ef57c3e6d8ad7dc2bcebf6d32465d306d3f0acb",
+      "other_rules": [],
+      "removed_cases": 55,
+      "replaced_cases": 55,
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_replaced": false,
+      "commit": "88efe3ea5e4ebdac59ea7500892e671f454b5a88",
+      "other_rules": [],
+      "removed_cases": 12,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "9cddff67b733987fedc0ae37c1a4ed2eb61e89cb",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "2ec6555854db299109fddfdaa2736edba7fa9c4f",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "b047565aec9a76a877197f0edd2c62cc5ec9b236",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "1fb712c7db13de690b05eafb375c006de1fefd1e",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 6,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "743db0b5fa3507a89929e1b438f1fb7eb397d3d4",
+      "other_rules": [
+        "B1"
+      ],
+      "removed_cases": 2,
+      "replaced_cases": 1,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "230aa279eff41ff7e27dc1e0ea11911aacff0115",
+      "other_rules": [],
+      "removed_cases": 10,
+      "replaced_cases": 2,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "845f573c0db34c65a7eb9092af20fa7fe7b1404d",
+      "other_rules": [],
+      "removed_cases": 1,
+      "replaced_cases": 0,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": false,
+      "commit": "70d95e1c44b9838ed4042f636ac71ad65ad9e522",
+      "other_rules": [],
+      "removed_cases": 17,
+      "replaced_cases": 4,
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_replaced": true,
+      "commit": "4f0bb159464e133c602bd7cfee1630c2633e5002",
+      "other_rules": [
+        "B1",
+        "B3"
+      ],
+      "removed_cases": 3,
+      "replaced_cases": 3,
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_replaced": false,
+      "commit": "068401bde9121d66c346d235289023e33e4b8aa9",
+      "other_rules": [],
+      "removed_cases": 4,
+      "replaced_cases": 0,
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_replaced": false,
+      "commit": "a1b32f3c870943a61565417c4acb4aa4f2d05749",
+      "other_rules": [],
+      "removed_cases": 2,
+      "replaced_cases": 0,
+      "repo": "scrapy/w3lib"
+    }
+  ],
+  "definition": "a removed case is 'replaced' when an added case in the same decorator has the same length and differs only in its last element",
+  "removed_cases": 388,
+  "replaced_cases": 231,
+  "s4_commits": 76,
+  "schema_version": "1"
+}

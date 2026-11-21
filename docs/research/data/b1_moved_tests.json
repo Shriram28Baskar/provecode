@@ -1,0 +1,2480 @@
+{
+  "all_moved_and_no_other_rule": 8,
+  "all_moved_commits": 8,
+  "b1_commits": 299,
+  "b1_findings": 2591,
+  "command": "python docs/research/scripts/b1_moved_tests.py",
+  "commits": [
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "38c99686b9c9e211a3e27c5e1ad99bfdc8e82f04",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6fdd7ac85b7e594541faaaa88a2c809c16537bea",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "96276945545972edfe462ed9809719f931c27b56",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "ffe4bcfaa6cfbd95ba47315f8f71a206485af6ae",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "c7ce67e39f76edb69dea9e275437ea1c6796f3ea",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "aba0ea6870559ae9852159c63d66d1a88c4865e0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c49cf42fa1dbbd479d1e0cd51d651ef9f8dd9606",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "db9678288054dba85f5ce8959c20cc2436f7a1fa",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "a6c6e2811fbf162d8e5cf62a3489b60220f5b2c4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "6d007466010c5df109423604aa53709954e37b75",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "ac7a313977434427ebb4fbeea219919e48c4e029",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "9d5ab99c053de878f68917fddf85ea8ec5496c58",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "f9cbc5682e99cc972e0e8ff5f20080b0f4e81c3f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "cdf64b944090d5910775429bc5d0d372a9450966",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "44247bdf5850f7bd6e3fc4b2e79e6fc31efec8c8",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b80c81e557fa45603de198d1d9b71e638eaaf181",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-humanize/humanize"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 11,
+      "commit": "506ca21d8cc1d16313270c37b6990c9e7762f68e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "228b7b1b2f26e98b82ae43aee1576cf5aa1322ea",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "ef8fd9894efab262761d2dcf24671592a8fc8bbf",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 23,
+      "commit": "a8c7d1b9737fda3b3092d5950a021398f06955b5",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0b6975b570cea81ff4dd7d5f78fe2052001663c6",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "86b11dbb9ceb356ebf6a388af0cb17a854576fd1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/itsdangerous"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "7856c3d945a969bc94a19989dda61c3d50ac2adb",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "10b931f4456d094303248c7662438dfdea909aba",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 22,
+      "commit": "3fe4a11f139eba8711c7194a4a05e5bbd9a36786",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 18,
+      "commit": "4d4fa0dd1ae28599c1dde5658cb3dcd7b8f75c71",
+      "moved": 7,
+      "other_rules": [],
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "08c34a3315ec94b237100dd42d4ddd7f406942d9",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pallets/markupsafe"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "2a23b52ea95a064fb0183523d542486dfc2f86a7",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "78d8673da4d275bb7aee0126a5edc3cf90976af1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "c411a96fea8dd0091db7044c52d26bfb2e70cfa8",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "a0661b5f5c8838af81c5098b2a564e62852decb4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "c4fb81ff6eba16fdd24d50e9d9d002fdbece6dd4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "2f933f2a60e7b84d503b84a1713a8d112cfe49c1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 12,
+      "commit": "f2bbd4f578644865bc5cb2534768e46563ee7f66",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b002be54d39b675840ebbe725345a28195492bd4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "39ce7d47a83ad399c0f7d7322a951078a12dd6d4",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "pypa/packaging"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6a0532610b5909d761e349eb28e37631e7f73173",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "2e3774328e26287780f0ae849e3cb5db2ba4e78b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "d5220f7b75a06f7fffedd9cad431ebf9407701a6",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "f75132c15dc7106e5f82a9b5bc2c3f3d90238e6c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "51ec4486b9d47da944725b0326a412cf9b7518bf",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b2d1c4c5ea423ac629fefa9c45ffe052f7b8d08e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "e241aed3efdde28e6862386a06d4faf840165650",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e77787bb8fb91d797b315a482216ee1b11bfc5ee",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "673ab430c4f51174d805d29d21da7f8b61dc1aa5",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "d19c9bf89fe176c00756a3f9a97c67b1e4a6c2ba",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "de2669fae04ba83b5206620e2a6518df145af7d0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "74cde77bfca8ecb237594f432607bb8b36363a87",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "d59403bf817f015ec24af96eaffacbdf6ac0b475",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "306639844ef9bc12f6519aa71413242ba2f81d56",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "92e72be06e7a472d7cf529056ec47e3433bf6c3d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0194e630c6b115595c0c99d0a7f3b900a4974327",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "b0f3b6d616fbb5235ad5f9757b712173c4ace45e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "9550fc30e06bf7037e7747356e58bc53d1d6e33b",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e1fcf6041e63fe8635d798488c338a04fa0d7c85",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 4,
+      "commit": "dbda5aa8848170c19192d11998245316efc47772",
+      "moved": 4,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 6,
+      "commit": "b093f9eec0183172bf2b9b484d60a9cd3bb115ae",
+      "moved": 6,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "32a02876aba75104129861472fb0efd733149f48",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "20c352cb17debf4753135950740b80e3a956534e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 61,
+      "commit": "8e0c74dac3b4bda53359c38d92ce31c40ce4f03d",
+      "moved": 41,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "04b0fda3ebebc5b8fca533fc0cf15addbadcc52f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e02fe00f7d9c37e546b313bfd76c8d41cbb9e4a7",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "06193a486fe2acac7008697a95f9a0eb1c211180",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pytest-dev/pluggy"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "630519aa2fb0b748a752d527fa7b18428273d2ee",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 48,
+      "commit": "b07f29721d0776c9ec4b3ee427b9cc8c4bb75a32",
+      "moved": 3,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b7b6f8ed769296e23800679593fc4d0f5f2fb3f0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 3,
+      "commit": "56e8123d19b5f9b83a0da9d6580305a171e4953d",
+      "moved": 3,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "263064233dc0189854edcb2b4fc215f896bfe35e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "a220c6bec4d77242160f7252fc472195f1e4d02a",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "0a9f524e03ddf9af18f227da95948629801565f3",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "2d727b22792388780d611ccd8f93ed224f3b5a84",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "d1d9d5500470310476c5e56c98d2b58f482f61d3",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 17,
+      "commit": "b03f3ef339b3561ffdaa88c603def7b3a5adb25c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c96f072dddd4fcfafb5bf38f86eeb07caceba9d7",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jazzband/prettytable"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "98562cab0718e79404bb64bdd355541c90c6bdcb",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0ab351d380cccb5b6989ca437cf92aa8fdfafe81",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "edc63587ed2ec41ecc802d5550524471f48161c0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "ddd678209da01d97844d61a2bd963ce4b67c0a0c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "069b30002a985c02f1ab18409290a699fd649376",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "71b46b06fb48abcd2f7a26d74c148a650d340386",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "8089263d2374e121ecb8cfdef0f5664bab7bafb1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6d5dee985a91d3ba39d3397580054d3c08249566",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "196acd2325ff478338e97870173c74c15e9d41b2",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "361b92567361f377489ce608d5e6280e4f6f986b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "e39ae39c0af6c9fde93062d3084c8b967a171508",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 14,
+      "commit": "45b6bf81e12613bdefb23c2ab888c4dd0deb6212",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "f5774b65f79c4d71c38b2adb2eefcaff0867d142",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 24,
+      "commit": "28f5e8f142d191626280e98ebc4ce3773c0db9cd",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "d825a348f177f047b30950f669a52364a4dc83a3",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6932dee9f1a219401a14255a2b620f774229768f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "4bd0bd876273a8ff2171352c937b91a8c053d00b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6063f089416ebcf0564edb7dbf0e9b5b350d8c85",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "more-itertools/more-itertools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "9933a0a4699f3dea91f46528a2bf54863f531c08",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "a5ee2b4aad05531898ab8fd726c7ece31ddadf8b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "3d8afc6f89e169522f44c1bbec15f66dc359eccb",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "9edba85fc14f034b7109534220702bf60178ff15",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 19,
+      "commit": "e4ab4a610edc6332ce81a53aa4ae6f97516ce461",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "a18765c25cccab23f400edeac94d20f4be00492b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "965c06c398a394b1da06651bb4ed62be7609a946",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "939a2fe70580c8e6b7e10af82ebdd6c8c72e019a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "a767b2daaad78ba32d45a4f1dabb7c5e218f030a",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "613ad502a4cf2293901e8f67690c198fc22c8f88",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "e02ed390666930ce8640d4cebcac51059e9a34d8",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 20,
+      "commit": "10058fae6577e79b786f4e185218aebb1b53e937",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "dab931f597cdc5b57d4e2458840fb991606506bc",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "908bd07618cec8b63a64f74e50dadb450715832b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 12,
+      "commit": "6ee07d2735d86d7a3d0b31c3409d42d31997a96c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "727adc8a053402d3e9a38424ff67bde697674156",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "cd7324333a995eeb62a3e6eacdb3b179c6256133",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "11270135194922e0f5cfc739b69fe39f7337a0f9",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "7f63b20b819b83afef0ddadc2e210ddce32a2be3",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6366e5ae8f0ae19c033a2c24c217001c1512292b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "6a1b408f82d6c7e59730a4641554bdcab492eb21",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "4f9d4fff86c638ab2edb569ad9eb14f82728808d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "5389174da277ca13f9b430c2cc8db6d011499205",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Python-Markdown/markdown"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "4ec4a6734e09362138a7b2a7c3257133908a62db",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "8a85ef71f2bcb48efe2b1cdf0a72e415f91ee6da",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "a6f073a71633373bdec6d40d39bbef3383ce022a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "d0efb773252f2f94d450bc7747e3fc3faaa42f9a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 11,
+      "commit": "c624c836f158d7cf0ba876090856402b7a478bc7",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 18,
+      "commit": "bb72c21aab48bdd720fbe173ff1938bd5d923e43",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "86352aed2bedb23aa0cc461a58e76bd667617eaa",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "59d4db25cd7e75a49886bdf5e1a01665811b935f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c933a9767348d43a570397de47455b98ecd6c191",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "143e78d528aaae92199257dc1f854b9d6ec74fc4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "1a015dc6b5fd9300c1176980d03603c8888e8303",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "4f0804845d5d3518f6ee0bcc4cbc0b045ea4b956",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "3c055ca5784e54bd5f08243e46e8a0d045a59dce",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "bb87402d379dceff5309acfc71a1b335fbca787e",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c6137f2fbc28ef166975ae20c440e7b540444be7",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 15,
+      "commit": "6c829a41d5e0b78f40bcc77ef35f17ad443cc75a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "e255ae776117772c35dfa54db3acd2410658ba8b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "b210c14c7fb336205625be8d29ece52c2fba6abe",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "059216bd26fd6ae308fe1b378c1c3f4aa114d052",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "tkem/cachetools"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 29,
+      "commit": "9a4bc59e9d5ab89e7916fc0a50650cb55e3faf26",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "cba1f53e9ef351e747f7290ba369c0d567eab3fc",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "5b5a9afe764acf9a6c99d25dd5db740bb895710b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c532bae5270489cef8faf9f6b1eb70cbcb454c6d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 15,
+      "commit": "007bcb6836c18547892bb02f0a426f5cdea47106",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b375d27eaf2a905fbec1fe8f63af5ed9f7e1e824",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 26,
+      "commit": "a31ce7ecc0b767e40abb5ce28744ac567b73f366",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 27,
+      "commit": "81f03334211c78c1832991ce70ebafb3cbfbb79c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "a2e0bc77aaec8c15ad24d32935f0a0c5f4b946b6",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "b11a2ac6aa081a9750b0172c2aa4edffc11931f1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "5002e8cb536286ed800b3fa1de6348ab8b4be0f1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 34,
+      "commit": "d8dabad06c560f00b843a4e0932b238a901a6d06",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "ed4c71f083c3af6cdcc7c8d4e164e50455f72383",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "a78038f68dacf81a77733a84d82e431653a38c0f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "kjd/idna"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "99e8f248fe3c0ccf6c4f8b1b766032ce4dfc89db",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "0bae33c89870ad1844ab0e1a08aa5434fe93cce8",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "21066e6f9de28114b787643baf5e77175bff2e85",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "333dab7dd25ecec00e60c6edc0be289b0a7c1d22",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6ed30c3b3f269b97d546f8c84284cb3db011479e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b34efe65ae858501910370c12ef06d0a36dd3752",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "8c6ae45000650329e4731286bc2e32f7ec4245cf",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0fcc013745a427756b7c021758048a5c96ab6dc2",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "6db02f02d203859311e6de3f16e14bd1c2615b4c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "pyparsing/pyparsing"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "9b98a730bf71cabae9bcedb8a3aac72289c23733",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "5aa76a4450c311d87eda43946ec0ecd743572649",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b1dc8f673579137e14e44afdf0e40e4b4f1b9e3c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "1921da6eac6231b7bc058b076c0648b2d1b5c042",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "f520d9a89f1fde6fdc5310ffe6c5d4c7467fb10b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "bde3f58cfe7bfe29e8dbf3fa8b86e819fe7a93e4",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "2446e640caaef37c0aa14a39308a1b826466c1d9",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 2,
+      "commit": "1967be0eb6a4ff59b2216c2bb4fe02e3d4e16b95",
+      "moved": 2,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "8460190b29de93621012599ef65605a83baf591b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "278d3a5bc6b271baccd0244b20b8a4016a6e35c4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "079954ef405919968fb020921232509df3b0bcc9",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "22ae8473fb88d6e585b05c709e81e1a46398a649",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 1,
+      "commit": "649b273c823927650f01150462f7e2c55fe2d13f",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c422bf8041ed51d0df5e1485d1892f821e959cba",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "980c8b04f59d93c429fc66d901d2a24c70a8d777",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 1,
+      "commit": "e79b0a72efd24b8840d71dc079bf0bc7965d11f9",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "f10d05086417b2e2c3f88ae61384ca4c282c0acc",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "01aa33300574d4a70bd352aac923db3c2aad3b3c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "f580185cc4b84f12f90238d761ccb80bd5ccb07f",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "aefdb117facde35327d4dbd64564197a5a15277b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-attrs/attrs"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "9bc06658f875b9b40091539140bbbdc4639161c3",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "af8181ca0bec5e6b372fbba9afbe23702b787ceb",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "95791b1759b8aa4f2203575d344d5c78564cdc81",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "56b3d5633160e79e1f4c5c09023d68759cbf84a6",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "777efa2f51249f63b0f95804230117723eca5d09",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "0bf1a35ac15740abf6290f6b4a5759d2f8d44f4f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "f9db1d7b3acbe81daea7bc79cbc731f7c900221f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 11,
+      "commit": "e7a6c022f3f2e5ba329cbadd242c788014926a7e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "09d24fc9fd916a8e3ebc3bf993340893d74991ee",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "06523a08c6c64e2438d2259adeed3ed6bedabacb",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "97cd4031549d363fa34737635eab33491fa718fe",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "f690976596bb74221f5a81fc9afffd5609bc4e70",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 19,
+      "commit": "c38533546ad68da0d61142c37984a66127525c9b",
+      "moved": 6,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "8a14f087c285bbe2f6e85ba4818e6c620b708d5d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "dc8dc7d05d54bd5502295601c01b557caab92a76",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "8f3a2a8a4098693357b69d63a1dbec514ed7c701",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "3a50a425822fa3663643a98c6f6692f5acd8194a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "37077e498460af0bd334f4db7fabcfb822f5bdae",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 42,
+      "commit": "59ed36750cd6325d5ec32d5d18b1b5533b20b93e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e3cba6c94774378de05b231be6dbebc76e476f28",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "109f44cf72ebafaade1f251587cd6a4724f11b84",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "951dddfbcd840c51b8b4a64af68b7b6553a3c72c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e62df133556398b0845f60bd76a3afde57208291",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "7fc26bc6ba83c2e584aa86162c6e55c547b7e609",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "jpadilla/pyjwt"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "d47a43cc96dfdb4f899a1c6fea5af234acd5ff30",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "3fb23a4f4a9997deda51a102f1f1f7abd93da0a2",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "5ec8d0034ef38f9978b023b5d939f437538b49f5",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "6219f2ffea51840ae859e002fed27b5b420e2f79",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "ab33cc0101129721cd024b8a63c4059cbc8844d1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "11cc211966bbdd8c8a98b541c5ed841574753c6d",
+      "moved": 0,
+      "other_rules": [
+        "S3",
+        "S4"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "2f07741c9af57fb798d7d06d4bb44a4b436aa6c4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "086126fd8d0065336e40f7ea05546c5e62313e1b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "565a6f63bbbc39da8cca365fcf7ddf757f79b5e4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "d37531b3d2cf38d6edba1d9645aea5eef7d6adbb",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 12,
+      "commit": "857f7a51edf8842aed9a4bf91c7a99a8405ebfca",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "5afeed841df9775e9bda903c191d8c870c013728",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "fa1c6ad67d0ce53a9f4cb702166535a261586dea",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "4fe21f66991abeb1905e24c3bc3c634543d959a2",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "9a13a38cf084ff97f6ef5b43ec2e82f42b7b8f54",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "d38ced7539b888e9e9db7495f49f4499b3ee77e1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "ca6dcd0c3b3f67d882f208e6ec42bfe3113c3bad",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 4,
+      "commit": "5ba332df7bc97cd4fc83717f6716536f42b7bc4b",
+      "moved": 4,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "c439a869bb231a3f4452fa4f78d7afe00af714b0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "1d11396329215ecb8c71d5e8d9b54171badf201c",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "59207a70900bce5c93660245835c95b9e694e062",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "e8f7825a187c906e996719510c3b022cec92f68a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 25,
+      "commit": "2e82aa96ce05b8258639eecdf341da75f58f743b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "26169425bd896a172f99ca7ad594a7251ab9e068",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "b89b4bcb58b7353c91a88035e8291b0bdce386df",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "60ec6811017b484a7aba6974216fe2e337070e0e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "Delgan/loguru"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "fcb0f9abd63822defd588ac0550dbfd960b391de",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "50b2849ccaf6659fcfc362111102d2b62d0165f1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "fab23757ba46c93723a1dec958fccc7fc562737f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "16a373b5ac43399193a5a6177bc3935d30b9753b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "47e8e86c07c3da90a2c881171a32ec8c0cce4bb1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "68c68e3a562591a5b705907d948faac843e216c7",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "78c24cff7240afb624e20578d435433af672fc10",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "cf9c3a86f07de69d921214fab3dc4e29bff459e8",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "1fb712c7db13de690b05eafb375c006de1fefd1e",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 10,
+      "commit": "17bd038024bd413cf783c5a52e02662a0edb81b9",
+      "moved": 9,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "4447c07d89b7060c593bebb3a206688eb1a11511",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "4d3810ce903e54655316fb5ea74c525205fa32fe",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0f285ede97a63f78538a75a0b2f2c4923ed7c47d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "a454a88e8ce9ff563371be46918f597de2e05454",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "a5003b81e27a0594a68b02cb33355c85f51cd3cf",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 20,
+      "commit": "747c198bc13317e45dae00f160122b79858b3811",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "b393c1fba7bfc0220637399bd3452d179e808cbd",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "20d19a79e76e1a6d34d50ecffa99b39b297d2cea",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "7d7357ef3ee015ca691c58fa53ba13c919366c8b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "743db0b5fa3507a89929e1b438f1fb7eb397d3d4",
+      "moved": 0,
+      "other_rules": [
+        "S4"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "9dd07ae06fc6ebc005984c0e1fe820bcc812ae27",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "db37b73dbc0e62d916375d5cf83d394c2cd313b1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "fa0ee03e82d2b73dc00bdeb75b266aba99be8d0b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 8,
+      "commit": "96c06eb81bc48f537d6cf993108e000b58fa2de5",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "fb63e3314b6622d807679d3e116df77c604c8a3d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "7abba8557cff8de622a2cd517d5a692e927287f0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "8113031d02e91eecf3ec1ab23bbde8afd1e57050",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "31b784fc24ed637c82d87eac35d1a1bd58851f59",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "d104a5c3a07d97c4f7579be90048faf234bfed4c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 29,
+      "commit": "a3e95aeaaab9ec649cda80ede73793f471531cc0",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "76b9608e605090e035a1056afe003dd168381b4e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 5,
+      "commit": "d4aacd36fb7075cf87e6c89544b130677fba2ac5",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "610ec20ea3be89684f7e4df8035d163c3561c904",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "3d204040b4f690ca1378c1822575c2003daef787",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": true,
+      "b1_findings": 1,
+      "commit": "d416e9b0b12667d3d8bab0f1f3275b946d55ac5b",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "179d16a83dd7c58e61764d111ae959be6784949b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "marshmallow-code/marshmallow"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 15,
+      "commit": "4f0bb159464e133c602bd7cfee1630c2633e5002",
+      "moved": 0,
+      "other_rules": [
+        "B3",
+        "S4"
+      ],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "7a0df9e8b2a6012e07bfd64bfd0375a6f2661ee4",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "4d8be60d22562de576dcc06ced7e02a8e039af6f",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "584f4327545d004d5ecea26b1bb3a3a581f76546",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "53600d2f79b6b543086d1058f9e449303234fcea",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "67423741026d9dd21ddcd9271855300015cd5910",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "bf6bb28060b767786b757e8ef85a7c5070e9671e",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "1d8356534a3df5441ec0a8dee7fcce2eed78700e",
+      "moved": 3,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "f315cbbbeaf0f6e93a58ced491d3e64694895d5c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "9f40e9143ac75e68b489788ce71a9e11b3aa4570",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 136,
+      "commit": "cc154351d4bbf5a7db4f44a4e781e43e210cc06d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "031042b2caa0e1d3c4c15b310497e1e0ffe9776d",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "scrapy/w3lib"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "0a845d0db397a5dbcf868cf4b4630aa6d1fed963",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "2271cec697c7edbc032ad1f6ec103c3bf72d12da",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 7,
+      "commit": "4cf45b95de90191b02396bd04d41760d9798ecd6",
+      "moved": 0,
+      "other_rules": [
+        "B3"
+      ],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "2b6d928692e6faf2a6b27c270b36c18cf4d9beca",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "5a9f2acbc4a2b03d096579094d140f3af8e6bf28",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 302,
+      "commit": "00e21ebeadb1912040154028b9bf9f65c61e0920",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 300,
+      "commit": "2317eb8670e8f2076397159164c240dee846681c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "aec372b9bd9ec681be028a3223cabd94cc4fce91",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "362ba5f7990f6373769d6fc6ccd97a859c6b0b52",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 277,
+      "commit": "dae554c22c8dce3bd084e3e503060b92a4839385",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 263,
+      "commit": "7a5fd08611cb2fb07b8200860a4e352eb33ae7bf",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "0878727e6dc39f1f9268a626a6b6390b2dde2f4a",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "df7a4e453ae4ec28417e8a21b9722b2135ecf301",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "eb633b216bad1acb1a7739279c5ab83bdd63d7a1",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "python-jsonschema/jsonschema"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "149547d2ec5b7d1badf8d0c1ab603735fa9b5a70",
+      "moved": 0,
+      "other_rules": [
+        "S1"
+      ],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "ad96211be16d7365505a54f8c227d62729d7769c",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 3,
+      "commit": "e4da05c35a41a4d53fce7af292b94506b1ea68a7",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "5c08d1caa4ca1c9ac76a47b2ae38c42b9f2422b0",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "f0d053f0a9db94d93cfb2968a6b20b06366990fa",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 6,
+      "commit": "a355878ca7a6c3983593baf94efa0d8baf7bed19",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 4,
+      "commit": "f665cfea475a4d29862f0d0f6c0cdbf6a0f3ff94",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 1,
+      "commit": "9e56735f2273c2341399932b76c0d717059db61b",
+      "moved": 0,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    },
+    {
+      "all_moved": false,
+      "b1_findings": 2,
+      "commit": "ff0b4247bd4aac6f1b03b626252c66a1dfba4f8e",
+      "moved": 1,
+      "other_rules": [],
+      "repo": "hukkin/tomli"
+    }
+  ],
+  "definition": "a deleted test is 'moved' when another file changed by the same commit gains a test with an identical body",
+  "moved_findings": 94,
+  "schema_version": "1"
+}

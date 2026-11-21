@@ -1,4 +1,4 @@
-"""Core analyzer: align base/head tests and apply rules S1-S4, B1-B3, V0, R0.
+"""Core analyzer: align base/head tests and apply rules S1-S5, B1-B4, V0, R0.
 
 Spec: docs/03-build-spec.md section 4. Pure and stdlib only. The analyzed
 source is only ever passed to tokenize (via limits) and ast.parse; it is
@@ -646,7 +646,9 @@ def _key(c: Check) -> tuple:
 def _replaced_by_vacuous(b: Check, h: Check, v: tuple[str, ast.AST | None]) -> bool:
     kind, rest = v
     if kind == "self":
-        return b.subject == h.subject
+        # Only a check against a different expected value is weakened by a self-comparison; a
+        # truthiness check (assertTrue(r)) becoming a reflexivity check (assertEqual(r, r)) is not.
+        return b.subject == h.subject and b.expected is not None and _dump(b.expected) != b.subject
     if rest is None:
         return False
     under = (_classify(ast.Assert(test=rest)) if isinstance(h.node, ast.Assert)
@@ -752,20 +754,35 @@ def _swallowed(fn: TestFn) -> list[tuple[ast.AST, ast.AST]]:
     return out
 
 
+def _check_key(n: ast.AST) -> tuple:
+    """What a check checks (subject, operator, expected), ignoring its message."""
+    return _key(_classify(n) if isinstance(n, ast.Assert) else _classify_call(n))
+
+
 def _b4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
-    base = defaultdict(int)
-    for n, _ in _swallowed(tb):
-        base[_dump(n)] += 1
-    base_checks = {}
+    """More checks are swallowed than before. Swallowed checks are matched by what they check, not
+    by their text, so a reworded message inside an existing try/except is not a finding. A swap
+    (one check un-swallowed, another swallowed) is not flagged."""
+    base_sw, head_sw = _swallowed(tb), _swallowed(th)
+    excess = len(head_sw) - len(base_sw)
+    if excess <= 0:
+        return []
+    pool: dict[tuple, int] = defaultdict(int)
+    for n, _ in base_sw:
+        pool[_check_key(n)] += 1
+    unmatched = []
+    for n, guard in head_sw:
+        k = _check_key(n)
+        if pool[k] > 0:
+            pool[k] -= 1
+        else:
+            unmatched.append((n, guard))
+    base_checks: dict[tuple, ast.AST] = {}
     for c in _checks(tb):
-        base_checks.setdefault(_dump(c.node), c.node)
+        base_checks.setdefault(_key(c), c.node)
     out = []
-    for n, guard in _swallowed(th):
-        k = _dump(n)
-        if base[k] > 0:
-            base[k] -= 1
-            continue
-        b = base_checks.get(k)
+    for n, guard in unmatched[:excess]:
+        b = base_checks.get(_check_key(n))
         out.append(Finding(
             B4, path, th.key,
             "The check now sits inside a try/except (or suppress) that catches AssertionError and does not "
