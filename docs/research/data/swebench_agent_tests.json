@@ -3,8 +3,12 @@
     "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
       "baseline_flagged_files": 0,
       "counts": {
+        "no_tests_recognised_in_base": 1,
         "patch_empty": 3,
-        "patches": 497
+        "patches": 497,
+        "patches_touching_test_files": 1,
+        "test_files_modified": 1,
+        "visible_to_provecode_filename_filter": 1
       },
       "provecode_rule_hits_by_file": {}
     },
@@ -19,13 +23,11 @@
     "20260226_mini-v2.0.0_gemini-3-pro-high": {
       "baseline_flagged_files": 0,
       "counts": {
-        "missed_by_filename_filter": 1,
-        "no_tests_recognised_in_base": 1,
         "patch_empty": 25,
         "patches": 475,
         "patches_touching_test_files": 7,
         "test_files_modified": 7,
-        "visible_to_provecode_filename_filter": 6
+        "visible_to_provecode_filename_filter": 7
       },
       "provecode_rule_hits_by_file": {
         "S4": 1
@@ -34,13 +36,23 @@
   },
   "candidates_for_owner_labeling": [
     {
+      "agent": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "baseline_flagged": false,
+      "file": "django/test/testcases.py",
+      "instance_id": "django__django-14011",
+      "owner_label": null,
+      "provecode_rules": [],
+      "tests_recognised_in_base": 0,
+      "visible_to_filename_filter": true
+    },
+    {
       "agent": "20260226_mini-v2.0.0_gemini-3-pro-high",
       "baseline_flagged": false,
       "file": "tests/migrations/test_writer.py",
       "instance_id": "django__django-11815",
       "owner_label": null,
       "provecode_rules": [],
-      "tests_recognised_in_base": 0,
+      "tests_recognised_in_base": 46,
       "visible_to_filename_filter": true
     },
     {
@@ -50,8 +62,8 @@
       "instance_id": "django__django-14608",
       "owner_label": null,
       "provecode_rules": [],
-      "tests_recognised_in_base": 6,
-      "visible_to_filename_filter": false
+      "tests_recognised_in_base": 336,
+      "visible_to_filename_filter": true
     },
     {
       "agent": "20260226_mini-v2.0.0_gemini-3-pro-high",
@@ -108,57 +120,95 @@
   ],
   "command": "python docs/research/scripts/swebench_agent_tests.py",
   "gold_test_file_visibility": {
+    "analysis_gap_reasons_newly_visible": {},
     "by_repo": {
       "astropy/astropy": {
         "files": 25,
-        "visible": 25
+        "visible": 25,
+        "visible_before_adr_0009": 25,
+        "visible_with_base": 24,
+        "with_recognised_tests_in_base": 24
       },
       "django/django": {
         "files": 328,
-        "visible": 155
+        "visible": 327,
+        "visible_before_adr_0009": 155,
+        "visible_with_base": 319,
+        "with_recognised_tests_in_base": 273
       },
       "matplotlib/matplotlib": {
         "files": 35,
-        "visible": 35
+        "visible": 35,
+        "visible_before_adr_0009": 35,
+        "visible_with_base": 35,
+        "with_recognised_tests_in_base": 35
       },
       "mwaskom/seaborn": {
         "files": 3,
-        "visible": 3
+        "visible": 3,
+        "visible_before_adr_0009": 3,
+        "visible_with_base": 3,
+        "with_recognised_tests_in_base": 3
       },
       "pallets/flask": {
         "files": 1,
-        "visible": 1
+        "visible": 1,
+        "visible_before_adr_0009": 1,
+        "visible_with_base": 1,
+        "with_recognised_tests_in_base": 1
       },
       "psf/requests": {
         "files": 8,
-        "visible": 8
+        "visible": 8,
+        "visible_before_adr_0009": 8,
+        "visible_with_base": 8,
+        "with_recognised_tests_in_base": 8
       },
       "pydata/xarray": {
         "files": 26,
-        "visible": 26
+        "visible": 26,
+        "visible_before_adr_0009": 26,
+        "visible_with_base": 26,
+        "with_recognised_tests_in_base": 26
       },
       "pylint-dev/pylint": {
         "files": 12,
-        "visible": 6
+        "visible": 12,
+        "visible_before_adr_0009": 6,
+        "visible_with_base": 11,
+        "with_recognised_tests_in_base": 11
       },
       "pytest-dev/pytest": {
         "files": 24,
-        "visible": 22
+        "visible": 22,
+        "visible_before_adr_0009": 22,
+        "visible_with_base": 22,
+        "with_recognised_tests_in_base": 22
       },
       "scikit-learn/scikit-learn": {
         "files": 34,
-        "visible": 34
+        "visible": 34,
+        "visible_before_adr_0009": 34,
+        "visible_with_base": 34,
+        "with_recognised_tests_in_base": 34
       },
       "sphinx-doc/sphinx": {
         "files": 60,
-        "visible": 47
+        "visible": 59,
+        "visible_before_adr_0009": 47,
+        "visible_with_base": 51,
+        "with_recognised_tests_in_base": 45
       },
       "sympy/sympy": {
         "files": 96,
-        "visible": 95
+        "visible": 95,
+        "visible_before_adr_0009": 95,
+        "visible_with_base": 95,
+        "with_recognised_tests_in_base": 95
       }
     },
     "files": 652,
+    "filter": "provecode.analyzer.is_test_path (ADR 0009); visible_before_adr_0009 uses test_*.py / *_test.py",
     "instances_by_repo": {
       "astropy/astropy": 22,
       "django/django": 231,
@@ -173,7 +223,16 @@
       "sphinx-doc/sphinx": 44,
       "sympy/sympy": 75
     },
-    "visible": 457
+    "newly_visible_with_analysis_gaps": 0,
+    "newly_visible_with_base": 177,
+    "newly_visible_with_recognised_tests_in_base": 134,
+    "visible": 647,
+    "visible_base_missing": 1,
+    "visible_before_adr_0009": 457,
+    "visible_new_in_gold_patch": 17,
+    "visible_with_analysis_gaps": 0,
+    "visible_with_base": 629,
+    "with_recognised_tests_in_base": 577
   },
   "instances": 500,
   "schema_version": "1"

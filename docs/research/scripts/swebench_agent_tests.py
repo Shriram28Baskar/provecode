@@ -114,18 +114,70 @@ def apply_file_diff(base: str | None, chunk: str, path: str) -> str | None:
         return target.read_text(encoding="utf-8") if target.exists() else None
 
 
+def legacy_is_test_path(path: str) -> bool:
+    """The filename filter before ADR 0009, kept here only to measure what the change added."""
+    name = path.replace("\\", "/").rsplit("/", 1)[-1]
+    return name.endswith(".py") and (name.startswith("test_") or name.endswith("_test.py"))
+
+
 def gold_visibility() -> dict:
-    """Share of the official (gold) test-patch .py files that PROVECODE's filename filter sees."""
+    """Official (gold) test-patch .py files: how many the filename filter sees, how many of those
+    have at least one recognised test in their base version, and analyzer gaps on the files that
+    ADR 0009 newly made visible. Bases are fetched at each task's base_commit into the cache."""
     rows = []
     for off in range(0, 500, 100):
         data = fetch(f"{DS}&offset={off}&length=100", CACHE / "ds" / f"{off}.json")
         rows += [r["row"] for r in json.loads(data)["rows"]]
-    files = [(r["repo"], m.group(1)) for r in rows
-             for m in re.finditer(r"(?m)^diff --git a/\S+ b/(\S+\.py)", r["test_patch"])]
-    seen = Counter(repo for repo, f in files if is_test_path(f))
-    total = Counter(repo for repo, _ in files)
+    files = []  # (row, path, chunk)
+    for r in rows:
+        chunks = split_diff(r["test_patch"])
+        files += [(r, f, ch) for f, ch in chunks.items() if f.endswith(".py")]
+    seen = Counter(r["repo"] for r, f, _ in files if is_test_path(f))
+    legacy = Counter(r["repo"] for r, f, _ in files if legacy_is_test_path(f))
+    total = Counter(r["repo"] for r, _, _ in files)
+
+    def examine(item):
+        r, f, chunk = item
+        if not is_test_path(f):
+            return None
+        if "new file mode" in chunk.split("@@", 1)[0]:
+            return {"repo": r["repo"], "new": True}
+        base = fetch(RAW.format(repo=r["repo"], sha=r["base_commit"], path=f),
+                     CACHE / "raw" / r["repo"].replace("/", "__") / r["base_commit"] / f)
+        if base is None:
+            return {"repo": r["repo"], "new": False, "base_missing": True}
+        base_s = base.decode("utf-8", "replace")
+        deleted = "deleted file mode" in chunk.split("@@", 1)[0]
+        head = None if deleted else apply_file_diff(base_s, chunk, f)
+        if head == "__APPLY_FAILED__":
+            head = base_s  # still measures recognition and gaps on the base version
+        res = analyze_file(f, base_s, head, Limits.cli())
+        return {"repo": r["repo"], "new": False, "base_missing": False, "newly_visible": not legacy_is_test_path(f),
+                "tests_in_base": len(res.tests_base), "gaps": sorted({g.reason for g in res.gaps})}
+
+    with ThreadPoolExecutor(16) as ex:
+        ex_rows = [x for x in ex.map(examine, files) if x is not None]
+    existing = [x for x in ex_rows if not x["new"] and not x["base_missing"]]
+    newly = [x for x in existing if x["newly_visible"]]
+    by_repo = {}
+    for repo, n in total.most_common():
+        mine = [x for x in existing if x["repo"] == repo]
+        by_repo[repo] = {"visible": seen[repo], "visible_before_adr_0009": legacy[repo], "files": n,
+                         "visible_with_base": len(mine),
+                         "with_recognised_tests_in_base": sum(x["tests_in_base"] > 0 for x in mine)}
     return {"files": len(files), "visible": sum(seen.values()),
-            "by_repo": {repo: {"visible": seen[repo], "files": n} for repo, n in total.most_common()},
+            "visible_before_adr_0009": sum(legacy.values()),
+            "filter": "provecode.analyzer.is_test_path (ADR 0009); visible_before_adr_0009 uses test_*.py / *_test.py",
+            "visible_new_in_gold_patch": sum(x["new"] for x in ex_rows),
+            "visible_base_missing": sum(x.get("base_missing", False) for x in ex_rows),
+            "visible_with_base": len(existing),
+            "with_recognised_tests_in_base": sum(x["tests_in_base"] > 0 for x in existing),
+            "newly_visible_with_base": len(newly),
+            "newly_visible_with_recognised_tests_in_base": sum(x["tests_in_base"] > 0 for x in newly),
+            "newly_visible_with_analysis_gaps": sum(bool(x["gaps"]) for x in newly),
+            "analysis_gap_reasons_newly_visible": dict(Counter(g for x in newly for g in x["gaps"])),
+            "visible_with_analysis_gaps": sum(bool(x["gaps"]) for x in existing),
+            "by_repo": by_repo,
             "instances_by_repo": dict(Counter(r["repo"] for r in rows).most_common())}
 
 

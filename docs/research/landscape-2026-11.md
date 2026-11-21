@@ -182,6 +182,13 @@ Whether that edit is a weakening or the intended behaviour change is **for the o
 - Other repos: sympy 95/96, sphinx 47/60, matplotlib 35/35, scikit-learn 34/34, xarray 26/26.
 - Even inside a visible file, the analyzer only recognises functions named `test*` and classes named `Test*`. In §1.8, `tests/migrations/test_writer.py` passes the filename filter, yet **zero** tests were recognised in its base version (unittest class `WriterTests`).
 
+**Re-measured 2026-11-21, after ADR 0009** (same command; `docs/research/data/swebench_agent_tests.json` now holds these numbers, and the figures above are the pre-change baseline):
+- File visibility: **647/652 (99.2%)**, up from 457. Django: 327/328. The 5 still invisible are `__init__.py`, `conftest.py` and modules under `testing/` directories.
+- Of the 629 visible files that exist at the task's base commit, **577** have at least one recognised test in the base version. For the 177 newly visible ones, the figure is 134.
+- Analyzer gaps on newly visible files: **0/177**. Both drop criteria of R1 are met.
+- Pilot (§1.8): `django__django-11815`'s `test_writer.py` now has 46 recognised tests, and `django__django-14608`'s `tests/admin_views/tests.py` is now visible, with 336. Findings on the 7 Gemini files are unchanged: one S4, on `test_dates.py`.
+- **New false positive of the filter.** GPT-5.2's edit to `django/test/testcases.py` (`django__django-14011`) is Django's test-framework source, not a test. It now counts as a test file because of the `test/` directory rule. No tests are recognised in it and there are no findings, but it is the only gold file that the singular `test/` rule adds (1 of 652).
+
 ---
 
 ## Part 2: Gap analysis
