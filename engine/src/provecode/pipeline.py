@@ -28,6 +28,7 @@ def run(
     executed: bool = False,
     extra_gaps: list[Gap] | None = None,
     provenance: dict | None = None,
+    extra_findings: list[Finding] | None = None,
 ) -> dict:
     """Analyze a change against an approved contract.
 
@@ -86,6 +87,7 @@ def run(
         seen = {r.file for r in results}
         results.extend(FileResult(p) for p in analyzed if p not in seen)
         results.sort(key=lambda r: r.file)
+    findings.extend(extra_findings or [])  # execution findings from a trusted re-run (ADR 0013)
     for p in sorted(touched_protected or []):
         findings.append(Finding(CONTRACT_TOUCHED, p, None,
                                 "The candidate change modifies a protected contract path; the contract must not be "

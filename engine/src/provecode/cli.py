@@ -2,6 +2,7 @@
 
   provecode check   --repo . --base REF --head REF --contract C.yaml [--contract-base C0.yaml]
   provecode record  ...same as check, plus contract checks and repo tests in Docker
+  provecode rerun   --repo . --base REF --head REF --image IMG   runs A/B/C: base tests vs head code (ADR 0013)
   provecode guard   [--staged] [--base HEAD]   uncommitted/staged changes; pre-commit and agent hooks
   provecode install-hooks --claude | --pre-commit   wire guard into Claude Code or git
   provecode approve C.yaml --by NAME [--at ISO8601]
@@ -141,7 +142,26 @@ def _emit(rep: dict, args) -> int:
     return EXIT[rep["outcome"]]
 
 
+def cmd_rerun(args) -> int:
+    from . import rerun  # Docker path; CLI/CI only (ADR 0013)
+
+    return _emit(rerun.run(args), args)
+
+
 def cmd_check(args) -> int:
+    if getattr(args, "execute", False):
+        if not args.image:
+            print("provecode: error: --execute needs --image (a Docker image with Python and pytest)", file=sys.stderr)
+            return 3
+        if args.contract:
+            print("provecode: error: --execute uses the base branch's tests as the contract; run `provecode record` "
+                  "for contract-owned checks", file=sys.stderr)
+            return 3
+        return cmd_rerun(args)
+    if not args.contract:
+        print("provecode: error: --contract is required (or use --execute to judge against the base branch's tests)",
+              file=sys.stderr)
+        return 3
     files, touched, prov, gaps = _collect(args)
     head, base, cgaps = _contracts(args)
     rep = pipeline.run(files, head, base, mode="static", touched_protected=touched,
@@ -194,7 +214,8 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--repo", default=".")
         p.add_argument("--base", required=True)
         p.add_argument("--head", required=True)
-        p.add_argument("--contract", required=True, help="trusted, approved contract (outside the candidate)")
+        p.add_argument("--contract", required=(name == "record"),
+                       help="trusted, approved contract (outside the candidate)")
         p.add_argument("--contract-base", help="contract version in effect at base, to detect approved changes")
         p.add_argument("--protect", action="append", default=[], help="extra protected path (repeatable)")
         p.add_argument("--json")
@@ -203,7 +224,27 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--image", required=True, help="Docker image reference pinned by digest")
             p.add_argument("--checks-dir", required=True, help="trusted directory holding contract-owned checks")
             p.add_argument("--timeout", type=int, default=120)
+        else:
+            p.add_argument("--execute", action="store_true",
+                           help="also run the base branch's tests against the head in sealed containers (ADR 0013)")
+            p.add_argument("--image", help="Docker image with Python and pytest, for --execute")
+            p.add_argument("--timeout", type=int, default=600, help="seconds per sealed test run")
+            p.add_argument("--deps-timeout", type=int, default=900, help="seconds for building the wheelhouse")
         p.set_defaults(fn=fn)
+    p = sub.add_parser("rerun", help="trusted re-run: runs A/B/C in sealed containers, base tests as the contract")
+    p.add_argument("--repo", default=".")
+    p.add_argument("--base", required=True)
+    p.add_argument("--head", required=True)
+    p.add_argument("--image", required=True, help="Docker image with Python and pytest (pin by digest)")
+    p.add_argument("--timeout", type=int, default=600, help="seconds per sealed test run")
+    p.add_argument("--deps-timeout", type=int, default=900, help="seconds for building the wheelhouse")
+    p.add_argument("--wheelhouse", choices=["host", "container"], default="host",
+                   help="host: pip download --only-binary on the host (no package code runs); container: pip wheel in "
+                        "a networked container that sees only the base dependency list")
+    p.add_argument("--protect", action="append", default=[], help="extra protected path (repeatable)")
+    p.add_argument("--json")
+    p.add_argument("--md")
+    p.set_defaults(fn=cmd_rerun)
     from . import guard, install  # local and agent-loop gate (ADR 0010)
 
     guard.add_parser(sub)

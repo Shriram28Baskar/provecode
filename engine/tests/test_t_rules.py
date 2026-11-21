@@ -167,3 +167,11 @@ def test_t5_near_misses():
 def test_t_rules_do_not_fire_on_identical_tests():
     base = "def test_a():\n    for x in [1]:\n        assert f(x, 1) == 2\n"
     assert run(base, base)["findings"] == []
+
+
+def test_regression_t3_resolves_imports_inside_the_test_function():
+    # Found by an executed probe (demo/build_probes.py, cheat-monkeypatch), not by benchmark data.
+    base = "def test_a(monkeypatch):\n    from pkg import mod\n    assert mod.f(1) == 2\n"
+    head = ("def test_a(monkeypatch):\n    monkeypatch.setattr('pkg.mod.f', lambda x: 2)\n    from pkg import mod\n"
+            "    assert mod.f(1) == 2\n")
+    assert rules(run(base, head)) == ["T3"]

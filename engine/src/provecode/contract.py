@@ -12,8 +12,8 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .model import (ALWAYS_BLOCKING, BLOCKING, CONTRACT_BLOCKING, CONTRACT_TOUCHED, INFO, INFO_RULES, NEVER_BLOCKING,
-                    T1, WARNING, WEAKENING_RULES, Finding)
+from .model import (ALWAYS_BLOCKING, BLOCKING, CONTRACT_BLOCKING, CONTRACT_TOUCHED, EXECUTION_BLOCKING, INFO,
+                    INFO_RULES, NEVER_BLOCKING, T1, WARNING, WEAKENING_RULES, X3, X5, Finding)
 
 CONDITION_TYPES = {"functional", "boundary", "api-compat", "protected-behavior", "security", "performance"}
 CHECK_KINDS = {"pytest", "property", "api", "static"}
@@ -248,8 +248,14 @@ def link_and_grade(findings: list[Finding], head: Contract, changed: set[str]) -
         cids = sorted({cid for k in keys for cid in guards.get(k, [])})
         f.condition_ids = cids
         mandatory = [cid for cid in cids if head.condition(cid).mandatory]
-        if f.rule == CONTRACT_TOUCHED or (f.rule in ALWAYS_BLOCKING and not f.detail.get("advisory")):
+        if (f.rule == CONTRACT_TOUCHED or (f.rule in ALWAYS_BLOCKING and not f.detail.get("advisory"))
+                or f.rule in EXECUTION_BLOCKING):
             f.severity = BLOCKING
+        elif f.rule == X3:
+            # A deleted test's behaviour failing blocks, unless the test's condition carries an approved change.
+            f.severity = INFO if mandatory and all(cid in changed for cid in mandatory) else BLOCKING
+        elif f.rule == X5:
+            f.severity = BLOCKING if mandatory and not all(cid in changed for cid in mandatory) else WARNING
         elif f.rule in CONTRACT_BLOCKING or f.rule in ALWAYS_BLOCKING:
             f.severity = BLOCKING  # repository-wide harness weakening under an adopted contract (ADR 0012)
         elif f.rule == T1 and f.detail.get("both_changed") and not mandatory:

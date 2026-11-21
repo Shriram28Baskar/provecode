@@ -97,6 +97,36 @@ provecode check --repo demo/.build/checkout --base main --head candidate-legit \
 - **Outputs:** add `--json report.json --md report.md` to write the report files.
 - **Contracts:** `provecode approve <contract.yaml> --by <name>` records an approval over the contract's current hash.
 
+## Run the base branch's tests against the change (`rerun`, Docker)
+
+```bash
+provecode rerun --repo . --base main --head HEAD --image provecode-run:local
+provecode check --repo . --base main --head HEAD --execute --image provecode-run:local   # same, no contract needed
+```
+
+Three sealed runs answer one question: does the change still pass the tests that were trusted before it?
+
+- **A** runs base code with base tests: the reference.
+- **B** runs head code with the **base** tests and harness: the trusted result. Head-only conftests, test modules, `.pth` and `sitecustomize.py` files are removed first.
+- **C** runs head code with head tests: what CI would say.
+
+A base test that passes in A and fails in B is reported with its cause:
+- **X2**, the harness hides it (the test is unchanged);
+- **X3**, the test was deleted;
+- **X4**, a weakened test hides it;
+- **X5**, the expectation was edited;
+- **X6**, an ordinary regression.
+
+Base tests the change stopped collecting are **X1**.
+
+How the runs are sealed:
+- Dependencies come from the base tree only, as wheels.
+- Test containers have no network, a read-only root, no capabilities and resource limits.
+- Plugin autoloading is off, and only base-declared plugins load.
+- A and B run twice, and a disagreement makes a test flaky, never failed.
+
+With no contract, the base tests are the contract (ADR 0013). Contract-owned checks can call the candidate through `provecode.isolate`, so candidate code never runs in the process that judges it.
+
 ## Use it on pull requests (GitHub Action)
 
 ```yaml

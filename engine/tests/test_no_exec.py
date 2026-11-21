@@ -50,6 +50,7 @@ def test_no_llm_or_spike_imports_anywhere(path):
 
 
 def test_core_list_covers_every_stdlib_module():
-    host_specific = {"git.py", "cli.py", "exec.py", "guard.py", "install.py", "__init__.py"}
+    host_specific = {"git.py", "cli.py", "exec.py", "guard.py", "install.py", "__init__.py",
+                     "isolate.py", "overlay.py", "rerun.py"}
     present = {p.name for p in SRC.glob("*.py")}
     assert present - host_specific <= set(CORE), present - host_specific - set(CORE)

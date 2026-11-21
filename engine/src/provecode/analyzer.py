@@ -1131,11 +1131,19 @@ def _patch_target(call: ast.Call, imports: dict[str, str]) -> str | None:
     return None
 
 
+def _scoped_imports(p: Parsed, fn: TestFn) -> dict[str, str]:
+    """Module-level imports, overridden by imports inside the test function itself."""
+    out = _module_imports(p.tree)
+    out.update(_module_imports(ast.Module(body=[n for n in _walk_own(fn.node)
+                                                if isinstance(n, (ast.Import, ast.ImportFrom))], type_ignores=[])))
+    return out
+
+
 def _t3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
-    imports = _module_imports(ph.tree)
+    imports = _scoped_imports(ph, th)
 
     def patches(p: Parsed, fn: TestFn) -> list[tuple[str, ast.Call]]:
-        imp = _module_imports(p.tree)
+        imp = _scoped_imports(p, fn)
         out = []
         for n in list(_walk_own(fn.node)) + [d for d in fn.node.decorator_list if isinstance(d, ast.Call)]:
             if isinstance(n, ast.Call):

@@ -32,7 +32,17 @@ T3 = "T3"  # function under test patched in its own test
 T4 = "T4"  # loop or parametrize iterable emptied or reduced
 T5 = "T5"  # exception check replaced by a value check
 
+# Execution findings from the trusted re-run (ADR 0013): base tests run against head code.
+X1 = "X1"  # base tests no longer collected against head code
+X2 = "X2"  # harness-masked failure: unchanged base test fails in B, passes in C
+X3 = "X3"  # deleted test: its behaviour no longer holds
+X4 = "X4"  # weakened test hides a failure
+X5 = "X5"  # expectation changed: an edited base test fails against head code
+X6 = "X6"  # base test fails against head code, and in ordinary CI too
+
 HARNESS_RULES = frozenset({H1, H2, H3, H4, H5, H6, H7})
+EXECUTION_RULES = frozenset({X1, X2, X3, X4, X5, X6})
+EXECUTION_BLOCKING = frozenset({X1, X2, X4, X6})  # X3 blocks unless its condition has an approved change
 TEST_BODY_RULES = frozenset({T1, T2, T3, T4, T5})
 WEAKENING_RULES = frozenset({S1, S2, S3, S4, S5, B1, B2, B3, B4}) | HARNESS_RULES | TEST_BODY_RULES
 INFO_RULES = frozenset({V0, R0})
@@ -66,6 +76,12 @@ RULE_TITLES = {
     T3: "Function under test patched in its own test",
     T4: "Loop or parametrize cases emptied or reduced",
     T5: "Exception check replaced by a value check",
+    X1: "Base tests not collected against the change",
+    X2: "Harness hides a failing base test",
+    X3: "Deleted test's behaviour no longer holds",
+    X4: "Weakened test hides a failure",
+    X5: "Base test fails: expectation changed by the PR",
+    X6: "Base test fails against the change",
 }
 
 BLOCKING = "blocking"
