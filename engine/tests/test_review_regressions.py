@@ -122,7 +122,7 @@ def test_rename_to_non_test_name_is_b1_on_the_guarded_test():
     r = pipeline.run([("tests/cap_cases.py", CAP, "def check_cap():\n    pass\n", "tests/test_cap.py")], _doc())
     f = r["findings"][0]
     assert (f["rule"], f["severity"], f["condition_ids"]) == ("B1", "blocking", ["C1"])
-    assert "pytest does not collect" in f["rationale"]
+    assert "do not collect" in f["rationale"]
     assert r["outcome"] == "FAILED"
 
 

@@ -51,14 +51,17 @@ def run(
         path, b, h = entry[0], entry[1], entry[2]
         old = entry[3] if len(entry) > 3 else None
         if old and old != path and analyzer.is_test_path(old):
-            # Keep the base's test ids so contract guarded_by links still resolve. If the new
-            # name is not a test file, pytest stops collecting it: treat it as deleted (B1).
-            keep = analyzer.is_test_path(path)
+            # Keep the base's test ids so contract guarded_by links still resolve. If the new name
+            # would no longer be collected by default runners (or is not test code at all), the
+            # tests stop running: treat the file as deleted (B1).
+            keep = analyzer.is_test_path(path) and not (
+                analyzer.is_collected_name(old) and not analyzer.is_collected_name(path))
             r = analyzer.analyze_file(old, b, h if keep else None, limits)
             for f in r.findings:
                 f.detail["renamed_to"] = path
                 if not keep and f.rule == "B1":
-                    f.rationale = f"The test file was renamed to {path}, which pytest does not collect."
+                    f.rationale = (f"The test file was renamed to {path}, which pytest and unittest "
+                                   "discovery do not collect by default.")
             r.file = f"{old} -> {path}"
         elif analyzer.is_test_path(path):
             r = analyzer.analyze_file(path, b, h, limits)

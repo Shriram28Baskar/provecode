@@ -61,6 +61,7 @@ class Parsed:
     module_skip: bool
     lines: list[str] = field(default_factory=list)
     pytest_names: frozenset[str] = frozenset()  # names bound by `from pytest import ...`
+    unittest_names: frozenset[str] = frozenset()  # names bound by `from unittest import ...`
 
     def text(self, node: ast.AST) -> str:
         """Full source lines spanned by node, including its decorators."""
@@ -90,12 +91,17 @@ def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, 
         (a.asname or a.name) for n in tree.body if isinstance(n, ast.ImportFrom) and n.module == "pytest"
         for a in n.names
     )
+    unittest_names = frozenset(
+        (a.asname or a.name) for n in tree.body if isinstance(n, ast.ImportFrom) and n.module == "unittest"
+        for a in n.names
+    )
     tests: dict[str, TestFn] = {}
     for node in tree.body:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test"):
             tests[f"{path}::{node.name}"] = TestFn(f"{path}::{node.name}", node)
-        elif isinstance(node, ast.ClassDef) and node.name.startswith("Test"):
-            marks = frozenset(_dump(d) for d in node.decorator_list if _skip_mark(d)) | _pytestmark_skips(node.body)
+        elif isinstance(node, ast.ClassDef) and _is_test_class(node):
+            marks = frozenset(_dump(d) for d in node.decorator_list if _skip_mark(d, unittest_names)) | \
+                _pytestmark_skips(node.body)
             for sub in node.body:
                 if isinstance(sub, (ast.FunctionDef, ast.AsyncFunctionDef)) and sub.name.startswith("test"):
                     key = f"{path}::{node.name}::{sub.name}"
@@ -104,7 +110,22 @@ def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, 
     # Split lines exactly as the tokenizer counts them (\r\n, \r, \n only). str.splitlines
     # also splits on \f, \x1c-\x1e, \x85 and \u2028, which would misalign ast line numbers.
     lines = io.StringIO(source, newline="").readlines()
-    return Parsed(source, tree, tests, module_skip, lines, pytest_names), None
+    return Parsed(source, tree, tests, module_skip, lines, pytest_names, unittest_names), None
+
+
+def _base_name(b: ast.AST) -> str:
+    if isinstance(b, ast.Subscript):  # e.g. TestCase[...] generics
+        b = b.value
+    return b.attr if isinstance(b, ast.Attribute) else b.id if isinstance(b, ast.Name) else ""
+
+
+def _is_test_class(c: ast.ClassDef) -> bool:
+    """pytest collects Test* classes; unittest collects TestCase subclasses (ADR 0009).
+
+    Bases are judged syntactically (no import resolution): any base whose final name ends in
+    "TestCase" (TestCase, SimpleTestCase, SynchronousTestCase, a project's own BaseTestCase...).
+    """
+    return c.name.startswith("Test") or any(_base_name(b).endswith("TestCase") for b in c.bases)
 
 
 def _max_depth(tree: ast.AST) -> int:
@@ -199,9 +220,10 @@ def _is_approx_call(n: ast.AST) -> bool:
 
 @dataclass
 class Check:
-    """One assert statement, normalised to subject / operator / expected."""
+    """One check (an assert statement or a unittest self.assert* call), normalised to
+    subject / operator / expected."""
 
-    node: ast.Assert
+    node: ast.AST  # ast.Assert, or the ast.Call of a self.assert* check
     subject: str  # dump of the subject expression
     op: str  # comparison op text, "approx", or a trivial kind
     expected: ast.AST | None
@@ -209,7 +231,7 @@ class Check:
 
     @property
     def full(self) -> str:
-        return _dump(self.node.test)
+        return _dump(self.node.test if isinstance(self.node, ast.Assert) else self.node)
 
     @property
     def expected_literal(self) -> bool:
@@ -245,6 +267,71 @@ def _classify(node: ast.Assert) -> Check:
     ):
         return Check(node, _dump(t.args[0]), "isinstance", t.args[1])
     return Check(node, _dump(t), "truthy", None)
+
+
+# unittest assertion methods mapped onto the same model (ADR 0009). Two-argument comparisons:
+_UT_BINARY = {
+    "assertEqual": "==", "assertEquals": "==", "failUnlessEqual": "==",
+    "assertListEqual": "==", "assertTupleEqual": "==", "assertDictEqual": "==", "assertSetEqual": "==",
+    "assertSequenceEqual": "==", "assertMultiLineEqual": "==", "assertCountEqual": "==",
+    "assertNotEqual": "!=", "assertNotEquals": "!=",
+    "assertGreater": ">", "assertGreaterEqual": ">=", "assertLess": "<", "assertLessEqual": "<=",
+    "assertIs": "is", "assertIsNot": "is not", "assertIn": "in", "assertNotIn": "not in",
+}
+# Calls handled as exception checks (S3), not as Check objects:
+_UT_RAISES = {"assertRaises", "assertRaisesRegex", "assertRaisesRegexp", "assertWarns", "assertWarnsRegex"}
+
+
+def _is_self_assert(n: ast.AST) -> bool:
+    return (isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr.startswith("assert")
+            and isinstance(n.func.value, ast.Name) and n.func.value.id == "self")
+
+
+def _classify_call(call: ast.Call) -> Check:
+    """Map a self.assert*(...) call onto subject / op / expected."""
+    name, args = call.func.attr, call.args
+    kw = {k.arg: k.value for k in call.keywords if k.arg}
+    if name in _UT_BINARY and len(args) >= 2:
+        left, right, op = args[0], args[1], _UT_BINARY[name]
+        if _is_literal(left) and not _is_literal(right):
+            left, right, op = right, left, _FLIP.get(op, op)
+        if op in ("is not", "!=") and isinstance(right, ast.Constant) and right.value is None:
+            return Check(call, _dump(left), "not_none", None)
+        return Check(call, _dump(left), op, right)
+    if name in ("assertAlmostEqual", "assertAlmostEquals") and len(args) >= 2:
+        left, right = args[0], args[1]
+        if _is_literal(left) and not _is_literal(right):
+            left, right = right, left
+        if "delta" in kw:
+            tol = {"abs": _num(kw["delta"])}
+        else:  # default places=7: |a - b| rounded to 7 places == 0, i.e. tolerance 0.5e-7
+            places = _num(kw.get("places")) if "places" in kw else (_num(args[2]) if len(args) > 2 else 7.0)
+            tol = {"abs": 0.5 * 10 ** -places if places is not None else None}
+        return Check(call, _dump(left), "approx", right, tol)
+    if name == "assertTrue" and args:
+        return Check(call, _dump(args[0]), "truthy", None)
+    if name == "assertIsNotNone" and args:
+        return Check(call, _dump(args[0]), "not_none", None)
+    if name == "assertIsNone" and args:
+        return Check(call, _dump(args[0]), "is", ast.Constant(value=None))
+    if name == "assertIsInstance" and len(args) >= 2:
+        return Check(call, _dump(args[0]), "isinstance", args[1])
+    if name == "assertFalse" and args:
+        return Check(call, _dump(args[0]), "falsy", None)
+    # Project-specific helpers (assertMarkdownRenders, ...): a check whose strength is unknown;
+    # it can only match itself exactly, and its removal counts for B3.
+    return Check(call, _dump(call), f"custom:{name}", None)
+
+
+def _checks(fn: TestFn) -> list[Check]:
+    """Every check in the test body, in source order: assert statements and self.assert* calls."""
+    out = []
+    for n in _walk_own(fn.node):
+        if isinstance(n, ast.Assert):
+            out.append(_classify(n))
+        elif _is_self_assert(n) and n.func.attr not in _UT_RAISES:
+            out.append(_classify_call(n))
+    return out
 
 
 def _approx_tol(c: Check) -> dict[str, float]:
@@ -292,6 +379,7 @@ def _op_label(c: Check) -> str:
 
 
 def _raises_calls(fn: TestFn) -> list[ast.Call]:
+    """pytest.raises(...) and unittest self.assertRaises*/assertWarns* calls, in source order."""
     out = []
     for n in _walk_own(fn.node):
         if isinstance(n, ast.Call):
@@ -299,7 +387,21 @@ def _raises_calls(fn: TestFn) -> list[ast.Call]:
             if (isinstance(f, ast.Attribute) and f.attr == "raises" and isinstance(f.value, ast.Name)
                     and f.value.id == "pytest") or (isinstance(f, ast.Name) and f.id == "raises"):
                 out.append(n)
+            elif _is_self_assert(n) and f.attr in _UT_RAISES:
+                out.append(n)
     return out
+
+
+def _match_of(call: ast.Call) -> ast.AST | None:
+    """The message pattern an exception check enforces: pytest's match=, or the regex
+    argument of unittest's assertRaisesRegex / assertWarnsRegex."""
+    for k in call.keywords:
+        if k.arg in ("match", "expected_regex"):
+            return k.value
+    f = call.func
+    if isinstance(f, ast.Attribute) and f.attr.endswith(("Regex", "Regexp")) and len(call.args) >= 2:
+        return call.args[1]
+    return None
 
 
 def _exc_names(n: ast.AST | None) -> list[str] | None:
@@ -343,16 +445,17 @@ def _s3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
             widened = [h for h in hn if h not in bn and any(_covers(h, b) for b in bn)]
             if widened:
                 reasons.append(f"expected exception widened from {', '.join(bn)} to include {', '.join(widened)}")
-        bm = next((k.value for k in cb.keywords if k.arg == "match"), None)
-        hm = next((k.value for k in ch.keywords if k.arg == "match"), None)
+        bm, hm = _match_of(cb), _match_of(ch)
         if bm is not None and hm is None:
-            reasons.append("the match= message check was removed")
+            reasons.append("the expected-message check was removed")
         elif (bm is not None and isinstance(hm, ast.Constant) and hm.value in _MATCH_ANY
               and _dump(bm) != _dump(hm)):
-            reasons.append(f"the match= message check was loosened to {hm.value!r}, which matches any message")
+            reasons.append(f"the expected-message check was loosened to {hm.value!r}, which matches any message")
         if reasons:
+            label = cb.func.attr if isinstance(cb.func, ast.Attribute) else "raises"
+            label = "pytest.raises" if label == "raises" else f"self.{label}"
             out.append(Finding(
-                S3, path, th.key, "pytest.raises: " + "; ".join(reasons) + ".",
+                S3, path, th.key, f"{label}: " + "; ".join(reasons) + ".",
                 base_lines=_lines(cb), head_lines=_lines(ch), before=_seg(pb, cb), after=_seg(ph, ch),
             ))
     return out
@@ -402,7 +505,26 @@ def _mark_name(d: ast.AST) -> tuple[str | None, ast.Call | None]:
     return None, None
 
 
-def _skip_mark(d: ast.AST) -> bool:
+def _unittest_skip(d: ast.AST, unittest_names: frozenset[str]) -> bool:
+    """@unittest.skip(...), @skipIf(<truthy const>), @skipUnless(<falsy const>), @expectedFailure."""
+    call = d if isinstance(d, ast.Call) else None
+    target = d.func if call else d
+    if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "unittest":
+        name = target.attr
+    elif isinstance(target, ast.Name) and target.id in unittest_names:
+        name = target.id
+    else:
+        return False
+    if name in ("skip", "expectedFailure"):
+        return True
+    if name in ("skipIf", "skipUnless") and call is not None and call.args and isinstance(call.args[0], ast.Constant):
+        return bool(call.args[0].value) == (name == "skipIf")
+    return False
+
+
+def _skip_mark(d: ast.AST, unittest_names: frozenset[str] = frozenset()) -> bool:
+    if _unittest_skip(d, unittest_names):
+        return True
     name, call = _mark_name(d)
     if name == "skip":
         return True
@@ -425,8 +547,11 @@ def _body_after_doc(fn: TestFn) -> list[ast.stmt]:
 
 
 def _is_pytest_stop(call: ast.Call, pytest_names: frozenset[str]) -> bool:
-    """pytest.skip(...) / pytest.xfail(...), or skip/xfail imported from pytest. Not reader.skip()."""
+    """pytest.skip(...) / pytest.xfail(...), skip/xfail imported from pytest, or unittest's
+    self.skipTest(...). Not reader.skip()."""
     f = call.func
+    if isinstance(f, ast.Attribute) and f.attr == "skipTest":
+        return isinstance(f.value, ast.Name) and f.value.id == "self"
     if isinstance(f, ast.Attribute) and f.attr in ("skip", "xfail"):
         return isinstance(f.value, ast.Name) and f.value.id == "pytest"
     return isinstance(f, ast.Name) and f.id in ("skip", "xfail") and f.id in pytest_names
@@ -458,9 +583,9 @@ def _guards(fn: TestFn, pytest_names: frozenset[str] = frozenset()) -> dict[str,
 
 def _b2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out = []
-    base_marks = {_dump(d) for d in tb.node.decorator_list if _skip_mark(d)}
+    base_marks = {_dump(d) for d in tb.node.decorator_list if _skip_mark(d, pb.unittest_names)}
     for d in th.node.decorator_list:
-        if _skip_mark(d) and _dump(d) not in base_marks:
+        if _skip_mark(d, ph.unittest_names) and _dump(d) not in base_marks:
             out.append(Finding(
                 B2, path, th.key, "An unconditional skip/xfail marker was added; the test no longer gates the change.",
                 head_lines=_lines(d), after="@" + _seg(ph, d),
@@ -484,8 +609,8 @@ def _b2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
 
 def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out: list[Finding] = []
-    base = [_classify(n) for n in _walk_own(tb.node) if isinstance(n, ast.Assert)]
-    head = [_classify(n) for n in _walk_own(th.node) if isinstance(n, ast.Assert)]
+    base = _checks(tb)
+    head = _checks(th)
     # 1. Drop exact matches (multiset on the full normalised test expression).
     pool: dict[str, list[Check]] = defaultdict(list)
     for h in head:
@@ -623,5 +748,21 @@ def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _
 
 
 def is_test_path(path: str) -> bool:
+    """pytest-named files (test_*.py, *_test.py), Django-style tests.py, and any module inside a
+    tests/ or test/ directory (ADR 0009). conftest.py and __init__.py are support files, not tests."""
+    p = path.replace("\\", "/")
+    parts = p.split("/")
+    name = parts[-1]
+    if not name.endswith(".py") or name in ("conftest.py", "__init__.py"):
+        return False
+    if name.startswith("test_") or name.endswith("_test.py") or name == "tests.py":
+        return True
+    return any(d in ("tests", "test") for d in parts[:-1])
+
+
+def is_collected_name(path: str) -> bool:
+    """Would default test runners still collect this file by name? pytest: test_*.py / *_test.py;
+    unittest/Django discovery: test*.py (which includes tests.py). Narrower than is_test_path, which
+    answers "is this test code?". Custom runner configuration is not read."""
     name = path.replace("\\", "/").rsplit("/", 1)[-1]
-    return name.endswith(".py") and (name.startswith("test_") or name.endswith("_test.py"))
+    return name.endswith(".py") and (name.startswith("test") or name.endswith("_test.py"))
