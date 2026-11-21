@@ -1,0 +1,75 @@
+{
+  "selection": "Small, permissively licensed repositories with pytest-style (attrs, pyjwt, loguru, marshmallow, w3lib) or unittest-style (jsonschema, tomli) tests; none is used by Tier A or Tier A-u, none is a Gate 0 spike repo or in the spike pool snapshot. Chosen by license and test style before any case was generated. Pinned to default-branch HEAD fetched 2026-11-21. Licenses verified from the license file at the pinned SHA by benchmark/generate_cases.py.",
+  "sources": [
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "BSD-3-Clause"
+        }
+      ],
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0"
+    },
+    {
+      "licenses": [
+        {
+          "file": "COPYING",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f"
+    }
+  ]
+}

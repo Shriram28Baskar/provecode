@@ -1,0 +1,5658 @@
+{
+  "cases": [
+    {
+      "base_sha256": "07774b2f233af3d994b0d4293f4d3d51395806e085e3e324e62a795926c076bd",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_functional.py::TestFunctional::test_attrib_overwrite"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_functional.py::TestFunctional::test_attrib_overwrite"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_functional.py",
+      "head_sha256": "2d39f9d419ea19f3fe4b7c928c605637ce8a76f79047b438f006522c63af2c78",
+      "id": "X01-01",
+      "kind": "weakening",
+      "line": 379,
+      "pattern": "X01",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_functional.py::TestFunctional::test_attrib_overwrite"
+    },
+    {
+      "base_sha256": "8c9dea6b4ac93e8a6353b1d6906703e212cb3110f9b14c0bcb69c4a4b59cb11a",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestECCurveValidation::test_default_algorithms_have_correct_expected_curve"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestECCurveValidation::test_default_algorithms_have_correct_expected_curve"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_algorithms.py",
+      "head_sha256": "e008449e97928970512ad9f03d5f1ff0ec964562d6431c1b204a32d484fa8865",
+      "id": "X01-02",
+      "kind": "weakening",
+      "line": 1631,
+      "pattern": "X01",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_algorithms.py::TestECCurveValidation::test_default_algorithms_have_correct_expected_curve"
+    },
+    {
+      "base_sha256": "fb6f8121fe545234ac57e515e6f78be36f6439458356b0df396bdc5c08ff496e",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_threading.py::test_safe_removing_while_logging"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_threading.py::test_safe_removing_while_logging"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_threading.py",
+      "head_sha256": "fd588c7353a59b300c42188263f32cc6de778cb8c88bb9fa70ba485c6d022aba",
+      "id": "X01-03",
+      "kind": "weakening",
+      "line": 111,
+      "pattern": "X01",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_threading.py::test_safe_removing_while_logging"
+    },
+    {
+      "base_sha256": "ae87c28a37a91c8fb88c5e3de5c4aeb9567b35daf7a159f63d36363640cb0b93",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestFieldDeserialization::test_timedelta_field_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestFieldDeserialization::test_timedelta_field_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_deserialization.py",
+      "head_sha256": "3ba79cad45dedf65193a3d593540d9e5d1e267171e139a12c46b6f71ff3c623d",
+      "id": "X01-04",
+      "kind": "weakening",
+      "line": 774,
+      "pattern": "X01",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_deserialization.py::TestFieldDeserialization::test_timedelta_field_deserialization"
+    },
+    {
+      "base_sha256": "5a7b43ed25c0da02b97f7766eea68841a12c2f6822f572072fb5492a41daffeb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestRelativeBaseurl::test_get_meta_refresh"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestRelativeBaseurl::test_get_meta_refresh"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_html.py",
+      "head_sha256": "16fce854a5176b659a945b82f7e540b3f4eda7baeb892c4c557274e58bd0749d",
+      "id": "X01-05",
+      "kind": "weakening",
+      "line": 1681,
+      "pattern": "X01",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_html.py::TestRelativeBaseurl::test_get_meta_refresh"
+    },
+    {
+      "base_sha256": "37c44543912a752a1ab2523cd431ad3f26250eae00fbb452b5ccf2f1cdfc47ae",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_funcs.py::TestEvolve::test_change"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_funcs.py::TestEvolve::test_change"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_funcs.py",
+      "head_sha256": "0ea149532a593c20487ab932b80d03b236f3bab15cf116b6f3a56e8d3edd18f4",
+      "id": "X01-06",
+      "kind": "weakening",
+      "line": 708,
+      "pattern": "X01",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_funcs.py::TestEvolve::test_change"
+    },
+    {
+      "base_sha256": "e9ac7fc9ffe880368126b85fe18166a3c19f959507c84370404f4dfb304d91bc",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_decodes_with_jwk_and_no_algorithm"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_decodes_with_jwk_and_no_algorithm"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_api_jws.py",
+      "head_sha256": "a84f4db47893cd902381b9a432571f58d895e4abe7160e111a2f88e63e1c80d4",
+      "id": "X01-07",
+      "kind": "weakening",
+      "line": 380,
+      "pattern": "X01",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_api_jws.py::TestJWS::test_decodes_with_jwk_and_no_algorithm"
+    },
+    {
+      "base_sha256": "ff29bc4dc433b79b3fe916fc384f5eba67d56de6c3d59dffd7878111c15e0a2b",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_multiprocessing.py::test_not_picklable_sinks_fork"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_multiprocessing.py::test_not_picklable_sinks_fork"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X01-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_multiprocessing.py",
+      "head_sha256": "a3e415d05ebe4b52ab8e8b8e5ec39cd3455f9b232e7810af8cf29ad7fa6a34f5",
+      "id": "X01-08",
+      "kind": "weakening",
+      "line": 505,
+      "pattern": "X01",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_multiprocessing.py::test_not_picklable_sinks_fork"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "9c34e6c7a4858394ff617745b7f9c887f2909c263f74dab1a33b1f4fcf3626f9",
+      "id": "X02-01",
+      "kind": "weakening",
+      "line": 1284,
+      "pattern": "X02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_deepcopy"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_deepcopy"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "df0a503555488f665ffa1ae9443af2c3fa523e9e83cb94ef9f67890041c1555c",
+      "id": "X02-02",
+      "kind": "weakening",
+      "line": 103,
+      "pattern": "X02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_deepcopy"
+    },
+    {
+      "base_sha256": "e34ef8b9c9d7f640034ae2460f5aa1e9b32406fddc55bc5ef302ab6b4f01603e",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestBestMatch::test_anyOf_traversal_prefers_subschemas_with_fewer_errors"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestBestMatch::test_anyOf_traversal_prefers_subschemas_with_fewer_errors"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_exceptions.py",
+      "head_sha256": "529e1603176973a79dd320e4077fd2a9996f77eb3266ecb7f7bb0caec9a1482d",
+      "id": "X02-03",
+      "kind": "weakening",
+      "line": 227,
+      "pattern": "X02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_exceptions.py::TestBestMatch::test_anyOf_traversal_prefers_subschemas_with_fewer_errors"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "5b7f7868724e1ab013ca92ee074fe7c7de066c2e19aeadac8ece0662f40afad7",
+      "id": "X02-04",
+      "kind": "weakening",
+      "line": 100,
+      "pattern": "X02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_tomldecodeerror"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_recursive"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_recursive"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "fbe83db140d271a61f8207f7dfeb94c4601532e0cbe0a55277302f3fb8ad52fa",
+      "id": "X02-05",
+      "kind": "weakening",
+      "line": 1134,
+      "pattern": "X02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_recursive"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "edeafcdb4cc9d5f19a0e630feef4fae1fc1dd45b398a7650090c79accc0e6ca7",
+      "id": "X02-06",
+      "kind": "weakening",
+      "line": 72,
+      "pattern": "X02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_invalid_parse_float"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "ecd1c07ebcd819d3e5051182d56863db12c629e051a4262618cf84ef07438e29",
+      "id": "X02-07",
+      "kind": "weakening",
+      "line": 851,
+      "pattern": "X02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X02-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "0cb68b659af6d0dd3a34c14f50ddfccc71244deb94222bf41817c2f452a49fc9",
+      "id": "X02-08",
+      "kind": "weakening",
+      "line": 29,
+      "pattern": "X02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_load"
+    },
+    {
+      "base_sha256": "530eb721a0ba49ad9ec1263b6327df668a03927832d473d0a3f078308aa06988",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestAutoDetect::test_total_ordering"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestAutoDetect::test_total_ordering"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_make.py",
+      "head_sha256": "3dcfe8f32e347e28e3be537a8b98c5cf0495f6ec06bc057e003be8c5aa827f3d",
+      "id": "X03-01",
+      "kind": "weakening",
+      "line": 3060,
+      "pattern": "X03",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_make.py::TestAutoDetect::test_total_ordering"
+    },
+    {
+      "base_sha256": "f1f5e0076061c3931ecce432f7fa74986bc2febd820c8e1fb6a3035a3703d708",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_fetch_data_override_result_is_cached"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_fetch_data_override_result_is_cached"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_jwks_client.py",
+      "head_sha256": "c881284d1eb7c08507f73a03a7f43f1769f23db260d2568b0116a0af7a7ba8de",
+      "id": "X03-02",
+      "kind": "weakening",
+      "line": 453,
+      "pattern": "X03",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_jwks_client.py::TestPyJWKClient::test_fetch_data_override_result_is_cached"
+    },
+    {
+      "base_sha256": "a1193b4cdbc26813d997856a1088083bbc1b3cb5af85200028c24f01b9fb8326",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_opt.py::test_exception_boolean"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_opt.py::test_exception_boolean"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_opt.py",
+      "head_sha256": "c955c7d1b507f826a9b2202388aa12fddba251e53f7c67bf60328e5b71202fe8",
+      "id": "X03-03",
+      "kind": "weakening",
+      "line": 74,
+      "pattern": "X03",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_opt.py::test_exception_boolean"
+    },
+    {
+      "base_sha256": "ae87c28a37a91c8fb88c5e3de5c4aeb9567b35daf7a159f63d36363640cb0b93",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestFieldDeserialization::test_structured_dict_value_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestFieldDeserialization::test_structured_dict_value_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_deserialization.py",
+      "head_sha256": "2bdc5e521d7b0b932ca87878980e0c683f1bb56a5cd16b57360e5910ae16788f",
+      "id": "X03-04",
+      "kind": "weakening",
+      "line": 911,
+      "pattern": "X03",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_deserialization.py::TestFieldDeserialization::test_structured_dict_value_deserialization"
+    },
+    {
+      "base_sha256": "99b8a7048682fd65073a7eb09c5f41ae55f7bcf7405259fb2feabe00f572686a",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestParseUrlProperties::test_idempotent"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestParseUrlProperties::test_idempotent"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_url.py",
+      "head_sha256": "aaf2d52496677f78316f32c794f666dfdf919f4a4c317333dc22baf95ab50e7f",
+      "id": "X03-05",
+      "kind": "weakening",
+      "line": 1620,
+      "pattern": "X03",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_url.py::TestParseUrlProperties::test_idempotent"
+    },
+    {
+      "base_sha256": "d2ec51d825e182d320edb5e0ca59ccdfa07711508025cf495203b4d4227ae990",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_annotations.py::TestAnnotations::test_pipe"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_annotations.py::TestAnnotations::test_pipe"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_annotations.py",
+      "head_sha256": "d35cfab46439ba470bc32defcf8faf9b566b0228163260d6842314449b3f2a24",
+      "id": "X03-06",
+      "kind": "weakening",
+      "line": 292,
+      "pattern": "X03",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_annotations.py::TestAnnotations::test_pipe"
+    },
+    {
+      "base_sha256": "8c9dea6b4ac93e8a6353b1d6906703e212cb3110f9b14c0bcb69c4a4b59cb11a",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestAlgorithms::test_hmac_to_jwk_returns_correct_values"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestAlgorithms::test_hmac_to_jwk_returns_correct_values"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_algorithms.py",
+      "head_sha256": "3d2b5b10b5016f11ff0c2d620c23bd596d39a68f3bee619d94332c05367019a2",
+      "id": "X03-07",
+      "kind": "weakening",
+      "line": 156,
+      "pattern": "X03",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_algorithms.py::TestAlgorithms::test_hmac_to_jwk_returns_correct_values"
+    },
+    {
+      "base_sha256": "9e3175305df637d0e48f1f4716679cbfae5ab8d25392964602b2ab3353bb00e5",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_exceptions_catch.py::test_default_with_function"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_exceptions_catch.py::test_default_with_function"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X03-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_exceptions_catch.py",
+      "head_sha256": "be1c14805018e86ffa89b89aeee02607d1a4a171d6df1808e0553ce9dd2bf727",
+      "id": "X03-08",
+      "kind": "weakening",
+      "line": 422,
+      "pattern": "X03",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_exceptions_catch.py::test_default_with_function"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestListEqual::test_list_with_none_equal"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestListEqual::test_list_with_none_equal"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "40ba4089354e8152334b07fd9361c2cdd769de392b48e1e9f9b969a987bfd02e",
+      "id": "X04-01",
+      "kind": "weakening",
+      "line": 125,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestListEqual::test_list_with_none_equal"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_char_quotes"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_char_quotes"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "bb115c6c2608b98f8cb1a3436e0e33a923ce6e0a3031e4e5cf82b9cb1e8ed060",
+      "id": "X04-02",
+      "kind": "weakening",
+      "line": 43,
+      "pattern": "X04",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_invalid_char_quotes"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_bool_and_int_differ"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_bool_and_int_differ"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "a16e6ae2df1446db65c1f4052c8a683c50e305134ca965c1f47ff0754f95df26",
+      "id": "X04-03",
+      "kind": "weakening",
+      "line": 159,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestUniq::test_bool_and_int_differ"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "36f3add635bdfe712bd19393bc5b6d87026be0e03e27d3e08b01b760a94c8895",
+      "id": "X04-04",
+      "kind": "weakening",
+      "line": 73,
+      "pattern": "X04",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_falls_back_for_unhashable_scalars"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_falls_back_for_unhashable_scalars"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "ad44258feaa5e26291485acd1fb387c4717abfec4ca9aa996c56c152615c568f",
+      "id": "X04-05",
+      "kind": "weakening",
+      "line": 179,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestUniq::test_falls_back_for_unhashable_scalars"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_nan_falls_back"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestUniq::test_nan_falls_back"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "8308535898b733d6736f3a57f25e5a60d9d15ccb8ab8e1bb696a79b5ae01cc3e",
+      "id": "X04-06",
+      "kind": "weakening",
+      "line": 183,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestUniq::test_nan_falls_back"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestListEqual::test_equal_lists"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestListEqual::test_equal_lists"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "a8b14bc03ff3ec7a20524100a4f7ee692d5f5f057971e81949d1117c631406ef",
+      "id": "X04-07",
+      "kind": "weakening",
+      "line": 91,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestListEqual::test_equal_lists"
+    },
+    {
+      "base_sha256": "f6be7562fff9d40c7b61347cc20119762b8aa7e5b1b3204038b1166ab9236bbb",
+      "category": "vacuous-check",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestEqual::test_none"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_utils.py::TestEqual::test_none"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X04-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_utils.py",
+      "head_sha256": "c15ec738b6fb1704f2616ad539db091578b0e62a31aca169dbb23d93dad7d6e2",
+      "id": "X04-08",
+      "kind": "weakening",
+      "line": 20,
+      "pattern": "X04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_utils.py::TestEqual::test_none"
+    },
+    {
+      "base_sha256": "530eb721a0ba49ad9ec1263b6327df668a03927832d473d0a3f078308aa06988",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestInitAlias::test_default_and_specify"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestInitAlias::test_default_and_specify"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_make.py",
+      "head_sha256": "64274034b176a5dc46a7de6d4958bb7fddb79c87cf69ff62657d79f39febea59",
+      "id": "X05-01",
+      "kind": "weakening",
+      "line": 2426,
+      "pattern": "X05",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_make.py::TestInitAlias::test_default_and_specify"
+    },
+    {
+      "base_sha256": "2d2449d3da91980b6e41da5b0308deb8065ba7322f341eaf2a4b8f8a022f44db",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jwk.py::TestPyJWK::test_should_load_key_ec_secp256k1_from_dict"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jwk.py::TestPyJWK::test_should_load_key_ec_secp256k1_from_dict"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_api_jwk.py",
+      "head_sha256": "77280c3e93663cfc0b59e9741c1fb6d29a2d8d3f8a83c7b9ca930baca091a48f",
+      "id": "X05-02",
+      "kind": "weakening",
+      "line": 133,
+      "pattern": "X05",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_api_jwk.py::TestPyJWK::test_should_load_key_ec_secp256k1_from_dict"
+    },
+    {
+      "base_sha256": "11e08513972c67b1e6867a43ea8ad788509bfe55f4f1d6bf9b4df24f32edb51e",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_filesink_compression.py::test_exception_during_compression_at_rotation"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_filesink_compression.py::test_exception_during_compression_at_rotation"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_filesink_compression.py",
+      "head_sha256": "d16920c7588810005e40fa0ad6e0ead096b708b731b212b0dcd78fdc3feecc78",
+      "id": "X05-03",
+      "kind": "weakening",
+      "line": 206,
+      "pattern": "X05",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_filesink_compression.py::test_exception_during_compression_at_rotation"
+    },
+    {
+      "base_sha256": "6fbcb8b2e2cd16584f71ebac4532f63bb6bf0a5605055928ad37483beb49cad8",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_schema.py::test_deserialization_with_required_field"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_schema.py::test_deserialization_with_required_field"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_schema.py",
+      "head_sha256": "198a99b0d07740b17ea3afd483845b33931f2819070a0ff32b80110cbac8bdcd",
+      "id": "X05-04",
+      "kind": "weakening",
+      "line": 2180,
+      "pattern": "X05",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_schema.py::test_deserialization_with_required_field"
+    },
+    {
+      "base_sha256": "99b8a7048682fd65073a7eb09c5f41ae55f7bcf7405259fb2feabe00f572686a",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestCanonicalizeUrl::test_normalize_percent_encoding_in_paths"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestCanonicalizeUrl::test_normalize_percent_encoding_in_paths"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_url.py",
+      "head_sha256": "c5ac5527b035fd65d67ae5a2c2f7f27d4a88231d6d79b866856573d5113fdeba",
+      "id": "X05-05",
+      "kind": "weakening",
+      "line": 1803,
+      "pattern": "X05",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_url.py::TestCanonicalizeUrl::test_normalize_percent_encoding_in_paths"
+    },
+    {
+      "base_sha256": "7a557402fc72bdcd9890e682397e7def040320105a80b210e581db7b29b7ea0b",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_hooks.py::TestTransformHook::test_hook_explicit_alias_matching_default"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_hooks.py::TestTransformHook::test_hook_explicit_alias_matching_default"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_hooks.py",
+      "head_sha256": "8673b9b704418bd243f0f37bef309694fb810705f05d2d6804ec7bfbdc6c0d17",
+      "id": "X05-06",
+      "kind": "weakening",
+      "line": 359,
+      "pattern": "X05",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_hooks.py::TestTransformHook::test_hook_explicit_alias_matching_default"
+    },
+    {
+      "base_sha256": "f1f5e0076061c3931ecce432f7fa74986bc2febd820c8e1fb6a3035a3703d708",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_unknown_kid_refresh_serializes_concurrent_misses"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_unknown_kid_refresh_serializes_concurrent_misses"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_jwks_client.py",
+      "head_sha256": "86f61707465da7ecbf2a9ea61201b93e01db5707ce81c90f3a32698759f448c8",
+      "id": "X05-07",
+      "kind": "weakening",
+      "line": 684,
+      "pattern": "X05",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_jwks_client.py::TestPyJWKClient::test_unknown_kid_refresh_serializes_concurrent_misses"
+    },
+    {
+      "base_sha256": "a5564fb004076c922d0ba2d0dd784d69ce1602c776cb07159210ce3e6dc48b69",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_standard_handler.py::test_process_info_with_enqueue_fork"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_standard_handler.py::test_process_info_with_enqueue_fork"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X05-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_standard_handler.py",
+      "head_sha256": "97a776b2784bb4ea4d0eafd4e7f6b030fcb1fe8876766690a48c60856d1500a7",
+      "id": "X05-08",
+      "kind": "weakening",
+      "line": 290,
+      "pattern": "X05",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_standard_handler.py::test_process_info_with_enqueue_fork"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_multiple_nesting"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_multiple_nesting"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "8eaff627c383bdae630863a0f86490ecff772b074b92ffc8907ef8a0e16c1de4",
+      "id": "X06-01",
+      "kind": "weakening",
+      "line": 1083,
+      "pattern": "X06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_multiple_nesting"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "2dbbcefdc5e40db3794463f52bb77640bc17a6af6aeab9276c18396a992e7629",
+      "id": "X06-02",
+      "kind": "weakening",
+      "line": 29,
+      "pattern": "X06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_load"
+    },
+    {
+      "base_sha256": "e34ef8b9c9d7f640034ae2460f5aa1e9b32406fddc55bc5ef302ab6b4f01603e",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestErrorInitReprStr::test_unset_error"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestErrorInitReprStr::test_unset_error"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_exceptions.py",
+      "head_sha256": "5aa30b10d3d60ceaa8d957ccc2e89306c9f86aee74e9ded8659e57b42e078757",
+      "id": "X06-03",
+      "kind": "weakening",
+      "line": 911,
+      "pattern": "X06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_exceptions.py::TestErrorInitReprStr::test_unset_error"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "b261aabe53854d38752d1cb9a5d4d5f2166e6c48c1ff56ac3eabd60aa0947d19",
+      "id": "X06-04",
+      "kind": "weakening",
+      "line": 101,
+      "pattern": "X06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_tomldecodeerror"
+    },
+    {
+      "base_sha256": "d6564aefeec25810e7d9b1c85a1dd3c9f7ba661051e0a984512f730c9bcd6c5a",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_types.py::TestTypeChecker::test_repr"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_types.py::TestTypeChecker::test_repr"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_types.py",
+      "head_sha256": "39b3abfd854006fe19869888cf4d40d89eee9aa1a3156484c1cc8205f2dae814",
+      "id": "X06-05",
+      "kind": "weakening",
+      "line": 111,
+      "pattern": "X06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_types.py::TestTypeChecker::test_repr"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "df4424c4a4ec46c9c5f016f1333566cc83bf24c994b7bd244beb89d003da1d23",
+      "id": "X06-06",
+      "kind": "weakening",
+      "line": 75,
+      "pattern": "X06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "7791d8658ab24c062c85c7bdee8afcadf5b8577b56417fd4a13c5f6c5e9b87f5",
+      "id": "X06-07",
+      "kind": "weakening",
+      "line": 951,
+      "pattern": "X06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X06-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "0a19c53886319aec0f65f08dcb9d7cb2807945424625848aa806bc41e1d26aa6",
+      "id": "X06-08",
+      "kind": "weakening",
+      "line": 180,
+      "pattern": "X06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+    },
+    {
+      "base_sha256": "530eb721a0ba49ad9ec1263b6327df668a03927832d473d0a3f078308aa06988",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestClassBuilder::test_attaches_meta_dunders"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_make.py::TestClassBuilder::test_attaches_meta_dunders"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_make.py",
+      "head_sha256": "2a4ab6b30fbc8a53ec1bc7718b3a39567f05b8df0069fe2849493a01cb299775",
+      "id": "X07-01",
+      "kind": "weakening",
+      "line": 2180,
+      "pattern": "X07",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_make.py::TestClassBuilder::test_attaches_meta_dunders"
+    },
+    {
+      "base_sha256": "e9ac7fc9ffe880368126b85fe18166a3c19f959507c84370404f4dfb304d91bc",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_encode_with_jwk_uses_key_algorithm"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_encode_with_jwk_uses_key_algorithm"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_api_jws.py",
+      "head_sha256": "7f5717f5070edadbeab35c8da7af6a585802cb4e507731255ad968bb127e0a11",
+      "id": "X07-02",
+      "kind": "weakening",
+      "line": 280,
+      "pattern": "X07",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_api_jws.py::TestJWS::test_encode_with_jwk_uses_key_algorithm"
+    },
+    {
+      "base_sha256": "9e3175305df637d0e48f1f4716679cbfae5ab8d25392964602b2ab3353bb00e5",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_exceptions_catch.py::test_sysconfig_get_path_return_none"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_exceptions_catch.py::test_sysconfig_get_path_return_none"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_exceptions_catch.py",
+      "head_sha256": "6c88c6a6dc6f7d47909164b2521e262c6029c319c68b3f4aa36ba4170981c32a",
+      "id": "X07-03",
+      "kind": "weakening",
+      "line": 201,
+      "pattern": "X07",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_exceptions_catch.py::test_sysconfig_get_path_return_none"
+    },
+    {
+      "base_sha256": "9e38263a61a18ca553987c5d54fc907ec002a3b2a6a9a8b17bbae292e2504f95",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_fields.py::TestListNested::test_list_nested_lambda_only_and_exclude_merged_with_nested"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_fields.py::TestListNested::test_list_nested_lambda_only_and_exclude_merged_with_nested"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_fields.py",
+      "head_sha256": "15a87c6c9ffb7ce7451d4b44023ac6cedead9c7bfb5f2940388eff3c207498d1",
+      "id": "X07-04",
+      "kind": "weakening",
+      "line": 497,
+      "pattern": "X07",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_fields.py::TestListNested::test_list_nested_lambda_only_and_exclude_merged_with_nested"
+    },
+    {
+      "base_sha256": "81983744becadcab31aa7d0339b49c232ff82391687bda6877f408b0bd9aa163",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_encoding.py::TestCodecsEncoding::test_resolve_encoding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_encoding.py::TestCodecsEncoding::test_resolve_encoding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_encoding.py",
+      "head_sha256": "ac8ba7c78b23a408364a4bfc53082f3defdc4f7543706e0ad7f67a75eb2177f0",
+      "id": "X07-05",
+      "kind": "weakening",
+      "line": 337,
+      "pattern": "X07",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_encoding.py::TestCodecsEncoding::test_resolve_encoding"
+    },
+    {
+      "base_sha256": "d2ec51d825e182d320edb5e0ca59ccdfa07711508025cf495203b4d4227ae990",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_annotations.py::TestAnnotations::test_optional_nullary"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_annotations.py::TestAnnotations::test_optional_nullary"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_annotations.py",
+      "head_sha256": "8c11db68fdad207dd9e836620cbd5619a85d254f42edffb7e10819caec9681b5",
+      "id": "X07-06",
+      "kind": "weakening",
+      "line": 388,
+      "pattern": "X07",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_annotations.py::TestAnnotations::test_optional_nullary"
+    },
+    {
+      "base_sha256": "e9ac7fc9ffe880368126b85fe18166a3c19f959507c84370404f4dfb304d91bc",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_decode_invalid_payload_padding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jws.py::TestJWS::test_decode_invalid_payload_padding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_api_jws.py",
+      "head_sha256": "328d96ecd9b2769a2d9c237267cd1dc5e8bb87deaaf7af278e6815c13297572f",
+      "id": "X07-07",
+      "kind": "weakening",
+      "line": 658,
+      "pattern": "X07",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_api_jws.py::TestJWS::test_decode_invalid_payload_padding"
+    },
+    {
+      "base_sha256": "9f6a9d868ee92c253a5b9e14440e516a7ff7e6fbef3410ebe40c6933bce6d542",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_add_sinks.py::test_file_sink_ascii_encoding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_add_sinks.py::test_file_sink_ascii_encoding"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X07-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_add_sinks.py",
+      "head_sha256": "4680ea6e2cea6db8d5670132f67d3553919884724225e98e5fb9295c8545050e",
+      "id": "X07-08",
+      "kind": "weakening",
+      "line": 154,
+      "pattern": "X07",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_add_sinks.py::test_file_sink_ascii_encoding"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "5b9c2ea114575c572f1e7b03628a94e6178f815b6ba00133ebdde7f26e7ef442",
+      "id": "X08-01",
+      "kind": "weakening",
+      "line": 900,
+      "pattern": "X08",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "ca9a7f3f9aa660facc4aa5058486b8476ddee7d8771735020ca9e073c07ec6d8",
+      "id": "X08-02",
+      "kind": "weakening",
+      "line": 98,
+      "pattern": "X08",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_tomldecodeerror"
+    },
+    {
+      "base_sha256": "04ee74574c4745c64ec47ec4ed3afe4ae0698645c31e05faa495a3b9471dd9e8",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_cli.py::TestCLI::test_instance_is_invalid_JSON_on_stdin_pretty_output"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_cli.py::TestCLI::test_instance_is_invalid_JSON_on_stdin_pretty_output"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_cli.py",
+      "head_sha256": "934b806318e8a6d62c632f6df96f5def3f3d57b7b0113f9d98b4904607d7daf6",
+      "id": "X08-03",
+      "kind": "weakening",
+      "line": 482,
+      "pattern": "X08",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_cli.py::TestCLI::test_instance_is_invalid_JSON_on_stdin_pretty_output"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "d904d192f7b7663f0889b4d2c4a225073cc9f4d6432a4e4a9194056d2e6ae80f",
+      "id": "X08-04",
+      "kind": "weakening",
+      "line": 17,
+      "pattern": "X08",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_line_and_col"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestRefResolver::test_it_does_not_retrieve_schema_urls_from_the_network"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestRefResolver::test_it_does_not_retrieve_schema_urls_from_the_network"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "4ef2d09297489e9c28e205481fc3bc41d1b040c08e8d364fd6af805a9d4a23a0",
+      "id": "X08-05",
+      "kind": "weakening",
+      "line": 2389,
+      "pattern": "X08",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestRefResolver::test_it_does_not_retrieve_schema_urls_from_the_network"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-06",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-06",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_misc.py",
+      "head_sha256": "2f46fa65af334777afc40e5d82889db73a2f48e3637fd20c79b77b1fecc6c08f",
+      "id": "X08-06",
+      "kind": "weakening",
+      "line": 75,
+      "pattern": "X08",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_parse_float"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_additionalItems_with_items"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-07",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_additionalItems_with_items"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-07",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "490bc8fb8d206d9732a87bedd45e2e58dae0ad142764c98d3da732f49224655e",
+      "id": "X08-07",
+      "kind": "weakening",
+      "line": 1266,
+      "pattern": "X08",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_additionalItems_with_items"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assertion-swallowed",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_char_quotes"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-08",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_invalid_char_quotes"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-X08-08",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": true,
+      "file": "tests/test_error.py",
+      "head_sha256": "d67781a520eeaa706f1596b280484a0171d1a138b32cd1db7588285845a313d3",
+      "id": "X08-08",
+      "kind": "weakening",
+      "line": 43,
+      "pattern": "X08",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_invalid_char_quotes"
+    },
+    {
+      "base_sha256": "ddb79f1818310027de83c1b6d260570a99c9846b06d1f4fe0d06e5cd8d0a92d4",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_dunders.py::TestAddHash::test_enforce_no_cache_hash_without_hash"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_dunders.py::TestAddHash::test_enforce_no_cache_hash_without_hash"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-01",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_dunders.py",
+      "head_sha256": "0a54d01075d5f75879601659155bfa738d4ad17377213627fb235b5b316aae37",
+      "id": "Y01-01",
+      "kind": "legit",
+      "line": 537,
+      "pattern": "Y01",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_dunders.py::TestAddHash::test_enforce_no_cache_hash_without_hash"
+    },
+    {
+      "base_sha256": "ea2bf8bf366db3c570a0cb9a855fc4acb6795ff5e198bd292d0ae288188df424",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jwt.py::TestJWT::test_encode_decode_sub_claim"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_api_jwt.py::TestJWT::test_encode_decode_sub_claim"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-02",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_api_jwt.py",
+      "head_sha256": "1bfbb993ee13ebb6cb932c974de329db5f3380f7f3e8ab0d73b26943d27c0deb",
+      "id": "Y01-02",
+      "kind": "legit",
+      "line": 1094,
+      "pattern": "Y01",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_api_jwt.py::TestJWT::test_encode_decode_sub_claim"
+    },
+    {
+      "base_sha256": "2c9ad2cd00d3eccebeffe27a5070c32e1b9a7d07656b91e98ce1f340d0163f30",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_add_option_enqueue.py::test_not_caught_exception_queue_get_then_complete"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_add_option_enqueue.py::test_not_caught_exception_queue_get_then_complete"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-03",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_add_option_enqueue.py",
+      "head_sha256": "5b8b94e1858d74c58ebdf2427273266d4159b8e2d6b08d20725c05a670376ff3",
+      "id": "Y01-03",
+      "kind": "legit",
+      "line": 230,
+      "pattern": "Y01",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_add_option_enqueue.py::test_not_caught_exception_queue_get_then_complete"
+    },
+    {
+      "base_sha256": "3a54f3f7811a0e887d54a625fba273b4c3d5bcb9c14fca538e3bd04e0b99bb31",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_decorators.py::test_decorated_processors"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_decorators.py::test_decorated_processors"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-04",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_decorators.py",
+      "head_sha256": "18f93bfcd0431db68b932fca97fb62e2c42f19f12eb1c7d12c65a357d9275684",
+      "id": "Y01-04",
+      "kind": "legit",
+      "line": 92,
+      "pattern": "Y01",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_decorators.py::test_decorated_processors"
+    },
+    {
+      "base_sha256": "5a7b43ed25c0da02b97f7766eea68841a12c2f6822f572072fb5492a41daffeb",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestRemoveTagsWithContent::test_end_tag_with_whitespace_or_attrs"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestRemoveTagsWithContent::test_end_tag_with_whitespace_or_attrs"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y01-05",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_html.py",
+      "head_sha256": "9f409ba0a9163276454501917ab7723decc2c122fa9dd5798238ab9fa12a9dca",
+      "id": "Y01-05",
+      "kind": "legit",
+      "line": 506,
+      "pattern": "Y01",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_html.py::TestRemoveTagsWithContent::test_end_tag_with_whitespace_or_attrs"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-01",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "58933993ccd2b4090bcc75f48d94d93642a1713baf825552f414f7f8195128b7",
+      "id": "Y02-01",
+      "kind": "legit",
+      "line": 889,
+      "pattern": "Y02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-02",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_error.py",
+      "head_sha256": "36876b0c33739cb7d8d32c74b7006c7dd2c0e6f6c7f04482cdd9dbe5a2a3229d",
+      "id": "Y02-02",
+      "kind": "legit",
+      "line": 17,
+      "pattern": "Y02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_line_and_col"
+    },
+    {
+      "base_sha256": "e34ef8b9c9d7f640034ae2460f5aa1e9b32406fddc55bc5ef302ab6b4f01603e",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestBestMatch::test_oneOf_traversal_for_single_equally_relevant_error"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestBestMatch::test_oneOf_traversal_for_single_equally_relevant_error"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-03",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_exceptions.py",
+      "head_sha256": "947b15b7a4a2ace9ac1c0089cf1e3c810f705e915e91469ffd23bb624f0fac37",
+      "id": "Y02-03",
+      "kind": "legit",
+      "line": 481,
+      "pattern": "Y02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_exceptions.py::TestBestMatch::test_oneOf_traversal_for_single_equally_relevant_error"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_missing_value"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_missing_value"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-04",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "tests/test_error.py",
+      "head_sha256": "7e0cde2485afcc4af2a36218ef02a4d1d567bc82b39c9d17b685a8c44c06373f",
+      "id": "Y02-04",
+      "kind": "legit",
+      "line": 38,
+      "pattern": "Y02",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_missing_value"
+    },
+    {
+      "base_sha256": "d6564aefeec25810e7d9b1c85a1dd3c9f7ba661051e0a984512f730c9bcd6c5a",
+      "category": "assert-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_types.py::TestTypeChecker::test_checks_can_be_added_at_init"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_types.py::TestTypeChecker::test_checks_can_be_added_at_init"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y02-05",
+          "version": 1
+        }
+      },
+      "count_preserving": false,
+      "count_preserving_measured": false,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_types.py",
+      "head_sha256": "20e2b3a032b49c43ca96172ebc4e7fdad4b8d21751b56d9f9f1c120dc8a9a4a3",
+      "id": "Y02-05",
+      "kind": "legit",
+      "line": 57,
+      "pattern": "Y02",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_types.py::TestTypeChecker::test_checks_can_be_added_at_init"
+    },
+    {
+      "base_sha256": "4966065569370f6a569166f0ea85bff25e1ca759b315d386fa9c6f5edd2ae83a",
+      "category": "reraise-with-context",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_slots.py::tests_weakref_does_not_add_with_weakref_attribute"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_slots.py::tests_weakref_does_not_add_with_weakref_attribute"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_slots.py",
+      "head_sha256": "ee63208e1aba64ad7389fe870297f81db93b2b64164deec116f55a76b5127a1e",
+      "id": "Y03-01",
+      "kind": "legit",
+      "line": 597,
+      "pattern": "Y03",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_slots.py::tests_weakref_does_not_add_with_weakref_attribute"
+    },
+    {
+      "base_sha256": "8c9dea6b4ac93e8a6353b1d6906703e212cb3110f9b14c0bcb69c4a4b59cb11a",
+      "category": "reraise-with-context",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestAlgorithms::test_ec_verify_should_return_false_if_signature_invalid"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_algorithms.py::TestAlgorithms::test_ec_verify_should_return_false_if_signature_invalid"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_algorithms.py",
+      "head_sha256": "fc2344c1d592f51dcf10905c153f462e98761427caa9273f698da86319ca73f6",
+      "id": "Y03-02",
+      "kind": "legit",
+      "line": 875,
+      "pattern": "Y03",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_algorithms.py::TestAlgorithms::test_ec_verify_should_return_false_if_signature_invalid"
+    },
+    {
+      "base_sha256": "eaa0a2f92f34da01ce8a7b929f3ec9e165d4247dbd85c143089c37c5671a46bc",
+      "category": "reraise-with-context",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_template_strings.py::test_template_string_with_two_consecutive_interpolations"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_template_strings.py::test_template_string_with_two_consecutive_interpolations"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_template_strings.py",
+      "head_sha256": "990943dd380263749a2f58171865a579b5541940134bef86325a955040221fc9",
+      "id": "Y03-03",
+      "kind": "legit",
+      "line": 72,
+      "pattern": "Y03",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_template_strings.py::test_template_string_with_two_consecutive_interpolations"
+    },
+    {
+      "base_sha256": "ae87c28a37a91c8fb88c5e3de5c4aeb9567b35daf7a159f63d36363640cb0b93",
+      "category": "reraise-with-context",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestSchemaDeserialization::test_partial_fields_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_deserialization.py::TestSchemaDeserialization::test_partial_fields_deserialization"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_deserialization.py",
+      "head_sha256": "1003600eb44a8e826fb43f61b384e8525fc320d9246dc75b8233d8bd2db79e69",
+      "id": "Y03-04",
+      "kind": "legit",
+      "line": 1966,
+      "pattern": "Y03",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_deserialization.py::TestSchemaDeserialization::test_partial_fields_deserialization"
+    },
+    {
+      "base_sha256": "5a7b43ed25c0da02b97f7766eea68841a12c2f6822f572072fb5492a41daffeb",
+      "category": "reraise-with-context",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestHasEntities::test_mixed_content"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_html.py::TestHasEntities::test_mixed_content"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y03-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_html.py",
+      "head_sha256": "afc55535ea930773f6fc55bd447bab0fcc58df8a4c51b376acae87c615718c03",
+      "id": "Y03-05",
+      "kind": "legit",
+      "line": 1711,
+      "pattern": "Y03",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_html.py::TestHasEntities::test_mixed_content"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "reraise",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "5a3b4b0acaeec1133482b4a5743bd0ce703530229e74ba633b78eff6a1c1d86b",
+      "id": "Y04-01",
+      "kind": "legit",
+      "line": 1278,
+      "pattern": "Y04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_propertyNames"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "reraise",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_tomldecodeerror"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_error.py",
+      "head_sha256": "96f081ef96491296d60db12eaa56c3087da2e98bab7ae5840ebf83cf490aee70",
+      "id": "Y04-02",
+      "kind": "legit",
+      "line": 98,
+      "pattern": "Y04",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_tomldecodeerror"
+    },
+    {
+      "base_sha256": "e90069cb2578d19763e99828df0172908e1b0d8229811029350794df7ab28fec",
+      "category": "reraise",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_deprecations.py::TestDeprecations::test_draftN_format_checker"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_deprecations.py::TestDeprecations::test_draftN_format_checker"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_deprecations.py",
+      "head_sha256": "8e38b643800640dcc059aa8be2c386e1c705947b47373e112d4fe38ed8dd56fc",
+      "id": "Y04-03",
+      "kind": "legit",
+      "line": 319,
+      "pattern": "Y04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_deprecations.py::TestDeprecations::test_draftN_format_checker"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "reraise",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_misc.py",
+      "head_sha256": "16463615e2840abab7a74d0a0ab7dccf4cf8d6551ef30ef6cebd9334a1f6ca48",
+      "id": "Y04-04",
+      "kind": "legit",
+      "line": 180,
+      "pattern": "Y04",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_lazy_import"
+    },
+    {
+      "base_sha256": "e34ef8b9c9d7f640034ae2460f5aa1e9b32406fddc55bc5ef302ab6b4f01603e",
+      "category": "reraise",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestByRelevance::test_short_paths_are_better_matches"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_exceptions.py::TestByRelevance::test_short_paths_are_better_matches"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y04-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_exceptions.py",
+      "head_sha256": "2bd7fb6314377ad3c84f97f6aa2340d93ea96c3e155d0d031c7462ca428200c0",
+      "id": "Y04-05",
+      "kind": "legit",
+      "line": 640,
+      "pattern": "Y04",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_exceptions.py::TestByRelevance::test_short_paths_are_better_matches"
+    },
+    {
+      "base_sha256": "07774b2f233af3d994b0d4293f4d3d51395806e085e3e324e62a795926c076bd",
+      "category": "try-finally",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_functional.py::TestFunctional::test_no_setattr_with_ng_defaults"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_functional.py::TestFunctional::test_no_setattr_with_ng_defaults"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_functional.py",
+      "head_sha256": "74a318ef971a38adf5abbf156a5d0aa833c3da1e52d9ce7aeae0f5c76b28edb9",
+      "id": "Y05-01",
+      "kind": "legit",
+      "line": 728,
+      "pattern": "Y05",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_functional.py::TestFunctional::test_no_setattr_with_ng_defaults"
+    },
+    {
+      "base_sha256": "f1f5e0076061c3931ecce432f7fa74986bc2febd820c8e1fb6a3035a3703d708",
+      "category": "try-finally",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_sslcontext_default"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_sslcontext_default"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_jwks_client.py",
+      "head_sha256": "f93a2897e0c8fc5e196dfb947653520f76e52a82841350ed7b16042a296a2285",
+      "id": "Y05-02",
+      "kind": "legit",
+      "line": 788,
+      "pattern": "Y05",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_sslcontext_default"
+    },
+    {
+      "base_sha256": "a62c140b31e447ddc5548fb5bbea741752a61d4d34a358aa53fcffdd9cfab5dd",
+      "category": "try-finally",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_activation.py::test_incomplete_frame_context_with_others"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_activation.py::test_incomplete_frame_context_with_others"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_activation.py",
+      "head_sha256": "82f2e555261f8bc6a282766fedc75889df569d3253eb7d598c5da261df5572f4",
+      "id": "Y05-03",
+      "kind": "legit",
+      "line": 141,
+      "pattern": "Y05",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_activation.py::test_incomplete_frame_context_with_others"
+    },
+    {
+      "base_sha256": "6fbcb8b2e2cd16584f71ebac4532f63bb6bf0a5605055928ad37483beb49cad8",
+      "category": "try-finally",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_schema.py::test_nested_exclude_inheritance"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_schema.py::test_nested_exclude_inheritance"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_schema.py",
+      "head_sha256": "e3129ced10dffc3a4fce9460d840ee1107abbb9c29e3cd8fb3aff2aee87f2a16",
+      "id": "Y05-04",
+      "kind": "legit",
+      "line": 883,
+      "pattern": "Y05",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_schema.py::test_nested_exclude_inheritance"
+    },
+    {
+      "base_sha256": "99b8a7048682fd65073a7eb09c5f41ae55f7bcf7405259fb2feabe00f572686a",
+      "category": "try-finally",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestUrl::test_is_url_scheme_case_insensitive"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestUrl::test_is_url_scheme_case_insensitive"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y05-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_url.py",
+      "head_sha256": "983970b6b2f73b9763ab8357b9abf219a6e68351b9aee0e74f0ec519605f5f58",
+      "id": "Y05-05",
+      "kind": "legit",
+      "line": 1088,
+      "pattern": "Y05",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_url.py::TestUrl::test_is_url_scheme_case_insensitive"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "message-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "a1763705802b6bfd7d47b9cba1fa3935bb2c99fa41d88de4e1d63d56325be44a",
+      "id": "Y06-01",
+      "kind": "legit",
+      "line": 857,
+      "pattern": "Y06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_anyOf"
+    },
+    {
+      "base_sha256": "b712ea01a893f8718812639eed77eb1328b8180752f1a6f6fb54a63f8b557eaf",
+      "category": "message-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_error.py::TestError::test_line_and_col"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_error.py",
+      "head_sha256": "993b04e5dc2adb8dc7d4893eb8ddf5d458d07e8c61e14c0dee04e0da3a596a3e",
+      "id": "Y06-02",
+      "kind": "legit",
+      "line": 31,
+      "pattern": "Y06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_error.py::TestError::test_line_and_col"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "message-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestRefResolver::test_it_can_construct_a_base_uri_from_a_schema"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestRefResolver::test_it_can_construct_a_base_uri_from_a_schema"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "008d7ec3179b0ffa711996e626e47057426c9c67e81b11b58f1f85dff8f6bb06",
+      "id": "Y06-03",
+      "kind": "legit",
+      "line": 2476,
+      "pattern": "Y06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestRefResolver::test_it_can_construct_a_base_uri_from_a_schema"
+    },
+    {
+      "base_sha256": "363529e96b5851372f9ce092146c5671e87c9573949ef23abd877b966b3c2581",
+      "category": "message-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_misc.py::TestMiscellaneous::test_load"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_misc.py",
+      "head_sha256": "914bb9190bf63178a44605dd2b6933b204f885b8d548f572694f8d7f3e3daf38",
+      "id": "Y06-04",
+      "kind": "legit",
+      "line": 29,
+      "pattern": "Y06",
+      "repo": "hukkin/tomli",
+      "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "style": "unittest",
+      "test_key": "tests/test_misc.py::TestMiscellaneous::test_load"
+    },
+    {
+      "base_sha256": "5c1a84c76fde906faffabdc4e6cfa900d8aa45b891ac5a23b9a8fea827189171",
+      "category": "message-added",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y06-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "jsonschema/tests/test_validators.py",
+      "head_sha256": "edff0f3e135e2ebfc6ecece0a170ce91d55b100192c1ac2b57b1d8305fa8333b",
+      "id": "Y06-05",
+      "kind": "legit",
+      "line": 928,
+      "pattern": "Y06",
+      "repo": "python-jsonschema/jsonschema",
+      "sha": "64b62de5df4ec52d7679c770427329e86a22c395",
+      "style": "unittest",
+      "test_key": "jsonschema/tests/test_validators.py::TestValidationErrorDetails::test_type"
+    },
+    {
+      "base_sha256": "37c44543912a752a1ab2523cd431ad3f26250eae00fbb452b5ccf2f1cdfc47ae",
+      "category": "operands-swapped",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_funcs.py::TestAsTuple::test_dicts_retain_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-01",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_funcs.py::TestAsTuple::test_dicts_retain_type"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-01",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_funcs.py",
+      "head_sha256": "a4e76f85a6777866f790b0843be48c08ce03b1dd3245fe09a176430442346a94",
+      "id": "Y07-01",
+      "kind": "legit",
+      "line": 429,
+      "pattern": "Y07",
+      "repo": "python-attrs/attrs",
+      "sha": "2a1fb86d44816afcc60e86d57956ce3604820326",
+      "style": "pytest",
+      "test_key": "tests/test_funcs.py::TestAsTuple::test_dicts_retain_type"
+    },
+    {
+      "base_sha256": "f1f5e0076061c3931ecce432f7fa74986bc2febd820c8e1fb6a3035a3703d708",
+      "category": "operands-swapped",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_cache_disabled"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-02",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_cache_disabled"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-02",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_jwks_client.py",
+      "head_sha256": "de6f4ac3ea30c293b377266ecd9a3b8036ffb0435904a770b8b628f24aaf4a8b",
+      "id": "Y07-02",
+      "kind": "legit",
+      "line": 512,
+      "pattern": "Y07",
+      "repo": "jpadilla/pyjwt",
+      "sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+      "style": "pytest",
+      "test_key": "tests/test_jwks_client.py::TestPyJWKClient::test_get_jwt_set_cache_disabled"
+    },
+    {
+      "base_sha256": "3132cfb83446a20dcd09057ae5585568188514fa99a4969ed9cd73bfbadd0803",
+      "category": "operands-swapped",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_filesink_rotation.py::test_time_rotation_windows_no_setctime"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-03",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_filesink_rotation.py::test_time_rotation_windows_no_setctime"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-03",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_filesink_rotation.py",
+      "head_sha256": "7da43ea7ffb038cfe88875f0231b676e2913571460c64d294c2f6d39b2115f52",
+      "id": "Y07-03",
+      "kind": "legit",
+      "line": 841,
+      "pattern": "Y07",
+      "repo": "Delgan/loguru",
+      "sha": "28349be3cd740867bc947eef741c69370ca45735",
+      "style": "pytest",
+      "test_key": "tests/test_filesink_rotation.py::test_time_rotation_windows_no_setctime"
+    },
+    {
+      "base_sha256": "3a54f3f7811a0e887d54a625fba273b4c3d5bcb9c14fca538e3bd04e0b99bb31",
+      "category": "operands-swapped",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_decorators.py::test_decorated_processor_inheritance"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-04",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_decorators.py::test_decorated_processor_inheritance"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-04",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_decorators.py",
+      "head_sha256": "dc177f91a27c8b356a5d8b15ec706cd27aadf284d2a41ee3fd5b52dbf2ab56d6",
+      "id": "Y07-04",
+      "kind": "legit",
+      "line": 247,
+      "pattern": "Y07",
+      "repo": "marshmallow-code/marshmallow",
+      "sha": "f268f0c4d12c4edb43743ca5703eed7954320245",
+      "style": "pytest",
+      "test_key": "tests/test_decorators.py::test_decorated_processor_inheritance"
+    },
+    {
+      "base_sha256": "99b8a7048682fd65073a7eb09c5f41ae55f7bcf7405259fb2feabe00f572686a",
+      "category": "operands-swapped",
+      "contract_base": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestUrl::test_safe_download_url"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-05",
+          "version": 1
+        }
+      },
+      "contract_change": false,
+      "contract_head": {
+        "checks": [],
+        "conditions": [
+          {
+            "checks": [],
+            "description": "Behaviour guarded by the mutated test holds",
+            "guarded_by": [
+              "tests/test_url.py::TestUrl::test_safe_download_url"
+            ],
+            "id": "C1",
+            "mandatory": true,
+            "type": "protected-behavior"
+          }
+        ],
+        "contract": {
+          "id": "tierA-Y07-05",
+          "version": 1
+        }
+      },
+      "count_preserving": true,
+      "count_preserving_measured": true,
+      "expected_weakening": false,
+      "file": "tests/test_url.py",
+      "head_sha256": "ccbacd8ef460d78f4fd35c2648cba86dee7c47d99cf4337efb7ccb7172f8e9e0",
+      "id": "Y07-05",
+      "kind": "legit",
+      "line": 1012,
+      "pattern": "Y07",
+      "repo": "scrapy/w3lib",
+      "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0",
+      "style": "pytest",
+      "test_key": "tests/test_url.py::TestUrl::test_safe_download_url"
+    }
+  ],
+  "generator_version": "1",
+  "pattern_report": {
+    "X01": {
+      "eligible_sites": 3156,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X02": {
+      "eligible_sites": 405,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X03": {
+      "eligible_sites": 3156,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X04": {
+      "eligible_sites": 34,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X05": {
+      "eligible_sites": 4336,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X06": {
+      "eligible_sites": 462,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X07": {
+      "eligible_sites": 4336,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "X08": {
+      "eligible_sites": 462,
+      "generated": 8,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 8
+    },
+    "Y01": {
+      "eligible_sites": 3156,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y02": {
+      "eligible_sites": 405,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y03": {
+      "eligible_sites": 4336,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y04": {
+      "eligible_sites": 462,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y05": {
+      "eligible_sites": 4336,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y06": {
+      "eligible_sites": 405,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    },
+    "Y07": {
+      "eligible_sites": 3156,
+      "generated": 5,
+      "rejected_sites": 0,
+      "shortfall": 0,
+      "target": 5
+    }
+  },
+  "patterns_md_sha256": "a7d90fc8fadabf24be5b166282b1f5be42abb452ebf2723f0edd774dfc1394eb",
+  "sources_lock_sha256": "6b43e736b78e0681c0e7c200c94b10571574f42acd4a40ac844c041119b178c0"
+}
