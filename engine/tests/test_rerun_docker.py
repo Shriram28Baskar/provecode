@@ -63,3 +63,28 @@ def test_an_honest_change_passes_the_base_tests(probes, tmp_path):
     rep = json.loads(out.read_text(encoding="utf-8"))
     assert code == 0 and rep["outcome"] == "VERIFIED"
     assert {e["id"]: e["result"] for e in rep["evidence"]} == {"E-A": "pass", "E-B": "pass", "E-C": "pass"}
+
+
+@pytest.fixture(scope="module")
+def demo(tmp_path_factory) -> Path:
+    spec = importlib.util.spec_from_file_location("build_demo", ROOT / "demo" / "build_demo.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    repo = tmp_path_factory.mktemp("demo") / "checkout"
+    mod.build(repo)
+    return repo
+
+
+@docker
+@pytest.mark.parametrize("branch,outcome,code", [
+    ("candidate-weakened", "FAILED", 1),       # cap removed and the test weakened: X4 blocks
+    ("candidate-legit", "INCONCLUSIVE", 2),    # an approved behaviour change: the base tests alone cannot judge it
+])
+def test_rerun_on_the_demo(demo, tmp_path, branch, outcome, code):
+    out = tmp_path / "r.json"
+    rc = cli.main(["rerun", "--repo", str(demo), "--base", "main", "--head", branch, "--image", IMAGE,
+                   "--json", str(out)])
+    rep = json.loads(out.read_text(encoding="utf-8"))
+    assert (rc, rep["outcome"]) == (code, outcome)
+    if outcome == "INCONCLUSIVE":
+        assert any(g["reason"] == "expectation_changed" for g in rep["gaps"])

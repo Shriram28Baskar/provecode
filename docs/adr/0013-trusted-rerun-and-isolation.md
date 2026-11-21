@@ -94,3 +94,24 @@ VERIFIED then means: no blocking finding, and every judged base test passed in B
 - The VERIFIED → PASSED rename (the owner decides).
 - Lockfile-exact dependency installs (`uv.lock`, `poetry.lock`).
 - Running contract-owned checks inside `rerun`.
+
+## Amendment, 2026-11-22: completing Phase 2 (owner: "make phase 1 and phase 2 properly functioning")
+
+- **X5 alone is INCONCLUSIVE, not FAILED.** The first build marked run B's evidence `fail` whenever any X finding existed, so the demo's approved cap change (20% → 25%) came out FAILED. That contradicted section 3. Run B's evidence is now:
+  - `fail` for X1, X2, X3, X4 or X6;
+  - `expectation_changed` for X5 alone, which decide() treats as missing evidence, so INCONCLUSIVE, with an `expectation_changed` gap that tells the reviewer to approve the behaviour in a contract;
+  - `pass` when every judged base test passed.
+  
+  Verified in real Docker runs on the demo: candidate-weakened is FAILED (X4), candidate-legit is INCONCLUSIVE.
+- **`provecode record` now isolates contract-owned checks (closes brief §0.4).**
+  - The checks' pytest process runs with only a read-only copy of PROVECODE on `sys.path`, never the candidate tree. The candidate is reached through `provecode.isolate` (`PROVECODE_CANDIDATE_ROOT=/work/src`).
+  - `isolate.signature()` was added for checks that compare a signature.
+  - The demo's checks were rewritten to use it, and the demo runs were re-recorded (FAILED / VERIFIED as before).
+  - `test_exec_docker.py::test_a_candidate_that_forges_pytest_reports_still_fails_its_contract_check`: a cap-removing candidate that rewrites `_pytest.reports` on import still fails `chk-cap` in a real sealed run.
+- **Dependencies:**
+  - exact pins from the base `uv.lock` / `poetry.lock` / `pdm.lock` as pip constraints (registry packages locked at a single version);
+  - test-named groups and extras preferred over `dev`;
+  - hash-pinned requirement files parsed;
+  - pip `--retries 5 --timeout 60`, plus up to 3 attempts on network errors only.
+  - A failed plugin discovery is now INCONCLUSIVE, where before it silently ran without plugins and could fail tests for the wrong reason.
+- **Report schema v2:** `engine/schema/report.v2.json`. Every report produced anywhere in the test suite is validated against it (`engine/tests/conftest.py`).

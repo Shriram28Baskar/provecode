@@ -24,12 +24,14 @@ Limits, stated plainly:
 from __future__ import annotations
 
 import builtins
+import contextlib
 import json
 import os
 import queue
 import subprocess
 import sys
 import threading
+from typing import Any
 
 ROOT_ENV = "PROVECODE_CANDIDATE_ROOT"
 MAX_LINE = 1_000_000  # bytes of one response line
@@ -50,7 +52,11 @@ for line in sys.stdin:
         obj = importlib.import_module(mod)
         for part in qual.split("."):
             obj = getattr(obj, part)
-        value = obj(*req["args"], **req["kwargs"])
+        if req.get("op") == "signature":
+            import inspect
+            value = str(inspect.signature(obj))
+        else:
+            value = obj(*req["args"], **req["kwargs"])
         try:
             out = json.dumps({"ok": True, "value": value}, allow_nan=False)
         except (TypeError, ValueError) as exc:
@@ -87,17 +93,19 @@ class Session:
         self.root, self.timeout = os.path.abspath(root), timeout
         self.proc = subprocess.Popen([sys.executable, "-I", "-c", _CHILD, self.root], stdin=subprocess.PIPE,
                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=self.root)
-        self._lines: queue.Queue = queue.Queue()
+        self._lines: queue.Queue[bytes | None] = queue.Queue()
         self._stderr: list[bytes] = []
         threading.Thread(target=self._read, daemon=True).start()
         threading.Thread(target=self._drain, daemon=True).start()
 
     def _read(self) -> None:
+        assert self.proc.stdout is not None
         for line in iter(self.proc.stdout.readline, b""):
             self._lines.put(line)
         self._lines.put(None)
 
     def _drain(self) -> None:
+        assert self.proc.stderr is not None
         for line in iter(self.proc.stderr.readline, b""):
             if len(self._stderr) < 200:
                 self._stderr.append(line)
@@ -105,17 +113,25 @@ class Session:
     def stderr_tail(self) -> str:
         return b"".join(self._stderr[-20:]).decode("utf-8", "replace")
 
-    def call(self, target: str, *args, **kwargs):
+    def signature(self, target: str) -> str:
+        """str(inspect.signature(target)), computed in the candidate process."""
+        return str(self._request(target, (), {}, op="signature"))
+
+    def call(self, target: str, *args: Any, **kwargs: Any) -> Any:
+        return self._request(target, args, kwargs)
+
+    def _request(self, target: str, args: tuple[Any, ...], kwargs: dict[str, Any], op: str = "call") -> Any:
         if ":" not in target:
             raise IsolationError(f"target must be 'module:qualname', got {target!r}")
         try:
-            req = json.dumps({"target": target, "args": list(args), "kwargs": kwargs}, allow_nan=False)
+            req = json.dumps({"target": target, "args": list(args), "kwargs": kwargs, "op": op}, allow_nan=False)
         except (TypeError, ValueError) as exc:
             raise IsolationError(f"arguments are not JSON values: {exc}") from None
         if self.proc.poll() is not None:
             raise IsolationError(f"the candidate process has exited ({self.proc.returncode}); "
                                  f"stderr: {self.stderr_tail()}")
         try:
+            assert self.proc.stdin is not None
             self.proc.stdin.write(req.encode("utf-8") + b"\n")
             self.proc.stdin.flush()
         except OSError as exc:
@@ -149,21 +165,28 @@ class Session:
     def close(self) -> None:
         if self.proc.poll() is None:
             self.proc.kill()
-        try:
+        with contextlib.suppress(subprocess.TimeoutExpired):
             self.proc.wait(timeout=10)
-        except subprocess.TimeoutExpired:
-            pass
 
 
 _sessions: dict[str, Session] = {}
 
 
-def call(target: str, *args, root: str | None = None, **kwargs):
-    """Call module:qualname in the candidate tree (root, or $PROVECODE_CANDIDATE_ROOT)."""
+def _session(root: str | None) -> Session:
     root = root or os.environ.get(ROOT_ENV)
     if not root:
         raise IsolationError(f"no candidate tree: pass root= or set {ROOT_ENV}")
     s = _sessions.get(root)
     if s is None or s.proc.poll() is not None:
         s = _sessions[root] = Session(root)
-    return s.call(target, *args, **kwargs)
+    return s
+
+
+def signature(target: str, root: str | None = None) -> str:
+    """str(inspect.signature()) of module:qualname in the candidate tree, computed in the child."""
+    return _session(root).signature(target)
+
+
+def call(target: str, *args: Any, root: str | None = None, **kwargs: Any) -> Any:
+    """Call module:qualname in the candidate tree (root, or $PROVECODE_CANDIDATE_ROOT)."""
+    return _session(root).call(target, *args, **kwargs)

@@ -1,10 +1,14 @@
 """Contract-owned checks for checkout-pricing v1. Owned by reviewers, never by the candidate."""
 
-import inspect
-
 import pytest
 
-from checkout.pricing import apply_discount
+from provecode import isolate
+
+
+def apply_discount(price, discount):
+    # The candidate runs in a separate process (ADR 0013); this process only compares values.
+    return isolate.call("checkout.pricing:apply_discount", price, discount)
+
 
 CAP = 0.20
 
@@ -32,4 +36,4 @@ def test_chk_invalid():
 
 def test_chk_signature():
     # C4: the public signature is unchanged.
-    assert str(inspect.signature(apply_discount)) == "(price: float, discount: float) -> float"
+    assert isolate.signature("checkout.pricing:apply_discount") == "(price: float, discount: float) -> float"

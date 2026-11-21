@@ -152,3 +152,39 @@ def test_regression_hash_pinned_requirements(tmp_path):
         "pytest==8.3.5 \\\n    --hash=sha256:cc\n")})
     reqs, _ = rerun._dep_lines(base)
     assert reqs == ["attrs==26.1.0", "pytest==8.3.5"]
+
+
+def test_lockfile_pins_come_from_the_base(tmp_path):
+    base = tree(tmp_path / "base", {"uv.lock": (
+        'version = 1\n\n[[package]]\nname = "shop"\nversion = "1.0"\nsource = { editable = "." }\n\n'
+        '[[package]]\nname = "Attrs"\nversion = "24.2.0"\nsource = { registry = "https://pypi.org/simple" }\n\n'
+        '[[package]]\nname = "numpy"\nversion = "1.26.4"\nsource = { registry = "https://pypi.org/simple" }\n\n'
+        '[[package]]\nname = "numpy"\nversion = "2.1.0"\nsource = { registry = "https://pypi.org/simple" }\n')})
+    pins, note = rerun.lock_pins(base)
+    assert pins == {"attrs": "24.2.0"} and "uv.lock" in note  # the project and the marker-split numpy are not pinned
+    assert rerun.lock_pins(tree(tmp_path / "none", {"x.txt": ""})) == ({}, "")
+
+
+def test_network_errors_are_retried_and_resolution_errors_are_not():
+    import re
+
+    assert re.search(rerun.NETWORK_ERRORS, "pip._vendor.urllib3.exceptions.ReadTimeoutError: Read timed out.")
+    assert not re.search(rerun.NETWORK_ERRORS, "ERROR: ResolutionImpossible: conflicting dependencies")
+
+
+def test_run_b_result_maps_x5_alone_to_inconclusive_evidence():
+    from types import SimpleNamespace as F
+
+    assert rerun.run_b_result([]) == "pass"
+    assert rerun.run_b_result([F(rule="X5")]) == "expectation_changed"
+    for r in ("X1", "X2", "X3", "X4", "X6"):
+        assert rerun.run_b_result([F(rule="X5"), F(rule=r)]) == "fail"
+
+
+def test_expectation_changed_evidence_gives_inconclusive_not_failed():
+    from provecode import pipeline
+    from provecode.decide import Evidence
+
+    ev = [Evidence("E-B", "run-B", ["BASE-TESTS"], "contract", "expectation_changed")]
+    rep = pipeline.run([], rerun.implicit_contract("2026-11-21T00:00:00+00:00"), evidence=ev, executed=True)
+    assert rep["outcome"] == "INCONCLUSIVE"

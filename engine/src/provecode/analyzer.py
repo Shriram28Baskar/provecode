@@ -10,8 +10,11 @@ from __future__ import annotations
 import ast
 import builtins
 import io
+import warnings
 from collections import defaultdict
+from collections.abc import Iterator
 from dataclasses import dataclass, field
+from typing import Any
 
 from . import limits as _limits
 from .model import B1, B2, B3, B4, R0, S1, S2, S3, S4, S5, T1, T2, T3, T4, T5, V0, FileResult, Finding, Gap
@@ -63,7 +66,7 @@ class Parsed:
     pytest_names: frozenset[str] = frozenset()  # names bound by `from pytest import ...`
     unittest_names: frozenset[str] = frozenset()  # names bound by `from unittest import ...`
 
-    def text(self, node: ast.AST) -> str:
+    def text(self, node: Any) -> str:
         """Full source lines spanned by node, including its decorators."""
         start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
         return "".join(self.lines[start - 1:node.end_lineno])
@@ -71,6 +74,15 @@ class Parsed:
 
 def _dump(node: ast.AST | None) -> str:
     return "" if node is None else ast.dump(node, annotate_fields=False)
+
+
+def parse_quietly(source: str, path: str) -> ast.Module:
+    """ast.parse without the warnings Python raises about the analyzed code (invalid escape sequences and the
+    like). Those warnings describe the input, not PROVECODE, and under -W error they would turn a parseable
+    file into an exception."""
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        return ast.parse(source, filename=path)
 
 
 def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, Gap | None]:
@@ -81,7 +93,7 @@ def _parse(path: str, source: str, lim: _limits.Limits) -> tuple[Parsed | None, 
     except _limits.Untokenizable as exc:
         return None, Gap("unparseable", str(exc), file=path)
     try:
-        tree = ast.parse(source, filename=path)
+        tree = parse_quietly(source, path)
     except (SyntaxError, ValueError, RecursionError, MemoryError) as exc:
         return None, Gap("unparseable", f"{type(exc).__name__}: {exc}", file=path)
     depth = _max_depth(tree)
@@ -152,7 +164,7 @@ def _pytestmark_skips(body: list[ast.stmt]) -> frozenset[str]:
     return frozenset(out)
 
 
-def _walk_own(func: ast.AST):
+def _walk_own(func: ast.AST) -> Iterator[Any]:
     """Walk a function body without entering nested functions, lambdas or classes."""
     stack = list(reversed(getattr(func, "body", [])))
     while stack:
@@ -163,20 +175,20 @@ def _walk_own(func: ast.AST):
                 stack.append(child)
 
 
-def _seg(p: Parsed, node: ast.AST) -> str:
+def _seg(p: Parsed, node: Any) -> str:
     """Exact source of node (columns are UTF-8 byte offsets, as in ast.get_source_segment)."""
     lineno, end = getattr(node, "lineno", None), getattr(node, "end_lineno", None)
     if lineno is None or end is None or end > len(p.lines):
         return ""
     col, end_col = node.col_offset, node.end_col_offset
     if lineno == end:
-        return p.lines[lineno - 1].encode("utf-8")[col:end_col].decode("utf-8", "replace")
+        return str(p.lines[lineno - 1].encode("utf-8")[col:end_col].decode("utf-8", "replace"))
     first = p.lines[lineno - 1].encode("utf-8")[col:].decode("utf-8", "replace")
     last = p.lines[end - 1].encode("utf-8")[:end_col].decode("utf-8", "replace")
-    return first + "".join(p.lines[lineno:end - 1]) + last
+    return str(first + "".join(p.lines[lineno:end - 1]) + last)
 
 
-def _lines(node: ast.AST) -> tuple[int, int]:
+def _lines(node: Any) -> tuple[int, int]:
     return (node.lineno, getattr(node, "end_lineno", None) or node.lineno)
 
 
@@ -227,7 +239,7 @@ class Check:
     subject: str  # dump of the subject expression
     op: str  # comparison op text, "approx", or a trivial kind
     expected: ast.AST | None
-    tol: dict = field(default_factory=dict)
+    tol: dict[str, Any] = field(default_factory=dict)
 
     @property
     def full(self) -> str:
@@ -253,9 +265,9 @@ def _classify(node: ast.Assert) -> Check:
             left, right, op = right, left, _FLIP.get(op, op)
         if op in ("is not", "!=") and isinstance(right, ast.Constant) and right.value is None:
             return Check(node, _dump(left), "not_none", None)
-        if op == "==" and _is_approx_call(right):
+        if op == "==" and isinstance(right, ast.Call) and _is_approx_call(right):
             tol = {k.arg: _num(k.value) for k in right.keywords if k.arg in ("rel", "abs")}
-            for name, arg in zip(("rel", "abs"), right.args[1:3]):  # approx(expected, rel, abs)
+            for name, arg in zip(("rel", "abs"), right.args[1:3], strict=False):  # approx(expected, rel, abs)
                 tol.setdefault(name, _num(arg))
             return Check(node, _dump(left), "approx", right.args[0] if right.args else None, tol)
         return Check(node, _dump(left), op, right)
@@ -289,7 +301,8 @@ def _is_self_assert(n: ast.AST) -> bool:
 
 def _classify_call(call: ast.Call) -> Check:
     """Map a self.assert*(...) call onto subject / op / expected."""
-    name, args = call.func.attr, call.args
+    func: Any = call.func  # an ast.Attribute: callers checked _is_self_assert
+    name, args = func.attr, call.args
     kw = {k.arg: k.value for k in call.keywords if k.arg}
     if name in _UT_BINARY and len(args) >= 2:
         left, right, op = args[0], args[1], _UT_BINARY[name]
@@ -383,11 +396,10 @@ def _raises_calls(fn: TestFn) -> list[ast.Call]:
     out = []
     for n in _walk_own(fn.node):
         if isinstance(n, ast.Call):
-            f = n.func
+            f: Any = n.func
             if (isinstance(f, ast.Attribute) and f.attr == "raises" and isinstance(f.value, ast.Name)
-                    and f.value.id == "pytest") or (isinstance(f, ast.Name) and f.id == "raises"):
-                out.append(n)
-            elif _is_self_assert(n) and f.attr in _UT_RAISES:
+                    and f.value.id == "pytest") or (isinstance(f, ast.Name) and f.id == "raises") \
+                    or (_is_self_assert(n) and f.attr in _UT_RAISES):
                 out.append(n)
     return out
 
@@ -437,7 +449,7 @@ _MATCH_ANY = {"", ".*", ".+", "(?s).*", "(?s).+", "^.*$"}
 def _s3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out = []
     rb, rh = _raises_calls(tb), _raises_calls(th)
-    for cb, ch in zip(rb, rh):
+    for cb, ch in zip(rb, rh, strict=False):
         reasons = []
         bn = _exc_names(cb.args[0]) if cb.args else None
         hn = _exc_names(ch.args[0]) if ch.args else None
@@ -477,8 +489,10 @@ def _s4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
         dh = hp.get(names)
         if dh is None:
             continue
-        base_cases = {_dump(e): e for e in db.args[1].elts}
-        head_cases = {_dump(e) for e in dh.args[1].elts}
+        bv: Any = db.args[1]  # a list or tuple literal: _parametrize checked it
+        hv: Any = dh.args[1]
+        base_cases = {_dump(e): e for e in bv.elts}
+        head_cases = {_dump(e) for e in hv.elts}
         removed = [base_cases[k] for k in base_cases if k not in head_cases]
         if removed:
             added = len(head_cases - set(base_cases))
@@ -494,7 +508,7 @@ def _s4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     return out
 
 
-def _mark_name(d: ast.AST) -> tuple[str | None, ast.Call | None]:
+def _mark_name(d: Any) -> tuple[str | None, ast.Call | None]:
     call = d if isinstance(d, ast.Call) else None
     target = d.func if call else d
     if isinstance(target, ast.Attribute) and (
@@ -505,7 +519,7 @@ def _mark_name(d: ast.AST) -> tuple[str | None, ast.Call | None]:
     return None, None
 
 
-def _unittest_skip(d: ast.AST, unittest_names: frozenset[str]) -> bool:
+def _unittest_skip(d: Any, unittest_names: frozenset[str]) -> bool:
     """@unittest.skip(...), @skipIf(<truthy const>), @skipUnless(<falsy const>), @expectedFailure."""
     call = d if isinstance(d, ast.Call) else None
     target = d.func if call else d
@@ -616,16 +630,16 @@ def _truthy_const(n: ast.AST) -> bool:
     return isinstance(n, ast.Constant) and bool(n.value)
 
 
-def _checked_expr(c: Check) -> ast.AST | None:
+def _checked_expr(c: Check) -> ast.expr | None:
     """The expression a truthiness-style check evaluates: the assert's test, or assertTrue's arg."""
     if isinstance(c.node, ast.Assert):
         return c.node.test
-    if isinstance(c.node, ast.Call) and c.node.func.attr == "assertTrue" and c.node.args:
+    if isinstance(c.node, ast.Call) and getattr(c.node.func, "attr", None) == "assertTrue" and c.node.args:
         return c.node.args[0]
     return None
 
 
-def _vacuous(c: Check) -> tuple[str, ast.AST | None] | None:
+def _vacuous(c: Check) -> tuple[str, ast.expr | None] | None:
     """("self", None) for a comparison of an expression with itself; ("or", rest) for an `or` with a
     truthy constant operand, where rest is what the check would test without the constant."""
     if c.op in _REFLEXIVE_OPS and c.expected is not None and _dump(c.expected) == c.subject:
@@ -639,11 +653,11 @@ def _vacuous(c: Check) -> tuple[str, ast.AST | None] | None:
     return None
 
 
-def _key(c: Check) -> tuple:
+def _key(c: Check) -> tuple[Any, ...]:
     return c.subject, c.op, _dump(c.expected)
 
 
-def _replaced_by_vacuous(b: Check, h: Check, v: tuple[str, ast.AST | None]) -> bool:
+def _replaced_by_vacuous(b: Check, h: Check, v: tuple[str, ast.expr | None]) -> bool:
     kind, rest = v
     if kind == "self":
         # Only a check against a different expected value is weakened by a self-comparison; a
@@ -718,7 +732,7 @@ def _swallows(node: ast.AST) -> bool:
     return False
 
 
-def _is_check(n: ast.AST) -> bool:
+def _is_check(n: Any) -> bool:
     return isinstance(n, ast.Assert) or (_is_self_assert(n) and n.func.attr not in _UT_RAISES)
 
 
@@ -754,7 +768,7 @@ def _swallowed(fn: TestFn) -> list[tuple[ast.AST, ast.AST]]:
     return out
 
 
-def _check_key(n: ast.AST) -> tuple:
+def _check_key(n: Any) -> tuple[Any, ...]:
     """What a check checks (subject, operator, expected), ignoring its message."""
     return _key(_classify(n) if isinstance(n, ast.Assert) else _classify_call(n))
 
@@ -767,7 +781,7 @@ def _b4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     excess = len(head_sw) - len(base_sw)
     if excess <= 0:
         return []
-    pool: dict[tuple, int] = defaultdict(int)
+    pool: dict[tuple[Any, ...], int] = defaultdict(int)
     for n, _ in base_sw:
         pool[_check_key(n)] += 1
     unmatched = []
@@ -777,7 +791,7 @@ def _b4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
             pool[k] -= 1
         else:
             unmatched.append((n, guard))
-    base_checks: dict[tuple, ast.AST] = {}
+    base_checks: dict[tuple[Any, ...], ast.AST] = {}
     for c in _checks(tb):
         base_checks.setdefault(_key(c), c.node)
     out = []
@@ -839,7 +853,8 @@ def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> 
         helpers = _helpers(ph, th)
         deficit -= sum(1 for name, _ in _new_delegations(tb, th) if name in helpers and _does_check(helpers[name]))
     if deficit > 0:
-        removed_raises = _raises_calls(tb)[len(_raises_calls(th)):] if len(_raises_calls(tb)) > len(_raises_calls(th)) else []
+        rb_all, rh_all = _raises_calls(tb), _raises_calls(th)
+        removed_raises = rb_all[len(rh_all):] if len(rb_all) > len(rh_all) else []
         candidates = [c.node for c in unpaired_base] + removed_raises
         for node in candidates[:deficit]:
             out.append(Finding(
@@ -882,7 +897,8 @@ def _literal_args_changed(b: ast.AST | None, h: ast.AST | None) -> bool:
         return False
     if len(b.args) != len(h.args) or [k.arg for k in b.keywords] != [k.arg for k in h.keywords]:
         return False
-    pairs = list(zip(b.args, h.args)) + [(x.value, y.value) for x, y in zip(b.keywords, h.keywords)]
+    pairs = list(zip(b.args, h.args, strict=True))
+    pairs += [(x.value, y.value) for x, y in zip(b.keywords, h.keywords, strict=True)]
     diff = [(x, y) for x, y in pairs if _dump(x) != _dump(y)]
     return bool(diff) and all(_is_literal(x) and _is_literal(y) for x, y in diff)
 
@@ -951,8 +967,8 @@ def _t1(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     for name in sorted(set(ab) & set(ah)):
         if len(ab[name]) != 1 or len(ah[name]) != 1:
             continue
-        b, h = ab[name][0], ah[name][0]
-        if not _literal_args_changed(b.value, h.value):
+        ba, ha = ab[name][0], ah[name][0]
+        if not _literal_args_changed(ba.value, ha.value):
             continue
         on_b = sorted(c.full for c in bchecks if name in _names_in(_subject_node(c)))
         on_h = sorted(c.full for c in hchecks if name in _names_in(_subject_node(c)))
@@ -961,14 +977,14 @@ def _t1(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
                 T1, path, th.key,
                 f"The inputs that produce {name!r} changed but every check on {name!r} stayed the same, so the test "
                 "no longer checks the case it checked before.",
-                base_lines=_lines(b), head_lines=_lines(h), before=_seg(pb, b), after=_seg(ph, h),
+                base_lines=_lines(ba), head_lines=_lines(ha), before=_seg(pb, ba), after=_seg(ph, ha),
                 detail={"both_changed": False, "via": "local", "local": name},
             ))
     return out
 
 
-def _doc_stripped(fn: ast.AST) -> list[ast.stmt]:
-    body = fn.body
+def _doc_stripped(fn: Any) -> list[ast.stmt]:
+    body: list[ast.stmt] = fn.body
     if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) and \
             isinstance(body[0].value.value, str):
         return body[1:]
@@ -1100,7 +1116,7 @@ def _dotted(n: ast.AST, imports: dict[str, str]) -> str | None:
     if not isinstance(n, ast.Name):
         return None
     root = imports.get(n.id, n.id)
-    return ".".join([root] + list(reversed(parts)))
+    return ".".join([root, *list(reversed(parts))])
 
 
 def _patch_target(call: ast.Call, imports: dict[str, str]) -> str | None:
@@ -1192,8 +1208,9 @@ def _is_empty_iter(n: ast.AST) -> bool:
         if n.func.id in ("list", "tuple", "set", "dict", "frozenset") and not n.args:
             return True
         if n.func.id == "range":
-            vals = [_num(a) for a in n.args]
-            if vals and all(v is not None for v in vals):
+            raw = [_num(a) for a in n.args]
+            vals = [v for v in raw if v is not None]
+            if vals and len(vals) == len(raw):
                 if len(vals) == 1:
                     return vals[0] <= 0
                 step = vals[2] if len(vals) > 2 else 1
@@ -1206,6 +1223,9 @@ def _is_empty_iter(n: ast.AST) -> bool:
     return False
 
 
+_LITERAL_SEQS = (ast.List, ast.Tuple, ast.Set)
+
+
 def _has_check(body: list[ast.stmt]) -> bool:
     return any(isinstance(x, ast.Assert) or _is_self_assert(x) for s in body for x in ast.walk(s))
 
@@ -1213,8 +1233,8 @@ def _has_check(body: list[ast.stmt]) -> bool:
 def _t4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out = []
 
-    def loops(fn: TestFn) -> dict[str, list[ast.For]]:
-        d: dict[str, list] = defaultdict(list)
+    def loops(fn: TestFn) -> dict[str, list[ast.For | ast.AsyncFor]]:
+        d: dict[str, list[ast.For | ast.AsyncFor]] = defaultdict(list)
         for n in _walk_own(fn.node):
             if isinstance(n, (ast.For, ast.AsyncFor)) and _has_check(n.body):
                 d[_dump(n.target)].append(n)
@@ -1222,7 +1242,7 @@ def _t4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
 
     lb, lh = loops(tb), loops(th)
     for target in sorted(set(lb) & set(lh)):
-        for b, h in zip(lb[target], lh[target]):
+        for b, h in zip(lb[target], lh[target], strict=False):
             if _dump(b.iter) == _dump(h.iter):
                 continue
             if _is_empty_iter(h.iter) and not _is_empty_iter(b.iter):
@@ -1232,7 +1252,7 @@ def _t4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
                     base_lines=_lines(b.iter), head_lines=_lines(h.iter), before=_seg(pb, b.iter),
                     after=_seg(ph, h.iter), detail={"change": "emptied"},
                 ))
-            elif isinstance(b.iter, (ast.List, ast.Tuple, ast.Set)) and isinstance(h.iter, (ast.List, ast.Tuple, ast.Set)):
+            elif isinstance(b.iter, _LITERAL_SEQS) and isinstance(h.iter, _LITERAL_SEQS):
                 hd = {_dump(e) for e in h.iter.elts}
                 gone = [e for e in b.iter.elts if _dump(e) not in hd]
                 if gone:
@@ -1271,7 +1291,7 @@ def _t5(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     base_checks, head_checks = _checks(tb), _checks(th)
     if (len(base_checks) + len(rb)) - (len(head_checks) + len(rh)) > 0:
         return []  # a removal; B3 reports it
-    head_raises = defaultdict(int)
+    head_raises: defaultdict[str, int] = defaultdict(int)
     for c in rh:
         head_raises[_dump(c)] += 1
     removed = []
@@ -1328,12 +1348,14 @@ def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _
         if gap:
             res.gaps.append(gap)
             return res
+        assert pb is not None
         res.tests_base = sorted(pb.tests)
     if head_source is not None:
         ph, gap = _parse(path, head_source, lim)
         if gap:
             res.gaps.append(gap)
             return res
+        assert ph is not None
         res.tests_head = sorted(ph.tests)
     if pb is None:
         return res  # new file: nothing can have been weakened

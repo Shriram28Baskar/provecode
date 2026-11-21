@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import json
+from typing import Any
 
 from .contract import Contract
 from .decide import Decision, Evidence
 from .model import RULE_TITLES, FileResult, Finding, Gap
 
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "2"  # ADR 0012/0013: H, T and X rules, execution evidence; engine/schema/report.v2.json
 MODES = ("static", "live", "precomputed", "recorded")
 
 
@@ -22,8 +23,8 @@ def build(
     evidence: list[Evidence],
     gaps: list[Gap],
     files: list[FileResult],
-    provenance: dict,
-) -> dict:
+    provenance: dict[str, Any],
+) -> dict[str, Any]:
     if mode not in MODES:
         raise ValueError(f"mode must be one of {MODES}")
     counts: dict[str, int] = {}
@@ -52,14 +53,14 @@ def build(
     }
 
 
-def dumps(report: dict) -> str:
+def dumps(report: dict[str, Any]) -> str:
     return json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
 
 
 _ICON = {"VERIFIED": "VERIFIED", "FAILED": "FAILED", "INCONCLUSIVE": "INCONCLUSIVE"}
 
 
-def to_markdown(r: dict) -> str:
+def to_markdown(r: dict[str, Any]) -> str:
     out = [f"## PROVECODE: **{r['outcome']}** ({r['mode']})", ""]
     c = r.get("contract")
     if c:

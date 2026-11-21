@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 from . import git as git_mod
 
@@ -67,7 +68,7 @@ def _ours(entry: object) -> bool:
     return "provecode" in cmd and " guard --hook claude-" in cmd
 
 
-def _load(path: Path) -> dict:
+def _load(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     try:
@@ -99,7 +100,7 @@ def install_claude(top: Path, shared: bool) -> tuple[Path, bool]:
             raise InstallError(f"{path}: hooks.{event} is not a list; not changed")
         present = any(_ours(h) for g in groups if isinstance(g, dict) for h in g.get("hooks", []) or [])
         if not present:
-            entry = {"type": "command", "command": command}
+            entry: dict[str, Any] = {"type": "command", "command": command}
             if event == "Stop":
                 entry["timeout"] = 60
             groups.append({"hooks": [entry]})
@@ -173,19 +174,19 @@ def uninstall_precommit(top: Path) -> tuple[Path, bool]:
     return path, False
 
 
-def cmd_install(args) -> int:
+def cmd_install(args: argparse.Namespace) -> int:
     if not (args.claude or args.pre_commit):
         print("provecode install-hooks: choose --claude and/or --pre-commit", file=sys.stderr)
         return 3
     top = Path(git_mod.toplevel(args.repo))
     try:
-        done = []
+        done: list[tuple[Path, bool]] = []
         if args.claude:
-            fn = uninstall_claude if args.uninstall else install_claude
-            done.append(fn(top, args.shared))
+            claude = uninstall_claude if args.uninstall else install_claude
+            done.append(claude(top, args.shared))
         if args.pre_commit:
-            fn = uninstall_precommit if args.uninstall else install_precommit
-            done.append(fn(top))
+            precommit = uninstall_precommit if args.uninstall else install_precommit
+            done.append(precommit(top))
     except InstallError as exc:
         print(f"provecode install-hooks: {exc}", file=sys.stderr)
         return 3
@@ -195,7 +196,7 @@ def cmd_install(args) -> int:
     return 0
 
 
-def add_parser(sub) -> None:
+def add_parser(sub: Any) -> None:
     p = sub.add_parser("install-hooks", help="wire provecode guard into Claude Code and/or git pre-commit",
                        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--repo", default=".")

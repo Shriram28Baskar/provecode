@@ -8,6 +8,7 @@ relative to the repository root.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Any
 
 from .analyzer import is_test_path
 
@@ -73,9 +74,9 @@ class Changeset:
     head_sha: str | None = None
     base_paths: tuple[str, ...] | None = None  # every path at base, when the adapter can list them
 
-    def test_entries(self) -> list[tuple]:
+    def test_entries(self) -> list[tuple[Any, ...]]:
         """The (path, base, head[, old_path]) tuples the test-file analyzer has always consumed."""
-        out: list[tuple] = []
+        out: list[tuple[Any, ...]] = []
         for f in self.files:
             if not (is_test_path(f.path) or (f.old_path and is_test_path(f.old_path))):
                 continue
@@ -89,7 +90,7 @@ class Changeset:
         return [f for f in self.files if f.kind in kinds]
 
 
-def from_tuples(files: list[tuple], base_paths: tuple[str, ...] | None = None) -> Changeset:
+def from_tuples(files: list[tuple[Any, ...]], base_paths: tuple[str, ...] | None = None) -> Changeset:
     """Adapter from the legacy tuple list, so old callers and new ones share one code path."""
     out = []
     for e in files:

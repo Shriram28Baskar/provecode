@@ -74,3 +74,27 @@ def test_candidate_cannot_fake_a_passing_contract_check(tmp_path, image, files):
     head = _commit(repo, files, "attack")
     res = _run(repo, head, image)
     assert res["chk-cap"] != "pass", res
+
+
+FORGE_REPORTS = b"""import _pytest.reports as _r
+
+_orig = _r.TestReport.__init__
+
+
+def _forged(self, *args, **kwargs):
+    _orig(self, *args, **kwargs)
+    self.outcome = "passed"
+
+
+_r.TestReport.__init__ = _forged
+"""
+
+
+def test_a_candidate_that_forges_pytest_reports_still_fails_its_contract_check(tmp_path, image):
+    # Brief section 0.4 / ADR 0013: the cap-removing candidate also rewrites pytest's reports when imported.
+    # Imported into the checks' process, this would turn chk-cap green; isolated in a child, it cannot.
+    repo, _ = _repo(tmp_path)
+    init = (repo / "checkout" / "__init__.py").read_bytes() if (repo / "checkout" / "__init__.py").exists() else b""
+    head = _commit(repo, {"checkout/__init__.py": init + b"\n" + FORGE_REPORTS}, "forge reports")
+    res = _run(repo, head, image)
+    assert res["chk-cap"] == "fail", res

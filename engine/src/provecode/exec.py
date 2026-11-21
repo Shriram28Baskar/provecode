@@ -19,6 +19,7 @@ import time
 import uuid
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from typing import Any
 
 from . import contract as contract_mod
 from .decide import Evidence
@@ -27,7 +28,7 @@ from .model import Gap
 EXCERPT_LINES = 30
 
 
-def _image_identity(image: str) -> dict:
+def _image_identity(image: str) -> dict[str, Any]:
     out = subprocess.run(["docker", "image", "inspect", image, "--format", "{{.Id}}|{{json .RepoDigests}}"],
                          capture_output=True, text=True, timeout=60)
     if out.returncode != 0:
@@ -66,12 +67,21 @@ RUNNER = (
     "sys.exit(pytest.main(['-q', '-p', 'no:cacheprovider', '--rootdir', sys.argv[3], "
     "'--junitxml=' + sys.argv[2], sys.argv[1]]))"
 )
+# Contract-owned checks run WITHOUT the candidate on sys.path: only PROVECODE's own package (a trusted copy
+# mounted read-only) is importable, and the candidate is reached through provecode.isolate, which runs it in a
+# child process (ADR 0013). A candidate therefore cannot patch the pytest process that judges the check.
+CHECK_RUNNER = (
+    "import sys; sys.path.insert(0, '/work/provecode'); import pytest; "
+    "sys.exit(pytest.main(['-q', '-p', 'no:cacheprovider', '--rootdir', sys.argv[3], "
+    "'--junitxml=' + sys.argv[2], sys.argv[1]]))"
+)
 MAX_JUNIT_BYTES = 1_000_000
 
 
 def _run(image: str, src: Path, checks: Path, results: Path, workdir: str, argv: list[str],
-         timeout: int) -> tuple[int | None, str, float]:
+         timeout: int, engine: Path | None = None) -> tuple[int | None, str, float]:
     name = f"provecode-{uuid.uuid4().hex[:12]}"
+    extra = ["-v", f"{engine}:/work/provecode:ro", "-e", "PROVECODE_CANDIDATE_ROOT=/work/src"] if engine else []
     cmd = [
         "docker", "run", "--rm", "--name", name,
         "--network", "none", "--read-only", "--tmpfs", "/tmp:rw,size=64m",
@@ -79,7 +89,7 @@ def _run(image: str, src: Path, checks: Path, results: Path, workdir: str, argv:
         "--security-opt", "no-new-privileges", "--cap-drop", "ALL", "--user", "65534:65534",
         "-e", "PYTHONDONTWRITEBYTECODE=1", "-e", "HOME=/tmp",
         "-v", f"{src}:/work/src:ro", "-v", f"{checks}:/work/checks:ro", "-v", f"{results}:/work/results:rw",
-        "-w", workdir, image, *argv,
+        *extra, "-w", workdir, image, *argv,
     ]
     t0 = time.monotonic()
     try:
@@ -91,7 +101,7 @@ def _run(image: str, src: Path, checks: Path, results: Path, workdir: str, argv:
     return out.returncode, text, time.monotonic() - t0
 
 
-def junit_summary(path: Path) -> dict | None:
+def junit_summary(path: Path) -> dict[str, Any] | None:
     """Counts from a pytest JUnit XML report, or None if it is missing or malformed."""
     if not path.is_file() or path.stat().st_size > MAX_JUNIT_BYTES:
         return None
@@ -112,7 +122,7 @@ def junit_summary(path: Path) -> dict | None:
     return total
 
 
-def classify(code: int | None, junit: dict | None) -> str:
+def classify(code: int | None, junit: dict[str, Any] | None) -> str:
     """pass needs positive evidence: exit 0 AND a report with at least one test that actually passed.
 
     An exit code alone is never trusted (a candidate could exit 0 at import time).
@@ -125,7 +135,7 @@ def classify(code: int | None, junit: dict | None) -> str:
 
 
 def _evidence(eid: str, check_id: str, cids: list[str], owner: str, code: int | None, text: str,
-              cmd: str, dur: float, junit: dict | None) -> Evidence:
+              cmd: str, dur: float, junit: dict[str, Any] | None) -> Evidence:
     excerpt = "\n".join(text.strip().splitlines()[-EXCERPT_LINES:])
     if junit is None:
         excerpt += "\n[provecode] no valid JUnit report was produced, so this result cannot count as a pass."
@@ -133,7 +143,8 @@ def _evidence(eid: str, check_id: str, cids: list[str], owner: str, code: int | 
                     hashlib.sha256(text.encode()).hexdigest(), cmd, round(dur, 2))
 
 
-def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evidence], list[Gap], dict]:
+def run_checks(args: Any, contract_doc: dict[str, Any] | None,
+               head_sha: str) -> tuple[list[Evidence], list[Gap], dict[str, Any]]:
     if contract_doc is None:
         return [], [Gap("contract_invalid", "No contract; recorded checks not run.")], {}
     try:
@@ -151,6 +162,9 @@ def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evi
         os.chmod(results, 0o777)  # the container runs as nobody (65534)
         _export_tree(args.repo, head_sha, src)
         shutil.copytree(Path(args.checks_dir), checks)
+        engine = work / "engine"  # a trusted copy of PROVECODE for the checks' own process
+        shutil.copytree(Path(__file__).resolve().parent, engine / "provecode",
+                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
         by_check = {ch["id"]: ch for ch in c.checks}
         n = 0
         for cond in c.conditions:
@@ -162,10 +176,11 @@ def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evi
                     continue
                 n += 1
                 junit = f"/work/results/E{n}.xml"
-                argv = ["python", "-I", "-c", RUNNER, f"/work/checks/{ch['path']}", junit, "/work/checks"]
-                code, text, dur = _run(args.image, src, checks, results, "/work/checks", argv, args.timeout)
+                argv = ["python", "-I", "-c", CHECK_RUNNER, f"/work/checks/{ch['path']}", junit, "/work/checks"]
+                code, text, dur = _run(args.image, src, checks, results, "/work/checks", argv, args.timeout, engine)
                 ev = _evidence(f"E{n}", check_id, [cond.id], "contract", code, text,
-                               f"pytest {ch['path']} (isolated runner, JUnit report required)", dur,
+                               f"pytest {ch['path']} (candidate isolated in a child process; JUnit report required)",
+                               dur,
                                junit_summary(results / f"E{n}.xml"))
                 if code is None:
                     gaps.append(Gap("timeout", f"{check_id} exceeded {args.timeout}s", condition_id=cond.id))
@@ -179,5 +194,8 @@ def run_checks(args, contract_doc: dict | None, head_sha: str) -> tuple[list[Evi
         shutil.rmtree(work, ignore_errors=True)
     prov = {**ident, "sandbox": {"network": "none", "memory": "512m", "cpus": 1, "pids": 128, "read_only": True,
                                  "user": "65534:65534", "timeout_s": args.timeout,
-                                 "runner": "python -I, candidate tree appended to sys.path, JUnit report required"}}
+                                 "runner": "contract checks: python -I with only PROVECODE on sys.path, candidate "
+                                           "reached through "
+                                           "provecode.isolate in a child process; repo tests: candidate tree appended "
+                                           "to sys.path; JUnit report required"}}
     return evidence, gaps, prov

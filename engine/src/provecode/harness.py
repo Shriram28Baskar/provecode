@@ -12,12 +12,16 @@ from __future__ import annotations
 import ast
 import configparser
 import difflib
+import fnmatch
 import re
 import shlex
 import tomllib
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
+from typing import Any
 
 from . import limits as _limits
+from .analyzer import parse_quietly
 from . import yamlsubset
 from .changeset import CI, CONFIG, CONFTEST, PYTEST_CONFIG_NAMES, SOURCE, TEST, Changeset, FileChange, is_requirements
 from .model import H1, H2, H3, H4, H5, H6, H7, Finding, Gap
@@ -73,7 +77,7 @@ def _parse_py(path: str, text: str, lim: _limits.Limits) -> tuple[ast.Module | N
     except _limits.Untokenizable as exc:
         return None, Gap("unparseable", str(exc), file=path)
     try:
-        tree = ast.parse(text, filename=path)
+        tree = parse_quietly(text, path)
     except (SyntaxError, ValueError, RecursionError, MemoryError) as exc:
         return None, Gap("unparseable", f"{type(exc).__name__}: {exc}", file=path)
     from .analyzer import MAX_AST_DEPTH, _max_depth
@@ -94,16 +98,16 @@ def _dump(n: ast.AST) -> str:
     return ast.dump(n, annotate_fields=False)
 
 
-def _seg_lines(text: str, node: ast.AST, n: int = 12) -> str:
+def _seg_lines(text: str, node: Any, n: int = 12) -> str:
     lines = text.splitlines()
     start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
     chunk = lines[start - 1:(node.end_lineno or node.lineno)]
     if len(chunk) > n:
-        chunk = chunk[:n] + ["..."]
+        chunk = [*chunk[:n], "..."]
     return "\n".join(chunk)
 
 
-def _top_statements(body: list[ast.stmt]):
+def _top_statements(body: list[ast.stmt]) -> Iterator[ast.stmt]:
     """Module-level statements, descending into if/try/with blocks but not into defs or classes."""
     for s in body:
         yield s
@@ -149,12 +153,12 @@ def _attr_chain(expr: ast.AST) -> list[str]:
 
 @dataclass
 class _Conftest:
-    hooks: dict[str, tuple[str, ast.AST]] = field(default_factory=dict)
+    hooks: dict[str, tuple[str, Any]] = field(default_factory=dict)
     collect_ignore: set[str] = field(default_factory=set)
     collect_ignore_opaque: set[str] = field(default_factory=set)
-    exits: list[tuple[str, ast.AST]] = field(default_factory=list)
-    tamper: list[tuple[str, ast.AST]] = field(default_factory=list)
-    config_writes: dict[str, list[tuple[str, ast.AST]]] = field(default_factory=dict)
+    exits: list[tuple[str, Any]] = field(default_factory=list)
+    tamper: list[tuple[str, Any]] = field(default_factory=list)
+    config_writes: dict[str, list[tuple[str, Any]]] = field(default_factory=dict)
     plugins: set[str] = field(default_factory=set)
     plugins_opaque: set[str] = field(default_factory=set)
 
@@ -173,7 +177,7 @@ def _strings(n: ast.AST) -> list[str] | None:
     return None
 
 
-def _module_list_assign(s: ast.stmt, names: tuple[str, ...]) -> tuple[str, ast.AST] | None:
+def _module_list_assign(s: ast.stmt, names: tuple[str, ...]) -> tuple[str, Any] | None:
     """(name, value) for `name = ...`, `name += ...`, `name: T = ...` or `name.append/extend(...)`."""
     if isinstance(s, ast.Assign):
         for t in s.targets:
@@ -189,6 +193,16 @@ def _module_list_assign(s: ast.stmt, names: tuple[str, ...]) -> tuple[str, ast.A
             arg = s.value.args[-1]
             return f.value.id, (ast.List(elts=[arg]) if f.attr in ("append", "insert", "add") else arg)
     return None
+
+
+def _tampers(f: ast.AST, n: ast.Call, imports: dict[str, str]) -> bool:
+    """setattr(<pytest/_pytest/pluggy object>, ...) or monkeypatch.setattr("_pytest....", ...)."""
+    if isinstance(f, ast.Name) and f.id == "setattr" and n.args:
+        return _root_module(n.args[0], imports) in _HARNESS_MODULES
+    if isinstance(f, ast.Attribute) and f.attr == "setattr" and n.args and isinstance(n.args[0], ast.Constant):
+        value = n.args[0].value
+        return isinstance(value, str) and value.split(".")[0] in _HARNESS_MODULES
+    return False
 
 
 def _conftest_model(tree: ast.Module) -> _Conftest:
@@ -220,11 +234,7 @@ def _conftest_model(tree: ast.Module) -> _Conftest:
             if isinstance(f, ast.Attribute) and chain and chain[0] in ("_exit", "exit") and \
                     _root_module(f, imports) in ("os", "sys"):
                 m.exits.append((_dump(n), n))
-            elif isinstance(f, ast.Name) and f.id == "setattr" and n.args and \
-                    _root_module(n.args[0], imports) in _HARNESS_MODULES:
-                m.tamper.append((_dump(n), n))
-            elif isinstance(f, ast.Attribute) and f.attr == "setattr" and n.args and isinstance(n.args[0], ast.Constant) \
-                    and isinstance(n.args[0].value, str) and n.args[0].value.split(".")[0] in _HARNESS_MODULES:
+            elif _tampers(f, n, imports):
                 m.tamper.append((_dump(n), n))
         targets = []
         if isinstance(n, ast.Assign):
@@ -239,7 +249,7 @@ def _conftest_model(tree: ast.Module) -> _Conftest:
     return m
 
 
-def _config_writes(fn: ast.AST) -> list[tuple[str, ast.AST]]:
+def _config_writes(fn: Any) -> list[tuple[str, Any]]:
     """Assignments into config.option / .args / .inicfg ..., and plugin-manager or args mutations."""
     out = []
     for n in ast.walk(fn):
@@ -257,7 +267,7 @@ def _config_writes(fn: ast.AST) -> list[tuple[str, ast.AST]]:
     return out
 
 
-def _multiset_new(base: list[tuple[str, ast.AST]], head: list[tuple[str, ast.AST]]) -> list[ast.AST]:
+def _multiset_new(base: list[tuple[str, Any]], head: list[tuple[str, Any]]) -> list[Any]:
     pool: dict[str, int] = {}
     for d, _ in base:
         pool[d] = pool.get(d, 0) + 1
@@ -281,6 +291,7 @@ def _h1_h2(fc: FileChange, lim: _limits.Limits) -> tuple[list[Finding], list[Gap
         base, gap = _parse_py(fc.path, fc.base_text, lim)
         if gap:
             return [], [gap]
+    assert head is not None  # _parse_py returns a tree or a gap
     hb = _conftest_model(base) if base is not None else _Conftest()
     hh = _conftest_model(head)
     out: list[Finding] = []
@@ -448,7 +459,7 @@ class ConfigError(ValueError):
     pass
 
 
-def _split_args(value) -> list[str]:
+def _split_args(value: Any) -> list[str]:
     if isinstance(value, list):
         out: list[str] = []
         for v in value:
@@ -462,7 +473,7 @@ def _split_args(value) -> list[str]:
     return []
 
 
-def _split_list(value) -> list[str]:
+def _split_list(value: Any) -> list[str]:
     if isinstance(value, list):
         return [str(v) for v in value]
     if isinstance(value, str):
@@ -470,13 +481,13 @@ def _split_list(value) -> list[str]:
     return []
 
 
-def _truthy(value) -> bool:
+def _truthy(value: Any) -> bool:
     if isinstance(value, bool):
         return value
     return str(value).strip().lower() in ("1", "true", "yes", "on")
 
 
-def pytest_config(name: str, text: str | None) -> dict | None:
+def pytest_config(name: str, text: str | None) -> dict[str, Any] | None:
     """The pytest settings a root config file holds, or None if pytest does not read it."""
     if text is None:
         return None
@@ -503,7 +514,7 @@ def pytest_config(name: str, text: str | None) -> dict | None:
     return {} if name in ("pytest.ini", ".pytest.ini") else None
 
 
-def _active(files: dict[str, str | None]) -> tuple[str | None, dict]:
+def _active(files: dict[str, str | None]) -> tuple[str | None, dict[str, Any]]:
     """(file name, settings) of the config pytest uses, by pytest 9's precedence."""
     for name in PYTEST_CONFIG_NAMES:
         cfg = pytest_config(name, files.get(name))
@@ -523,17 +534,16 @@ def _opts(args: list[str]) -> list[tuple[str, str]]:
             key, val = a.split("=", 1)
         elif a.startswith("-") and not a.startswith("--") and len(a) > 2 and a[:2] in ("-k", "-m", "-p", "-c"):
             key, val = a[:2], a[2:]
-        elif a in _SELECT_VALUE or a in ("-p", "--cov-fail-under", "--doctest-glob"):
-            if i + 1 < len(args):
-                val = args[i + 1]
-                i += 1
+        elif (a in _SELECT_VALUE or a in ("-p", "--cov-fail-under", "--doctest-glob")) and i + 1 < len(args):
+            val = args[i + 1]
+            i += 1
         out.append((key, val))
         i += 1
     return out
 
 
-def _new(base: list, head: list) -> list:
-    pool: dict = {}
+def _new(base: list[Any], head: list[Any]) -> list[Any]:
+    pool: dict[str, Any] = {}
     for x in base:
         pool[x] = pool.get(x, 0) + 1
     out = []
@@ -570,14 +580,94 @@ def compare_args(base_args: list[str], head_args: list[str]) -> dict[str, list[s
     return out
 
 
-def _num(v) -> float | None:
+def _num(v: Any) -> float | None:
     try:
         return float(v)
     except (TypeError, ValueError):
         return None
 
 
-def _config_findings(base_name, base_cfg, head_name, head_cfg, where: str) -> list[Finding]:
+_SELECTION_KEYS = ("testpaths", "python_files", "norecursedirs")
+
+
+def _norm_path(p: str) -> str:
+    p = p.replace("\\", "/").strip()
+    while p.startswith("./"):
+        p = p[2:]
+    return p.rstrip("/")
+
+
+def collected_files(paths: Iterable[str], cfg: dict[str, Any]) -> set[str]:
+    """The .py files pytest would collect under cfg, judged statically from the file list: name
+    matches python_files, no directory matches norecursedirs, and (if set) inside testpaths."""
+    pf = _split_list(cfg.get("python_files")) or DEFAULTS["python_files"]
+    nr = _split_list(cfg.get("norecursedirs")) or DEFAULTS["norecursedirs"]
+    tp = [_norm_path(t) for t in _split_list(cfg.get("testpaths")) if _norm_path(t) not in ("", ".")]
+    out = set()
+    for p in paths:
+        if not p.endswith(".py"):
+            continue
+        parts = p.split("/")
+        if not any(fnmatch.fnmatchcase(parts[-1], pat) for pat in pf):
+            continue
+        if any(fnmatch.fnmatchcase(d, pat) for d in parts[:-1] for pat in nr):
+            continue
+        if tp and not any(p == t or p.startswith(t + "/") or fnmatch.fnmatchcase(p, t)
+                          or fnmatch.fnmatchcase(p, t + "/*") for t in tp):
+            continue
+        out.add(p)
+    return out
+
+
+def _collection_findings(path: str, base_cfg: dict[str, Any], head_cfg: dict[str, Any],
+                         base_paths: Iterable[str]) -> list[Finding]:
+    """One H4 finding if a test file pytest collected at base would no longer be collected."""
+    changed = [k for k in _SELECTION_KEYS if _split_list(base_cfg.get(k)) != _split_list(head_cfg.get(k))]
+    if not changed:
+        return []
+    lost = sorted(collected_files(base_paths, base_cfg) - collected_files(base_paths, head_cfg))
+    if not lost:
+        return []
+    keys = ", ".join(changed)
+    return [Finding(H4, path, None, f"pytest would no longer collect {len(lost)} test file(s) it collected before "
+                                    f"(changed: {keys}), for example " + ", ".join(lost[:3]) + ".",
+                    before="; ".join(f"{k} = {' '.join(_split_list(base_cfg.get(k))) or '(default)'}" for k in changed),
+                    after="; ".join(f"{k} = {' '.join(_split_list(head_cfg.get(k))) or '(default)'}" for k in changed),
+                    detail={"key": keys, "lost_files": lost[:50], "lost_count": len(lost)})]
+
+
+def _selection_findings_by_name(path: str, base_cfg: dict[str, Any], head_cfg: dict[str, Any]) -> list[Finding]:
+    """Without the repository's file list, judge testpaths/python_files/norecursedirs by their values."""
+    out = []
+    bt, ht = _split_list(base_cfg.get("testpaths")), _split_list(head_cfg.get("testpaths"))
+    gone = [t for t in bt if t not in ht]
+    if gone and ht:
+        out.append(Finding(H4, path, None, "testpaths no longer includes " + ", ".join(gone) + ".",
+                           before=" ".join(bt), after=" ".join(ht), detail={"key": "testpaths", "removed": gone}))
+    elif ht and not bt:
+        out.append(Finding(H4, path, None, "testpaths was introduced (" + " ".join(ht) + "); pytest now collects only "
+                           "there instead of from the whole rootdir.", after=" ".join(ht),
+                           detail={"key": "testpaths", "introduced": ht}))
+    b = _split_list(base_cfg.get("python_files")) or DEFAULTS["python_files"]
+    h = _split_list(head_cfg.get("python_files")) or DEFAULTS["python_files"]
+    gone = [x for x in b if x not in h]
+    if gone:
+        out.append(Finding(H4, path, None, f"python_files no longer matches {', '.join(gone)}, so tests named that way "
+                                           "are no longer collected.", before=" ".join(b), after=" ".join(h),
+                           detail={"key": "python_files", "removed": gone}))
+    b = _split_list(base_cfg.get("norecursedirs")) or DEFAULTS["norecursedirs"]
+    h = _split_list(head_cfg.get("norecursedirs")) or DEFAULTS["norecursedirs"]
+    added = [x for x in h if x not in b]
+    if added:
+        out.append(Finding(H4, path, None, "norecursedirs now skips " + ", ".join(added) + "; tests there are no "
+                           "longer collected.", before=" ".join(b), after=" ".join(h),
+                           detail={"key": "norecursedirs", "added": added}))
+    return out
+
+
+def _config_findings(base_name: str | None, base_cfg: dict[str, Any], head_name: str | None,
+                     head_cfg: dict[str, Any], where: str,
+                     base_paths: Iterable[str] | None = None) -> list[Finding]:
     out: list[Finding] = []
     if base_name and head_name and base_name != head_name and base_cfg:
         order = list(PYTEST_CONFIG_NAMES)
@@ -603,16 +693,11 @@ def _config_findings(base_name, base_cfg, head_name, head_cfg, where: str) -> li
     if diff["cov_lowered"]:
         out.append(Finding(H6, path, None, "The coverage threshold was lowered: " + diff["cov_lowered"][0] + ".",
                            detail={"key": "--cov-fail-under"}))
-    bt, ht = _split_list(base_cfg.get("testpaths")), _split_list(head_cfg.get("testpaths"))
-    gone = [t for t in bt if t not in ht]
-    if gone and ht:
-        out.append(Finding(H4, path, None, "testpaths no longer includes " + ", ".join(gone) + ".",
-                           before=" ".join(bt), after=" ".join(ht), detail={"key": "testpaths", "removed": gone}))
-    elif ht and not bt:
-        out.append(Finding(H4, path, None, "testpaths was introduced (" + " ".join(ht) + "); pytest now collects only "
-                           "there instead of from the whole rootdir.", after=" ".join(ht),
-                           detail={"key": "testpaths", "introduced": ht}))
-    for key in ("python_files", "python_classes", "python_functions"):
+    if base_paths is not None:
+        out += _collection_findings(path, base_cfg, head_cfg, base_paths)
+    else:
+        out += _selection_findings_by_name(path, base_cfg, head_cfg)
+    for key in ("python_classes", "python_functions"):
         b = _split_list(base_cfg.get(key)) or DEFAULTS[key]
         h = _split_list(head_cfg.get(key)) or DEFAULTS[key]
         gone = [x for x in b if x not in h]
@@ -620,13 +705,6 @@ def _config_findings(base_name, base_cfg, head_name, head_cfg, where: str) -> li
             out.append(Finding(H4, path, None, f"{key} no longer matches {', '.join(gone)}, so tests named that way "
                                                "are no longer collected.", before=" ".join(b), after=" ".join(h),
                                detail={"key": key, "removed": gone}))
-    b = _split_list(base_cfg.get("norecursedirs")) or DEFAULTS["norecursedirs"]
-    h = _split_list(head_cfg.get("norecursedirs")) or DEFAULTS["norecursedirs"]
-    added = [x for x in h if x not in b]
-    if added:
-        out.append(Finding(H4, path, None, "norecursedirs now skips " + ", ".join(added) + "; tests there are no "
-                           "longer collected.", before=" ".join(b), after=" ".join(h),
-                           detail={"key": "norecursedirs", "added": added}))
     if _truthy(base_cfg.get("xfail_strict", False)) and not _truthy(head_cfg.get("xfail_strict", False)):
         out.append(Finding(H4, path, None, "xfail_strict was turned off, so a test marked xfail that unexpectedly "
                                            "passes no longer fails the run.", detail={"key": "xfail_strict"}))
@@ -639,7 +717,7 @@ def _h4(cs: Changeset) -> tuple[list[Finding], list[Gap]]:
         return [], []
     base_files = {p: f.base_text for p, f in roots.items()}
     head_files = {p: f.head_text for p, f in roots.items()}
-    gaps = []
+    gaps: list[Gap] = []
     try:
         bn, bc = _active(base_files)
     except ConfigError as exc:
@@ -648,7 +726,7 @@ def _h4(cs: Changeset) -> tuple[list[Finding], list[Gap]]:
         hn, hc = _active(head_files)
     except ConfigError as exc:
         return [], [Gap("unparseable", f"pytest configuration at head: {exc}")]
-    return _config_findings(bn, bc, hn, hc, "pytest configuration"), gaps
+    return _config_findings(bn, bc, hn, hc, "pytest configuration", cs.base_paths), gaps
 
 
 # --------------------------------------------------------------------------- H5 (CI workflows)
@@ -660,8 +738,53 @@ _SUPPRESS = (r"\|\|\s*(true|:|exit\s+0|echo\b)|;\s*exit\s+0\b|\bset\s+\+e\b")
 _FALSE_IF = r"(?i)^\s*(\$\{\{\s*)?(false|0|''|\"\")(\s*\}\})?\s*$"
 
 
+NON_TEST_ENVS = frozenset({
+    "lint", "linting", "linters", "typing", "type", "types", "typecheck", "mypy", "pyright", "pyrefly", "ty", "docs",
+    "doc", "docset", "linkcheck", "spelling", "pre-commit", "precommit", "format", "fmt", "style", "flake8", "ruff",
+    "black", "isort", "pylint", "build", "release", "publish", "manifest", "check-manifest", "readme", "changelog",
+    "coverage-report", "coverage-combine", "coverage-clean", "codspeed", "bench", "benchmark", "benchmarks", "zizmor",
+    "audit", "safety", "docs-build", "docs-linkcheck", "docs-watch", "docs-sponsors", "dev", "clean",
+})
+_ENV_FLAGS = ("-e", "--env", "-f", "--factor", "-s", "--session", "--sessions", "-t", "--tags", "-m")
+
+
+def _selected_envs(tokens: list[str], tool_at: int) -> list[str]:
+    envs, i = [], tool_at + 1
+    while i < len(tokens):
+        t = tokens[i]
+        if t == "--" or t in ("&&", "||", ";", "|"):
+            break
+        key, _, val = t.partition("=")
+        if key in _ENV_FLAGS:
+            if not val and i + 1 < len(tokens):
+                val, i = tokens[i + 1], i + 1
+            envs += [e for e in re.split(r"[,\s]+", val) if e]
+        i += 1
+    return envs
+
+
+def _non_test_env(env: str) -> bool:
+    """lint, typing, docs, ... but not docs-doctests: any factor naming tests makes it a test env."""
+    e = env.lower().strip("\"'")
+    if "test" in e:
+        return False
+    return e in NON_TEST_ENVS or e.split("-")[0] in NON_TEST_ENVS
+
+
 def is_test_command(line: str) -> bool:
-    return bool(re.search(TEST_COMMAND, line)) and not re.search(r"\binstall\b", line)
+    if not re.search(TEST_COMMAND, line) or re.search(r"\binstall\b", line):
+        return False
+    try:
+        tokens = shlex.split(line)
+    except ValueError:
+        tokens = line.split()
+    tools = [i for i, t in enumerate(tokens) if t in ("tox", "nox")]
+    if tools and not re.search(r"(?<![\w./-])(pytest|py\.test)(?![\w./-])|-m\s*(pytest|unittest)\b|coverage\s+run|"
+                               r"hatch\s+(test|run)", line):
+        envs = [e for i in tools for e in _selected_envs(tokens, i)]
+        if envs and all(_non_test_env(e) for e in envs):
+            return False  # every selected tox env / nox session is lint, typing, docs, build, ...
+    return True
 
 
 def _test_lines(run: str) -> list[str]:
@@ -686,22 +809,28 @@ class _Step:
     tests: list[str]
     coe: str
     cond: str
-    env: dict
+    env: dict[str, Any]
 
 
-def _steps(job) -> list[_Step]:
+def _steps(job: Any) -> list[_Step]:
     out = []
     steps = job.get("steps") if isinstance(job, dict) else None
     for s in steps if isinstance(steps, list) else []:
         if not isinstance(s, dict):
             continue
-        run = s.get("run") if isinstance(s.get("run"), str) else ""
+        run = s["run"] if isinstance(s.get("run"), str) else ""
+        env = s["env"] if isinstance(s.get("env"), dict) else {}
         out.append(_Step(str(s.get("name") or ""), run, _test_lines(run), str(s.get("continue-on-error") or ""),
-                         str(s.get("if") or ""), s.get("env") if isinstance(s.get("env"), dict) else {}))
+                         str(s.get("if") or ""), env))
     return out
 
 
-def _triggers(doc) -> dict:
+def _env(node: object) -> dict[str, Any]:
+    env = node.get("env") if isinstance(node, dict) else None
+    return env if isinstance(env, dict) else {}
+
+
+def _triggers(doc: Any) -> dict[str, Any]:
     on = doc.get("on", doc.get(True)) if isinstance(doc, dict) else None
     if isinstance(on, str):
         return {on: {}}
@@ -734,7 +863,7 @@ def _cmd_diff(b: str, h: str) -> list[str]:
         if hv and hv != bv and not (bv and set(hv) >= set(bv)):
             why.append(f"{flag} {' '.join(hv)}")
     if "pytest" in " ".join(ha):
-        def positional(args):
+        def positional(args: list[str]) -> list[str]:
             if "pytest" not in args:
                 return []
             rest = args[args.index("pytest") + 1:]
@@ -758,7 +887,7 @@ def _cmd_diff(b: str, h: str) -> list[str]:
 
 def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[Finding], list[Gap]]:
     p = fc.path
-    docs = []
+    docs: list[Any] = []
     for side, text in (("base", fc.base_text), ("head", fc.head_text)):
         if text is None:
             docs.append(None)
@@ -774,12 +903,9 @@ def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[
     if not isinstance(base, dict):
         return [], []
     out: list[Finding] = []
-    bjobs = base.get("jobs") if isinstance(base.get("jobs"), dict) else {}
+    bjobs: dict[str, Any] = base["jobs"] if isinstance(base.get("jobs"), dict) else {}
     btests = {j: _steps(v) for j, v in bjobs.items()}
-    if not any(s.tests for ss in btests.values() for s in ss):
-        base_has_tests = False
-    else:
-        base_has_tests = True
+    base_has_tests = any(s.tests for ss in btests.values() for s in ss)
     if head is None:
         if base_has_tests:
             out.append(Finding(H5, p, None, "A workflow that ran the tests was deleted.",
@@ -788,22 +914,24 @@ def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[
         return out, []
     if not isinstance(head, dict):
         return out, []
-    hjobs = head.get("jobs") if isinstance(head.get("jobs"), dict) else {}
+    hjobs: dict[str, Any] = head["jobs"] if isinstance(head.get("jobs"), dict) else {}
     for jid, bsteps in sorted(btests.items()):
         tsteps = [s for s in bsteps if s.tests]
         if not tsteps:
             continue
-        bjob, hjob = bjobs.get(jid), hjobs.get(jid)
+        bjob = bjobs[jid] if isinstance(bjobs.get(jid), dict) else {}
+        hjob = hjobs.get(jid)
         if not isinstance(hjob, dict):
             out.append(Finding(H5, p, None, f"Job {jid!r}, which ran the tests, was removed.",
                                before=tsteps[0].tests[0], detail={"job": jid, "change": "job_removed"}))
             continue
-        for key, label in (("continue-on-error", "continue-on-error"), ("if", "if")):
+        for key in ("continue-on-error", "if"):
             bv, hv = str(bjob.get(key) or ""), str(hjob.get(key) or "")
             if key == "continue-on-error" and hv and hv.strip().lower() != "false" and bv != hv:
                 out.append(Finding(H5, p, None, f"Job {jid!r} runs the tests and now has continue-on-error: {hv}, "
                                                 "so failing tests no longer fail the workflow.",
-                                   after=f"continue-on-error: {hv}", detail={"job": jid, "change": "continue_on_error"}))
+                                   after=f"continue-on-error: {hv}",
+                                   detail={"job": jid, "change": "continue_on_error"}))
             if key == "if" and re.match(_FALSE_IF, hv) and not re.match(_FALSE_IF, bv):
                 out.append(Finding(H5, p, None, f"Job {jid!r} runs the tests and now has if: {hv}, so it never runs.",
                                    after=f"if: {hv}", detail={"job": jid, "change": "never_runs"}))
@@ -834,19 +962,21 @@ def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[
             if re.match(_FALSE_IF, hs.cond) and not re.match(_FALSE_IF, bs.cond):
                 out.append(Finding(H5, p, None, f"{where} now has if: {hs.cond}, so it never runs.",
                                    after=f"if: {hs.cond}", detail={"job": jid, "change": "never_runs"}))
-            for bt, ht in zip(bs.tests, hs.tests):
+            for bt, ht in zip(bs.tests, hs.tests, strict=False):
                 if bt != ht:
                     why = _cmd_diff(bt, ht)
                     if why:
                         out.append(Finding(H5, p, None, f"{where} now runs fewer tests: " + ", ".join(why) + ".",
                                            before=bt, after=ht, detail={"job": jid, "change": "narrowed"}))
-            for env_owner, benv, henv in (("step", bs.env, hs.env),):
-                bv, hv = str(benv.get("PYTEST_ADDOPTS", "")), str(henv.get("PYTEST_ADDOPTS", ""))
-                d = compare_args(_split_args(bv), _split_args(hv))
-                if d["select"]:
-                    out.append(Finding(H5, p, None, f"{where} now sets PYTEST_ADDOPTS to narrow the run: "
-                                       + ", ".join(d["select"]) + ".", after=f"PYTEST_ADDOPTS: {hv}",
-                                       detail={"job": jid, "change": "narrowed"}))
+            # GitHub applies workflow, then job, then step env; PYTEST_ADDOPTS can narrow the run from any of them.
+            benv = {**_env(base), **_env(bjob), **bs.env}
+            henv = {**_env(head), **_env(hjob), **hs.env}
+            bv, hv = str(benv.get("PYTEST_ADDOPTS", "")), str(henv.get("PYTEST_ADDOPTS", ""))
+            d = compare_args(_split_args(bv), _split_args(hv))
+            if d["select"]:
+                out.append(Finding(H5, p, None, f"{where} now sets PYTEST_ADDOPTS to narrow the run: "
+                                   + ", ".join(d["select"]) + ".", after=f"PYTEST_ADDOPTS: {hv}",
+                                   detail={"job": jid, "change": "narrowed"}))
     btrig, htrig = _triggers(base), _triggers(head)
     if base_has_tests:
         for t in ("pull_request", "push"):
@@ -883,16 +1013,28 @@ _COVERAGE_SECTIONS = {
 _BENIGN_EXCLUDE = ("type_checking", "notimplemented", "__main__", "overload", "abstractmethod", "__repr__",
                    "protocol", "pragma", "...", "pass", "if 0:", "if false:", "assert_never", "typing.")
 _PRAGMA = r"(?i)#\s*pragma:\s*no\s*cover"
+
+
+def _benign_exclude(pattern: str) -> bool:
+    """Exclusion regexes that hide only boilerplate. The pattern is unescaped first, so the regex spellings of
+    an ellipsis (three escaped dots, or an escaped dot repeated {3} times) are recognised too."""
+    plain = re.sub(r"\\(.)", r"\1", pattern).replace(".{3}", "...").lower()
+    return any(k in plain for k in _BENIGN_EXCLUDE)
+
+
+def _benign_omit(pattern: str) -> bool:
+    """Omit patterns for test code, entry-point shims and generated version files."""
+    return bool(re.search(r"(?i)test|conftest|__main__\.py$|_version\.py$|version\.py$", pattern))
 _TRIVIAL_CODE = (
     r"^(if\s+__name__\s*==\s*['\"]__main__['\"]\s*:|if\s+(\w+\.)?TYPE_CHECKING\s*:|raise\s+NotImplementedError\b.*"
     r"|pass|\.\.\.|except\s+ImportError\b.*:|except\s+\(?ImportError\b.*:|def\s+__repr__\s*\(.*|@(typing\.)?overload"
     r"|@(abc\.)?abstractmethod|else\s*:|)$")
 
 
-def coverage_settings(name: str, text: str | None) -> dict | None:
+def coverage_settings(name: str, text: str | None) -> dict[str, Any] | None:
     if text is None:
         return None
-    out: dict = {"omit": [], "exclude": [], "fail_under": None}
+    out: dict[str, Any] = {"omit": [], "exclude": [], "fail_under": None}
     try:
         if name == "pyproject.toml":
             doc = tomllib.loads(text)
@@ -900,7 +1042,7 @@ def coverage_settings(name: str, text: str | None) -> dict | None:
             if not isinstance(cov, dict):
                 return None
             for sec in ("run", "report"):
-                s = cov.get(sec) if isinstance(cov.get(sec), dict) else {}
+                s: dict[str, Any] = cov[sec] if isinstance(cov.get(sec), dict) else {}
                 out["omit"] += _split_list(s.get("omit"))
                 out["exclude"] += _split_list(s.get("exclude_lines")) + _split_list(s.get("exclude_also"))
                 if s.get("fail_under") is not None:
@@ -920,8 +1062,8 @@ def coverage_settings(name: str, text: str | None) -> dict | None:
         found = True
         s = dict(cp.items(sec))
         out["omit"] += [x.strip() for x in re.split(r"[,\n]", s.get("omit", "")) if x.strip()]
-        out["exclude"] += [x.strip() for x in s.get("exclude_lines", "").split("\n") + s.get("exclude_also", "").split("\n")
-                           if x.strip()]
+        lines = s.get("exclude_lines", "").split("\n") + s.get("exclude_also", "").split("\n")
+        out["exclude"] += [x.strip() for x in lines if x.strip()]
         if s.get("fail_under"):
             out["fail_under"] = _num(s["fail_under"])
     return out if found else None
@@ -941,12 +1083,12 @@ def _h6_config(fc: FileChange) -> tuple[list[Finding], list[Gap]]:
         new = "removed" if h["fail_under"] is None else f"{h['fail_under']:g}"
         out.append(Finding(H6, name, None, f"The coverage threshold fail_under was lowered from {b['fail_under']:g} to "
                                            f"{new}.", detail={"key": "fail_under"}))
-    omitted = [x for x in h["omit"] if x not in b["omit"] and not re.search(r"test|conftest", x, re.I)]
+    omitted = [x for x in h["omit"] if x not in b["omit"] and not _benign_omit(x)]
     if omitted:
         out.append(Finding(H6, name, None, "Coverage now omits " + ", ".join(omitted) + ", so code there no longer "
                                            "counts toward the coverage requirement.", after=", ".join(omitted),
                            detail={"key": "omit", "added": omitted}))
-    excluded = [x for x in h["exclude"] if x not in b["exclude"] and not any(k in x.lower() for k in _BENIGN_EXCLUDE)]
+    excluded = [x for x in h["exclude"] if x not in b["exclude"] and not _benign_exclude(x)]
     if excluded:
         out.append(Finding(H6, name, None, "Coverage now excludes lines matching " + ", ".join(excluded) + ".",
                            after=", ".join(excluded), detail={"key": "exclude", "added": excluded}))
@@ -1012,7 +1154,7 @@ def dependencies(name: str, text: str | None) -> dict[str, list[str]]:
     if text is None:
         return out
 
-    def add(s):
+    def add(s: Any) -> None:
         r = _req(s) if isinstance(s, str) else None
         if r and is_test_dependency(r[0]):
             out.setdefault(r[0], []).append(r[1])
@@ -1031,7 +1173,8 @@ def dependencies(name: str, text: str | None) -> dict[str, list[str]]:
                     add(s)
             poetry = (doc.get("tool", {}) or {}).get("poetry", {}) if isinstance(doc.get("tool"), dict) else {}
             groups = [poetry.get("dependencies", {}), poetry.get("dev-dependencies", {})]
-            groups += [g.get("dependencies", {}) for g in (poetry.get("group", {}) or {}).values() if isinstance(g, dict)]
+            poetry_groups = (poetry.get("group", {}) or {}).values()
+            groups += [g.get("dependencies", {}) for g in poetry_groups if isinstance(g, dict)]
             for g in groups:
                 for k, v in (g or {}).items() if isinstance(g, dict) else []:
                     if is_test_dependency(k):
@@ -1114,9 +1257,12 @@ def _h7(changes: list[FileChange]) -> tuple[list[Finding], list[Gap]]:
         lo, base_hi = _bounds(base[name])
         _, hi = _bounds(head[name])
         if hi is not None and (base_hi is None or hi < base_hi) and (lo is None or hi < lo or base_hi is None):
-            was = f"at least {lo}" if base_hi is None and lo is not None else "unbounded" if base_hi is None                 else f"at most {base_hi}"
-            out.append(Finding(H7, where[name], None, f"The test dependency {name} was pinned down: its highest allowed "
-                                                      f"major version went from {was} to {hi}.",
+            if base_hi is not None:
+                was = f"at most {base_hi}"
+            else:
+                was = f"at least {lo}" if lo is not None else "unbounded"
+            out.append(Finding(H7, where[name], None, f"The test dependency {name} was pinned down: its highest "
+                                                      f"allowed major version went from {was} to {hi}.",
                                before=f"{name} {' '.join(base[name])}".strip(),
                                after=f"{name} {' '.join(head[name])}".strip(),
                                detail={"dependency": name, "change": "pinned_down"}))
@@ -1128,7 +1274,7 @@ def _h7(changes: list[FileChange]) -> tuple[list[Finding], list[Gap]]:
 
 def _pytest11(fc: FileChange) -> list[Finding]:
     """A pytest11 entry point makes the package itself a pytest plugin that auto-loads when installed."""
-    def names(text):
+    def names(text: str | None) -> set[str]:
         if text is None:
             return set()
         try:

@@ -174,7 +174,7 @@ def test_report_shape():
     for key in ("schema_version", "mode", "outcome", "reasons", "contract", "findings", "evidence", "gaps",
                 "provenance", "summary", "condition_status"):
         assert key in r
-    assert r["schema_version"] == "1"
+    assert r["schema_version"] == "2"
     assert r["provenance"]["base_sha"] == "a" * 40
     f = r["findings"][0]
     for key in ("id", "rule", "title", "severity", "file", "test", "base_lines", "head_lines", "before", "after",

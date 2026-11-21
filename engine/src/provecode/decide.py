@@ -8,6 +8,7 @@ static-only run can be FAILED or INCONCLUSIVE but never VERIFIED.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from typing import Any
 
 from .contract import Contract
 from .model import BLOCKING, Finding, Gap
@@ -30,14 +31,14 @@ class Evidence:
     command: str = ""
     duration_s: float | None = None
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
 @dataclass
 class Decision:
     outcome: str
-    reasons: list[dict] = field(default_factory=list)
+    reasons: list[dict[str, Any]] = field(default_factory=list)
     condition_status: dict[str, str] = field(default_factory=dict)
 
 
@@ -61,7 +62,7 @@ def decide(
         return Decision(INCONCLUSIVE, reasons or [{"kind": "gap", "id": "contract_invalid",
                                                     "text": "No valid approved contract."}]), derived
 
-    failed_reasons: list[dict] = []
+    failed_reasons: list[dict[str, Any]] = []
     for f in findings:
         if f.severity == BLOCKING:
             failed_reasons.append({"kind": "finding", "id": f.id,

@@ -15,6 +15,9 @@ from __future__ import annotations
 
 import copy
 import re
+from typing import Any
+
+Node = Any  # a parsed YAML node: dict[str, Node], list[Node], str or None
 
 MAX_DEPTH = 64
 
@@ -95,7 +98,7 @@ class _Parser:
                 raise YamlError(f"line {n}: tab used for indentation")
         self.lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
         self.i = 0
-        self.anchors: dict[str, object] = {}
+        self.anchors: dict[str, Node] = {}
         self.depth = 0
 
     # ------------------------------------------------------------------ helpers
@@ -111,7 +114,7 @@ class _Parser:
 
     # ------------------------------------------------------------------ document
 
-    def document(self):
+    def document(self) -> Node:
         self._skip()
         if self.i < len(self.lines) and self.lines[self.i].startswith("%"):
             raise YamlUnsupported("directives are not supported")
@@ -138,7 +141,7 @@ class _Parser:
 
     # ------------------------------------------------------------------ block structures
 
-    def block(self, col: int):
+    def block(self, col: int) -> Node:
         self._enter()
         try:
             line = self.lines[self.i]
@@ -177,8 +180,8 @@ class _Parser:
             raise YamlUnsupported("merge keys are not supported")
         return kv
 
-    def mapping(self, col: int) -> dict:
-        out: dict = {}
+    def mapping(self, col: int) -> dict[str, Any]:
+        out: dict[str, Any] = {}
         while True:
             self._skip()
             if self.i >= len(self.lines):
@@ -202,8 +205,8 @@ class _Parser:
             self.i += 1
             out[key] = self.value(rest, col, first_line=first, in_mapping=True)
 
-    def sequence(self, col: int) -> list:
-        out: list = []
+    def sequence(self, col: int) -> list[Any]:
+        out: list[Any] = []
         while True:
             self._skip()
             if self.i >= len(self.lines):
@@ -238,7 +241,7 @@ class _Parser:
             self.i += 1
             out.append(self.value(stripped, col, first_line=first))
 
-    def _nested_or_empty(self, col: int, allow_same: bool):
+    def _nested_or_empty(self, col: int, allow_same: bool) -> Node:
         """The node below a `key:` or `-` with nothing after it."""
         self._skip()
         if self.i >= len(self.lines):
@@ -253,7 +256,7 @@ class _Parser:
 
     # ------------------------------------------------------------------ values
 
-    def value(self, rest: str, col: int, *, first_line: int, in_mapping: bool = False):
+    def value(self, rest: str, col: int, *, first_line: int, in_mapping: bool = False) -> Node:
         """Parse the value text `rest` that follows a key or dash on line first_line. self.i points
         after that line. col is the column of the owning key (or dash)."""
         anchor = None
@@ -392,19 +395,16 @@ class _Parser:
         if explicit:
             ind = col + int(explicit) if col >= 0 else int(explicit)
         else:
-            ind = next((_indent(l) for l in raw if l.strip()), col + 1)
+            ind = next((_indent(line) for line in raw if line.strip()), col + 1)
         body = []
-        for l in raw:
-            if l.strip() == "":
-                body.append(l[ind:] if len(l) > ind else "")
-            elif _indent(l) < ind:
+        for line in raw:
+            if line.strip() == "":
+                body.append(line[ind:] if len(line) > ind else "")
+            elif _indent(line) < ind:
                 raise YamlError("block scalar line less indented than its content")
             else:
-                body.append(l[ind:])
-        if style == "|":
-            text = "\n".join(body)
-        else:
-            text = _fold_block(body)
+                body.append(line[ind:])
+        text = "\n".join(body) if style == "|" else _fold_block(body)
         if not body:
             return "\n" * trailing if chomp == "+" else ""
         if chomp == "-":
@@ -415,7 +415,7 @@ class _Parser:
 
     # ------------------------------------------------------------------ flow
 
-    def flow_text(self, text: str, col: int):
+    def flow_text(self, text: str, col: int) -> Node:
         buf = _strip_comment(text)
         while _unbalanced(buf):
             if self.i >= len(self.lines):
@@ -460,11 +460,12 @@ class _Flow:
             i += 1
         return i
 
-    def node(self, i: int):
+    def node(self, i: int) -> tuple[Node, int]:
         self.p._enter()
         try:
             i = self._ws(i)
             anchor = None
+            node: Node
             m = re.match(_ANCHOR, self.t[i:])
             if m:
                 anchor, i = m.group(1), self._ws(i + m.end())
@@ -509,8 +510,8 @@ class _Flow:
             raise YamlError(f"flow scalar cannot start with {text[:1]!r}")
         return " ".join(text.split()) if text else "", j
 
-    def seq(self, i: int) -> tuple[list, int]:
-        out: list = []
+    def seq(self, i: int) -> tuple[list[Any], int]:
+        out: list[Any] = []
         i = self._ws(i)
         if self.t[i:i + 1] == "]":
             return out, i + 1
@@ -530,8 +531,8 @@ class _Flow:
             if self.t[i:i + 1] == "]":
                 return out, i + 1
 
-    def map(self, i: int) -> tuple[dict, int]:
-        out: dict = {}
+    def map(self, i: int) -> tuple[dict[str, Any], int]:
+        out: dict[str, Any] = {}
         i = self._ws(i)
         if self.t[i:i + 1] == "}":
             return out, i + 1
@@ -633,7 +634,7 @@ def _fold_block(body: list[str]) -> str:
     return text
 
 
-def loads(text: str):
+def loads(text: str) -> Node:
     """Parse one YAML document in the subset. Scalars are strings; an empty value is ""."""
     try:
         return _Parser(text).document()

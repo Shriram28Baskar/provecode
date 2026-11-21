@@ -7,6 +7,7 @@ dicts in and receive a report dict out.
 from __future__ import annotations
 
 import platform
+from typing import Any
 
 from . import __version__
 from . import analyzer, contract as contract_mod, decide as decide_mod, harness, report as report_mod
@@ -17,9 +18,9 @@ from .model import CONTRACT_TOUCHED, FileResult, Finding, Gap
 
 
 def run(
-    files: list[tuple[str, str | None, str | None]] | Changeset,
-    contract_head: dict | None,
-    contract_base: dict | None = None,
+    files: list[tuple[Any, ...]] | Changeset,
+    contract_head: dict[str, Any] | None,
+    contract_base: dict[str, Any] | None = None,
     *,
     mode: str = "static",
     limits: Limits | None = None,
@@ -27,9 +28,9 @@ def run(
     evidence: list[Evidence] | None = None,
     executed: bool = False,
     extra_gaps: list[Gap] | None = None,
-    provenance: dict | None = None,
+    provenance: dict[str, Any] | None = None,
     extra_findings: list[Finding] | None = None,
-) -> dict:
+) -> dict[str, Any]:
     """Analyze a change against an approved contract.
 
     `files` is either a Changeset (test files plus the harness, config, CI and source files the
@@ -37,9 +38,11 @@ def run(
     test-file tuples, which is analyzed exactly as before.
     """
     limits = limits or Limits.cli()
-    changeset = files if isinstance(files, Changeset) else None
-    if changeset is not None:
-        files = changeset.test_entries()
+    changeset: Changeset | None
+    if isinstance(files, Changeset):
+        changeset, entries = files, files.test_entries()
+    else:
+        changeset, entries = None, files
     gaps: list[Gap] = list(extra_gaps or [])
     head = base = None
     try:
@@ -56,7 +59,7 @@ def run(
 
     results = []
     findings: list[Finding] = []
-    for entry in sorted(files, key=lambda x: x[0]):
+    for entry in sorted(entries, key=lambda x: x[0]):
         # (path, base, head) or (path, base, head, old_path) for a rename.
         path, b, h = entry[0], entry[1], entry[2]
         old = entry[3] if len(entry) > 3 else None

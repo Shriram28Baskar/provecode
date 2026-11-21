@@ -67,57 +67,57 @@
   "evidence": [
     {
       "check_id": "chk-cap",
-      "command": "pytest test_contract_checkout.py::test_chk_cap (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_cap (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.16,
+      "duration_s": 1.41,
       "exit_code": 0,
       "id": "E1",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E1.xml -------------------\n1 passed in 0.09s",
-      "output_sha256": "a9dd496c2479123f3ef47ed7e0b964f772f8fff87363ddf2422e17a9ee100e73",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E1.xml -------------------\n1 passed in 0.20s",
+      "output_sha256": "d70878e1e014844a1bf9856f41230160723d90725ce0550863eed3646de37721",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-values",
-      "command": "pytest test_contract_checkout.py::test_chk_values (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_values (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.23,
+      "duration_s": 1.7,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.09s",
-      "output_sha256": "05bff53f71f90aff9197c949e4322133761ffb1b0218c7e79f566dbe3ed190d4",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.28s",
+      "output_sha256": "2e213e7dd402df42e2947c7814fe59abd509cca7221c8e1cd275a8a24c15b34c",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-invalid",
-      "command": "pytest test_contract_checkout.py::test_chk_invalid (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_invalid (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.16,
+      "duration_s": 1.59,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.11s",
-      "output_sha256": "c45fa0024eadf1731d6a38c399a17e303608413655f9e77e7127ad7bdf7f5282",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.21s",
+      "output_sha256": "b10abc374f8e5d0f8ce17c1aaaa5e1e813e5aa8142fa369a1bdbe3607b8010f8",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-signature",
-      "command": "pytest test_contract_checkout.py::test_chk_signature (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_signature (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.12,
+      "duration_s": 1.58,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.12s",
-      "output_sha256": "5bb687982226a098642bbe674c6586f920c4fee736d1c6ebbceb5c460be9fc0f",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.20s",
+      "output_sha256": "25f2ee149e41253741ee897450d9b875cac88f068ccb93f090aed09fbc5eded0",
       "owner": "contract",
       "result": "pass"
     },
@@ -125,16 +125,21 @@
       "check_id": "repo-tests",
       "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.25,
+      "duration_s": 1.41,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.24s",
-      "output_sha256": "dbcc989b42e8ab172a72bfaeaebacb0dbea1fa774f81079e66303caacabe666f",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.17s",
+      "output_sha256": "4b91523f94e91831aab681fca8e72624a9cee08eef3080372f0bbb61b86367d2",
       "owner": "repo",
       "result": "pass"
     }
   ],
   "files": [
+    {
+      "file": "checkout/pricing.py",
+      "tests_base": 0,
+      "tests_head": 0
+    },
     {
       "file": "tests/test_pricing.py",
       "tests_base": 3,
@@ -177,10 +182,10 @@
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
     "engine_version": "0.1.0",
-    "generated_at": "2026-11-20T15:57:46+00:00",
+    "generated_at": "2026-11-21T18:39:45+00:00",
     "head_sha": "08ca7f23363ccbccd81ef64522de61367057d5fb",
     "image": "provecode-run:local",
-    "image_id": "sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202",
+    "image_id": "sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -189,14 +194,14 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202\"]",
+    "repo_digests": "[\"provecode-run@sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",
       "network": "none",
       "pids": 128,
       "read_only": true,
-      "runner": "python -I, candidate tree appended to sys.path, JUnit report required",
+      "runner": "contract checks: python -I with only PROVECODE on sys.path, candidate reached through provecode.isolate in a child process; repo tests: candidate tree appended to sys.path; JUnit report required",
       "timeout_s": 120,
       "user": "65534:65534"
     }
@@ -223,10 +228,10 @@
       "text": "C4: all contract-owned checks passed; no blocking findings."
     }
   ],
-  "schema_version": "1",
+  "schema_version": "2",
   "summary": {
     "evidence": 5,
-    "files_analyzed": 1,
+    "files_analyzed": 2,
     "findings_by_severity": {
       "info": 1
     },

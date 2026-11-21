@@ -67,6 +67,33 @@ TUNING_LOG: list[dict] = [
 ]
 
 
+# Changes made AFTER the held-out results were first seen, with their measured effect (none came from Tier H data).
+REVISION_LOG: list[dict] = [
+    {
+        "date": "2026-11-22",
+        "source": "review of the real-history scan (docs/research/data/real_history_scan_v2.json) and of real "
+                  "workflows, not Tier H data",
+        "changes": [
+            "H5: a tox/nox call counts as a test command unless every selected env or session is a non-test one "
+            "(lint, typing, docs, docset, build, ...); `docs-doctests` and other names containing 'test' still count",
+            "H4: with the repository's file list, testpaths/python_files/norecursedirs changes are reported only "
+            "when pytest would stop collecting a test file it collected before, and those files are named",
+            "H6: regex spellings of an ellipsis in exclude patterns, and omitting __main__.py or version files, "
+            "are boilerplate",
+            "analyzed source is parsed with Python's warnings silenced (they describe the input, not PROVECODE)",
+        ],
+        "effect": "8 case results changed, all of them workflow weakening cases whose edited step runs "
+                  "`tox -e docs`, `tox run -e typing`, `tox -e lint` or `tox run -e docset` (HW01-03, HW01-06, "
+                  "HW02-06, HW03-03, HW03-06, HW04-02, HW04-03, HW04-06; 3 of them held-out). They are no longer "
+                  "flagged. The frozen pattern definition treated any tox call as a test command; under the corrected "
+                  "definition these are not test steps, so their 'weakening' labels are disputed and listed for the "
+                  "owner to relabel. Held-out recall against the frozen labels: 47 -> 44 of 47 (44 of 44 if the 3 "
+                  "disputed labels are set aside). No legitimate case changed; no other tier changed.",
+        "disputed_labels": ["HW01-03", "HW01-06", "HW02-06", "HW03-03", "HW03-06", "HW04-02", "HW04-03", "HW04-06"],
+    },
+]
+
+
 def _git_lines(args: list[str]) -> list[str]:
     out = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True)
     return [x for x in out.stdout.splitlines() if x.strip()] if out.returncode == 0 else []
@@ -257,7 +284,7 @@ def build(approve, wilson, mcnemar, engine_version: str, python: str, tuning_onl
         "tuning": metrics(tun, wilson, mcnemar),
         "all": metrics(rows, wilson, mcnemar),
         "tuning_log": TUNING_LOG,
-        "revision_log": [],
+        "revision_log": REVISION_LOG,
         "cases": rows,
         "provenance": {
             "engine_version": engine_version,

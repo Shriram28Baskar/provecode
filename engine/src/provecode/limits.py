@@ -10,6 +10,7 @@ from __future__ import annotations
 import io
 import tokenize
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -20,16 +21,16 @@ class Limits:
     max_indent_depth: int = 50
 
     @classmethod
-    def live(cls) -> "Limits":
+    def live(cls) -> Limits:
         """Browser / untrusted-input limits (architecture section 7.3)."""
         return cls(max_bytes=64 * 1024, max_lines=2_000)
 
     @classmethod
-    def cli(cls) -> "Limits":
+    def cli(cls) -> Limits:
         """Local CLI and benchmark limits: larger files, same nesting bounds."""
         return cls(max_bytes=2 * 1024 * 1024, max_lines=50_000)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "max_bytes": self.max_bytes,
             "max_lines": self.max_lines,

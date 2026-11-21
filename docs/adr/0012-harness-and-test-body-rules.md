@@ -125,3 +125,20 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
     - a regex exclude for `...` (`\.{3}`) and `omit **/__main__.py` (H6);
     - `testpaths` introduced during config cleanups (H4);
     - T5 and T1 firing on a generated test file in a Unicode data update (kjd/idna `9a4bc59e9d`, `007bcb6836`), where the specification itself changed.
+
+## Amendment, 2026-11-22: precision fixes from real-history review (disclosed in `tierH.json` `revision_log`)
+
+- **H5:** a tox/nox call is a test command unless every selected env or session is a non-test one (lint, typing, docs, docset, build, …). Names containing "test" (`docs-doctests`) still count.
+- **H4:** with the repository's file list, `testpaths`, `python_files` and `norecursedirs` changes are reported only when pytest would stop collecting a test file it collected before, and those files are named. Without a file list the rule judges by value, as before.
+- **H5:** PYTEST_ADDOPTS narrowing is read from workflow, job and step `env`, not only step `env`.
+- **H6:** regex spellings of an ellipsis, and omitting `__main__.py` or version files, are boilerplate.
+- **Parsing:** analyzed source is parsed with Python's warnings silenced. A test (`test_robustness.py`) showed that `-W error` turned a parseable file with an invalid escape into a false gap.
+- **Effect:**
+  - 8 Tier H case results changed, all workflow cases whose step runs `tox -e docs`, `tox run -e typing`, `tox -e lint` or `tox run -e docset`. Their "weakening" labels are disputed and listed for the owner.
+  - Held-out recall against the frozen labels: 44/47. Legitimate edits flagged: 0/26.
+  - No other tier changed.
+- **Engineering bar:**
+  - `mypy --strict` clean on `engine/src/provecode`;
+  - ruff clean (rules in `engine/pyproject.toml`);
+  - a corpus test runs every `.py`, config and workflow file of the 27 pinned repositories through the engine;
+  - a seeded fuzz test mutates real files 1,500 times. No crashes.

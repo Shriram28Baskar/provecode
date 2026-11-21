@@ -70,7 +70,7 @@ def merge_pyproject(base: str, head: str) -> str:
     """head's pyproject.toml with its pytest tables replaced by base's."""
     hl, hs = _tables(head)
     bl, bs = _tables(base)
-    kept = [l for i, l in enumerate(hl) if not any(a <= i < b for a, b in hs)]
+    kept = [line for i, line in enumerate(hl) if not any(a <= i < b for a, b in hs)]
     merged = "".join(kept)
     if not merged.endswith("\n"):
         merged += "\n"

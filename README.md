@@ -55,8 +55,8 @@ Tier H (harness and test-body weakenings, ADR 0012), held-out split: 47 injected
 
 | Held-out (Tier H) | PROVECODE | PROVECODE before ADR 0012 | "Harness file touched" | Count-based baseline |
 |---|---|---|---|---|
-| Weakenings caught | 47/47 (100%, 95% CI 92% to 100%) | 0/47 (0%, 95% CI 0% to 8%) | 37/47 (79%, 95% CI 65% to 88%) | 0/47 (0%, 95% CI 0% to 8%) |
-| Harness weakenings caught | 37/37 (100%, 95% CI 91% to 100%) | 0/37 (0%, 95% CI 0% to 9%) | 37/37 (100%, 95% CI 91% to 100%) | 0/37 (0%, 95% CI 0% to 9%) |
+| Weakenings caught | 44/47 (94%, 95% CI 83% to 98%) | 0/47 (0%, 95% CI 0% to 8%) | 37/47 (79%, 95% CI 65% to 88%) | 0/47 (0%, 95% CI 0% to 8%) |
+| Harness weakenings caught | 34/37 (92%, 95% CI 79% to 97%) | 0/37 (0%, 95% CI 0% to 9%) | 37/37 (100%, 95% CI 91% to 100%) | 0/37 (0%, 95% CI 0% to 9%) |
 | Test-body weakenings caught | 10/10 (100%, 95% CI 72% to 100%) | 0/10 (0%, 95% CI 0% to 28%) | 0/10 (0%, 95% CI 0% to 28%) | 0/10 (0%, 95% CI 0% to 28%) |
 | Legitimate edits flagged | 0/26 (0%, 95% CI 0% to 13%) | 0/26 (0%, 95% CI 0% to 13%) | 19/26 (73%, 95% CI 54% to 86%) | 0/26 (0%, 95% CI 0% to 13%) |
 Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 642 of 642 cases (Tier A: 168, Tier A-u: 132, Tier A-b: 99, Tier H: 243).
@@ -114,7 +114,7 @@ A base test that passes in A and fails in B is reported with its cause:
 - **X2**, the harness hides it (the test is unchanged);
 - **X3**, the test was deleted;
 - **X4**, a weakened test hides it;
-- **X5**, the expectation was edited;
+- **X5**, the expectation was edited. With no contract, this alone gives INCONCLUSIVE, never FAILED: the base tests cannot tell an intended behaviour change from a regression, so approve it in a contract;
 - **X6**, an ordinary regression.
 
 Base tests the change stopped collecting are **X1**.
@@ -243,9 +243,9 @@ These are kept current. Each is a way to make a broken change look green that PR
 ## Honest scope
 
 - Python only: pytest-style and unittest-style tests.
-- Tier A cases are injected. Real-world recall (Tier B) and precision (Tier C) aren't measured yet. How often PROVECODE fires on real, mostly human, test-editing commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10; every flagged commit awaits an owner label.
+- **Real-world precision: not yet measured.** Tier A, A-u, A-b and H cases are injected. Real-world recall (Tier B) and precision (Tier C) need owner labels. How often PROVECODE fires on real, mostly human, commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10 and `docs/research/data/real_history_scan_v2.json` (ADR 0012); every flagged commit awaits an owner label.
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
 - VERIFIED means no mandatory condition failed within the declared scope. It is not a proof of correctness.
-- Docker is not a complete security boundary. A contract check passes only with a JUnit report of tests that actually ran, and the candidate cannot shadow the runner. Code the candidate supplies still runs in the same process as the check, though, so deliberately malicious code could forge a report.
+- Docker is not a complete security boundary. A contract check passes only with a JUnit report of tests that actually ran, and the candidate cannot shadow the runner. Contract-owned checks reach the candidate only through `provecode.isolate`, in a child process, so candidate code cannot patch the pytest process that judges them (ADR 0013). In `rerun`'s runs B and C, the candidate's code and the base tests necessarily share a process, so deliberately malicious code could still forge run B's result; see `docs/04-threat-model.md`.
 - **Prior art:** MaruCheck already has approved, hashed contracts, contract-owned checks, deterministic decisions and inconclusive evidence. Existing count-based detectors catch deletions and skips. PROVECODE's contribution is the semantic, count-preserving rules and the benchmark (see `docs/00-competitive-audit.md`).

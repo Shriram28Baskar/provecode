@@ -141,3 +141,7 @@ def test_call_needs_a_candidate_tree(monkeypatch):
     monkeypatch.delenv(isolate.ROOT_ENV, raising=False)
     with pytest.raises(isolate.IsolationError, match="no candidate tree"):
         isolate.call("x:y")
+
+
+def test_signature_is_computed_in_the_candidate_process(candidate):
+    assert isolate.signature("honest:double", root=str(candidate)) == "(x)"

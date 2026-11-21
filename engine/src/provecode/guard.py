@@ -20,6 +20,7 @@ import re
 import sys
 import tempfile
 from pathlib import Path
+from typing import Any
 
 from . import changeset
 from . import contract as contract_mod
@@ -42,7 +43,7 @@ def _similarity(a: str, b: str) -> float:
     return difflib.SequenceMatcher(None, a.splitlines(), b.splitlines(), autojunk=False).ratio()
 
 
-def _pair_renames(entries: list[tuple]) -> list[tuple]:
+def _pair_renames(entries: list[tuple[Any, ...]]) -> list[tuple[Any, ...]]:
     """Pair deleted and added test files whose contents are similar enough into renames.
 
     git only detects renames between tracked paths, so an uncommitted `mv` to an untracked name
@@ -50,7 +51,8 @@ def _pair_renames(entries: list[tuple]) -> list[tuple]:
     """
     deleted = [e for e in entries if len(e) == 3 and e[1] is not None and e[2] is None]
     added = [e for e in entries if len(e) == 3 and e[1] is None and e[2] is not None]
-    scores = sorted(((_similarity(d[1], a[2]), d[0], a[0]) for d in deleted for a in added), key=lambda x: (-x[0], x[1], x[2]))
+    scores = sorted(((_similarity(d[1], a[2]), d[0], a[0]) for d in deleted for a in added),
+                    key=lambda x: (-x[0], x[1], x[2]))
     used_d, used_a, pairs = set(), set(), []
     for score, dp, ap in scores:
         if score < RENAME_SIMILARITY or dp in used_d or ap in used_a:
@@ -67,13 +69,16 @@ def _pair_renames(entries: list[tuple]) -> list[tuple]:
     return out
 
 
-def collect(repo: str, base_ref: str, staged: bool, protect: list[str]) -> tuple[list, list[str], dict, list[Gap], str, str]:
+def collect(repo: str, base_ref: str, staged: bool,
+            protect: list[str]) -> tuple[changeset.Changeset, list[str], dict[str, Any], list[Gap], str, str]:
     """(files, touched_protected, provenance, gaps, top, base_sha) for pipeline.run."""
     from .cli import _protected  # shared protected-path rule; imported lazily (cli imports guard lazily)
 
     top = git_mod.toplevel(repo)
     base = git_mod.rev_parse(top, base_ref)
-    entries, touched, gaps = [], [], []
+    entries: list[tuple[Any, ...]] = []
+    touched: list[str] = []
+    gaps: list[Gap] = []
     for ch in git_mod.changed_files_local(top, base, staged):
         if _protected(ch.path, protect) or (ch.old_path and _protected(ch.old_path, protect)):
             touched.append(ch.path)
@@ -82,14 +87,14 @@ def collect(repo: str, base_ref: str, staged: bool, protect: list[str]) -> tuple
         try:
             head = git_mod.show_index(top, ch.path) if staged else git_mod.show_worktree(top, ch.path)
             if ch.status == "R":
-                entries.append((ch.path, git_mod.show(top, base, ch.old_path), head, ch.old_path))
+                entries.append((ch.path, git_mod.show(top, base, ch.old_path or ch.path), head, ch.old_path))
             else:
                 b = None if ch.status == "A" else git_mod.show(top, base, ch.path)
                 entries.append((ch.path, b, head))
         except git_mod.DecodeError as exc:
             gaps.append(Gap("unparseable", str(exc), file=ch.path))
     prov = {"repo": Path(top).name, "base_sha": base, "head": "index" if staged else "working tree",
-            "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
+            "generated_at": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()}
     from .cli import harness_changes
 
     paired = _pair_renames(entries)
@@ -102,7 +107,7 @@ def collect(repo: str, base_ref: str, staged: bool, protect: list[str]) -> tuple
     return cs, sorted(set(touched)), prov, gaps + egaps, top, base
 
 
-def base_contract(top: str, base: str, path: str | None) -> tuple[dict | None, list[Gap]]:
+def base_contract(top: str, base: str, path: str | None) -> tuple[dict[str, Any] | None, list[Gap]]:
     """The approved contract as it is at the base commit. A missing default contract is not an
     error (findings are then ungraded); a missing explicit one is a gap."""
     rel = path or DEFAULT_CONTRACT
@@ -117,19 +122,19 @@ def base_contract(top: str, base: str, path: str | None) -> tuple[dict | None, l
         return None, [Gap("contract_invalid", str(exc))]
 
 
-def evaluate(repo: str, base_ref: str, staged: bool, contract: str | None, protect: list[str]) -> dict:
+def evaluate(repo: str, base_ref: str, staged: bool, contract: str | None, protect: list[str]) -> dict[str, Any]:
     files, touched, prov, gaps, top, base = collect(repo, base_ref, staged, protect)
     head, cgaps = base_contract(top, base, contract)
     return pipeline.run(files, head, None, mode="static", touched_protected=touched,
                         extra_gaps=gaps + cgaps, provenance=prov)
 
 
-def weakenings(rep: dict) -> list[dict]:
+def weakenings(rep: dict[str, Any]) -> list[dict[str, Any]]:
     return [f for f in rep["findings"] if f["severity"] in (WARNING, BLOCKING)
             and (f["rule"] in WEAKENING_RULES or f["rule"] == CONTRACT_TOUCHED)]
 
 
-def blocks(rep: dict, block_on: str) -> bool:
+def blocks(rep: dict[str, Any], block_on: str) -> bool:
     return rep["outcome"] == "FAILED" or (block_on == "weakening" and bool(weakenings(rep)))
 
 
@@ -138,7 +143,7 @@ def _clip(text: str | None, n: int = 240) -> str:
     return t if len(t) <= n else t[: n - 3] + "..."
 
 
-def summary(rep: dict, block: bool) -> str:
+def summary(rep: dict[str, Any], block: bool) -> str:
     prov = rep.get("provenance", {})
     lines = [f"PROVECODE guard: {'BLOCK' if block else 'ok'} ({rep['outcome']}; {prov.get('head', 'head')} "
              f"compared with {str(prov.get('base_sha', ''))[:12]})"]
@@ -168,7 +173,7 @@ def session_file(session_id: object) -> Path | None:
     return state_dir() / f"{session_id}.json"
 
 
-def _read_event(stdin) -> dict:
+def _read_event(stdin: Any) -> dict[str, Any]:
     try:
         event = json.load(stdin)
     except json.JSONDecodeError as exc:
@@ -178,11 +183,11 @@ def _read_event(stdin) -> dict:
     return event
 
 
-def _say(obj: dict) -> None:
+def _say(obj: dict[str, Any]) -> None:
     sys.stdout.write(json.dumps(obj, ensure_ascii=False) + "\n")
 
 
-def hook_session_start(event: dict) -> None:
+def hook_session_start(event: dict[str, Any]) -> None:
     """Record where the session began, so a weakening the agent commits is still caught."""
     path = session_file(event.get("session_id"))
     if path is None:
@@ -196,7 +201,7 @@ def hook_session_start(event: dict) -> None:
     path.write_text(json.dumps({"base": sha, "repo": top}), encoding="utf-8")
 
 
-def _session_base(event: dict, top: str) -> str:
+def _session_base(event: dict[str, Any], top: str) -> str:
     path = session_file(event.get("session_id"))
     if path is None or not path.is_file():
         return "HEAD"
@@ -206,10 +211,10 @@ def _session_base(event: dict, top: str) -> str:
         raise ValueError(f"unreadable session record {path}: {exc}") from exc
     if not isinstance(rec, dict) or rec.get("repo") != top or not _SHA.fullmatch(str(rec.get("base", ""))):
         return "HEAD"  # a record for another repository, or malformed: compare with HEAD
-    return rec["base"]
+    return str(rec["base"])
 
 
-def hook_stop(event: dict, args) -> None:
+def hook_stop(event: dict[str, Any], args: argparse.Namespace) -> None:
     cwd = str(event.get("cwd") or os.getcwd())
     top = git_mod.toplevel(cwd)
     rep = evaluate(top, _session_base(event, top), False, args.contract, args.protect)
@@ -227,7 +232,7 @@ def hook_stop(event: dict, args) -> None:
                            "restore them."})
 
 
-def run_hook(kind: str, args) -> int:
+def run_hook(kind: str, args: argparse.Namespace) -> int:
     """Hooks fail open: an error allows the stop or start and is shown to the user, because the PR
     check is the enforcement point and a hook that wedges every session gets uninstalled."""
     try:
@@ -238,7 +243,7 @@ def run_hook(kind: str, args) -> int:
             hook_stop(event, args)
     except (git_mod.GitError, contract_mod.ContractError, OSError, ValueError) as exc:
         _say({"systemMessage": f"PROVECODE guard could not run ({type(exc).__name__}: {exc}); nothing was blocked."})
-    except Exception as exc:  # noqa: BLE001 - fail open, but never silently
+    except Exception as exc:
         _say({"systemMessage": f"PROVECODE guard internal error ({type(exc).__name__}: {exc}); nothing was blocked."})
     return 0
 
@@ -246,7 +251,7 @@ def run_hook(kind: str, args) -> int:
 # --------------------------------------------------------------------------- command
 
 
-def cmd_guard(args) -> int:
+def cmd_guard(args: argparse.Namespace) -> int:
     if args.hook:
         return run_hook(args.hook, args)
     if args.base == "HEAD" and not git_mod.has_commits(git_mod.toplevel(args.repo)):
@@ -264,7 +269,7 @@ def cmd_guard(args) -> int:
     return 1 if block else 0
 
 
-def add_parser(sub) -> None:
+def add_parser(sub: Any) -> None:
     p = sub.add_parser("guard", help="check uncommitted or staged test changes (local and agent loops)",
                        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--repo", default=".")

@@ -18,6 +18,8 @@ import datetime as dt
 import json
 import sys
 from pathlib import Path
+from typing import Any
+from collections.abc import Callable
 
 from . import contract as contract_mod
 from . import git as git_mod
@@ -39,7 +41,8 @@ def _protected(path: str, extra: list[str]) -> bool:
 MAX_SOURCE_FILES = 500  # H6 reads changed source files for added `# pragma: no cover`; beyond this, a gap
 
 
-def harness_changes(repo: str, base: str, changes, read_head, test_paths: set[str]) -> tuple[list, list[Gap]]:
+def harness_changes(repo: str, base: str, changes: list[git_mod.Change], read_head: Callable[[str], str | None],
+                    test_paths: set[str]) -> tuple[list[cs_mod.FileChange], list[Gap]]:
     """FileChanges for everything except test files that the harness rules read (ADR 0012), plus the
     unchanged root pytest configuration files as context. read_head(path) returns head content."""
     out, gaps = [], []
@@ -78,11 +81,13 @@ def harness_changes(repo: str, base: str, changes, read_head, test_paths: set[st
     return out, gaps
 
 
-def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
+def _collect(args: argparse.Namespace) -> tuple[cs_mod.Changeset, list[str], dict[str, Any], list[Gap]]:
     repo = args.repo
     base = git_mod.rev_parse(repo, args.base)
     head = git_mod.rev_parse(repo, args.head)
-    files, touched, gaps = [], [], []
+    files: list[tuple[Any, ...]] = []
+    touched: list[str] = []
+    gaps: list[Gap] = []
     for ch in git_mod.changed_files(repo, base, head):
         if _protected(ch.path, args.protect) or (ch.old_path and _protected(ch.old_path, args.protect)):
             touched.append(ch.path)
@@ -95,7 +100,8 @@ def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
             elif ch.status == "D":
                 files.append((ch.path, git_mod.show(repo, base, ch.path), None))
             elif ch.status == "R":
-                files.append((ch.path, git_mod.show(repo, base, ch.old_path), git_mod.show(repo, head, ch.path),
+                files.append((ch.path, git_mod.show(repo, base, ch.old_path or ch.path),
+                              git_mod.show(repo, head, ch.path),
                               ch.old_path))
             else:
                 files.append((ch.path, git_mod.show(repo, base, ch.path), git_mod.show(repo, head, ch.path)))
@@ -108,11 +114,11 @@ def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
     cs.files += extra
     cs.base_sha, cs.head_sha = base, head
     prov = {"repo": str(Path(repo).resolve().name), "base_sha": base, "head_sha": head,
-            "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
+            "generated_at": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()}
     return cs, touched, prov, gaps + egaps
 
 
-def _contracts(args) -> tuple[dict | None, dict | None, list[Gap]]:
+def _contracts(args: argparse.Namespace) -> tuple[dict[str, Any] | None, dict[str, Any] | None, list[Gap]]:
     gaps = []
     head = base = None
     try:
@@ -127,7 +133,7 @@ def _contracts(args) -> tuple[dict | None, dict | None, list[Gap]]:
     return head, base, gaps
 
 
-def _emit(rep: dict, args) -> int:
+def _emit(rep: dict[str, Any], args: argparse.Namespace) -> int:
     text = report_mod.dumps(rep)
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)
@@ -142,13 +148,13 @@ def _emit(rep: dict, args) -> int:
     return EXIT[rep["outcome"]]
 
 
-def cmd_rerun(args) -> int:
+def cmd_rerun(args: argparse.Namespace) -> int:
     from . import rerun  # Docker path; CLI/CI only (ADR 0013)
 
     return _emit(rerun.run(args), args)
 
 
-def cmd_check(args) -> int:
+def cmd_check(args: argparse.Namespace) -> int:
     if getattr(args, "execute", False):
         if not args.image:
             print("provecode: error: --execute needs --image (a Docker image with Python and pytest)", file=sys.stderr)
@@ -169,7 +175,7 @@ def cmd_check(args) -> int:
     return _emit(rep, args)
 
 
-def cmd_record(args) -> int:
+def cmd_record(args: argparse.Namespace) -> int:
     from . import exec as exec_mod  # Docker path; CLI/CI only
 
     files, touched, prov, gaps = _collect(args)
@@ -181,14 +187,14 @@ def cmd_record(args) -> int:
     return _emit(rep, args)
 
 
-def cmd_approve(args) -> int:
+def cmd_approve(args: argparse.Namespace) -> int:
     doc = contract_mod.read_any(args.contract)
-    at = args.at or dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    at = args.at or dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     out = contract_mod.approve(doc, args.by, at)
     if Path(args.contract).suffix == ".json":  # keep the file's own format
         text = json.dumps(out, indent=2, ensure_ascii=False) + "\n"
     else:
-        import yaml  # CLI extra
+        import yaml  # type: ignore[import-untyped]  # CLI extra
 
         text = yaml.safe_dump(out, sort_keys=False, allow_unicode=True)
     Path(args.contract).write_text(text, encoding="utf-8", newline="\n")
@@ -196,7 +202,7 @@ def cmd_approve(args) -> int:
     return 0
 
 
-def cmd_compile(args) -> int:
+def cmd_compile(args: argparse.Namespace) -> int:
     data = contract_mod.compile_json(contract_mod.read_any(args.contract))
     if args.output:
         Path(args.output).write_bytes(data)
@@ -267,11 +273,11 @@ def main(argv: list[str] | None = None) -> int:
             stream.reconfigure(encoding="utf-8")
     args = build_parser().parse_args(argv)
     try:
-        return args.fn(args)
-    except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:  # noqa: B014
+        return int(args.fn(args))
+    except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:
         print(f"provecode: error: {exc}", file=sys.stderr)
         return 3
-    except Exception as exc:  # noqa: BLE001 - any crash must exit 3, never 1 (1 means FAILED)
+    except Exception as exc:
         print(f"provecode: internal error: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 3
 

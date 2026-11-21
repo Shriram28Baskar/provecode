@@ -5,6 +5,7 @@ from __future__ import annotations
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal, overload
 
 
 class GitError(Exception):
@@ -15,7 +16,15 @@ class DecodeError(GitError):
     """The file exists but is not UTF-8 text; recorded as an unparseable gap."""
 
 
-def _git(repo: str, *args: str, binary: bool = False):
+@overload
+def _git(repo: str, *args: str, binary: Literal[False] = ...) -> str: ...
+
+
+@overload
+def _git(repo: str, *args: str, binary: Literal[True]) -> bytes: ...
+
+
+def _git(repo: str, *args: str, binary: bool = False) -> str | bytes:
     try:
         # --no-optional-locks: even `git diff` must not refresh the index's stat cache.
         out = subprocess.run(["git", "--no-optional-locks", "-C", repo, *args], capture_output=True, timeout=60,
@@ -64,7 +73,7 @@ def _name_status(out: str) -> list[Change]:
     i = 0
     while i < len(parts) and parts[i]:
         st = parts[i]
-        if st.startswith("R") or st.startswith("C"):
+        if st.startswith(("R", "C")):
             changes.append(Change("R", parts[i + 2], parts[i + 1]))
             i += 3
         else:

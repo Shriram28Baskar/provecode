@@ -11,6 +11,7 @@ import hashlib
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 from .model import (ALWAYS_BLOCKING, BLOCKING, CONTRACT_BLOCKING, CONTRACT_TOUCHED, EXECUTION_BLOCKING, INFO,
                     INFO_RULES, NEVER_BLOCKING, T1, WARNING, WEAKENING_RULES, X3, X5, Finding)
@@ -38,9 +39,9 @@ class Contract:
     id: str
     version: int
     conditions: list[Condition]
-    checks: list[dict]
+    checks: list[dict[str, Any]]
     content_hash: str
-    approval: dict = field(default_factory=dict)
+    approval: dict[str, Any] = field(default_factory=dict)
 
     @property
     def mandatory(self) -> list[Condition]:
@@ -49,7 +50,7 @@ class Contract:
     def condition(self, cid: str) -> Condition | None:
         return next((c for c in self.conditions if c.id == cid), None)
 
-    def summary(self) -> dict:
+    def summary(self) -> dict[str, Any]:
         return {
             "id": self.id,
             "version": self.version,
@@ -64,15 +65,15 @@ class Contract:
         }
 
 
-def hashed_content(doc: dict) -> dict:
+def hashed_content(doc: dict[str, Any]) -> dict[str, Any]:
     return {"contract": doc.get("contract"), "conditions": doc.get("conditions"), "checks": doc.get("checks", [])}
 
 
-def canonical_bytes(obj) -> bytes:
+def canonical_bytes(obj: Any) -> bytes:
     return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
 
 
-def content_hash(doc: dict) -> str:
+def content_hash(doc: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(canonical_bytes(hashed_content(doc))).hexdigest()
 
 
@@ -81,7 +82,7 @@ def _req(cond: bool, msg: str, errors: list[str]) -> None:
         errors.append(msg)
 
 
-def validate(doc: dict) -> None:
+def validate(doc: dict[str, Any]) -> None:
     errors: list[str] = []
     if not isinstance(doc, dict):
         raise ContractError("contract document must be a mapping")
@@ -103,7 +104,7 @@ def validate(doc: dict) -> None:
         _req(ch.get("kind") in CHECK_KINDS, f"check {ch['id']}: kind must be one of {sorted(CHECK_KINDS)}", errors)
         _req(isinstance(ch.get("path"), str), f"check {ch['id']}: path must be a string", errors)
     conds = doc.get("conditions")
-    _req(isinstance(conds, list) and conds, "'conditions' must be a non-empty list", errors)
+    _req(isinstance(conds, list) and bool(conds), "'conditions' must be a non-empty list", errors)
     seen = set()
     for i, c in enumerate(conds if isinstance(conds, list) else []):
         if not isinstance(c, dict) or not isinstance(c.get("id"), str):
@@ -116,16 +117,18 @@ def validate(doc: dict) -> None:
         _req(c.get("type") in CONDITION_TYPES, f"{cid}: type must be one of {sorted(CONDITION_TYPES)}", errors)
         _req(isinstance(c.get("mandatory"), bool), f"{cid}: mandatory must be true or false", errors)
         gb = c.get("guarded_by", [])
-        _req(isinstance(gb, list) and all(isinstance(x, str) for x in gb), f"{cid}: guarded_by must be a list of test ids", errors)
+        _req(isinstance(gb, list) and all(isinstance(x, str) for x in gb),
+             f"{cid}: guarded_by must be a list of test ids", errors)
         cc = c.get("checks", [])
-        _req(isinstance(cc, list) and all(isinstance(x, str) for x in cc), f"{cid}: checks must be a list of check ids", errors)
+        _req(isinstance(cc, list) and all(isinstance(x, str) for x in cc),
+             f"{cid}: checks must be a list of check ids", errors)
         for ref in cc if isinstance(cc, list) else []:
             _req(ref in check_ids, f"{cid}: unknown check {ref}", errors)
     if errors:
         raise ContractError("; ".join(errors))
 
 
-def load(doc: dict, *, require_approval: bool = True) -> Contract:
+def load(doc: dict[str, Any], *, require_approval: bool = True) -> Contract:
     """Validate, recompute the hash and verify the approval record."""
     validate(doc)
     h = content_hash(doc)
@@ -142,10 +145,11 @@ def load(doc: dict, *, require_approval: bool = True) -> Contract:
                   list(c.get("checks", [])))
         for c in doc["conditions"]
     ]
-    return Contract(doc["contract"]["id"], doc["contract"]["version"], conds, list(doc.get("checks", [])), h, dict(approval))
+    return Contract(doc["contract"]["id"], doc["contract"]["version"], conds, list(doc.get("checks", [])), h,
+                    dict(approval))
 
 
-def approve(doc: dict, approved_by: str, approved_at: str) -> dict:
+def approve(doc: dict[str, Any], approved_by: str, approved_at: str) -> dict[str, Any]:
     """Return a copy of doc with an approval record over its current content hash."""
     validate(doc)
     out = dict(doc)
@@ -153,19 +157,26 @@ def approve(doc: dict, approved_by: str, approved_at: str) -> dict:
     return out
 
 
-def load_yaml(path: str | Path) -> dict:
+def load_yaml(path: str | Path) -> dict[str, Any]:
     try:
-        import yaml  # CLI extra only
+        import yaml  # type: ignore[import-untyped]  # CLI extra only
     except ImportError as exc:  # pragma: no cover - exercised only without the extra
         raise ContractError("reading YAML contracts needs the 'cli' extra: pip install provecode[cli]") from exc
     try:
         doc = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     except (OSError, yaml.YAMLError) as exc:
         raise ContractError(f"cannot read contract {path}: {exc}") from exc
-    return _plain(doc)
+    return _mapping(_plain(doc), str(path))
 
 
-def _plain(obj):
+def _mapping(doc: Any, name: str) -> dict[str, Any]:
+    """A contract document must be a mapping; anything else is a ContractError, never a crash later."""
+    if not isinstance(doc, dict):
+        raise ContractError(f"contract {name} must be a mapping, not {type(doc).__name__}")
+    return doc
+
+
+def _plain(obj: Any) -> Any:
     """YAML turns unquoted timestamps into date objects; keep everything JSON-representable."""
     import datetime as _dt
 
@@ -178,11 +189,11 @@ def _plain(obj):
     return obj
 
 
-def parse_text(text: str, name: str) -> dict:
+def parse_text(text: str, name: str) -> dict[str, Any]:
     """A contract from text, e.g. read from a git blob. JSON if name ends in .json, else YAML."""
     if name.endswith(".json"):
         try:
-            return json.loads(text)
+            return _mapping(json.loads(text), name)
         except json.JSONDecodeError as exc:
             raise ContractError(f"cannot read contract {name}: {exc}") from exc
     try:
@@ -190,22 +201,22 @@ def parse_text(text: str, name: str) -> dict:
     except ImportError as exc:  # pragma: no cover - exercised only without the extra
         raise ContractError("reading YAML contracts needs the 'cli' extra: pip install provecode[cli]") from exc
     try:
-        return _plain(yaml.safe_load(text))
+        return _mapping(_plain(yaml.safe_load(text)), name)
     except yaml.YAMLError as exc:
         raise ContractError(f"cannot read contract {name}: {exc}") from exc
 
 
-def read_any(path: str | Path) -> dict:
+def read_any(path: str | Path) -> dict[str, Any]:
     p = Path(path)
     if p.suffix == ".json":
         try:
-            return json.loads(p.read_text(encoding="utf-8"))
+            return _mapping(json.loads(p.read_text(encoding="utf-8")), str(path))
         except (OSError, json.JSONDecodeError) as exc:
             raise ContractError(f"cannot read contract {path}: {exc}") from exc
     return load_yaml(p)
 
 
-def compile_json(doc: dict) -> bytes:
+def compile_json(doc: dict[str, Any]) -> bytes:
     """Canonical JSON (with approval and hash) for the browser bundle."""
     c = load(doc)
     out = dict(hashed_content(doc))
@@ -247,7 +258,7 @@ def link_and_grade(findings: list[Finding], head: Contract, changed: set[str]) -
             keys.append(f.detail["renamed_from"])
         cids = sorted({cid for k in keys for cid in guards.get(k, [])})
         f.condition_ids = cids
-        mandatory = [cid for cid in cids if head.condition(cid).mandatory]
+        mandatory = [cid for cid in cids if (cond := head.condition(cid)) is not None and cond.mandatory]
         if (f.rule == CONTRACT_TOUCHED or (f.rule in ALWAYS_BLOCKING and not f.detail.get("advisory"))
                 or f.rule in EXECUTION_BLOCKING):
             f.severity = BLOCKING

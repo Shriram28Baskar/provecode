@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from typing import Any
 
 # Rule identifiers (docs/03-build-spec.md section 4).
 S1 = "S1"  # comparison weakened
@@ -99,17 +100,17 @@ class Finding:
     head_lines: tuple[int, int] | None = None
     before: str | None = None
     after: str | None = None
-    detail: dict = field(default_factory=dict)
+    detail: dict[str, Any] = field(default_factory=dict)
     # Assigned by provecode.contract.link_and_grade:
     id: str = ""
     severity: str = ""
     condition_ids: list[str] = field(default_factory=list)
 
-    def sort_key(self) -> tuple:
+    def sort_key(self) -> tuple[Any, ...]:
         line = (self.base_lines or self.head_lines or (0, 0))[0]
         return (self.file, self.test or "", line, self.rule)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d["title"] = RULE_TITLES.get(self.rule, self.rule)
         d["base_lines"] = list(self.base_lines) if self.base_lines else None
@@ -124,7 +125,7 @@ class Gap:
     file: str | None = None
     condition_id: str | None = None
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 

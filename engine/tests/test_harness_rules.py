@@ -358,3 +358,81 @@ def test_regression_shadow_inside_a_test_package_is_advisory():
     h3 = found(rep, "H3")
     assert h3 and h3[0]["severity"] == "warning" and h3[0]["detail"]["advisory"]
     assert rep["outcome"] != "FAILED"
+
+
+# --------------------------------------------------------------------------- H4 by simulated collection (real-history review)
+
+TREE = ("pyproject.toml", "src/pkg/__init__.py", "tests/test_core.py", "tests/test_io.py", "tests/slow/test_big.py",
+        "docs/conf.py", "scripts/check_x.py")
+
+
+def _cfg(extra: str) -> str:
+    return "[tool.pytest.ini_options]\n" + extra
+
+
+@pytest.mark.parametrize("before,after", [
+    ("", 'testpaths = ["tests"]\n'),                                    # introduced, but every test is under tests/
+    ('testpaths = ["tests", "docs"]\n', 'testpaths = ["tests"]\n'),     # removed entry held no tests
+    ('python_files = ["test_*.py", "*_test.py"]\n', 'python_files = ["test_*.py"]\n'),  # no *_test.py files exist
+    ("", 'norecursedirs = ["docs", "scripts"]\n'),                      # no tests there
+])
+def test_h4_selection_changes_that_lose_no_test_file_are_not_findings(before, after):
+    rep = run(FileChange("pyproject.toml", "M", _cfg(before), _cfg(after)), base_paths=TREE)
+    assert found(rep, "H4") == []
+
+
+@pytest.mark.parametrize("before,after,lost", [
+    ("", 'testpaths = ["tests/slow"]\n', "tests/test_core.py"),
+    ('testpaths = ["tests"]\n', 'testpaths = ["tests/slow"]\n', "tests/test_io.py"),
+    ("", 'python_files = ["test_core.py"]\n', "tests/test_io.py"),
+    ("", 'norecursedirs = ["slow"]\n', "tests/slow/test_big.py"),
+])
+def test_h4_selection_changes_that_lose_test_files_name_them(before, after, lost):
+    rep = run(FileChange("pyproject.toml", "M", _cfg(before), _cfg(after)), base_paths=TREE)
+    h4 = found(rep, "H4")
+    assert len(h4) == 1 and lost in h4[0]["detail"]["lost_files"]
+
+
+def test_h4_without_a_file_list_still_judges_by_value():
+    rep = run(FileChange("pyproject.toml", "M", _cfg(""), _cfg('testpaths = ["tests"]\n')))
+    assert found(rep, "H4")
+
+
+@pytest.mark.parametrize("line,expected", [
+    ("tox", True), ("tox run -e py311", True), ("uvx --with tox-uv tox run -f typing", False),
+    ("tox -e lint -- --show-diff-on-failure", False), ("tox run -e docs-doctests", True),
+    ("uv run --locked tox run -e typing", False), ("nox -s lint mypy", False), ("nox -s tests-3.12", True),
+    ("nox --session docs", False), ("tox -e py311,lint", True), ("pip install tox", False),
+    ("python -m pytest tests", True), ("coverage run -m pytest", True), ("ruff check .", False),
+])
+def test_h5_test_command_recognition(line, expected):
+    from provecode.harness import is_test_command
+
+    assert is_test_command(line) is expected
+
+
+def test_h5_removing_a_lint_job_run_through_tox_is_not_a_finding():
+    wf = ("on: [push]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: tox -e lint\n"
+          "  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: tox -e py\n")
+    head = wf.replace("  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: tox -e lint\n", "")
+    assert found(run(FileChange(WF, "M", wf, head))) == []
+    assert found(run(FileChange(WF, "M", wf, wf.replace("tox -e py\n", "tox -e py || true\n"))), "H5")
+
+
+@pytest.mark.parametrize("pattern", [r"\.\.\.", r"\.{3}", r"^\s*\.\.\.\s*$", "if TYPE_CHECKING:"])
+def test_h6_boilerplate_exclude_regexes_are_benign(pattern):
+    head = RC + "exclude_also =\n    " + pattern + "\n"
+    assert found(run(FileChange(".coveragerc", "M", RC, head))) == []
+
+
+@pytest.mark.parametrize("pattern", ["**/__main__.py", "src/pkg/_version.py"])
+def test_h6_omitting_entry_shims_and_version_files_is_benign(pattern):
+    head = RC.replace("    tests/*\n", "    tests/*\n    " + pattern + "\n")
+    assert found(run(FileChange(".coveragerc", "M", RC, head))) == []
+
+
+def test_regression_a_malformed_base_job_is_not_a_crash():
+    # Found by mypy --strict: a job that is not a mapping in the base workflow.
+    base = "on: [push]\njobs:\n  a: oops\n  t:\n    steps:\n      - run: pytest\n"
+    head = "on: [push]\njobs:\n  a: oops\n  t:\n    steps:\n      - run: pytest || true\n"
+    assert found(run(FileChange(WF, "M", base, head)), "H5")

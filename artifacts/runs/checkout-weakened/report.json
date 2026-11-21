@@ -64,57 +64,57 @@
   "evidence": [
     {
       "check_id": "chk-cap",
-      "command": "pytest test_contract_checkout.py::test_chk_cap (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_cap (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.12,
+      "duration_s": 2.01,
       "exit_code": 1,
       "id": "E1",
-      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:17: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.14s",
-      "output_sha256": "f73ac1618bec9f8ef97c9ad2f8babe48571a3676a52e7c3ebe69913b805ea4b2",
+      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:21: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.33s",
+      "output_sha256": "1e65bc6da0c4ce5ccf152d333ac80eeaf874bbb8eb68e412c1ff5b8ae6eafdcd",
       "owner": "contract",
       "result": "fail"
     },
     {
       "check_id": "chk-values",
-      "command": "pytest test_contract_checkout.py::test_chk_values (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_values (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.22,
+      "duration_s": 1.72,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.11s",
-      "output_sha256": "7f3258af5f3cbd10d945ab1f48e35e5f47dcf91751251a81e71e36e49018da7e",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.16s",
+      "output_sha256": "29fedad6fca0a39b87bfabc8af67a8cb3ec83f63452f5def4287641583b907af",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-invalid",
-      "command": "pytest test_contract_checkout.py::test_chk_invalid (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_invalid (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.28,
+      "duration_s": 1.45,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.10s",
-      "output_sha256": "7e29509634eb76a3852a1fc3909f2250809dd12f4a5f491f13db3e07ced320c7",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.18s",
+      "output_sha256": "aeb643e9966842a4ec79586f91fed64d3e806b9e783e8a1c7a15e07a56111df9",
       "owner": "contract",
       "result": "pass"
     },
     {
       "check_id": "chk-signature",
-      "command": "pytest test_contract_checkout.py::test_chk_signature (isolated runner, JUnit report required)",
+      "command": "pytest test_contract_checkout.py::test_chk_signature (candidate isolated in a child process; JUnit report required)",
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.12,
+      "duration_s": 1.34,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.09s",
-      "output_sha256": "84e2280a6e1c9ce3f4cef29463c3303c84037154c4bd3d9542d14c3ba4beb25e",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.19s",
+      "output_sha256": "7ddc6e3b1e75b1965d163bc81c0c36a42999d1cddbbad1d04bb2214be9b9a9e1",
       "owner": "contract",
       "result": "pass"
     },
@@ -122,16 +122,21 @@
       "check_id": "repo-tests",
       "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.19,
+      "duration_s": 1.44,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.14s",
-      "output_sha256": "9478334c251bb1b0879428ad72635360c9fd5bbbe67e1cba4601e491032dea6d",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.19s",
+      "output_sha256": "be7ef4b3daa060008935d457c5eac40431c696d6db065dfa95bc40e167b8f2d5",
       "owner": "repo",
       "result": "pass"
     }
   ],
   "files": [
+    {
+      "file": "checkout/pricing.py",
+      "tests_base": 0,
+      "tests_head": 0
+    },
     {
       "file": "tests/test_pricing.py",
       "tests_base": 3,
@@ -170,10 +175,10 @@
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
     "engine_version": "0.1.0",
-    "generated_at": "2026-11-20T15:57:39+00:00",
+    "generated_at": "2026-11-21T18:39:36+00:00",
     "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
     "image": "provecode-run:local",
-    "image_id": "sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202",
+    "image_id": "sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -182,14 +187,14 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:62a8b4520094412ecef0492863d2b845727a9ab03edd4d5371c59d25f031b202\"]",
+    "repo_digests": "[\"provecode-run@sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",
       "network": "none",
       "pids": 128,
       "read_only": true,
-      "runner": "python -I, candidate tree appended to sys.path, JUnit report required",
+      "runner": "contract checks: python -I with only PROVECODE on sys.path, candidate reached through provecode.isolate in a child process; repo tests: candidate tree appended to sys.path; JUnit report required",
       "timeout_s": 120,
       "user": "65534:65534"
     }
@@ -212,10 +217,10 @@
       "text": "Contract check chk-cap failed for C1."
     }
   ],
-  "schema_version": "1",
+  "schema_version": "2",
   "summary": {
     "evidence": 5,
-    "files_analyzed": 1,
+    "files_analyzed": 2,
     "findings_by_severity": {
       "blocking": 1
     },
