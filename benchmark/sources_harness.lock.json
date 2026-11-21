@@ -1,0 +1,95 @@
+{
+  "selection": "Fixed criteria, applied before any case was generated (ADR 0012): MIT, BSD-3-Clause or Apache-2.0 license; at least one tracked conftest.py; a pytest configuration file; a GitHub workflow that runs the tests; not used by Tier A, A-u or A-b; not a Gate 0 spike repo and not in spike/pool_snapshot.json. Candidates were checked in this order and every one that met the criteria was taken; jd/tenacity, pytest-dev/pytest-mock, sloria/environs and python-jsonschema/referencing (no conftest.py) and aio-libs/yarl (no conftest.py) were not. Pinned to default-branch HEAD fetched 2026-11-21. Licenses verified from the license file at the pinned SHA by benchmark/generate_cases.py.",
+  "sources": [
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "agronholm/anyio",
+      "sha": "37ba52b9137d72764d3bcbd31842b58a1e1ea992"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE-MIT",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "hynek/structlog",
+      "sha": "81779f0abe5942018c543e4a7cb047e92d2b5ad8"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "Apache-2.0"
+        }
+      ],
+      "repo": "arrow-py/arrow",
+      "sha": "2224255c4acc594d734cef0bbc83360452a67983"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "python-poetry/tomlkit",
+      "sha": "7bf7284dbd622557d9909f8fee017a4cb169a139"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "Apache-2.0"
+        }
+      ],
+      "repo": "aio-libs/multidict",
+      "sha": "cc51105d805ff8e43ff306861bbec84b9cd06651"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE.txt",
+          "spdx": "BSD-3-Clause"
+        }
+      ],
+      "repo": "pallets/jinja",
+      "sha": "5ef70112a1ff19c05324ff889dd30405b1002044"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "BSD-3-Clause"
+        }
+      ],
+      "repo": "theskumar/python-dotenv",
+      "sha": "4fbc6ff07215367ece731006855e732d1405992c"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "hynek/stamina",
+      "sha": "e60fd72749bbe447dae6cc9d73a4006facf4633d"
+    },
+    {
+      "licenses": [
+        {
+          "file": "LICENSE",
+          "spdx": "MIT"
+        }
+      ],
+      "repo": "python-attrs/cattrs",
+      "sha": "e9239b7082206f18e3cec873b11451aff35beb9c"
+    }
+  ]
+}
