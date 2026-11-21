@@ -84,9 +84,23 @@ REVISION_LOG = [
             "TestCase subclasses are test classes; self.assert* calls are checks mapped onto S1/S2/B3",
             "self.assertRaises*/assertWarns* feed S3; the Regex argument counts as match=",
             "unittest.skip/skipIf/skipUnless/expectedFailure and a leading self.skipTest() are B2",
-            "tests.py and modules under tests/ or test/ are test files; renames to uncollected names are B1",
+            "tests.py and modules under tests/ are test files; renames to uncollected names are B1",
         ],
         "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
+    },
+]
+
+# Tier A-u: changes made after its held-out results were first seen (2026-11-21).
+REVISION_LOG_UNITTEST = [
+    {
+        "date": "2026-11-21",
+        "source": "SWE-bench Verified gold test-file measurement (docs/research), not Tier A-u data",
+        "changes": [
+            "a singular test/ directory no longer makes every module a test file (django/test/testcases.py is "
+            "framework code); tests/ directories and test_*.py / *_test.py / tests.py names are unchanged",
+        ],
+        "effect_on_tier_a": "none: no Tier A-u case is in a test/ directory; all 132 case results and all metrics "
+                            "identical before and after",
     },
 ]
 
@@ -282,7 +296,7 @@ TIERS = {
             "bench_code": ("baseline_count.py", "generate_cases.py", "generate_cases_unittest.py", "regenerate.py"),
             "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). "
                      "Not real-world performance.",
-            "tuning_log": [], "revision_log": []},
+            "tuning_log": [], "revision_log": REVISION_LOG_UNITTEST},
 }
 
 

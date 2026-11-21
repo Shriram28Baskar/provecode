@@ -183,11 +183,11 @@ Whether that edit is a weakening or the intended behaviour change is **for the o
 - Even inside a visible file, the analyzer only recognises functions named `test*` and classes named `Test*`. In §1.8, `tests/migrations/test_writer.py` passes the filename filter, yet **zero** tests were recognised in its base version (unittest class `WriterTests`).
 
 **Re-measured 2026-11-21, after ADR 0009** (same command; `docs/research/data/swebench_agent_tests.json` now holds these numbers, and the figures above are the pre-change baseline):
-- File visibility: **647/652 (99.2%)**, up from 457. Django: 327/328. The 5 still invisible are `__init__.py`, `conftest.py` and modules under `testing/` directories.
-- Of the 629 visible files that exist at the task's base commit, **577** have at least one recognised test in the base version. For the 177 newly visible ones, the figure is 134.
-- Analyzer gaps on newly visible files: **0/177**. Both drop criteria of R1 are met.
+- File visibility: **646/652 (99.1%)**, up from 457. Django: 326/328. The 6 still invisible are `__init__.py`, `conftest.py`, modules under `testing/` directories, and `django/test/testcases.py` (see the last bullet).
+- Of the 628 visible files that exist at the task's base commit, **577** have at least one recognised test in the base version. For the 176 newly visible ones, the figure is 134.
+- Analyzer gaps on newly visible files: **0/176**. Both drop criteria of R1 are met.
 - Pilot (§1.8): `django__django-11815`'s `test_writer.py` now has 46 recognised tests, and `django__django-14608`'s `tests/admin_views/tests.py` is now visible, with 336. Findings on the 7 Gemini files are unchanged: one S4, on `test_dates.py`.
-- **New false positive of the filter.** GPT-5.2's edit to `django/test/testcases.py` (`django__django-14011`) is Django's test-framework source, not a test. It now counts as a test file because of the `test/` directory rule. No tests are recognised in it and there are no findings, but it is the only gold file that the singular `test/` rule adds (1 of 652).
+- **A false positive, found and removed.** As first built, a singular `test/` directory also made every module a test file. That counted GPT-5.2's edit to Django's test-framework source `django/test/testcases.py` (`django__django-14011`) as a test edit. It was the only gold file the rule added (1 of 652), so the rule was dropped (ADR 0009 amendment). With it gone, GPT-5.2 is back to 0 test-file edits, and the figures above are after the fix.
 
 ---
 
@@ -357,6 +357,9 @@ union recall rises from 120 to 122 of 138 (landscape §1.7).
   3. Report recall on the authors' "modified tests" category, and the share of those edits that are semantic (count-preserving) versus deletions.
 - **Gate.** Gate 2 (external validation).
 - **Drop if.** The transcripts aren't publicly available, since re-running agents costs money and is excluded by the $0 rule. Also drop if the transcripts lack base and head test text.
+- **Checked 2026-11-21: dropped.**
+  - The README of `github.com/safety-research/impossiblebench` (MIT) releases the task datasets (`fjzzq2002/impossible_livecodebench`, `fjzzq2002/impossible_swebench` on Hugging Face). It says nothing about releasing agent transcripts, eval logs or per-transcript cheating labels; users generate their own logs, and an LLM judge classifies them.
+  - An unrelated Hugging Face dataset, `auditing-agents/transcripts_for_hardcode_test_cases`, came up in search. Its provenance and labels are unverified, so it is a lead, not a source.
 
 ```markdown
 # ADR 0012 — External validation on ImpossibleBench transcripts

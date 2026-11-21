@@ -25,3 +25,8 @@ The analyzer recognises only `test*` functions and methods of `Test*` classes. M
   - analyzer gaps on at most 5% of newly visible files
 - More code is analyzed, so more false-positive surface. Tier C precision becomes more urgent.
 - Tier A-u labels are pattern classes written by the developer, like Tier A's. The owner should confirm them (research report §5).
+
+## Amendment, 2026-11-21 (after implementation and re-measurement)
+- **Singular `test/` directories are dropped.** Only `tests/` directories make every module a test file. Files in a `test/` directory still count when they are named `test_*.py`, `*_test.py` or `tests.py`.
+  - Evidence (`docs/research/data/swebench_agent_tests.json`): the `test/` rule added exactly 1 of 652 gold test files, `django/test/testcases.py`. That file is Django's test-framework source, not a test. It also made a GPT-5.2 edit to framework code count as a test edit. No Tier A or Tier A-u case is in a `test/` directory.
+- **Bases ending in `Tests` were not built.** Classes count as test classes when they are named `Test*` or have a base ending in `TestCase`. Recognising mixin bases named `…Tests` would widen the false-positive surface, and no measurement shows a need for it.

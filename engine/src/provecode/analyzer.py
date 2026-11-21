@@ -749,7 +749,8 @@ def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _
 
 def is_test_path(path: str) -> bool:
     """pytest-named files (test_*.py, *_test.py), Django-style tests.py, and any module inside a
-    tests/ or test/ directory (ADR 0009). conftest.py and __init__.py are support files, not tests."""
+    tests/ directory (ADR 0009). conftest.py and __init__.py are support files, not tests. A singular
+    test/ directory is not enough on its own: it is often framework code (django/test/testcases.py)."""
     p = path.replace("\\", "/")
     parts = p.split("/")
     name = parts[-1]
@@ -757,7 +758,7 @@ def is_test_path(path: str) -> bool:
         return False
     if name.startswith("test_") or name.endswith("_test.py") or name == "tests.py":
         return True
-    return any(d in ("tests", "test") for d in parts[:-1])
+    return "tests" in parts[:-1]
 
 
 def is_collected_name(path: str) -> bool:

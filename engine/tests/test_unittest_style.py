@@ -184,7 +184,9 @@ def test_test_method_deleted_from_testcase_is_b1():
     ("pkg/x_test.py", True),
     ("app/tests.py", True),
     ("tests/helpers.py", True),
-    ("pkg/test/util.py", True),
+    ("pkg/test/util.py", False),  # singular test/ is often framework code, e.g. django/test/ (ADR 0009 amendment)
+    ("django/test/testcases.py", False),
+    ("pkg/test/test_util.py", True),
     ("tests\\sub\\cases.py", True),
     ("tests/conftest.py", False),
     ("tests/__init__.py", False),
