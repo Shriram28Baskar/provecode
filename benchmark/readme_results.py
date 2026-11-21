@@ -47,9 +47,11 @@ def block() -> str:
         f"F1 (count-preserving recall above the baseline) is "
         f"**{'supported' if t['falsification']['F1']['supported'] else 'not supported'}** on Tier A "
         f"(exact McNemar p = {p:.2g})." if p is not None else "F1: not testable.",
-        "Known blind spots, by design: tautologies (`A == A`), swallowed assertions and `or True` are caught in "
+        "W17–W19 (tautologies, swallowed assertions, `or True`) were blind spots by design. Rules S5 and B4, added "
+        "after those results were seen, now catch "
         f"{sum(v['provecode_flagged'] for k, v in t['all']['by_pattern'].items() if k in ('W17', 'W18', 'W19'))} of "
-        f"{sum(v['n'] for k, v in t['all']['by_pattern'].items() if k in ('W17', 'W18', 'W19'))} cases.",
+        f"{sum(v['n'] for k, v in t['all']['by_pattern'].items() if k in ('W17', 'W18', 'W19'))}, so Tier A recall on "
+        "them is not an unbiased estimate; Tier A-b below is the fresh test of those rules.",
     ]
     u_path = ROOT / "artifacts/benchmark/tierA_u.json"
     if u_path.exists():
@@ -72,15 +74,32 @@ def block() -> str:
             f"| Legitimate edits blocked (PROVECODE) / flagged (baseline) | {_cell(uh['legit_blocking']['provecode'])} | "
             f"{_cell(uh['legit_flagged']['baseline'])} |",
             "",
-            "Same blind spots in unittest form: tautologies and swallowed assertions are caught in "
+            "The same blind spots in unittest form (U13–U14) are now caught in "
             f"{sum(v['provecode_flagged'] for k, v in ub.items() if k in ('U13', 'U14'))} of "
-            f"{sum(v['n'] for k, v in ub.items() if k in ('U13', 'U14'))} cases.",
+            f"{sum(v['n'] for k, v in ub.items() if k in ('U13', 'U14'))}, with the same caveat.",
+        ]
+    b_path = ROOT / "artifacts/benchmark/tierA_b.json"
+    if b_path.exists():
+        b = json.loads(b_path.read_text(encoding="utf-8"))
+        bh = b["held_out"]
+        lines += [
+            "",
+            f"Tier A-b (vacuous and swallowed checks, ADR 0011), held-out split: {bh['n_weakening']} injected "
+            f"weakenings and {bh['n_legit']} legitimate near-misses in {len(b['provenance']['sources'])} further "
+            "repositories, frozen before the S5/B4 rule code. **Experimental, injected cases; the patterns mirror the "
+            "rules' stated targets, so this shows the rules work as specified, not real-world recall.**",
+            "",
+            "| Held-out (Tier A-b) | PROVECODE | Count-based baseline (reimplementation) |",
+            "|---|---|---|",
+            f"| Weakenings caught | {_cell(bh['recall']['provecode'])} | {_cell(bh['recall']['baseline'])} |",
+            f"| Legitimate edits flagged | {_cell(bh['legit_flagged']['provecode'])} | "
+            f"{_cell(bh['legit_flagged']['baseline'])} |",
         ]
     if par:
         lines.append(
             f"Browser parity: Pyodide {par['pyodide_version']} (Python {par['pyodide_python']}) matches CPython "
             f"{par['cpython_reference']} on {par['cases_compared']} of {par['cases_compared']} cases"
-            + (" (" + " and ".join(f"Tier {t['tier']}: {t['cases_compared']}" for t in par["tiers"]) + ")"
+            + (" (" + ", ".join(f"Tier {x['tier']}: {x['cases_compared']}" for x in par["tiers"]) + ")"
                if par.get("tiers") else "")
             if par["identical"] else f"Browser parity: {len(par['mismatches'])} mismatches against CPython"
         )

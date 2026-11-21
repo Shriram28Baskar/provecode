@@ -1,6 +1,6 @@
-// Pyodide parity (build spec section 8): run every Tier A and Tier A-u case through the engine
+// Pyodide parity (build spec section 8): run every Tier A, A-u and A-b case through the engine
 // inside Pyodide (the same runtime the browser uses) and diff against the CPython results in
-// artifacts/benchmark/tierA.json and tierA_u.json. Writes artifacts/benchmark/parity.json.
+// artifacts/benchmark/tierA.json, tierA_u.json and tierA_b.json. Writes artifacts/benchmark/parity.json.
 //
 //   node benchmark/pyodide_parity.mjs     (needs web/node_modules, benchmark/.cache/cases and cases_unittest)
 import { createRequire } from "node:module";
@@ -15,6 +15,7 @@ const { loadPyodide, version } = require("pyodide");
 const TIERS = [
   { artifact: "artifacts/benchmark/tierA.json", cases: "benchmark/.cache/cases" },
   { artifact: "artifacts/benchmark/tierA_u.json", cases: "benchmark/.cache/cases_unittest" },
+  { artifact: "artifacts/benchmark/tierA_b.json", cases: "benchmark/.cache/cases_blindspots" },
 ].map((t) => ({ ...t, data: JSON.parse(readFileSync(join(root, t.artifact), "utf8")) }));
 const py = await loadPyodide();
 py.FS.mkdirTree("/engine/provecode");

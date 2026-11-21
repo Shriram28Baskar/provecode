@@ -16,7 +16,7 @@
 - **The contract is read from the base commit**, at `--contract PATH`, default `.provecode/contract.yaml`, if it exists there. An agent cannot relax the contract by editing it in the working tree. A working-tree edit to a protected path is itself a blocking finding, as it already is on PRs.
 - **With no contract**, findings are reported ungraded (warning) and the gate still works. This makes it a zero-configuration drop-in.
 - **`--block-on`** sets the exit code:
-  - `weakening` (the default): exit 1 if any S1–S4/B1–B3 finding has severity warning or blocking, or if the outcome is FAILED.
+  - `weakening` (the default): exit 1 if any weakening finding (S1–S4/B1–B3; S5 and B4 since ADR 0011) has severity warning or blocking, or if the outcome is FAILED.
   - `failed`: exit 1 only on FAILED.
   - Otherwise exit 0, and 3 on usage or internal errors. INCONCLUSIVE alone never blocks a commit, because static mode cannot produce VERIFIED.
 - **Hooks.**

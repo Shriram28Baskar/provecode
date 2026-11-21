@@ -25,25 +25,32 @@ Tier A, held-out split: 44 injected weakenings and 6 legitimate edits in 6 real 
 
 | Held-out | PROVECODE | Count-based baseline (reimplementation) |
 |---|---|---|
-| Count-preserving weakenings caught | 30/37 (81%, 95% CI 66% to 91%) | 7/37 (19%, 95% CI 9% to 34%) |
-| All weakenings caught | 37/44 (84%, 95% CI 71% to 92%) | 14/44 (32%, 95% CI 20% to 47%) |
+| Count-preserving weakenings caught | 36/37 (97%, 95% CI 86% to 100%) | 7/37 (19%, 95% CI 9% to 34%) |
+| All weakenings caught | 43/44 (98%, 95% CI 88% to 100%) | 14/44 (32%, 95% CI 20% to 47%) |
 | Count-reducing weakenings caught | 7/7 (100%, 95% CI 65% to 100%) | 7/7 (100%, 95% CI 65% to 100%) |
 | Legitimate edits blocked (PROVECODE) / flagged (baseline) | 0/6 (0%, 95% CI 0% to 39%) | 1/6 (17%, 95% CI 3% to 56%) |
 
-F1 (count-preserving recall above the baseline) is **supported** on Tier A (exact McNemar p = 2.4e-07).
-Known blind spots, by design: tautologies (`A == A`), swallowed assertions and `or True` are caught in 0 of 18 cases.
+F1 (count-preserving recall above the baseline) is **supported** on Tier A (exact McNemar p = 3.7e-09).
+W17–W19 (tautologies, swallowed assertions, `or True`) were blind spots by design. Rules S5 and B4, added after those results were seen, now catch 17 of 18, so Tier A recall on them is not an unbiased estimate; Tier A-b below is the fresh test of those rules.
 
 Tier A-u (unittest-style tests, ADR 0009), held-out split: 28 injected weakenings and 12 legitimate edits in 5 other real repositories, frozen before the detector change. **Experimental, injected cases; not real-world performance.**
 
 | Held-out (Tier A-u) | PROVECODE | Count-based baseline (reimplementation) |
 |---|---|---|
-| Count-preserving weakenings caught | 16/21 (76%, 95% CI 55% to 89%) | 3/21 (14%, 95% CI 5% to 35%) |
-| All weakenings caught | 23/28 (82%, 95% CI 64% to 92%) | 10/28 (36%, 95% CI 21% to 54%) |
+| Count-preserving weakenings caught | 20/21 (95%, 95% CI 77% to 99%) | 3/21 (14%, 95% CI 5% to 35%) |
+| All weakenings caught | 27/28 (96%, 95% CI 82% to 99%) | 10/28 (36%, 95% CI 21% to 54%) |
 | Count-reducing weakenings caught | 7/7 (100%, 95% CI 65% to 100%) | 7/7 (100%, 95% CI 65% to 100%) |
 | Legitimate edits blocked (PROVECODE) / flagged (baseline) | 0/12 (0%, 95% CI 0% to 24%) | 1/12 (8%, 95% CI 1% to 35%) |
 
-Same blind spots in unittest form: tautologies and swallowed assertions are caught in 0 of 12 cases.
-Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 300 of 300 cases (Tier A: 168 and Tier A-u: 132).
+The same blind spots in unittest form (U13–U14) are now caught in 11 of 12, with the same caveat.
+
+Tier A-b (vacuous and swallowed checks, ADR 0011), held-out split: 22 injected weakenings and 8 legitimate near-misses in 7 further repositories, frozen before the S5/B4 rule code. **Experimental, injected cases; the patterns mirror the rules' stated targets, so this shows the rules work as specified, not real-world recall.**
+
+| Held-out (Tier A-b) | PROVECODE | Count-based baseline (reimplementation) |
+|---|---|---|
+| Weakenings caught | 22/22 (100%, 95% CI 85% to 100%) | 0/22 (0%, 95% CI 0% to 15%) |
+| Legitimate edits flagged | 0/8 (0%, 95% CI 0% to 32%) | 0/8 (0%, 95% CI 0% to 32%) |
+Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 399 of 399 cases (Tier A: 168, Tier A-u: 132, Tier A-b: 99).
 <!-- results:end -->
 
 Full benchmark, method and limitations: the site's **Benchmark** page, or `artifacts/benchmark/tierA.json`.
@@ -52,8 +59,8 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
 
 | | |
 |---|---|
-| **Semantic weakening rules** | **S1** comparison weakened (`==` → `>=`, a looser `approx`). **S2** expected value made trivial (`== 80` → `>= 0`, `is not None`). **S3** exception widened, or `match=` dropped. **S4** parametrize cases removed. |
-| **Standard rules** (prior art, credited) | **B1** test deleted (renames are recognised). **B2** skip, xfail or an early-exit guard added. **B3** assertion removed. |
+| **Semantic weakening rules** | **S1** comparison weakened (`==` → `>=`, a looser `approx`). **S2** expected value made trivial (`== 80` → `>= 0`, `is not None`). **S3** exception widened, or `match=` dropped. **S4** parametrize cases removed. **S5** check made vacuous (`A == A`, `… or True`). |
+| **Standard rules** (prior art, credited) | **B1** test deleted (renames are recognised). **B2** skip, xfail or an early-exit guard added. **B3** assertion removed. **B4** assertion failure swallowed (`try/except AssertionError: pass`, `suppress`); Ruff has related single-file lints. |
 | **Contracts** | YAML, versioned and human-approved, with a SHA-256 content hash. Tampered or unapproved contracts are rejected. A candidate that edits the contract path is blocked. |
 | **Verdicts** | **FAILED > INCONCLUSIVE > VERIFIED**, decided by a pure function with no LLM. Missing evidence never becomes a pass, and static analysis alone never yields VERIFIED. |
 | **Recorded runs** | Contract-owned checks and the repo's tests run in Docker: `--network none`, read-only, non-root, all capabilities dropped, with memory, CPU, process and time limits. Every report carries its SHAs, contract hash and image digest. |
@@ -112,7 +119,15 @@ provecode guard                 # working tree vs HEAD; exit 1 blocks
 provecode guard --staged        # the index, i.e. what the next commit would contain
 ```
 
-- **Zero configuration.** It works without a contract: any S1–S4/B1–B3 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
+- **One-command setup:**
+
+  ```bash
+  provecode install-hooks --claude        # .claude/settings.local.json (add --shared for settings.json)
+  provecode install-hooks --pre-commit    # git pre-commit hook running guard --staged
+  ```
+
+  Existing settings are merged, never overwritten, and a second run changes nothing. `--uninstall` removes only what it added.
+- **Zero configuration.** It works without a contract: any S1–S5/B1–B4 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
 - **Pre-commit** (`.pre-commit-config.yaml`):
 
   ```yaml
@@ -146,7 +161,7 @@ provecode guard --staged        # the index, i.e. what the next commit would con
 ```bash
 pip install -e "engine[dev]"
 python -m pytest engine/tests benchmark/test_benchmark.py      # engine and benchmark tests
-python -m benchmark.regenerate --check     # rebuild Tier A and A-u from pinned commits; byte-for-byte compare
+python -m benchmark.regenerate --check     # rebuild Tiers A, A-u and A-b from pinned commits; byte-for-byte compare
 python -m benchmark.guard_eval             # guard vs commit mode on every case, plus guard latency
 python -m benchmark.record_demo            # recorded Docker runs (FAILED and VERIFIED)
 cd web && npm ci && npm run parity         # Pyodide vs CPython on every case
@@ -173,7 +188,7 @@ CI runs the tests on Python 3.11 and 3.13. It also checks the Tier A regeneratio
 ## Honest scope
 
 - Python only: pytest-style and unittest-style tests.
-- Tier A cases are injected. Real-world recall (Tier B) and precision (Tier C) aren't measured yet.
+- Tier A cases are injected. Real-world recall (Tier B) and precision (Tier C) aren't measured yet. How often PROVECODE fires on real, mostly human, test-editing commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10; every flagged commit awaits an owner label.
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
 - VERIFIED means no mandatory condition failed within the declared scope. It is not a proof of correctness.

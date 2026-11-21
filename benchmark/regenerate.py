@@ -1,7 +1,7 @@
 """Regenerate every Tier A and Tier A-u benchmark result from pinned inputs (PRD section 5.4).
 
-  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,tierA_u,perf}.json and the manifest
-  python -m benchmark.regenerate --check       recompute tierA.json and tierA_u.json; fail if either differs
+  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,tierA_u,tierA_b,perf}.json and the manifest
+  python -m benchmark.regenerate --check       recompute tierA, tierA_u and tierA_b.json; fail if any differs
   python -m benchmark.regenerate --tuning-only print tuning-split results only; writes nothing
 
 Inputs: benchmark/{cases,split,sources}.lock.json (Tier A, frozen in M1, before any
@@ -90,6 +90,18 @@ REVISION_LOG = [
         ],
         "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
     },
+    {
+        "date": "2026-11-21",
+        "source": "ADR 0011 (rules S5 and B4), developed on the Tier A-b tuning split, not on Tier A",
+        "changes": [
+            "S5: a check replaced by a self-comparison or given an `or <true constant>`",
+            "B4: a check newly inside a try/except or contextlib.suppress that swallows AssertionError",
+        ],
+        "effect_on_tier_a": "17 case results changed, all of them W17-W19 weakenings, which these rules target and "
+                            "whose results had been seen; W17 5/6, W18 6/6, W19 6/6 now flagged; held-out recall "
+                            "37 -> 43 of 44; no legitimate case changed. Recall on W17-W19 is therefore no longer an "
+                            "unbiased estimate; Tier A-b is the fresh evaluation of these rules",
+    },
 ]
 
 # Tier A-b: rule development rounds, on the tuning split only (ADR 0011).
@@ -117,7 +129,40 @@ REVISION_LOG_UNITTEST = [
         "effect_on_tier_a": "none: no Tier A-u case is in a test/ directory; all 132 case results and all metrics "
                             "identical before and after",
     },
+    {
+        "date": "2026-11-21",
+        "source": "ADR 0011 (rules S5 and B4), developed on the Tier A-b tuning split, not on Tier A-u",
+        "changes": [
+            "S5: a check replaced by a self-comparison or given an `or <true constant>`",
+            "B4: a check newly inside a try/except or contextlib.suppress that swallows AssertionError",
+        ],
+        "effect_on_tier_a": "11 case results changed, all of them U13-U14 weakenings, which these rules target and "
+                            "whose results had been seen; U13 6/6, U14 5/6 now flagged; held-out recall 23 -> 27 of 28; "
+                            "no legitimate case changed. The remaining miss, U14-04 (a swallowed self.assertRaises), "
+                            "is a known B4 gap, deliberately not fixed on seen data",
+    },
 ]
+
+
+def _real_history_fix(n: int) -> dict:
+    """Two false positives found by inspecting real commits (docs/research/data/real_history_scan.json)."""
+    return {
+        "date": "2026-11-21",
+        "source": "inspection of S5/B4 hits on real commits (more-itertools 5c715d813a, pyparsing e0a6f21205), "
+                  "not benchmark data",
+        "changes": [
+            "S5 self-comparison fires only when the base check compared against a different expected value "
+            "(assertTrue(r) -> assertEqual(r, r) is not a weakening)",
+            "B4 matches swallowed checks by what they check, not their text, and fires only when more checks are "
+            "swallowed than before (a reworded message inside an existing try/except is not a finding)",
+        ],
+        "effect_on_tier_a": f"none: all {n} case results and all metrics identical before and after",
+    }
+
+
+REVISION_LOG.append(_real_history_fix(168))
+REVISION_LOG_UNITTEST.append(_real_history_fix(132))
+REVISION_LOG_BLINDSPOTS = [_real_history_fix(99)]
 
 
 # --------------------------------------------------------------------------- statistics
@@ -326,7 +371,7 @@ TIERS = {
                            "generate_cases_blindspots.py", "regenerate.py"),
             "label": "Injected vacuous and swallowed checks on real repositories (experimental, ADR 0011). "
                      "Not real-world performance.",
-            "tuning_log": TUNING_LOG_BLINDSPOTS, "revision_log": []},
+            "tuning_log": TUNING_LOG_BLINDSPOTS, "revision_log": REVISION_LOG_BLINDSPOTS},
 }
 
 
@@ -360,7 +405,7 @@ def build_tier_a(rows: list[dict], split_lock: dict, tier: str = "A") -> dict:
         "tier": tier,
         "label": t["label"],
         "detection_definition": {
-            "provecode": "At least one S1-S4/B1-B3 finding with severity warning or blocking.",
+            "provecode": "At least one S1-S5/B1-B4 finding with severity warning or blocking.",
             "baseline": "At least one finding from the count-based reimplementation.",
         },
         "baseline_rules": baseline_count.RULES,
@@ -481,7 +526,7 @@ def main(argv: list[str] | None = None) -> int:
         problems += presets.check() + readme_results.check() + manifest.verify()
         for p in problems:
             print(p, file=sys.stderr)
-        print("tierA.json and tierA_u.json reproduced byte-for-byte" if not problems else "regeneration problems")
+        print("all tier artifacts reproduced byte-for-byte" if not problems else "regeneration problems")
         return 1 if problems else 0
     OUT.mkdir(parents=True, exist_ok=True)
     for tier, t in TIERS.items():

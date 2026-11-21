@@ -1,39 +1,46 @@
 {
   "artifacts": [
     {
-      "bytes": 1263,
+      "bytes": 1505,
       "deterministic": false,
       "generator": "python -m benchmark.guard_eval",
       "path": "benchmark/guard.json",
-      "sha256": "34cc45f21934257ca77c194007a78ff38cb8c8c5eb888f3a0c2b914a3756a9ae"
+      "sha256": "0b7d000a2bdb241892c066377dcb0dc075b25f5499589e22f4fdb4b80c1cda59"
     },
     {
-      "bytes": 462,
+      "bytes": 523,
       "deterministic": true,
       "generator": "node benchmark/pyodide_parity.mjs",
       "path": "benchmark/parity.json",
-      "sha256": "8a71e587a59e4d504d56a899440f1a12a5f0e26499c9e1176af76b20d9808233"
+      "sha256": "dd708fb489f399597b886949f80a1b2216482ec7d7884436cdc002cf7b50b191"
     },
     {
-      "bytes": 1462,
+      "bytes": 1463,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "5132f7bbe9a142f78ac104ecf23bc95501efe3db7fd685999fa02a5c2afc7ba8"
+      "sha256": "9716478c0428e569c204b73d5ffe95c9b4c724640c88ec8d752b237fc0b9a4a1"
     },
     {
-      "bytes": 114043,
+      "bytes": 115564,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA.json",
-      "sha256": "435c894d6125663e1482912f91ea06bdc61fd648980fbd4c211fa8a498fdb4b5"
+      "sha256": "aebf934b5fe2efb1c5e0daf12e3338221e4beb5ba6a7766992a2ea00b75a0012"
     },
     {
-      "bytes": 92716,
+      "bytes": 66343,
+      "deterministic": true,
+      "generator": "python -m benchmark.regenerate",
+      "path": "benchmark/tierA_b.json",
+      "sha256": "02a2321a156906bef7f54983a178f1dcabfc2f67b69519ebae4e4898b679538a"
+    },
+    {
+      "bytes": 94125,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA_u.json",
-      "sha256": "7fb9b20aa055069f803b9f6a3dc30a16b2add8d47645aaf6e87472129f2156ac"
+      "sha256": "c311eab46f3f5156422fd09ff7aaade5b880dff969cc7b0ca60c9dcf4c01cc95"
     },
     {
       "bytes": 10386,

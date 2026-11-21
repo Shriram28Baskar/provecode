@@ -17,6 +17,7 @@ function load<T>(rel: string): T {
 
 export const tierA = () => load<TierA>("benchmark/tierA.json");
 export const tierAU = () => load<TierA>("benchmark/tierA_u.json");
+export const tierAB = () => load<TierA>("benchmark/tierA_b.json");
 export const perf = () => load<Perf>("benchmark/perf.json");
 export const guardEval = () => load<GuardEval>("benchmark/guard.json");
 export const preset = (id: "weakened" | "legit") => load<Preset>(`presets/${id}.json`);

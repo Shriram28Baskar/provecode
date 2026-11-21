@@ -18,9 +18,11 @@ const RULES = [
   ["S2", "Expected value made trivial", "== 80.00 became >= 0, is not None, a bare truthiness or isinstance check, in assert or self.assert* form"],
   ["S3", "Exception widened", "pytest.raises or self.assertRaises(ValueError) became Exception or an ancestor, or match= / assertRaisesRegex's message check was dropped"],
   ["S4", "Parametrize cases removed", "boundary cases quietly dropped from @pytest.mark.parametrize"],
+  ["S5", "Check made vacuous", "assert x == expected became assert x == x, or gained an or True, so it always passes"],
   ["B1", "Test deleted", "a test function or file removed, and not just renamed"],
   ["B2", "Skip or guard added", "skip or xfail markers, @unittest.skip, pytest.skip() or self.skipTest(), an early return or if False: before the checks"],
   ["B3", "Assertion removed", "fewer checks than before, with the removed ones unexplained"],
+  ["B4", "Assertion failure swallowed", "a check wrapped in try / except AssertionError (or Exception, or a bare except, or suppress) that does not re-raise"],
 ] as const;
 
 export default function AboutPage() {
@@ -86,7 +88,8 @@ export default function AboutPage() {
           </tbody>
         </table>
         <p className="prose-measure text-sm text-ink-soft">
-          S1 to S4 are the contribution. B1 to B3 are standard checks that existing tools already make; they are included
+          S1 to S5 and B4 compare each check with its base version. S1 to S4 are the main contribution; Ruff has lint
+          rules close to S5 and B4 (see prior art). B1 to B3 are standard checks that existing tools already make; they are included
           for completeness and credited below.
         </p>
       </section>
@@ -123,8 +126,9 @@ export default function AboutPage() {
           it tries to finish with weaker tests. It needs no contract. If one exists, it is read from the base commit, so
           editing it does not help. MaruCheck also gates agents; see the prior art below.
         </p>
-        <pre className="diff overflow-x-auto rounded-md border border-rule bg-sheet p-4">{`"Stop": [{ "hooks": [{ "type": "command",
-  "command": "provecode guard --hook claude-stop" }] }]`}</pre>
+        <pre className="diff overflow-x-auto rounded-md border border-rule bg-sheet p-4">{`pip install -e "engine[cli]"
+provecode install-hooks --claude       # Stop and SessionStart hooks
+provecode install-hooks --pre-commit   # or: guard every commit`}</pre>
         <ul className="prose-measure list-disc space-y-1 pl-5 text-ink-soft">
           <li>
             On {g.parity.cases_compared} benchmark edits, each applied in its real repository, the working-tree check
@@ -159,6 +163,11 @@ export default function AboutPage() {
             PR #169, cmux PR #34485, monoharness PR #246 and devkit PR #358. Their authors note that count-preserving
             edits are a gap. The benchmark baseline reimplements their published rules.
           </li>
+          <li>
+            Ruff flags comparisons with itself (PLR0124), <code>or True</code> (SIM222) and try-except-pass (S110,
+            SIM105) in a single file. S5 and B4 differ by comparing base with head, so an existing reflexivity test or an
+            intended re-raise is not flagged.
+          </li>
           <li>Mutation testing (mutmut, Stryker) measures test strength indirectly.</li>
           <li>Protected contract paths rely on GitHub CODEOWNERS and branch protection.</li>
         </ul>
@@ -171,7 +180,7 @@ export default function AboutPage() {
         </h2>
         <ul className="prose-measure list-disc space-y-2 pl-5">
           <li>It is not the first independent verifier of AI-written code, and it does not prove correctness.</li>
-          <li>It does not catch every weakening. Tautologies, swallowed assertions and widened mocks are known blind spots.</li>
+          <li>It does not catch every weakening. Widened mocks, an exception check replaced by a value check, and a swallowed exception check (assertRaises inside try / except) are known blind spots.</li>
           <li>Python only: pytest-style and unittest-style tests (test_*.py, *_test.py, tests.py and files under tests/). Benchmark numbers are from injected cases; real-world measurement is pending.</li>
           <li>Docker narrows what untrusted code can do but is not a complete security boundary.</li>
           <li>

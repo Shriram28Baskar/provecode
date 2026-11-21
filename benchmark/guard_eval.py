@@ -31,12 +31,12 @@ from pathlib import Path
 from provecode import cli, contract as contract_mod, guard, pipeline
 from provecode.limits import Limits
 
-from . import generate_cases, generate_cases_unittest
+from . import generate_cases, generate_cases_blindspots, generate_cases_unittest
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "artifacts" / "benchmark" / "guard.json"
 APPROVER, APPROVED_AT = "tierA-harness (out of band)", "2026-11-20T00:00:00Z"
-TIERS = (("A", generate_cases), ("A-u", generate_cases_unittest))
+TIERS = (("A", generate_cases), ("A-u", generate_cases_unittest), ("A-b", generate_cases_blindspots))
 GIT = ["git", "-c", "user.name=guard-eval", "-c", "user.email=guard-eval@example.invalid",
        "-c", "commit.gpgsign=false", "-c", "core.autocrlf=false", "-c", "advice.detachedHead=false"]
 

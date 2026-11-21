@@ -311,9 +311,22 @@ These are the places where the implementation departs from, or adds to, the sect
 **Agent-loop gate (ADR 0010, 2026-11-21)**
 - **`provecode guard`** compares the working tree (default) or the index (`--staged`) with `--base` (default `HEAD`). Untracked files count as additions. A deleted test file and an added one are paired as a rename at 50% or more line similarity. Git runs with `--no-optional-locks`, and nothing is written to the repository, its index or its object store; a test checks this.
 - **Contract** is read from the base commit (default `.provecode/contract.yaml`, optional). Without one, findings are ungraded warnings.
-- **Exit codes:** `--block-on weakening` (default) exits 1 on any warning or blocking S1–S4/B1–B3 finding, or on FAILED. `--block-on failed` exits 1 on FAILED only. A repository with no commits yet is allowed.
+- **Exit codes:** `--block-on weakening` (default) exits 1 on any warning or blocking weakening finding (S1–S5/B1–B4), or on FAILED. `--block-on failed` exits 1 on FAILED only. A repository with no commits yet is allowed.
 - **Hooks:** `--hook claude-stop` answers Claude Code's Stop event with `{"decision": "block", ...}`. `--hook claude-session-start` records the session's starting commit in the temp directory (`PROVECODE_STATE_DIR` overrides). Both fail open, with a `systemMessage`.
 - **`guard.py` is host-specific**, like `git`, `exec` and `cli`, and is not part of the browser core.
+- **`provecode install-hooks`** (`install.py`, host-specific) merges the two Claude Code hook entries into `.claude/settings.local.json` (absolute interpreter) or, with `--shared`, `.claude/settings.json` (bare `provecode`). `--pre-commit` writes git's pre-commit hook at `git rev-parse --git-path hooks/pre-commit`. It is idempotent, refuses invalid JSON or a foreign pre-commit hook, and `--uninstall` removes only its own entries. A test runs a real `git commit` through the installed hook.
 - **Measured** by `python -m benchmark.guard_eval` → `artifacts/benchmark/guard.json`, on all 300 benchmark cases applied in copies of their real repositories:
   - Reports identical to commit mode in 300/300 cases.
   - The latency is end to end, Python start-up included. It is machine-dependent: median 0.57 s on the Windows development machine. The slowest repo is `kjd/idna`, whose 1.4 MB test file takes about 4 s, most of it in the input-limit tokenizer pass and the AST depth check.
+
+**Blind-spot rules (ADR 0011, 2026-11-21)**
+- **S5, check made vacuous.** A base check replaced in head by a self-comparison (`==`, `is`, `>=`, `<=`, approx with the subject on both sides), or by the same check with an `or` and a truthy constant operand (`assert …`, `self.assertTrue(…)`). It is paired with the base check it replaced. A base self-comparison (`c == c`) counts as a real reflexivity test; an *added* vacuous check is not flagged.
+- **B4, assertion failure swallowed.** A check (`assert` or a non-raises `self.assert*`) that is newly inside:
+  - a `try` body whose handler catches `AssertionError`, `Exception`, `BaseException`, a bare `except` or a tuple of these, and contains no `raise` and no `pytest.fail` / `self.fail`; or
+  - `contextlib.suppress` of those.
+
+  The `else` and `finally` blocks and nested functions are not covered. **Known gap:** `assertRaises` / `pytest.raises` inside such a try are not treated as checks.
+- **Refined after real-commit inspection** (disclosed in every tier's `revision_log`, effect none):
+  - The S5 self-comparison form requires the base check to have compared against a different expected value.
+  - B4 matches swallowed checks by what they check (subject, operator, expected), not by their message, and fires only when head swallows more checks than base. A swap is therefore not flagged.
+- **Tier A-b** (`benchmark/patterns_blindspots.md`, `generate_cases_blindspots.py`, `*_blindspots.lock.json`) is regenerated into `artifacts/benchmark/tierA_b.json`. Pyodide parity and `guard_eval` cover it too.

@@ -5,41 +5,48 @@
     "blocked_without_contract": {
       "legit": {
         "blocked": 0,
-        "n": 60
+        "n": 95
       },
       "weakening": {
-        "blocked": 209,
-        "n": 240
+        "blocked": 301,
+        "n": 304
       }
     },
     "by_repo_median_s": {
-      "Python-Markdown/markdown": 0.547,
-      "jazzband/prettytable": 0.568,
-      "kjd/idna": 4.059,
-      "more-itertools/more-itertools": 1.069,
-      "pallets/itsdangerous": 0.524,
-      "pallets/markupsafe": 0.504,
-      "pypa/packaging": 0.632,
-      "pyparsing/pyparsing": 1.176,
-      "pytest-dev/pluggy": 0.557,
-      "python-humanize/humanize": 0.559,
-      "tkem/cachetools": 0.52
+      "Delgan/loguru": 0.485,
+      "Python-Markdown/markdown": 0.464,
+      "hukkin/tomli": 0.438,
+      "jazzband/prettytable": 0.679,
+      "jpadilla/pyjwt": 0.48,
+      "kjd/idna": 3.481,
+      "marshmallow-code/marshmallow": 0.593,
+      "more-itertools/more-itertools": 0.955,
+      "pallets/itsdangerous": 0.503,
+      "pallets/markupsafe": 0.484,
+      "pypa/packaging": 0.753,
+      "pyparsing/pyparsing": 1.059,
+      "pytest-dev/pluggy": 0.703,
+      "python-attrs/attrs": 0.45,
+      "python-humanize/humanize": 0.525,
+      "python-jsonschema/jsonschema": 0.539,
+      "scrapy/w3lib": 0.52,
+      "tkem/cachetools": 0.494
     },
     "machine": {
       "machine": "AMD64",
       "python": "3.11.3",
       "system": "Windows"
     },
-    "max_s": 4.446,
-    "median_s": 0.572,
-    "n": 300,
+    "max_s": 5.167,
+    "median_s": 0.537,
+    "n": 399,
     "note": "End-to-end `provecode guard` CLI subprocess, including Python start-up, on a copy of the real repository with the case's edit uncommitted. Machine-dependent; not CI-diffed.",
-    "p95_s": 1.287
+    "p95_s": 1.697
   },
   "parity": {
-    "cases_compared": 300,
+    "cases_compared": 399,
     "compared": "full report except provenance: findings, severities, gaps, outcome, reasons",
-    "identical": 300,
+    "identical": 399,
     "mismatches": []
   },
   "schema_version": "1"

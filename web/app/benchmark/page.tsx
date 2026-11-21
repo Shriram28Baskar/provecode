@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IntervalChart } from "@/components/interval-chart";
-import { artifactIndex, parity, perf, tierA, tierAU } from "@/lib/data";
+import { artifactIndex, parity, perf, tierA, tierAB, tierAU } from "@/lib/data";
 import { ci, frac, pValue, pct } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Benchmark | PROVECODE" };
@@ -14,6 +14,8 @@ const CATEGORY: Record<string, string> = {
   "skip-added": "Skip or guard added",
   "assertion-removed": "Assertion removed",
   other: "Not targeted by any rule",
+  "vacuous-check": "Check made vacuous",
+  "assertion-swallowed": "Assertion failure swallowed",
 };
 
 const PATTERN_TEXT: Record<string, string> = {
@@ -37,6 +39,9 @@ export default function BenchmarkPage() {
   const uh = u.held_out;
   const uMisses = Object.entries(u.all.by_pattern).filter(([, v]) => v.kind === "weakening" && v.provecode_flagged < v.n);
   const uOrder = u.provenance.commit_order;
+  const ab = tierAB();
+  const bh = ab.held_out;
+  const bOrder = ab.provenance.commit_order;
 
   return (
     <div className="space-y-16 pt-12">
@@ -155,8 +160,10 @@ export default function BenchmarkPage() {
           What it misses
         </h2>
         <p className="prose-measure">
-          Three patterns were written on purpose to fall outside every rule, so the benchmark would show blind spots
-          rather than hide them. Across all cases, PROVECODE missed:
+          W17 to W19 were written on purpose to fall outside every rule, so the benchmark would show blind spots
+          rather than hide them. Rules S5 and B4 were later added for them, after these results were seen, so Tier A
+          recall on those patterns is no longer an unbiased estimate; Tier A-b below is their fresh test. Across all
+          cases, PROVECODE still missed:
         </p>
         <ul className="prose-measure list-disc space-y-1 pl-5">
           {misses.map(([id, v]) => (
@@ -230,6 +237,43 @@ export default function BenchmarkPage() {
           Engine source sha256 <span className="break-all font-mono">{u.provenance.engine_source_sha256}</span>;
           tierA_u.json sha256 <span className="break-all font-mono">{idx["benchmark/tierA_u.json"]?.sha256}</span>.
         </p>
+      </section>
+
+      <section aria-labelledby="tier-ab" className="space-y-6">
+        <h2 id="tier-ab" className="text-2xl font-bold tracking-tight">
+          Tier A-b: vacuous and swallowed checks
+        </h2>
+        <p className="prose-measure text-ink-soft">{ab.label}</p>
+        <p className="prose-measure">
+          Rules S5 (a check made vacuous: <code>A == A</code>, <code>or True</code>) and B4 (an assertion failure
+          swallowed by <code>try/except</code>) were judged on a fresh benchmark: {ab.all.n_cases} cases from{" "}
+          {ab.provenance.sources.length} further repositories, including legitimate near-misses such as an added
+          reflexivity check, a re-raise and <code>try/finally</code>. Its cases and split were committed (
+          {bOrder.split_frozen?.commit.slice(0, 12)}) before the rule code ({bOrder.detector_change?.commit.slice(0, 12)}
+          ), and the rules were developed on the tuning split only.
+        </p>
+        <ul className="prose-measure list-disc space-y-1 pl-5">
+          <li>
+            Held-out weakenings caught: PROVECODE {frac(bh.recall.provecode)} ({ci(bh.recall.provecode)}), baseline{" "}
+            {frac(bh.recall.baseline)}.
+          </li>
+          <li>Held-out legitimate edits flagged: {frac(bh.legit_flagged.provecode)} ({ci(bh.legit_flagged.provecode)}).</li>
+          {ab.revision_log.map((r) => (
+            <li key={r.date + r.source}>
+              After the Tier A-b held-out results were first seen, the engine was revised following the {r.source}:{" "}
+              {r.changes.join("; ")}. Effect on Tier A-b: {r.effect_on_tier_a}.
+            </li>
+          ))}
+          {ab.tuning_log.map((l) => (
+            <li key={l.round}>
+              Tuning round {l.round}, on the tuning split only: {l.rule}: {l.change.replaceAll("`", "")}
+            </li>
+          ))}
+          <li>
+            The patterns mirror the rules&apos; stated targets, so this shows the rules work as specified on injected
+            edits. It is not a real-world recall figure.
+          </li>
+        </ul>
       </section>
 
       <section aria-labelledby="perf" className="space-y-4">

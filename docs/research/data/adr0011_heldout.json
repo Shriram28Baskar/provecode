@@ -1,0 +1,2006 @@
+{
+  "all": {
+    "baseline": {
+      "legit_flagged": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.0566,
+        "k": 0,
+        "lo": 0,
+        "n": 64,
+        "rate": 0.0
+      }
+    },
+    "before_0011": {
+      "legit_flagged": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.0566,
+        "k": 0,
+        "lo": 0,
+        "n": 64,
+        "rate": 0.0
+      }
+    },
+    "n_legit": 35,
+    "n_weakening": 64,
+    "provecode": {
+      "legit_flagged": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 1,
+        "k": 64,
+        "lo": 0.9434,
+        "n": 64,
+        "rate": 1.0
+      }
+    },
+    "ruff_alone": {
+      "legit_flagged": {
+        "hi": 0.1861,
+        "k": 2,
+        "lo": 0.0158,
+        "n": 35,
+        "rate": 0.0571
+      },
+      "recall": {
+        "hi": 0.7054,
+        "k": 38,
+        "lo": 0.4715,
+        "n": 64,
+        "rate": 0.5938
+      }
+    },
+    "ruff_variant": {
+      "legit_flagged": {
+        "hi": 0.1861,
+        "k": 2,
+        "lo": 0.0158,
+        "n": 35,
+        "rate": 0.0571
+      },
+      "recall": {
+        "hi": 0.7054,
+        "k": 38,
+        "lo": 0.4715,
+        "n": 64,
+        "rate": 0.5938
+      }
+    }
+  },
+  "before_0011_engine": "git archive 5b8a20a engine/src/provecode",
+  "by_pattern": {
+    "X01": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 3,
+      "ruff_variant": 3
+    },
+    "X02": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "X03": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 3,
+      "ruff_variant": 3
+    },
+    "X04": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "X05": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 8,
+      "ruff_variant": 8
+    },
+    "X06": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 8,
+      "ruff_variant": 8
+    },
+    "X07": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 8,
+      "ruff_variant": 8
+    },
+    "X08": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 8,
+      "provecode": 8,
+      "ruff_alone": 8,
+      "ruff_variant": 8
+    },
+    "Y01": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 2,
+      "ruff_variant": 2
+    },
+    "Y02": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "Y03": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "Y04": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "Y05": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "Y06": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    },
+    "Y07": {
+      "baseline": 0,
+      "before_0011": 0,
+      "n": 5,
+      "provecode": 0,
+      "ruff_alone": 0,
+      "ruff_variant": 0
+    }
+  },
+  "cases": [
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-01",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-02",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-03",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "PLR0124"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-04",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-05",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-06",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-07",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "PLR0124"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X01-08",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "PLR0124"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-01",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-02",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-03",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-04",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-05",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-06",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-07",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X02-08",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-01",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM222"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-02",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM222"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-03",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-04",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-05",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-06",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-07",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM222"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X03-08",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-01",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-02",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-03",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-04",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-05",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-06",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-07",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X04-08",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": true,
+      "provecode_rules": [
+        "S5"
+      ],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-01",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-02",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-03",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-04",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-05",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-06",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-07",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X05-08",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-01",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-02",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-03",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-04",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-05",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-06",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-07",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X06-08",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-01",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-02",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-03",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-04",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-05",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-06",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-07",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X07-08",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-01",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-02",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-03",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-04",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-05",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-06",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-07",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "X08-08",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": true,
+      "provecode_rules": [
+        "B4"
+      ],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "S110",
+        "SIM105"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y01-01",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "PLR0124"
+      ],
+      "ruff_variant": true,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y01-02",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y01-03",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y01-04",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": true,
+      "ruff_codes": [
+        "PLR0124"
+      ],
+      "ruff_variant": true,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y01-05",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y02-01",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y02-02",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y02-03",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y02-04",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": false,
+      "id": "Y02-05",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y03-01",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y03-02",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y03-03",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y03-04",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y03-05",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y04-01",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y04-02",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y04-03",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y04-04",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y04-05",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y05-01",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y05-02",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y05-03",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y05-04",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y05-05",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y06-01",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y06-02",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y06-03",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y06-04",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y06-05",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y07-01",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y07-02",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y07-03",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y07-04",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "held_out"
+    },
+    {
+      "baseline": false,
+      "before_0011": false,
+      "count_preserving": true,
+      "id": "Y07-05",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": false,
+      "provecode_rules": [],
+      "ruff_alone": false,
+      "ruff_codes": [],
+      "ruff_variant": false,
+      "split": "tuning"
+    }
+  ],
+  "command": "python docs/research/scripts/adr0011_heldout.py",
+  "detection_definition": "provecode/before_0011: a weakening finding with severity warning or blocking; ruff: a selected code fires more often in head than in base",
+  "drop_criteria": {
+    "new_rule_flags_heldout_legit": [],
+    "ruff_variant_matches": false
+  },
+  "held_out": {
+    "baseline": {
+      "legit_flagged": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0,
+        "n": 8,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.1487,
+        "k": 0,
+        "lo": 0,
+        "n": 22,
+        "rate": 0.0
+      }
+    },
+    "before_0011": {
+      "legit_flagged": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0,
+        "n": 8,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.1487,
+        "k": 0,
+        "lo": 0,
+        "n": 22,
+        "rate": 0.0
+      }
+    },
+    "n_legit": 8,
+    "n_weakening": 22,
+    "provecode": {
+      "legit_flagged": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0,
+        "n": 8,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 1,
+        "k": 22,
+        "lo": 0.8513,
+        "n": 22,
+        "rate": 1.0
+      }
+    },
+    "ruff_alone": {
+      "legit_flagged": {
+        "hi": 0.4709,
+        "k": 1,
+        "lo": 0.0224,
+        "n": 8,
+        "rate": 0.125
+      },
+      "recall": {
+        "hi": 0.7674,
+        "k": 13,
+        "lo": 0.3873,
+        "n": 22,
+        "rate": 0.5909
+      }
+    },
+    "ruff_variant": {
+      "legit_flagged": {
+        "hi": 0.4709,
+        "k": 1,
+        "lo": 0.0224,
+        "n": 8,
+        "rate": 0.125
+      },
+      "recall": {
+        "hi": 0.7674,
+        "k": 13,
+        "lo": 0.3873,
+        "n": 22,
+        "rate": 0.5909
+      }
+    }
+  },
+  "ruff_codes": [
+    "PLR0124",
+    "SIM222",
+    "B015",
+    "B011",
+    "PT015",
+    "S110",
+    "SIM105"
+  ],
+  "ruff_version": "ruff 0.17.6",
+  "schema_version": "1",
+  "tuning": {
+    "baseline": {
+      "legit_flagged": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0,
+        "n": 27,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.0838,
+        "k": 0,
+        "lo": 0,
+        "n": 42,
+        "rate": 0.0
+      }
+    },
+    "before_0011": {
+      "legit_flagged": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0,
+        "n": 27,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 0.0838,
+        "k": 0,
+        "lo": 0,
+        "n": 42,
+        "rate": 0.0
+      }
+    },
+    "n_legit": 27,
+    "n_weakening": 42,
+    "provecode": {
+      "legit_flagged": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0,
+        "n": 27,
+        "rate": 0.0
+      },
+      "recall": {
+        "hi": 1.0,
+        "k": 42,
+        "lo": 0.9162,
+        "n": 42,
+        "rate": 1.0
+      }
+    },
+    "ruff_alone": {
+      "legit_flagged": {
+        "hi": 0.1828,
+        "k": 1,
+        "lo": 0.0066,
+        "n": 27,
+        "rate": 0.037
+      },
+      "recall": {
+        "hi": 0.7296,
+        "k": 25,
+        "lo": 0.4449,
+        "n": 42,
+        "rate": 0.5952
+      }
+    },
+    "ruff_variant": {
+      "legit_flagged": {
+        "hi": 0.1828,
+        "k": 1,
+        "lo": 0.0066,
+        "n": 27,
+        "rate": 0.037
+      },
+      "recall": {
+        "hi": 0.7296,
+        "k": 25,
+        "lo": 0.4449,
+        "n": 42,
+        "rate": 0.5952
+      }
+    }
+  }
+}

@@ -1,0 +1,3029 @@
+{
+  "all": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-swallowed": {
+        "baseline": {
+          "hi": 0.1072,
+          "k": 0,
+          "lo": 0.0,
+          "n": 32,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 32,
+          "lo": 0.8928,
+          "n": 32,
+          "rate": 1.0
+        }
+      },
+      "vacuous-check": {
+        "baseline": {
+          "hi": 0.1072,
+          "k": 0,
+          "lo": 0.0,
+          "n": 32,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 32,
+          "lo": 0.8928,
+          "n": 32,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "X01": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X02": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X03": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X04": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X05": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X06": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X07": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "X08": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 8,
+        "provecode_flagged": 8
+      },
+      "Y01": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y02": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y03": {
+        "baseline_flagged": 0,
+        "category": "reraise-with-context",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y04": {
+        "baseline_flagged": 0,
+        "category": "reraise",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y05": {
+        "baseline_flagged": 0,
+        "category": "try-finally",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y06": {
+        "baseline_flagged": 0,
+        "category": "message-added",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y07": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      },
+      "provecode": {
+        "hi": 0.0989,
+        "k": 0,
+        "lo": 0.0,
+        "n": 35,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 99,
+    "n_count_preserving": 64,
+    "n_legit": 35,
+    "n_weakening": 64,
+    "outcomes": {
+      "FAILED": 64,
+      "INCONCLUSIVE": 35
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 64,
+        "lo": 0.9434,
+        "n": 64,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.0566,
+        "k": 0,
+        "lo": 0.0,
+        "n": 64,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 1.08e-19,
+        "only_baseline": 0,
+        "only_provecode": 64
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 64,
+        "lo": 0.9434,
+        "n": 64,
+        "rate": 1.0
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.0566,
+        "k": 0,
+        "lo": 0.0,
+        "n": 64,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 1.08e-19,
+        "only_baseline": 0,
+        "only_provecode": 64
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 64,
+        "lo": 0.9434,
+        "n": 64,
+        "rate": 1.0
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      }
+    }
+  },
+  "baseline_rules": {
+    "C1": "Test file deleted [CP][CM][MH]",
+    "C2": "Test definition removed or renamed [RF][CM]",
+    "C3": "Unconditional skip/xfail marker or skip call added [CP][RF][CM][MH]",
+    "C4": "Bare return added to a test [CP]",
+    "C5": "Net drop in assertion count [RF][CM][MH]; counted forms from [CP]",
+    "C6": "__test__ = False or collect_ignore added [CP]",
+    "C7": "Trivial assertion added, interpreted as assert <truthy constant> [MH]"
+  },
+  "cases": [
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-01",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-02",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-03",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-04",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-05",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-06",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-07",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X01-08",
+      "kind": "weakening",
+      "pattern": "X01",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-01",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-02",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-03",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-04",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-05",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-06",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-07",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X02-08",
+      "kind": "weakening",
+      "pattern": "X02",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-01",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-02",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-03",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-04",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-05",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "scrapy/w3lib",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-06",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-07",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X03-08",
+      "kind": "weakening",
+      "pattern": "X03",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-01",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-02",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-03",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-04",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-05",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-06",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-07",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "vacuous-check",
+      "count_preserving": true,
+      "id": "X04-08",
+      "kind": "weakening",
+      "pattern": "X04",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-01",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-02",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-03",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-04",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-05",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-06",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-07",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X05-08",
+      "kind": "weakening",
+      "pattern": "X05",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-01",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-02",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-03",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-04",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-05",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-06",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-07",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X06-08",
+      "kind": "weakening",
+      "pattern": "X06",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-01",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-02",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-03",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-04",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-05",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "scrapy/w3lib",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-06",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-attrs/attrs",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-07",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X07-08",
+      "kind": "weakening",
+      "pattern": "X07",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "Delgan/loguru",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-01",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-02",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-03",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-04",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-05",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-06",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-07",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assertion-swallowed",
+      "count_preserving": true,
+      "id": "X08-08",
+      "kind": "weakening",
+      "pattern": "X08",
+      "provecode": {
+        "blocking": true,
+        "flagged": true,
+        "gaps": [],
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y01-01",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-attrs/attrs",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y01-02",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y01-03",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y01-04",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y01-05",
+      "kind": "legit",
+      "pattern": "Y01",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y02-01",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y02-02",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y02-03",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y02-04",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "assert-added",
+      "count_preserving": false,
+      "id": "Y02-05",
+      "kind": "legit",
+      "pattern": "Y02",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise-with-context",
+      "count_preserving": true,
+      "id": "Y03-01",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise-with-context",
+      "count_preserving": true,
+      "id": "Y03-02",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise-with-context",
+      "count_preserving": true,
+      "id": "Y03-03",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise-with-context",
+      "count_preserving": true,
+      "id": "Y03-04",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise-with-context",
+      "count_preserving": true,
+      "id": "Y03-05",
+      "kind": "legit",
+      "pattern": "Y03",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise",
+      "count_preserving": true,
+      "id": "Y04-01",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise",
+      "count_preserving": true,
+      "id": "Y04-02",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise",
+      "count_preserving": true,
+      "id": "Y04-03",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise",
+      "count_preserving": true,
+      "id": "Y04-04",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "reraise",
+      "count_preserving": true,
+      "id": "Y04-05",
+      "kind": "legit",
+      "pattern": "Y04",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "try-finally",
+      "count_preserving": true,
+      "id": "Y05-01",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "try-finally",
+      "count_preserving": true,
+      "id": "Y05-02",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "try-finally",
+      "count_preserving": true,
+      "id": "Y05-03",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Delgan/loguru",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "try-finally",
+      "count_preserving": true,
+      "id": "Y05-04",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "try-finally",
+      "count_preserving": true,
+      "id": "Y05-05",
+      "kind": "legit",
+      "pattern": "Y05",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "Y06-01",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "Y06-02",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "Y06-03",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "Y06-04",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "hukkin/tomli",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "message-added",
+      "count_preserving": true,
+      "id": "Y06-05",
+      "kind": "legit",
+      "pattern": "Y06",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-jsonschema/jsonschema",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "Y07-01",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "python-attrs/attrs",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "Y07-02",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "jpadilla/pyjwt",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "Y07-03",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "Delgan/loguru",
+      "split": "tuning"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "Y07-04",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "marshmallow-code/marshmallow",
+      "split": "held_out"
+    },
+    {
+      "baseline": {
+        "flagged": false,
+        "rules": []
+      },
+      "category": "operands-swapped",
+      "count_preserving": true,
+      "id": "Y07-05",
+      "kind": "legit",
+      "pattern": "Y07",
+      "provecode": {
+        "blocking": false,
+        "flagged": false,
+        "gaps": [],
+        "outcome": "INCONCLUSIVE",
+        "rules": []
+      },
+      "repo": "scrapy/w3lib",
+      "split": "tuning"
+    }
+  ],
+  "detection_definition": {
+    "baseline": "At least one finding from the count-based reimplementation.",
+    "provecode": "At least one S1-S5/B1-B4 finding with severity warning or blocking."
+  },
+  "falsification": {
+    "F1": {
+      "baseline": {
+        "hi": 0.1487,
+        "k": 0,
+        "lo": 0.0,
+        "n": 22,
+        "rate": 0.0
+      },
+      "mcnemar_exact_p": 4.77e-07,
+      "provecode": {
+        "hi": 1.0,
+        "k": 22,
+        "lo": 0.8513,
+        "n": 22,
+        "rate": 1.0
+      },
+      "statement": "On count-preserving held-out cases, PROVECODE recall exceeds the count-based baseline's.",
+      "supported": true
+    },
+    "F2": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "baseline_outperforms": false,
+      "provecode": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "statement": "On non-count-preserving cases (deletions, removed asserts), parity is expected; the baseline outperforming PROVECODE is reported."
+    },
+    "F3": {
+      "provecode": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0.0,
+        "n": 8,
+        "rate": 0.0
+      },
+      "statement": "Share of legitimate held-out changes flagged as blocking (wide interval at this n; Tier C is the stronger evidence)."
+    }
+  },
+  "headline": "held_out",
+  "held_out": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-swallowed": {
+        "baseline": {
+          "hi": 0.2588,
+          "k": 0,
+          "lo": 0.0,
+          "n": 11,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 11,
+          "lo": 0.7412,
+          "n": 11,
+          "rate": 1.0
+        }
+      },
+      "vacuous-check": {
+        "baseline": {
+          "hi": 0.2588,
+          "k": 0,
+          "lo": 0.0,
+          "n": 11,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 11,
+          "lo": 0.7412,
+          "n": 11,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "X01": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 6,
+        "provecode_flagged": 6
+      },
+      "X02": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "X03": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "X04": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "X05": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 4,
+        "provecode_flagged": 4
+      },
+      "X06": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 1,
+        "provecode_flagged": 1
+      },
+      "X07": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "X08": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 3,
+        "provecode_flagged": 3
+      },
+      "Y01": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "Y02": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 1,
+        "provecode_flagged": 0
+      },
+      "Y04": {
+        "baseline_flagged": 0,
+        "category": "reraise",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "Y05": {
+        "baseline_flagged": 0,
+        "category": "try-finally",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      },
+      "Y07": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 2,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0.0,
+        "n": 8,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0.0,
+        "n": 8,
+        "rate": 0.0
+      },
+      "provecode": {
+        "hi": 0.3244,
+        "k": 0,
+        "lo": 0.0,
+        "n": 8,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 30,
+    "n_count_preserving": 22,
+    "n_legit": 8,
+    "n_weakening": 22,
+    "outcomes": {
+      "FAILED": 22,
+      "INCONCLUSIVE": 8
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 22,
+        "lo": 0.8513,
+        "n": 22,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.1487,
+        "k": 0,
+        "lo": 0.0,
+        "n": 22,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 4.77e-07,
+        "only_baseline": 0,
+        "only_provecode": 22
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 22,
+        "lo": 0.8513,
+        "n": 22,
+        "rate": 1.0
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.1487,
+        "k": 0,
+        "lo": 0.0,
+        "n": 22,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 4.77e-07,
+        "only_baseline": 0,
+        "only_provecode": 22
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 22,
+        "lo": 0.8513,
+        "n": 22,
+        "rate": 1.0
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      }
+    }
+  },
+  "label": "Injected vacuous and swallowed checks on real repositories (experimental, ADR 0011). Not real-world performance.",
+  "provenance": {
+    "benchmark_code_sha256": "c13f1bd9a357dc52d32162193f7a35dc5392e603853b5a0cb8f6a13b171d080e",
+    "case_ids_sha256": "16923a3e1edc3a317caf4b1fedcd4a3697912b9ebe625d51926f3ee7cea68cae",
+    "cases_lock_sha256": "189411e505dab7ada22ebb80e9de3a40397eb11698aa3c3a087a6db059a90f90",
+    "command": "python -m benchmark.regenerate",
+    "commit_order": {
+      "detector_change": {
+        "commit": "b6eeede391e894e2764a2248fb32f368b2493d27",
+        "committed_at": "2026-11-21T09:49:14+05:30"
+      },
+      "patterns_frozen": {
+        "commit": "5b8a20ae7cf0d4b550871da83e195578bd2e6e2b",
+        "committed_at": "2026-11-21T09:41:55+05:30"
+      },
+      "split_frozen": {
+        "commit": "5b8a20ae7cf0d4b550871da83e195578bd2e6e2b",
+        "committed_at": "2026-11-21T09:41:55+05:30"
+      }
+    },
+    "engine_source_sha256": "e2d41e40efa5c34d1e61c6897f31ec739b0bc08e2633280f74582093e38e2a28",
+    "engine_version": "0.1.0",
+    "python": "3.11",
+    "sources": [
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "python-attrs/attrs",
+        "sha": "2a1fb86d44816afcc60e86d57956ce3604820326"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "jpadilla/pyjwt",
+        "sha": "16231abfd1d8eab4953e8779b3017b859c88565e"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "Delgan/loguru",
+        "sha": "28349be3cd740867bc947eef741c69370ca45735"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "marshmallow-code/marshmallow",
+        "sha": "f268f0c4d12c4edb43743ca5703eed7954320245"
+      },
+      {
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "repo": "scrapy/w3lib",
+        "sha": "88bf1c0bba7b1b102a00b63ac202bd28f4d47fe0"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "python-jsonschema/jsonschema",
+        "sha": "64b62de5df4ec52d7679c770427329e86a22c395"
+      },
+      {
+        "licenses": [
+          "MIT"
+        ],
+        "repo": "hukkin/tomli",
+        "sha": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f"
+      }
+    ],
+    "split_lock_sha256": "69f6799a591037c8ea34cfcbbc1888fc3c414e14184088047b3dad8051a61b48"
+  },
+  "revision_log": [
+    {
+      "changes": [
+        "S5 self-comparison fires only when the base check compared against a different expected value (assertTrue(r) -> assertEqual(r, r) is not a weakening)",
+        "B4 matches swallowed checks by what they check, not their text, and fires only when more checks are swallowed than before (a reworded message inside an existing try/except is not a finding)"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "none: all 99 case results and all metrics identical before and after",
+      "source": "inspection of S5/B4 hits on real commits (more-itertools 5c715d813a, pyparsing e0a6f21205), not benchmark data"
+    }
+  ],
+  "schema_version": "1",
+  "tier": "A-b",
+  "tuning": {
+    "analysis_gaps": {},
+    "by_category": {
+      "assertion-swallowed": {
+        "baseline": {
+          "hi": 0.1546,
+          "k": 0,
+          "lo": 0.0,
+          "n": 21,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 21,
+          "lo": 0.8454,
+          "n": 21,
+          "rate": 1.0
+        }
+      },
+      "vacuous-check": {
+        "baseline": {
+          "hi": 0.1546,
+          "k": 0,
+          "lo": 0.0,
+          "n": 21,
+          "rate": 0.0
+        },
+        "provecode": {
+          "hi": 1.0,
+          "k": 21,
+          "lo": 0.8454,
+          "n": 21,
+          "rate": 1.0
+        }
+      }
+    },
+    "by_pattern": {
+      "X01": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 2,
+        "provecode_flagged": 2
+      },
+      "X02": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 7,
+        "provecode_flagged": 7
+      },
+      "X03": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 7,
+        "provecode_flagged": 7
+      },
+      "X04": {
+        "baseline_flagged": 0,
+        "category": "vacuous-check",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "X05": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 4,
+        "provecode_flagged": 4
+      },
+      "X06": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 7,
+        "provecode_flagged": 7
+      },
+      "X07": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "X08": {
+        "baseline_flagged": 0,
+        "category": "assertion-swallowed",
+        "kind": "weakening",
+        "n": 5,
+        "provecode_flagged": 5
+      },
+      "Y01": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 4,
+        "provecode_flagged": 0
+      },
+      "Y02": {
+        "baseline_flagged": 0,
+        "category": "assert-added",
+        "kind": "legit",
+        "n": 4,
+        "provecode_flagged": 0
+      },
+      "Y03": {
+        "baseline_flagged": 0,
+        "category": "reraise-with-context",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y04": {
+        "baseline_flagged": 0,
+        "category": "reraise",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "Y05": {
+        "baseline_flagged": 0,
+        "category": "try-finally",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      },
+      "Y06": {
+        "baseline_flagged": 0,
+        "category": "message-added",
+        "kind": "legit",
+        "n": 5,
+        "provecode_flagged": 0
+      },
+      "Y07": {
+        "baseline_flagged": 0,
+        "category": "operands-swapped",
+        "kind": "legit",
+        "n": 3,
+        "provecode_flagged": 0
+      }
+    },
+    "legit_blocking": {
+      "provecode": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0.0,
+        "n": 27,
+        "rate": 0.0
+      }
+    },
+    "legit_flagged": {
+      "baseline": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0.0,
+        "n": 27,
+        "rate": 0.0
+      },
+      "provecode": {
+        "hi": 0.1246,
+        "k": 0,
+        "lo": 0.0,
+        "n": 27,
+        "rate": 0.0
+      }
+    },
+    "n_cases": 69,
+    "n_count_preserving": 42,
+    "n_legit": 27,
+    "n_weakening": 42,
+    "outcomes": {
+      "FAILED": 42,
+      "INCONCLUSIVE": 27
+    },
+    "precision_on_tierA_mix": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 42,
+        "lo": 0.9162,
+        "n": 42,
+        "rate": 1.0
+      }
+    },
+    "recall": {
+      "baseline": {
+        "hi": 0.0838,
+        "k": 0,
+        "lo": 0.0,
+        "n": 42,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 4.55e-13,
+        "only_baseline": 0,
+        "only_provecode": 42
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 42,
+        "lo": 0.9162,
+        "n": 42,
+        "rate": 1.0
+      }
+    },
+    "recall_count_preserving": {
+      "baseline": {
+        "hi": 0.0838,
+        "k": 0,
+        "lo": 0.0,
+        "n": 42,
+        "rate": 0.0
+      },
+      "paired": {
+        "mcnemar_exact_p": 4.55e-13,
+        "only_baseline": 0,
+        "only_provecode": 42
+      },
+      "provecode": {
+        "hi": 1.0,
+        "k": 42,
+        "lo": 0.9162,
+        "n": 42,
+        "rate": 1.0
+      }
+    },
+    "recall_not_count_preserving": {
+      "baseline": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      },
+      "paired": {
+        "mcnemar_exact_p": null,
+        "only_baseline": 0,
+        "only_provecode": 0
+      },
+      "provecode": {
+        "hi": null,
+        "k": 0,
+        "lo": null,
+        "n": 0,
+        "rate": null
+      }
+    }
+  },
+  "tuning_log": [
+    {
+      "change": "A base self-comparison such as `c == c` is a real reflexivity test of a custom __eq__, not a vacuous check, so adding `or True` to it is S5; only an `or`-vacuous base check counts as already vacuous.",
+      "evidence": [
+        "X03-01"
+      ],
+      "round": 1,
+      "rule": "S5",
+      "split_used": "tuning"
+    }
+  ]
+}

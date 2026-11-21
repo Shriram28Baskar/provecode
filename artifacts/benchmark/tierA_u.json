@@ -59,11 +59,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.2425,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 0.9851,
+          "k": 11,
+          "lo": 0.6461,
           "n": 12,
-          "rate": 0.0
+          "rate": 0.9167
         }
       },
       "skip-added": {
@@ -205,14 +205,14 @@
         "category": "other",
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 0
+        "provecode_flagged": 6
       },
       "U14": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 0
+        "provecode_flagged": 5
       },
       "U15": {
         "baseline_flagged": 6,
@@ -329,8 +329,8 @@
     "n_legit": 30,
     "n_weakening": 102,
     "outcomes": {
-      "FAILED": 89,
-      "INCONCLUSIVE": 43
+      "FAILED": 100,
+      "INCONCLUSIVE": 32
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -342,9 +342,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 89,
-        "lo": 0.9586,
-        "n": 89,
+        "k": 100,
+        "lo": 0.963,
+        "n": 100,
         "rate": 1.0
       }
     },
@@ -357,16 +357,16 @@
         "rate": 0.3529
       },
       "paired": {
-        "mcnemar_exact_p": 2.22e-16,
+        "mcnemar_exact_p": 1.08e-19,
         "only_baseline": 0,
-        "only_provecode": 53
+        "only_provecode": 64
       },
       "provecode": {
-        "hi": 0.924,
-        "k": 89,
-        "lo": 0.7941,
+        "hi": 0.9946,
+        "k": 100,
+        "lo": 0.9313,
         "n": 102,
-        "rate": 0.8725
+        "rate": 0.9804
       }
     },
     "recall_count_preserving": {
@@ -378,16 +378,16 @@
         "rate": 0.1538
       },
       "paired": {
-        "mcnemar_exact_p": 2.22e-16,
+        "mcnemar_exact_p": 1.08e-19,
         "only_baseline": 0,
-        "only_provecode": 53
+        "only_provecode": 64
       },
       "provecode": {
-        "hi": 0.8999,
-        "k": 65,
-        "lo": 0.7354,
+        "hi": 0.9929,
+        "k": 76,
+        "lo": 0.9112,
         "n": 78,
-        "rate": 0.8333
+        "rate": 0.9744
       }
     },
     "recall_not_count_preserving": {
@@ -2219,12 +2219,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "more-itertools/more-itertools",
@@ -2241,12 +2241,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "Python-Markdown/markdown",
@@ -2263,12 +2263,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "tkem/cachetools",
@@ -2285,12 +2285,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "kjd/idna",
@@ -2307,12 +2307,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "pyparsing/pyparsing",
@@ -2329,12 +2329,12 @@
       "kind": "weakening",
       "pattern": "U13",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "more-itertools/more-itertools",
@@ -2351,11 +2351,13 @@
       "kind": "weakening",
       "pattern": "U14",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "more-itertools/more-itertools",
       "split": "tuning"
@@ -2371,11 +2373,13 @@
       "kind": "weakening",
       "pattern": "U14",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "Python-Markdown/markdown",
       "split": "held_out"
@@ -2391,11 +2395,13 @@
       "kind": "weakening",
       "pattern": "U14",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "tkem/cachetools",
       "split": "tuning"
@@ -2431,11 +2437,13 @@
       "kind": "weakening",
       "pattern": "U14",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "pyparsing/pyparsing",
       "split": "tuning"
@@ -2451,11 +2459,13 @@
       "kind": "weakening",
       "pattern": "U14",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "more-itertools/more-itertools",
       "split": "tuning"
@@ -3357,7 +3367,7 @@
   ],
   "detection_definition": {
     "baseline": "At least one finding from the count-based reimplementation.",
-    "provecode": "At least one S1-S4/B1-B3 finding with severity warning or blocking."
+    "provecode": "At least one S1-S5/B1-B4 finding with severity warning or blocking."
   },
   "falsification": {
     "F1": {
@@ -3368,13 +3378,13 @@
         "n": 21,
         "rate": 0.1429
       },
-      "mcnemar_exact_p": 0.000244,
+      "mcnemar_exact_p": 1.53e-05,
       "provecode": {
-        "hi": 0.8937,
-        "k": 16,
-        "lo": 0.5491,
+        "hi": 0.9915,
+        "k": 20,
+        "lo": 0.7733,
         "n": 21,
-        "rate": 0.7619
+        "rate": 0.9524
       },
       "statement": "On count-preserving held-out cases, PROVECODE recall exceeds the count-based baseline's.",
       "supported": true
@@ -3469,11 +3479,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.4345,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 0.9638,
+          "k": 4,
+          "lo": 0.3755,
           "n": 5,
-          "rate": 0.0
+          "rate": 0.8
         }
       },
       "skip-added": {
@@ -3615,14 +3625,14 @@
         "category": "other",
         "kind": "weakening",
         "n": 3,
-        "provecode_flagged": 0
+        "provecode_flagged": 3
       },
       "U14": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 0
+        "provecode_flagged": 1
       },
       "U15": {
         "baseline_flagged": 1,
@@ -3732,8 +3742,8 @@
     "n_legit": 12,
     "n_weakening": 28,
     "outcomes": {
-      "FAILED": 23,
-      "INCONCLUSIVE": 17
+      "FAILED": 27,
+      "INCONCLUSIVE": 13
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -3745,9 +3755,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 23,
-        "lo": 0.8569,
-        "n": 23,
+        "k": 27,
+        "lo": 0.8754,
+        "n": 27,
         "rate": 1.0
       }
     },
@@ -3760,16 +3770,16 @@
         "rate": 0.3571
       },
       "paired": {
-        "mcnemar_exact_p": 0.000244,
+        "mcnemar_exact_p": 1.53e-05,
         "only_baseline": 0,
-        "only_provecode": 13
+        "only_provecode": 17
       },
       "provecode": {
-        "hi": 0.9212,
-        "k": 23,
-        "lo": 0.6441,
+        "hi": 0.9937,
+        "k": 27,
+        "lo": 0.8229,
         "n": 28,
-        "rate": 0.8214
+        "rate": 0.9643
       }
     },
     "recall_count_preserving": {
@@ -3781,16 +3791,16 @@
         "rate": 0.1429
       },
       "paired": {
-        "mcnemar_exact_p": 0.000244,
+        "mcnemar_exact_p": 1.53e-05,
         "only_baseline": 0,
-        "only_provecode": 13
+        "only_provecode": 17
       },
       "provecode": {
-        "hi": 0.8937,
-        "k": 16,
-        "lo": 0.5491,
+        "hi": 0.9915,
+        "k": 20,
+        "lo": 0.7733,
         "n": 21,
-        "rate": 0.7619
+        "rate": 0.9524
       }
     },
     "recall_not_count_preserving": {
@@ -3817,7 +3827,7 @@
   },
   "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "6c27b679f33626760bf6e84957d54bf4682ce9410ddd46a813085f6d63c9d0e3",
+    "benchmark_code_sha256": "0e7390eb4e7cf615cf235b45184ba297a320ce250a318e0ca8357df5a54e0ece",
     "case_ids_sha256": "acc756330c9f7bb680af820e9b9578e8f510b1dcb3830dff42073f99bc39be99",
     "cases_lock_sha256": "1989ceedec34e8d7e6fd6b8f222f587ee8bb829c92ec92ab9534933eb8cf035b",
     "command": "python -m benchmark.regenerate",
@@ -3835,7 +3845,7 @@
         "committed_at": "2026-11-20T23:00:44+05:30"
       }
     },
-    "engine_source_sha256": "c640030e1bb3e171db71a8092f102e4ae768b53676110596425a91162afe121a",
+    "engine_source_sha256": "e2d41e40efa5c34d1e61c6897f31ec739b0bc08e2633280f74582093e38e2a28",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -3885,6 +3895,24 @@
       "date": "2026-11-21",
       "effect_on_tier_a": "none: no Tier A-u case is in a test/ directory; all 132 case results and all metrics identical before and after",
       "source": "SWE-bench Verified gold test-file measurement (docs/research), not Tier A-u data"
+    },
+    {
+      "changes": [
+        "S5: a check replaced by a self-comparison or given an `or <true constant>`",
+        "B4: a check newly inside a try/except or contextlib.suppress that swallows AssertionError"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "11 case results changed, all of them U13-U14 weakenings, which these rules target and whose results had been seen; U13 6/6, U14 5/6 now flagged; held-out recall 23 -> 27 of 28; no legitimate case changed. The remaining miss, U14-04 (a swallowed self.assertRaises), is a known B4 gap, deliberately not fixed on seen data",
+      "source": "ADR 0011 (rules S5 and B4), developed on the Tier A-b tuning split, not on Tier A-u"
+    },
+    {
+      "changes": [
+        "S5 self-comparison fires only when the base check compared against a different expected value (assertTrue(r) -> assertEqual(r, r) is not a weakening)",
+        "B4 matches swallowed checks by what they check, not their text, and fires only when more checks are swallowed than before (a reworded message inside an existing try/except is not a finding)"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "none: all 132 case results and all metrics identical before and after",
+      "source": "inspection of S5/B4 hits on real commits (more-itertools 5c715d813a, pyparsing e0a6f21205), not benchmark data"
     }
   ],
   "schema_version": "1",
@@ -3949,11 +3977,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.3543,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 1.0,
+          "k": 7,
+          "lo": 0.6457,
           "n": 7,
-          "rate": 0.0
+          "rate": 1.0
         }
       },
       "skip-added": {
@@ -4095,14 +4123,14 @@
         "category": "other",
         "kind": "weakening",
         "n": 3,
-        "provecode_flagged": 0
+        "provecode_flagged": 3
       },
       "U14": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 0
+        "provecode_flagged": 4
       },
       "U15": {
         "baseline_flagged": 5,
@@ -4219,8 +4247,8 @@
     "n_legit": 18,
     "n_weakening": 74,
     "outcomes": {
-      "FAILED": 66,
-      "INCONCLUSIVE": 26
+      "FAILED": 73,
+      "INCONCLUSIVE": 19
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -4232,9 +4260,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 66,
-        "lo": 0.945,
-        "n": 66,
+        "k": 73,
+        "lo": 0.95,
+        "n": 73,
         "rate": 1.0
       }
     },
@@ -4247,16 +4275,16 @@
         "rate": 0.3514
       },
       "paired": {
-        "mcnemar_exact_p": 1.82e-12,
+        "mcnemar_exact_p": 1.42e-14,
         "only_baseline": 0,
-        "only_provecode": 40
+        "only_provecode": 47
       },
       "provecode": {
-        "hi": 0.9442,
-        "k": 66,
-        "lo": 0.8009,
+        "hi": 0.9976,
+        "k": 73,
+        "lo": 0.9273,
         "n": 74,
-        "rate": 0.8919
+        "rate": 0.9865
       }
     },
     "recall_count_preserving": {
@@ -4268,16 +4296,16 @@
         "rate": 0.1579
       },
       "paired": {
-        "mcnemar_exact_p": 1.82e-12,
+        "mcnemar_exact_p": 1.42e-14,
         "only_baseline": 0,
-        "only_provecode": 40
+        "only_provecode": 47
       },
       "provecode": {
-        "hi": 0.9271,
-        "k": 49,
-        "lo": 0.7468,
+        "hi": 0.9969,
+        "k": 56,
+        "lo": 0.9071,
         "n": 57,
-        "rate": 0.8596
+        "rate": 0.9825
       }
     },
     "recall_not_count_preserving": {

@@ -74,7 +74,7 @@ Three parts share one analyzer package.
 
 | Module | Responsibility | Runs where | Dependencies |
 |---|---|---|---|
-| `provecode.analyzer` | **Core.** Base/head test alignment, rules S1–S4 and B1–B3, `Finding` records with before/after lines | CPython (CLI, CI, fallback) **and Pyodide** | **stdlib only** (`ast`, `tokenize`, `dataclasses`, `json`, `hashlib`) |
+| `provecode.analyzer` | **Core.** Base/head test alignment, rules S1–S5 and B1–B4 (S5, B4 from ADR 0011), `Finding` records with before/after lines | CPython (CLI, CI, fallback) **and Pyodide** | **stdlib only** (`ast`, `tokenize`, `dataclasses`, `json`, `hashlib`) |
 | `provecode.limits` | Input guards: size, line count, tokenize-level nesting pre-scan (§7.3). Called before any `ast.parse` | Everywhere the core runs | stdlib only |
 | `provecode.contract` | Load and validate YAML contracts, compute content hash, link findings to conditions, assign severity. Also **compiles approved contracts to canonical JSON** for the browser | Loading YAML: CLI/CI. Linking and severity over JSON: everywhere | YAML/validation library in the CLI extra only (choice in 05); the JSON path is stdlib only |
 | `provecode.decide` | Pure, deterministic outcome over (contract, evidence, findings, gaps) | Everywhere | stdlib only |
@@ -96,7 +96,7 @@ refs ─► git: SHAs, changed files, base/head blobs
        limits (per file) ──reject──► Gap(reason=input_limit)   (never silently passed)
           │
           ▼
-       analyzer: parse base+head ─► align tests ─► rules S1–S4, B1–B3 ─► Findings
+       analyzer: parse base+head ─► align tests ─► rules S1–S5, B1–B4 ─► Findings
           │                               └─unalignable/unsupported─► Gap
           ▼
        contract: load, verify hash/approval ─► link findings → conditions ─► severity

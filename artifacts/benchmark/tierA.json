@@ -59,11 +59,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.1759,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 0.9901,
+          "k": 17,
+          "lo": 0.7424,
           "n": 18,
-          "rate": 0.0
+          "rate": 0.9444
         }
       },
       "parametrize-reduced": {
@@ -312,21 +312,21 @@
         "category": "other",
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 0
+        "provecode_flagged": 5
       },
       "W18": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 0
+        "provecode_flagged": 6
       },
       "W19": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 6,
-        "provecode_flagged": 0
+        "provecode_flagged": 6
       },
       "W20": {
         "baseline_flagged": 6,
@@ -380,8 +380,8 @@
     "n_legit": 30,
     "n_weakening": 138,
     "outcomes": {
-      "FAILED": 120,
-      "INCONCLUSIVE": 48
+      "FAILED": 137,
+      "INCONCLUSIVE": 31
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -393,9 +393,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 120,
-        "lo": 0.969,
-        "n": 120,
+        "k": 137,
+        "lo": 0.9727,
+        "n": 137,
         "rate": 1.0
       }
     },
@@ -408,16 +408,16 @@
         "rate": 0.3478
       },
       "paired": {
-        "mcnemar_exact_p": 4.24e-22,
+        "mcnemar_exact_p": 3.23e-27,
         "only_baseline": 0,
-        "only_provecode": 72
+        "only_provecode": 89
       },
       "provecode": {
-        "hi": 0.9159,
-        "k": 120,
-        "lo": 0.8032,
+        "hi": 0.9987,
+        "k": 137,
+        "lo": 0.9601,
         "n": 138,
-        "rate": 0.8696
+        "rate": 0.9928
       }
     },
     "recall_count_preserving": {
@@ -429,16 +429,16 @@
         "rate": 0.2105
       },
       "paired": {
-        "mcnemar_exact_p": 4.24e-22,
+        "mcnemar_exact_p": 3.23e-27,
         "only_baseline": 0,
-        "only_provecode": 72
+        "only_provecode": 89
       },
       "provecode": {
-        "hi": 0.8977,
-        "k": 96,
-        "lo": 0.7642,
+        "hi": 0.9984,
+        "k": 113,
+        "lo": 0.952,
         "n": 114,
-        "rate": 0.8421
+        "rate": 0.9912
       }
     },
     "recall_not_count_preserving": {
@@ -2811,12 +2811,12 @@
       "kind": "weakening",
       "pattern": "W17",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "python-humanize/humanize",
@@ -2833,12 +2833,12 @@
       "kind": "weakening",
       "pattern": "W17",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "pallets/itsdangerous",
@@ -2855,12 +2855,12 @@
       "kind": "weakening",
       "pattern": "W17",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "pallets/markupsafe",
@@ -2897,12 +2897,12 @@
       "kind": "weakening",
       "pattern": "W17",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "pytest-dev/pluggy",
@@ -2919,12 +2919,12 @@
       "kind": "weakening",
       "pattern": "W17",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
+        "outcome": "FAILED",
         "rules": [
-          "V0"
+          "S5"
         ]
       },
       "repo": "jazzband/prettytable",
@@ -2941,11 +2941,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "python-humanize/humanize",
       "split": "held_out"
@@ -2961,11 +2963,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "pallets/itsdangerous",
       "split": "tuning"
@@ -2981,11 +2985,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "pallets/markupsafe",
       "split": "tuning"
@@ -3001,11 +3007,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "pypa/packaging",
       "split": "held_out"
@@ -3021,11 +3029,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "pytest-dev/pluggy",
       "split": "tuning"
@@ -3041,11 +3051,13 @@
       "kind": "weakening",
       "pattern": "W18",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "B4"
+        ]
       },
       "repo": "jazzband/prettytable",
       "split": "held_out"
@@ -3061,11 +3073,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "python-humanize/humanize",
       "split": "held_out"
@@ -3081,11 +3095,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "pallets/itsdangerous",
       "split": "held_out"
@@ -3101,11 +3117,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "pallets/markupsafe",
       "split": "tuning"
@@ -3121,11 +3139,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "pypa/packaging",
       "split": "tuning"
@@ -3141,11 +3161,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "pytest-dev/pluggy",
       "split": "tuning"
@@ -3161,11 +3183,13 @@
       "kind": "weakening",
       "pattern": "W19",
       "provecode": {
-        "blocking": false,
-        "flagged": false,
+        "blocking": true,
+        "flagged": true,
         "gaps": [],
-        "outcome": "INCONCLUSIVE",
-        "rules": []
+        "outcome": "FAILED",
+        "rules": [
+          "S5"
+        ]
       },
       "repo": "jazzband/prettytable",
       "split": "tuning"
@@ -4211,7 +4235,7 @@
   ],
   "detection_definition": {
     "baseline": "At least one finding from the count-based reimplementation.",
-    "provecode": "At least one S1-S4/B1-B3 finding with severity warning or blocking."
+    "provecode": "At least one S1-S5/B1-B4 finding with severity warning or blocking."
   },
   "falsification": {
     "F1": {
@@ -4222,13 +4246,13 @@
         "n": 37,
         "rate": 0.1892
       },
-      "mcnemar_exact_p": 2.38e-07,
+      "mcnemar_exact_p": 3.73e-09,
       "provecode": {
-        "hi": 0.9052,
-        "k": 30,
-        "lo": 0.658,
+        "hi": 0.9952,
+        "k": 36,
+        "lo": 0.8618,
         "n": 37,
-        "rate": 0.8108
+        "rate": 0.973
       },
       "statement": "On count-preserving held-out cases, PROVECODE recall exceeds the count-based baseline's.",
       "supported": true
@@ -4323,11 +4347,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.3543,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 0.9743,
+          "k": 6,
+          "lo": 0.4869,
           "n": 7,
-          "rate": 0.0
+          "rate": 0.8571
         }
       },
       "parametrize-reduced": {
@@ -4534,21 +4558,21 @@
         "category": "other",
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 0
+        "provecode_flagged": 1
       },
       "W18": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 3,
-        "provecode_flagged": 0
+        "provecode_flagged": 3
       },
       "W19": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 2,
-        "provecode_flagged": 0
+        "provecode_flagged": 2
       },
       "W20": {
         "baseline_flagged": 1,
@@ -4602,8 +4626,8 @@
     "n_legit": 6,
     "n_weakening": 44,
     "outcomes": {
-      "FAILED": 37,
-      "INCONCLUSIVE": 13
+      "FAILED": 43,
+      "INCONCLUSIVE": 7
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -4615,9 +4639,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 37,
-        "lo": 0.9059,
-        "n": 37,
+        "k": 43,
+        "lo": 0.918,
+        "n": 43,
         "rate": 1.0
       }
     },
@@ -4630,16 +4654,16 @@
         "rate": 0.3182
       },
       "paired": {
-        "mcnemar_exact_p": 2.38e-07,
+        "mcnemar_exact_p": 3.73e-09,
         "only_baseline": 0,
-        "only_provecode": 23
+        "only_provecode": 29
       },
       "provecode": {
-        "hi": 0.9207,
-        "k": 37,
-        "lo": 0.7063,
+        "hi": 0.996,
+        "k": 43,
+        "lo": 0.8819,
         "n": 44,
-        "rate": 0.8409
+        "rate": 0.9773
       }
     },
     "recall_count_preserving": {
@@ -4651,16 +4675,16 @@
         "rate": 0.1892
       },
       "paired": {
-        "mcnemar_exact_p": 2.38e-07,
+        "mcnemar_exact_p": 3.73e-09,
         "only_baseline": 0,
-        "only_provecode": 23
+        "only_provecode": 29
       },
       "provecode": {
-        "hi": 0.9052,
-        "k": 30,
-        "lo": 0.658,
+        "hi": 0.9952,
+        "k": 36,
+        "lo": 0.8618,
         "n": 37,
-        "rate": 0.8108
+        "rate": 0.973
       }
     },
     "recall_not_count_preserving": {
@@ -4687,7 +4711,7 @@
   },
   "label": "Injected cases on real repositories (experimental). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "8fc5016db24f41721775de6b9c4672010ee6f82796b475e52baa9d772516d4ed",
+    "benchmark_code_sha256": "b977864f297c65abe26df47c0928bd694cdf6ef90d50e29508eede0ce88c516c",
     "case_ids_sha256": "452a16853e6b24d6ecf649e72673fa8c3311c51d8ac00c85c656da1e5f2dbeaa",
     "cases_lock_sha256": "91055c1dfb5f440c97df457dfad463eac45965207125c1766e246f5cde4a0bb7",
     "command": "python -m benchmark.regenerate",
@@ -4705,7 +4729,7 @@
         "committed_at": "2026-11-20T20:08:41+05:30"
       }
     },
-    "engine_source_sha256": "c640030e1bb3e171db71a8092f102e4ae768b53676110596425a91162afe121a",
+    "engine_source_sha256": "e2d41e40efa5c34d1e61c6897f31ec739b0bc08e2633280f74582093e38e2a28",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
@@ -4787,6 +4811,24 @@
       "date": "2026-11-21",
       "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
       "source": "ADR 0009 (recognise unittest-style tests), from the landscape research report, not Tier A data"
+    },
+    {
+      "changes": [
+        "S5: a check replaced by a self-comparison or given an `or <true constant>`",
+        "B4: a check newly inside a try/except or contextlib.suppress that swallows AssertionError"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "17 case results changed, all of them W17-W19 weakenings, which these rules target and whose results had been seen; W17 5/6, W18 6/6, W19 6/6 now flagged; held-out recall 37 -> 43 of 44; no legitimate case changed. Recall on W17-W19 is therefore no longer an unbiased estimate; Tier A-b is the fresh evaluation of these rules",
+      "source": "ADR 0011 (rules S5 and B4), developed on the Tier A-b tuning split, not on Tier A"
+    },
+    {
+      "changes": [
+        "S5 self-comparison fires only when the base check compared against a different expected value (assertTrue(r) -> assertEqual(r, r) is not a weakening)",
+        "B4 matches swallowed checks by what they check, not their text, and fires only when more checks are swallowed than before (a reworded message inside an existing try/except is not a finding)"
+      ],
+      "date": "2026-11-21",
+      "effect_on_tier_a": "none: all 168 case results and all metrics identical before and after",
+      "source": "inspection of S5/B4 hits on real commits (more-itertools 5c715d813a, pyparsing e0a6f21205), not benchmark data"
     }
   ],
   "schema_version": "1",
@@ -4851,11 +4893,11 @@
           "rate": 0.0
         },
         "provecode": {
-          "hi": 0.2588,
-          "k": 0,
-          "lo": 0.0,
+          "hi": 1.0,
+          "k": 11,
+          "lo": 0.7412,
           "n": 11,
-          "rate": 0.0
+          "rate": 1.0
         }
       },
       "parametrize-reduced": {
@@ -5104,21 +5146,21 @@
         "category": "other",
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 0
+        "provecode_flagged": 4
       },
       "W18": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 3,
-        "provecode_flagged": 0
+        "provecode_flagged": 3
       },
       "W19": {
         "baseline_flagged": 0,
         "category": "other",
         "kind": "weakening",
         "n": 4,
-        "provecode_flagged": 0
+        "provecode_flagged": 4
       },
       "W20": {
         "baseline_flagged": 5,
@@ -5172,8 +5214,8 @@
     "n_legit": 24,
     "n_weakening": 94,
     "outcomes": {
-      "FAILED": 83,
-      "INCONCLUSIVE": 35
+      "FAILED": 94,
+      "INCONCLUSIVE": 24
     },
     "precision_on_tierA_mix": {
       "baseline": {
@@ -5185,9 +5227,9 @@
       },
       "provecode": {
         "hi": 1.0,
-        "k": 83,
-        "lo": 0.9558,
-        "n": 83,
+        "k": 94,
+        "lo": 0.9607,
+        "n": 94,
         "rate": 1.0
       }
     },
@@ -5200,16 +5242,16 @@
         "rate": 0.3617
       },
       "paired": {
-        "mcnemar_exact_p": 3.55e-15,
+        "mcnemar_exact_p": 1.73e-18,
         "only_baseline": 0,
-        "only_provecode": 49
+        "only_provecode": 60
       },
       "provecode": {
-        "hi": 0.9334,
-        "k": 83,
-        "lo": 0.8025,
+        "hi": 1.0,
+        "k": 94,
+        "lo": 0.9607,
         "n": 94,
-        "rate": 0.883
+        "rate": 1.0
       }
     },
     "recall_count_preserving": {
@@ -5221,16 +5263,16 @@
         "rate": 0.2208
       },
       "paired": {
-        "mcnemar_exact_p": 3.55e-15,
+        "mcnemar_exact_p": 1.73e-18,
         "only_baseline": 0,
-        "only_provecode": 49
+        "only_provecode": 60
       },
       "provecode": {
-        "hi": 0.9183,
-        "k": 66,
-        "lo": 0.762,
+        "hi": 1.0,
+        "k": 77,
+        "lo": 0.9525,
         "n": 77,
-        "rate": 0.8571
+        "rate": 1.0
       }
     },
     "recall_not_count_preserving": {
