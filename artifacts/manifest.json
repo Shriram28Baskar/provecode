@@ -15,39 +15,39 @@
       "sha256": "2e8d6c77960af7a4c11686a09a9aaf55ffb9ae914419ad6f1f91427ff2ef0126"
     },
     {
-      "bytes": 1464,
+      "bytes": 1462,
       "deterministic": false,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/perf.json",
-      "sha256": "0f797e5355a19043b273b682878b74ab626e4cd468b749fe882777b98e771f1b"
+      "sha256": "dc0a66324a4a58717b36da88d3c59425cc59d3385786fa22331e7e4232512d83"
     },
     {
       "bytes": 115564,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA.json",
-      "sha256": "c62cba0a6c26be13a4f5e42ade9fb8342cc45ebe96c2973f689a1d8cb175287d"
+      "sha256": "d5f388a9d2f9d6636a279e3837c7cb0274b5c9123a7bddd0452f9ebd4c248fa7"
     },
     {
       "bytes": 66343,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA_b.json",
-      "sha256": "d557c3d12b8e7e869255ecba3be0532ba0de20e815e2eddf167893f44b90666f"
+      "sha256": "2953dd2f22f7e4a3cad4e996613077c9e8cf6988d0918eed4ce35b357d8d5a94"
     },
     {
       "bytes": 94125,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierA_u.json",
-      "sha256": "620ef9a3160d44398d02db5c23f024b90f8e984580930bc0a7678b19e55959a2"
+      "sha256": "2e94600e8e5f1c906d847d26083fe02e5679bad16b2ec1398900ab0f474658cc"
     },
     {
       "bytes": 204924,
       "deterministic": true,
       "generator": "python -m benchmark.regenerate",
       "path": "benchmark/tierH.json",
-      "sha256": "4b085542a309804a54dc4532fe9e95cf3085764c10e76d03c9890b73e0e5c759"
+      "sha256": "86bf01f299f494423369c707e6acb2b3db8273cef2d0f3ae7f43d39dca1b5b86"
     },
     {
       "bytes": 10386,

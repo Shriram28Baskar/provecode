@@ -81,3 +81,47 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
 - H1 and H3 give FAILED without a contract. A repository that legitimately edits an outcome hook must approve that through a contract change or accept the block.
 - The YAML parser is new code on an untrusted-input path. It runs under the same size limits as the analyzer, and it is fuzzed by the differential corpus.
 - **Code locations:** ADR 0007's allowance already covers `engine/`, `benchmark/`, `web/` and `artifacts/`. Nothing in this phase is written outside them except `docs/`.
+
+## Outcome (2026-11-21, measured)
+
+- **Commit order:**
+  - ADR `049b8c6`;
+  - Tier H frozen `9eca74a` (patterns, generator, 243 cases, split), before any rule code;
+  - rule code `2454eda`;
+  - Tier H runner `b483912`.
+  
+  Development used the tuning split only, with one logged round (`tierH.json` `tuning_log`):
+  - **H6:** a pragma on an aliased `TYPE_CHECKING` is trivial.
+  - **H7:** "pinned down" compares upper bounds.
+  - **H3:** a shadowing module inside a test package is an advisory warning. The pattern labels HS02-02 and HS02-03 weakenings; the owner should confirm that label.
+- **Tier H held-out** (73 cases, evaluated once after `2454eda`):
+  - PROVECODE catches **47/47** weakenings (95% CI 92–100%) and flags **0/26** legitimate near-misses (CI 0–13%).
+  - The engine at the freeze commit catches 0/47.
+  - "Harness file touched" catches 37/47 and flags 19/26 legitimate edits.
+  - The count-based baseline catches 0/47.
+  - Exact McNemar against the freeze engine: p = 1.4e-14.
+  - **Caveat:** the patterns mirror the rules' stated targets.
+- **Existing tiers:** all 399 case results in Tiers A, A-u and A-b are unchanged; only the engine-source hash in provenance changed.
+- **Pyodide parity:** 642/642 (A 168, A-u 132, A-b 99, H 243), 0 mismatches.
+- **H5 YAML decision held:** on 3,494 real workflow blobs from 27 repositories' histories, the subset parser is identical to PyYAML BaseLoader on 100%, with 0 refusals and 0 misparses. It also rejects all 13 blobs PyYAML rejects (`docs/research/data/yaml_subset_differential.json`).
+- **The brief's §8 assumption "pytest settings live in `[tool.pytest.ini_options]`" is incomplete.**
+  - 3 of the 9 Tier H repositories (anyio, stamina, cattrs) use pytest 9's native `[tool.pytest]` table.
+  - pytest 9.2 also reads `pytest.toml` / `.pytest.toml`.
+  - H4 and the Phase 2 overlay handle both tables and all seven config files.
+- **A cheat the brief did not list:** adding an empty, higher-precedence `pytest.ini` silently drops every setting in `pyproject.toml` / `tox.ini` / `setup.cfg`. H4 reports it (Tier H pattern HP05).
+- **Real-history flag rate** (`docs/research/scripts/real_history_scan_v2.py` → `real_history_scan_v2.json`; engine `b660dbd`, which is Phase 1 plus the Phase 2 T3 import fix; 18 benchmark repositories; no contract; a flag means a weakening finding of severity warning or blocking). **This is a flag rate, not precision.**
+  - **Population T** (v1's selection, 3,032 test-editing commits):
+    - 502 flagged (16.6%), against 422 (13.9%) for v1's rules;
+    - 106 with an H or T finding;
+    - commits by new rule: T1 27, H6 42, H4 14, H5 12, T4 10, T5 6, H1 4, H7 4, H3 1.
+  - **Population H** (2,815 commits touching conftest, config, CI, requirements or harness files):
+    - 197 flagged (7.0%);
+    - 143 with an H or T finding;
+    - commits by rule: H5 55, H6 40, H4 25, H7 12, H1 10, T1 5, H2 2, T4 2, H3 1, T5 1.
+  - **210 commits with an H or T finding are listed for the owner to label** (`owner_label: null`). Claude labeled nothing.
+  - **Likely false-positive classes seen while reading the output, for the owner to confirm or overturn. No rule was changed because of them:**
+    - a `tox -e mypy` / `-e lint` job counted as a test job (H5);
+    - `continue-on-error: ${{ matrix.experimental }}` for allowed-failure matrix entries (H5);
+    - a regex exclude for `...` (`\.{3}`) and `omit **/__main__.py` (H6);
+    - `testpaths` introduced during config cleanups (H4);
+    - T5 and T1 firing on a generated test file in a Unicode data update (kjd/idna `9a4bc59e9d`, `007bcb6836`), where the specification itself changed.

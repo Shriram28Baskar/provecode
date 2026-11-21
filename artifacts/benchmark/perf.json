@@ -14,10 +14,10 @@
   "note": "Measured on the machine that ran the regenerate command; not deterministic, not CI-diffed.",
   "per_case": {
     "max_peak_bytes": 18352305,
-    "max_s": 0.65386,
-    "median_s": 0.06421,
+    "max_s": 0.94523,
+    "median_s": 0.07504,
     "n": 168,
-    "p95_s": 0.36607
+    "p95_s": 0.49486
   },
   "schema_version": "1",
   "worst_case_live_limits": {
@@ -26,35 +26,35 @@
       "findings": 1,
       "gaps": [],
       "peak_bytes": 7381210,
-      "seconds": 0.6379
+      "seconds": 0.9407
     },
     "63KiB_long_lines": {
       "bytes": 64428,
       "findings": 20,
       "gaps": [],
       "peak_bytes": 1393639,
-      "seconds": 0.0594
+      "seconds": 0.0715
     },
     "bracket_depth_100": {
       "bytes": 231,
       "findings": 1,
       "gaps": [],
       "peak_bytes": 73059,
-      "seconds": 0.0038
+      "seconds": 0.0095
     },
     "indent_depth_49": {
       "bytes": 5218,
       "findings": 1,
       "gaps": [],
       "peak_bytes": 159272,
-      "seconds": 0.0152
+      "seconds": 0.0407
     },
     "many_tests_1989_lines": {
       "bytes": 27515,
       "findings": 1,
       "gaps": [],
       "peak_bytes": 7793579,
-      "seconds": 0.7247
+      "seconds": 0.82
     },
     "over_limit_nesting_5000": {
       "bytes": 10034,
@@ -63,7 +63,7 @@
         "input_limit"
       ],
       "peak_bytes": 54081,
-      "seconds": 0.0007
+      "seconds": 0.0018
     }
   }
 }
