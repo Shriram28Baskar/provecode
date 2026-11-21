@@ -9,7 +9,8 @@ from pathlib import Path
 import pytest
 
 SRC = Path(__file__).resolve().parent.parent / "src" / "provecode"
-CORE = ["analyzer.py", "limits.py", "model.py", "decide.py", "report.py", "contract.py", "pipeline.py"]
+CORE = ["analyzer.py", "limits.py", "model.py", "decide.py", "report.py", "contract.py", "pipeline.py",
+        "changeset.py", "harness.py", "yamlsubset.py", "stdlib_names.py"]
 
 FORBIDDEN_CALLS = {"eval", "exec", "compile", "__import__", "literal_eval", "system", "popen", "getattr"}
 FORBIDDEN_MODULES = {"importlib", "runpy", "pickle", "marshal", "subprocess", "socket", "ctypes", "os"}

@@ -12,7 +12,8 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .model import BLOCKING, CONTRACT_TOUCHED, INFO, INFO_RULES, WARNING, WEAKENING_RULES, Finding
+from .model import (ALWAYS_BLOCKING, BLOCKING, CONTRACT_BLOCKING, CONTRACT_TOUCHED, INFO, INFO_RULES, NEVER_BLOCKING,
+                    T1, WARNING, WEAKENING_RULES, Finding)
 
 CONDITION_TYPES = {"functional", "boundary", "api-compat", "protected-behavior", "security", "performance"}
 CHECK_KINDS = {"pytest", "property", "api", "static"}
@@ -224,6 +225,16 @@ def approved_changes(base: Contract | None, head: Contract) -> set[str]:
     return out
 
 
+def ungraded_severity(f: Finding) -> str:
+    """Severity with no valid contract (ADR 0010, amended by ADR 0012): everything is a warning
+    except a contract edit and the always-blocking harness rules (H1, H3)."""
+    if f.rule == CONTRACT_TOUCHED or (f.rule in ALWAYS_BLOCKING and not f.detail.get("advisory")):
+        return BLOCKING
+    if f.rule == T1 and f.detail.get("both_changed"):
+        return INFO  # inputs and expectation changed together: only notable under a contract
+    return WARNING
+
+
 def link_and_grade(findings: list[Finding], head: Contract, changed: set[str]) -> None:
     """Assign condition_ids and severity in place (spec section 4, first match wins)."""
     guards: dict[str, list[str]] = {}
@@ -237,14 +248,18 @@ def link_and_grade(findings: list[Finding], head: Contract, changed: set[str]) -
         cids = sorted({cid for k in keys for cid in guards.get(k, [])})
         f.condition_ids = cids
         mandatory = [cid for cid in cids if head.condition(cid).mandatory]
-        if f.rule == CONTRACT_TOUCHED:
+        if f.rule == CONTRACT_TOUCHED or (f.rule in ALWAYS_BLOCKING and not f.detail.get("advisory")):
             f.severity = BLOCKING
+        elif f.rule in CONTRACT_BLOCKING or f.rule in ALWAYS_BLOCKING:
+            f.severity = BLOCKING  # repository-wide harness weakening under an adopted contract (ADR 0012)
+        elif f.rule == T1 and f.detail.get("both_changed") and not mandatory:
+            f.severity = INFO
         elif mandatory and all(cid in changed for cid in mandatory):
             f.severity = INFO
             f.detail["approved_contract_change"] = sorted(mandatory)
         elif f.rule in INFO_RULES:
             f.severity = INFO
-        elif mandatory and f.rule in WEAKENING_RULES:
+        elif mandatory and f.rule in WEAKENING_RULES and f.rule not in NEVER_BLOCKING:
             f.severity = BLOCKING
         else:
             f.severity = WARNING

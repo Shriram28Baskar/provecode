@@ -21,6 +21,7 @@ import sys
 import tempfile
 from pathlib import Path
 
+from . import changeset
 from . import contract as contract_mod
 from . import git as git_mod
 from . import pipeline, report as report_mod
@@ -89,7 +90,16 @@ def collect(repo: str, base_ref: str, staged: bool, protect: list[str]) -> tuple
             gaps.append(Gap("unparseable", str(exc), file=ch.path))
     prov = {"repo": Path(top).name, "base_sha": base, "head": "index" if staged else "working tree",
             "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
-    return _pair_renames(entries), sorted(set(touched)), prov, gaps, top, base
+    from .cli import harness_changes
+
+    paired = _pair_renames(entries)
+    read = (lambda p: git_mod.show_index(top, p)) if staged else (lambda p: git_mod.show_worktree(top, p))
+    extra, egaps = harness_changes(top, base, git_mod.changed_files_local(top, base, staged), read,
+                                   {e[0] for e in entries})
+    cs = changeset.from_tuples(paired, base_paths=git_mod.ls_tree(top, base))
+    cs.files += extra
+    cs.base_sha = base
+    return cs, sorted(set(touched)), prov, gaps + egaps, top, base
 
 
 def base_contract(top: str, base: str, path: str | None) -> tuple[dict | None, list[Gap]]:

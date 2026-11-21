@@ -20,6 +20,7 @@ from pathlib import Path
 
 from . import contract as contract_mod
 from . import git as git_mod
+from . import changeset as cs_mod
 from . import pipeline, report as report_mod
 from .analyzer import is_test_path
 from .model import Gap
@@ -32,6 +33,48 @@ def _protected(path: str, extra: list[str]) -> bool:
     p = path.replace("\\", "/")
     return any(p == x.rstrip("/") or p.startswith(x if x.endswith("/") else x + "/") or p == x
                for x in (*DEFAULT_PROTECTED, *extra))
+
+
+MAX_SOURCE_FILES = 500  # H6 reads changed source files for added `# pragma: no cover`; beyond this, a gap
+
+
+def harness_changes(repo: str, base: str, changes, read_head, test_paths: set[str]) -> tuple[list, list[Gap]]:
+    """FileChanges for everything except test files that the harness rules read (ADR 0012), plus the
+    unchanged root pytest configuration files as context. read_head(path) returns head content."""
+    out, gaps = [], []
+    seen = set()
+    sources = 0
+    for ch in changes:
+        kind = cs_mod.classify(ch.path)
+        if ch.path in test_paths or kind not in cs_mod.ANALYZED | {cs_mod.SOURCE}:
+            continue
+        if kind == cs_mod.SOURCE:
+            if ch.status == "D":
+                continue
+            sources += 1
+            if sources > MAX_SOURCE_FILES:
+                if sources == MAX_SOURCE_FILES + 1:
+                    gaps.append(Gap("input_limit", f"more than {MAX_SOURCE_FILES} changed source files; the rest were "
+                                                   "not checked for added `# pragma: no cover`"))
+                continue
+        try:
+            b = None if ch.status == "A" else git_mod.show(repo, base, ch.old_path or ch.path)
+            h = None if ch.status == "D" else read_head(ch.path)
+        except git_mod.DecodeError as exc:
+            gaps.append(Gap("unparseable", str(exc), file=ch.path))
+            continue
+        out.append(cs_mod.FileChange(ch.path, ch.status, b, h, ch.old_path))
+        seen.add(ch.path)
+    for name in cs_mod.PYTEST_CONFIG_NAMES:
+        if name in seen:
+            continue
+        try:
+            text = git_mod.show(repo, base, name)
+        except git_mod.DecodeError:
+            continue
+        if text is not None:
+            out.append(cs_mod.FileChange(name, "U", text, text))
+    return out, gaps
 
 
 def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
@@ -57,9 +100,15 @@ def _collect(args) -> tuple[list, list[str], dict, list[Gap]]:
                 files.append((ch.path, git_mod.show(repo, base, ch.path), git_mod.show(repo, head, ch.path)))
         except git_mod.DecodeError as exc:  # other git failures propagate and exit 3
             gaps.append(Gap("unparseable", str(exc), file=ch.path))
+    test_paths = {e[0] for e in files}
+    extra, egaps = harness_changes(repo, base, git_mod.changed_files(repo, base, head),
+                                   lambda p: git_mod.show(repo, head, p), test_paths)
+    cs = cs_mod.from_tuples(files, base_paths=git_mod.ls_tree(repo, base))
+    cs.files += extra
+    cs.base_sha, cs.head_sha = base, head
     prov = {"repo": str(Path(repo).resolve().name), "base_sha": base, "head_sha": head,
             "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()}
-    return files, touched, prov, gaps
+    return cs, touched, prov, gaps + egaps
 
 
 def _contracts(args) -> tuple[dict | None, dict | None, list[Gap]]:

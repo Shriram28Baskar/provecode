@@ -14,7 +14,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 
 from . import limits as _limits
-from .model import B1, B2, B3, B4, R0, S1, S2, S3, S4, S5, V0, FileResult, Finding, Gap
+from .model import B1, B2, B3, B4, R0, S1, S2, S3, S4, S5, T1, T2, T3, T4, T5, V0, FileResult, Finding, Gap
 
 # Builtin exception classes by name, resolved once at import from the
 # interpreter's own namespace (never looked up from analyzed input).
@@ -835,6 +835,10 @@ def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> 
     # 3. B3: fewer checks (assert + pytest.raises) and unexplained removals.
     deficit = (len(base) + len(_raises_calls(tb))) - (len(head) + len(_raises_calls(th)))
     if deficit > 0:
+        # A check moved into an in-file helper that still checks is not a removal (ADR 0012).
+        helpers = _helpers(ph, th)
+        deficit -= sum(1 for name, _ in _new_delegations(tb, th) if name in helpers and _does_check(helpers[name]))
+    if deficit > 0:
         removed_raises = _raises_calls(tb)[len(_raises_calls(th)):] if len(_raises_calls(tb)) > len(_raises_calls(th)) else []
         candidates = [c.node for c in unpaired_base] + removed_raises
         for node in candidates[:deficit]:
@@ -849,6 +853,439 @@ def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> 
                 detail={"deficit": deficit, "cited": len(candidates)},
             ))
     return out
+
+
+# --------------------------------------------------------------------------- T1-T5 (ADR 0012)
+
+
+def _subject_node(c: Check) -> ast.AST | None:
+    """The expression a check is about (the side that is not the expected literal)."""
+    n = c.node
+    if isinstance(n, ast.Assert):
+        t = n.test
+        if isinstance(t, ast.Compare) and len(t.ops) == 1:
+            left, right = t.left, t.comparators[0]
+            return right if (_is_literal(left) and not _is_literal(right)) else left
+        if isinstance(t, ast.Call) and isinstance(t.func, ast.Name) and t.func.id == "isinstance" and len(t.args) == 2:
+            return t.args[0]
+        return t
+    if isinstance(n, ast.Call) and n.args:
+        if len(n.args) >= 2 and _is_literal(n.args[0]) and not _is_literal(n.args[1]):
+            return n.args[1]
+        return n.args[0]
+    return None
+
+
+def _literal_args_changed(b: ast.AST | None, h: ast.AST | None) -> bool:
+    """Same callee, same argument shape, and only literal arguments differ."""
+    if not (isinstance(b, ast.Call) and isinstance(h, ast.Call)) or _dump(b.func) != _dump(h.func):
+        return False
+    if len(b.args) != len(h.args) or [k.arg for k in b.keywords] != [k.arg for k in h.keywords]:
+        return False
+    pairs = list(zip(b.args, h.args)) + [(x.value, y.value) for x, y in zip(b.keywords, h.keywords)]
+    diff = [(x, y) for x, y in pairs if _dump(x) != _dump(y)]
+    return bool(diff) and all(_is_literal(x) and _is_literal(y) for x, y in diff)
+
+
+def _unmatched_checks(tb: TestFn, th: TestFn) -> tuple[list[Check], list[Check]]:
+    base, head = _checks(tb), _checks(th)
+    pool: dict[str, int] = defaultdict(int)
+    for h in head:
+        pool[h.full] += 1
+    rem_base = []
+    for b in base:
+        if pool[b.full]:
+            pool[b.full] -= 1
+        else:
+            rem_base.append(b)
+    seen: dict[str, int] = defaultdict(int)
+    for b in base:
+        seen[b.full] += 1
+    rem_head = []
+    for h in head:
+        if seen[h.full]:
+            seen[h.full] -= 1
+        else:
+            rem_head.append(h)
+    return rem_base, rem_head
+
+
+def _names_in(n: ast.AST | None) -> set[str]:
+    return {x.id for x in ast.walk(n) if isinstance(x, ast.Name)} if n is not None else set()
+
+
+def _t1(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    out = []
+    rem_base, rem_head = _unmatched_checks(tb, th)
+    used: set[int] = set()
+    for b in rem_base:
+        sb = _subject_node(b)
+        for h in rem_head:
+            if id(h) in used or h.op != b.op or not _literal_args_changed(sb, _subject_node(h)):
+                continue
+            same = _dump(b.expected) == _dump(h.expected)
+            both = not same and b.expected_literal and h.expected_literal
+            if not (same or both):
+                continue
+            used.add(id(h))
+            out.append(Finding(
+                T1, path, th.key,
+                "The test's inputs changed but the value it asserts did not, so it no longer checks the case it "
+                "checked before." if same else
+                "The test's inputs and its expected value changed together, so it now checks a different case.",
+                base_lines=_lines(b.node), head_lines=_lines(h.node), before=_seg(pb, b.node), after=_seg(ph, h.node),
+                detail={"both_changed": both, "via": "check"},
+            ))
+            break
+    # A local fed by a call whose literal inputs changed, while every check on it stayed the same.
+    def assigns(fn: TestFn) -> dict[str, list[ast.Assign]]:
+        d: dict[str, list[ast.Assign]] = defaultdict(list)
+        for n in _walk_own(fn.node):
+            if isinstance(n, ast.Assign) and len(n.targets) == 1 and isinstance(n.targets[0], ast.Name) \
+                    and isinstance(n.value, ast.Call):
+                d[n.targets[0].id].append(n)
+        return d
+
+    ab, ah = assigns(tb), assigns(th)
+    bchecks, hchecks = _checks(tb), _checks(th)
+    for name in sorted(set(ab) & set(ah)):
+        if len(ab[name]) != 1 or len(ah[name]) != 1:
+            continue
+        b, h = ab[name][0], ah[name][0]
+        if not _literal_args_changed(b.value, h.value):
+            continue
+        on_b = sorted(c.full for c in bchecks if name in _names_in(_subject_node(c)))
+        on_h = sorted(c.full for c in hchecks if name in _names_in(_subject_node(c)))
+        if on_b and on_b == on_h:
+            out.append(Finding(
+                T1, path, th.key,
+                f"The inputs that produce {name!r} changed but every check on {name!r} stayed the same, so the test "
+                "no longer checks the case it checked before.",
+                base_lines=_lines(b), head_lines=_lines(h), before=_seg(pb, b), after=_seg(ph, h),
+                detail={"both_changed": False, "via": "local", "local": name},
+            ))
+    return out
+
+
+def _doc_stripped(fn: ast.AST) -> list[ast.stmt]:
+    body = fn.body
+    if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) and \
+            isinstance(body[0].value.value, str):
+        return body[1:]
+    return body
+
+
+def _always_passes(fn: ast.AST) -> bool:
+    """A helper that cannot fail: no assert, raise, call, yield or await anywhere, only constant returns."""
+    if getattr(fn, "decorator_list", None):
+        return False
+    for stmt in _doc_stripped(fn):
+        for n in ast.walk(stmt):
+            if isinstance(n, (ast.Assert, ast.Raise, ast.Call, ast.Yield, ast.YieldFrom, ast.Await)):
+                return False
+            if isinstance(n, ast.Return) and n.value is not None and not isinstance(n.value, ast.Constant):
+                return False
+    return True
+
+
+def _does_check(fn: ast.AST) -> bool:
+    for n in ast.walk(fn):
+        if isinstance(n, (ast.Assert, ast.Raise)) or _is_self_assert(n):
+            return True
+        if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == "fail":
+            return True
+    return False
+
+
+def _helpers(p: Parsed, fn: TestFn) -> dict[str, ast.AST]:
+    """In-file helpers a test can delegate to: module-level non-test functions ("name") and methods
+    of the test's own class ("self.name")."""
+    out: dict[str, ast.AST] = {}
+    for n in p.tree.body:
+        if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and not n.name.startswith("test"):
+            out[n.name] = n
+    parts = fn.key.split("::")
+    if len(parts) == 3:
+        cls = next((n for n in p.tree.body if isinstance(n, ast.ClassDef) and n.name == parts[1]), None)
+        for n in cls.body if cls else []:
+            if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and not n.name.startswith("test"):
+                out[f"self.{n.name}"] = n
+    return out
+
+
+def _delegations(fn: TestFn) -> list[tuple[str, ast.Call]]:
+    """Calls used as a check: a bare `helper(...)` statement or `assert helper(...)`."""
+    out = []
+    for n in _walk_own(fn.node):
+        call = n.value if isinstance(n, ast.Expr) else n.test if isinstance(n, ast.Assert) else None
+        if not isinstance(call, ast.Call):
+            continue
+        f = call.func
+        if isinstance(f, ast.Name):
+            out.append((f.id, call))
+        elif isinstance(f, ast.Attribute) and isinstance(f.value, ast.Name) and f.value.id == "self" \
+                and not f.attr.startswith(("assert", "fail", "skipTest", "subTest")):
+            out.append((f"self.{f.attr}", call))
+    return out
+
+
+def _new_delegations(tb: TestFn, th: TestFn) -> list[tuple[str, ast.Call]]:
+    pool: dict[str, int] = defaultdict(int)
+    for _, c in _delegations(tb):
+        pool[_dump(c)] += 1
+    out = []
+    for name, c in _delegations(th):
+        if pool[_dump(c)]:
+            pool[_dump(c)] -= 1
+        else:
+            out.append((name, c))
+    return out
+
+
+def _t2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    helpers = _helpers(ph, th)
+    out = []
+    for name, call in _new_delegations(tb, th):
+        h = helpers.get(name)
+        if h is not None and _always_passes(h):
+            out.append(Finding(
+                T2, path, th.key,
+                f"The check now goes through {name}(), which is defined in this file and can never fail, so the test "
+                "no longer checks anything there.",
+                head_lines=_lines(call), after=_seg(ph, call) + "\n" + _seg(ph, h).splitlines()[0],
+                detail={"helper": name, "change": "delegated"},
+            ))
+    return out
+
+
+def _hollowed(pb: Parsed, ph: Parsed, path: str) -> list[Finding]:
+    """Helpers that checked something at base and can never fail at head, for every test calling them."""
+    out = []
+    for key, th in sorted(ph.tests.items()):
+        tb = pb.tests.get(key)
+        if tb is None:
+            continue
+        hb, hh = _helpers(pb, tb), _helpers(ph, th)
+        calls = {name for name, _ in _delegations(th)}
+        for name in sorted(calls):
+            if name in hb and name in hh and _does_check(hb[name]) and _always_passes(hh[name]):
+                out.append(Finding(
+                    T2, path, key,
+                    f"The helper {name}() that this test relies on was hollowed out: it checked something before and "
+                    "now can never fail.",
+                    base_lines=_lines(hb[name]), head_lines=_lines(hh[name]),
+                    before=_seg(pb, hb[name]), after=_seg(ph, hh[name]),
+                    detail={"helper": name, "change": "hollowed"},
+                ))
+    return out
+
+
+def _module_imports(tree: ast.Module) -> dict[str, str]:
+    out: dict[str, str] = {}
+    for s in tree.body:
+        if isinstance(s, ast.Import):
+            for a in s.names:
+                out[a.asname or a.name.split(".")[0]] = a.name if a.asname else a.name.split(".")[0]
+        elif isinstance(s, ast.ImportFrom) and s.module and s.level == 0:
+            for a in s.names:
+                out[a.asname or a.name] = f"{s.module}.{a.name}"
+    return out
+
+
+def _dotted(n: ast.AST, imports: dict[str, str]) -> str | None:
+    parts = []
+    while isinstance(n, ast.Attribute):
+        parts.append(n.attr)
+        n = n.value
+    if not isinstance(n, ast.Name):
+        return None
+    root = imports.get(n.id, n.id)
+    return ".".join([root] + list(reversed(parts)))
+
+
+def _patch_target(call: ast.Call, imports: dict[str, str]) -> str | None:
+    """The dotted symbol a monkeypatch.setattr / mock.patch / patch.object call replaces."""
+    f = call.func
+    chain = []
+    x = f
+    while isinstance(x, ast.Attribute):
+        chain.append(x.attr)
+        x = x.value
+    head = x.id if isinstance(x, ast.Name) else ""
+    args = call.args
+    s0 = args[0].value if args and isinstance(args[0], ast.Constant) and isinstance(args[0].value, str) else None
+    if chain[:1] == ["setattr"] and "monkeypatch" in head:
+        if s0 is not None and len(args) == 2:
+            return s0
+        if len(args) >= 3 and isinstance(args[1], ast.Constant) and isinstance(args[1].value, str):
+            base = _dotted(args[0], imports)
+            return f"{base}.{args[1].value}" if base else None
+        return None
+    if chain[:2] == ["object", "patch"] or (chain[:1] == ["object"] and head == "patch"):
+        if len(args) >= 2 and isinstance(args[1], ast.Constant) and isinstance(args[1].value, str):
+            base = _dotted(args[0], imports)
+            return f"{base}.{args[1].value}" if base else None
+        return None
+    if (chain[:1] == ["patch"] or (not chain and head == "patch")) and s0 is not None:
+        return s0
+    return None
+
+
+def _t3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    imports = _module_imports(ph.tree)
+
+    def patches(p: Parsed, fn: TestFn) -> list[tuple[str, ast.Call]]:
+        imp = _module_imports(p.tree)
+        out = []
+        for n in list(_walk_own(fn.node)) + [d for d in fn.node.decorator_list if isinstance(d, ast.Call)]:
+            if isinstance(n, ast.Call):
+                t = _patch_target(n, imp)
+                if t:
+                    out.append((t, n))
+        return out
+
+    base = {(t, _dump(c)) for t, c in patches(pb, tb)}
+    new = [(t, c) for t, c in patches(ph, th) if (t, _dump(c)) not in base]
+    if not new:
+        return []
+    patch_calls = {id(c) for _, c in new}
+    called = set()
+    for c in _checks(th):
+        for n in ast.walk(c.node):
+            if isinstance(n, ast.Call) and id(n) not in patch_calls:
+                d = _dotted(n.func, imports)
+                if d:
+                    called.add(d)
+    for n in _walk_own(th.node):
+        if isinstance(n, ast.Assign) and isinstance(n.value, ast.Call):
+            d = _dotted(n.value.func, imports)
+            if d:
+                called.add(d)
+    out = []
+    for target, call in new:
+        if target in called:
+            out.append(Finding(
+                T3, path, th.key,
+                f"The test now replaces {target} with a stand-in, and {target} is the function its checks call, so "
+                "the checks test the stand-in instead of the code.",
+                head_lines=_lines(call), after=_seg(ph, call), detail={"target": target},
+            ))
+    return out
+
+
+def _is_empty_iter(n: ast.AST) -> bool:
+    if isinstance(n, (ast.List, ast.Tuple, ast.Set)) and not n.elts:
+        return True
+    if isinstance(n, ast.Dict) and not n.keys:
+        return True
+    if isinstance(n, ast.Constant) and isinstance(n.value, (str, bytes)) and not n.value:
+        return True
+    if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and not n.keywords:
+        if n.func.id in ("list", "tuple", "set", "dict", "frozenset") and not n.args:
+            return True
+        if n.func.id == "range":
+            vals = [_num(a) for a in n.args]
+            if vals and all(v is not None for v in vals):
+                if len(vals) == 1:
+                    return vals[0] <= 0
+                step = vals[2] if len(vals) > 2 else 1
+                return (step > 0 and vals[0] >= vals[1]) or (step < 0 and vals[0] <= vals[1])
+    if isinstance(n, ast.Subscript) and isinstance(n.slice, ast.Slice):
+        s = n.slice
+        upper = _num(s.upper) if s.upper is not None else None
+        lower = _num(s.lower) if s.lower is not None else 0
+        return s.step is None and upper is not None and lower is not None and upper <= lower and upper >= 0
+    return False
+
+
+def _has_check(body: list[ast.stmt]) -> bool:
+    return any(isinstance(x, ast.Assert) or _is_self_assert(x) for s in body for x in ast.walk(s))
+
+
+def _t4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    out = []
+
+    def loops(fn: TestFn) -> dict[str, list[ast.For]]:
+        d: dict[str, list] = defaultdict(list)
+        for n in _walk_own(fn.node):
+            if isinstance(n, (ast.For, ast.AsyncFor)) and _has_check(n.body):
+                d[_dump(n.target)].append(n)
+        return d
+
+    lb, lh = loops(tb), loops(th)
+    for target in sorted(set(lb) & set(lh)):
+        for b, h in zip(lb[target], lh[target]):
+            if _dump(b.iter) == _dump(h.iter):
+                continue
+            if _is_empty_iter(h.iter) and not _is_empty_iter(b.iter):
+                out.append(Finding(
+                    T4, path, th.key, "The loop that holds the test's checks now iterates over nothing, so its checks "
+                                      "never run.",
+                    base_lines=_lines(b.iter), head_lines=_lines(h.iter), before=_seg(pb, b.iter),
+                    after=_seg(ph, h.iter), detail={"change": "emptied"},
+                ))
+            elif isinstance(b.iter, (ast.List, ast.Tuple, ast.Set)) and isinstance(h.iter, (ast.List, ast.Tuple, ast.Set)):
+                hd = {_dump(e) for e in h.iter.elts}
+                gone = [e for e in b.iter.elts if _dump(e) not in hd]
+                if gone:
+                    out.append(Finding(
+                        T4, path, th.key, f"{len(gone)} of {len(b.iter.elts)} case(s) were removed from the loop that "
+                                          "holds the test's checks.",
+                        base_lines=_lines(b.iter), head_lines=_lines(h.iter), before=_seg(pb, b.iter),
+                        after=_seg(ph, h.iter), detail={"change": "reduced", "removed": [_seg(pb, e) for e in gone]},
+                    ))
+
+    def params(fn: TestFn) -> dict[str, ast.Call]:
+        d = {}
+        for dec in fn.node.decorator_list:
+            if isinstance(dec, ast.Call) and isinstance(dec.func, ast.Attribute) and dec.func.attr == "parametrize" \
+                    and len(dec.args) >= 2:
+                d[_dump(dec.args[0])] = dec
+        return d
+
+    pbm, phm = params(tb), params(th)
+    for k in sorted(set(pbm) & set(phm)):
+        bv, hv = pbm[k].args[1], phm[k].args[1]
+        if _is_empty_iter(hv) and not isinstance(hv, (ast.List, ast.Tuple)) and not _is_empty_iter(bv):
+            out.append(Finding(
+                T4, path, th.key, "The parametrize argument values were replaced by an empty collection, so the test "
+                                  "runs no cases.",
+                base_lines=_lines(bv), head_lines=_lines(hv), before=_seg(pb, bv), after=_seg(ph, hv),
+                detail={"change": "parametrize_emptied"},
+            ))
+    return out
+
+
+def _t5(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    rb, rh = _raises_calls(tb), _raises_calls(th)
+    if len(rb) <= len(rh):
+        return []
+    base_checks, head_checks = _checks(tb), _checks(th)
+    if (len(base_checks) + len(rb)) - (len(head_checks) + len(rh)) > 0:
+        return []  # a removal; B3 reports it
+    head_raises = defaultdict(int)
+    for c in rh:
+        head_raises[_dump(c)] += 1
+    removed = []
+    for c in rb:
+        if head_raises[_dump(c)]:
+            head_raises[_dump(c)] -= 1
+        else:
+            removed.append(c)
+    _, new_checks = _unmatched_checks(tb, th)
+    if not removed or not new_checks:
+        return []
+    return [Finding(
+        T5, path, th.key, "An exception check was replaced by a value check, so the test no longer requires the error "
+                          "to be raised.",
+        base_lines=_lines(removed[0]), head_lines=_lines(new_checks[0].node), before=_seg(pb, removed[0]),
+        after=_seg(ph, new_checks[0].node), detail={"removed_raises": len(removed)},
+    )]
+
+
+def _test_body_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
+    return (_t1(pb, ph, tb, th, path) + _t2(pb, ph, tb, th, path) + _t3(pb, ph, tb, th, path)
+            + _t4(pb, ph, tb, th, path) + _t5(pb, ph, tb, th, path))
 
 
 # --------------------------------------------------------------------------- file level
@@ -930,6 +1367,8 @@ def _analyze(path: str, base_source: str | None, head_source: str | None, lim: _
         res.findings.extend(_s4(pb, ph, tb, th, path))
         res.findings.extend(_b2(pb, ph, tb, th, path))
         res.findings.extend(_b4(pb, ph, tb, th, path))
+        res.findings.extend(_test_body_rules(pb, ph, tb, th, path))
+    res.findings.extend(_hollowed(pb, ph, path))
     if ph.module_skip and not pb.module_skip:
         for key in sorted(k for k in ph.tests if k in pb.tests):
             res.findings.append(Finding(

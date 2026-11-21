@@ -26,7 +26,8 @@ const REQUIRED = [
 ];
 const OPTIONAL = ["benchmark/parity.json"];
 // The browser gets only the host-independent core (architecture section 4.1): no cli, git or exec.
-const CORE = ["__init__.py", "model.py", "limits.py", "analyzer.py", "contract.py", "decide.py", "report.py", "pipeline.py"];
+const CORE = ["__init__.py", "model.py", "limits.py", "analyzer.py", "contract.py", "decide.py", "report.py", "pipeline.py",
+  "changeset.py", "harness.py", "yamlsubset.py", "stdlib_names.py"];
 
 const sha256 = (buf) => createHash("sha256").update(buf).digest("hex");
 const fail = (msg) => {

@@ -9,14 +9,15 @@ from __future__ import annotations
 import platform
 
 from . import __version__
-from . import analyzer, contract as contract_mod, decide as decide_mod, report as report_mod
+from . import analyzer, contract as contract_mod, decide as decide_mod, harness, report as report_mod
+from .changeset import Changeset
 from .decide import Evidence
 from .limits import Limits
-from .model import CONTRACT_TOUCHED, Finding, Gap
+from .model import CONTRACT_TOUCHED, FileResult, Finding, Gap
 
 
 def run(
-    files: list[tuple[str, str | None, str | None]],
+    files: list[tuple[str, str | None, str | None]] | Changeset,
     contract_head: dict | None,
     contract_base: dict | None = None,
     *,
@@ -28,8 +29,16 @@ def run(
     extra_gaps: list[Gap] | None = None,
     provenance: dict | None = None,
 ) -> dict:
-    """Analyze (path, base_source, head_source) test files against an approved contract."""
+    """Analyze a change against an approved contract.
+
+    `files` is either a Changeset (test files plus the harness, config, CI and source files the
+    H rules read; ADR 0012) or the original list of (path, base_source, head_source[, old_path])
+    test-file tuples, which is analyzed exactly as before.
+    """
     limits = limits or Limits.cli()
+    changeset = files if isinstance(files, Changeset) else None
+    if changeset is not None:
+        files = changeset.test_entries()
     gaps: list[Gap] = list(extra_gaps or [])
     head = base = None
     try:
@@ -70,6 +79,13 @@ def run(
         results.append(r)
         findings.extend(r.findings)
         gaps.extend(r.gaps)
+    if changeset is not None:
+        h_findings, h_gaps, analyzed = harness.analyze(changeset, limits)
+        findings.extend(h_findings)
+        gaps.extend(h_gaps)
+        seen = {r.file for r in results}
+        results.extend(FileResult(p) for p in analyzed if p not in seen)
+        results.sort(key=lambda r: r.file)
     for p in sorted(touched_protected or []):
         findings.append(Finding(CONTRACT_TOUCHED, p, None,
                                 "The candidate change modifies a protected contract path; the contract must not be "
@@ -78,7 +94,7 @@ def run(
         contract_mod.link_and_grade(findings, head, contract_mod.approved_changes(base, head))
     else:
         for f in findings:
-            f.severity = "blocking" if f.rule == CONTRACT_TOUCHED else "warning"
+            f.severity = contract_mod.ungraded_severity(f)
     findings.sort(key=Finding.sort_key)
     for i, f in enumerate(findings, start=1):
         f.id = f"F{i}"

@@ -94,6 +94,11 @@ def show(repo: str, sha: str, path: str) -> str | None:
         raise DecodeError(f"{path} at {sha[:12]} is not UTF-8") from exc
 
 
+def ls_tree(repo: str, sha: str) -> tuple[str, ...]:
+    """Every file path at sha (used by the shadowing check, H3)."""
+    return tuple(p for p in _git(repo, "ls-tree", "-r", "--name-only", "-z", sha).split("\0") if p)
+
+
 def has_commits(repo: str) -> bool:
     """False for a freshly initialised repository whose HEAD is unborn."""
     return bool(_git(repo, "rev-list", "-n", "1", "--all").strip())

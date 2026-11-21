@@ -17,9 +17,29 @@ B4 = "B4"  # assertion failure swallowed (ADR 0011)
 V0 = "V0"  # expected value changed, strength unchanged (info only)
 R0 = "R0"  # test renamed with identical body (info only)
 CONTRACT_TOUCHED = "CONTRACT_TOUCHED"
+# Harness rules (ADR 0012): repository-wide, not tied to one test.
+H1 = "H1"  # conftest hook or collection tampering
+H2 = "H2"  # pytest plugin loading changed
+H3 = "H3"  # import-time harness file (.pth, sitecustomize) or shadowing module
+H4 = "H4"  # test selection narrowed in pytest config
+H5 = "H5"  # CI test step weakened
+H6 = "H6"  # coverage weakened
+H7 = "H7"  # test dependency removed or pinned down
+# Test-body rules (ADR 0012).
+T1 = "T1"  # inputs changed, asserted value unchanged
+T2 = "T2"  # check delegated to a trivially true helper
+T3 = "T3"  # function under test patched in its own test
+T4 = "T4"  # loop or parametrize iterable emptied or reduced
+T5 = "T5"  # exception check replaced by a value check
 
-WEAKENING_RULES = frozenset({S1, S2, S3, S4, S5, B1, B2, B3, B4})
+HARNESS_RULES = frozenset({H1, H2, H3, H4, H5, H6, H7})
+TEST_BODY_RULES = frozenset({T1, T2, T3, T4, T5})
+WEAKENING_RULES = frozenset({S1, S2, S3, S4, S5, B1, B2, B3, B4}) | HARNESS_RULES | TEST_BODY_RULES
 INFO_RULES = frozenset({V0, R0})
+# Severity policy for rules that cannot be graded through a guarded_by link (ADR 0012):
+ALWAYS_BLOCKING = frozenset({H1, H3})  # blocking with or without a contract (H1 only for its blocking impacts)
+CONTRACT_BLOCKING = frozenset({H2, H4, H5, H6})  # warning without a contract, blocking with one
+NEVER_BLOCKING = frozenset({H7, T1, T3, T5})  # capped at warning until real-world flag rates are reviewed
 
 RULE_TITLES = {
     S1: "Comparison weakened",
@@ -34,6 +54,18 @@ RULE_TITLES = {
     V0: "Expected value changed (strength unchanged)",
     R0: "Test renamed (body unchanged)",
     CONTRACT_TOUCHED: "Candidate modified the contract",
+    H1: "Test harness hook or collection changed (conftest.py)",
+    H2: "pytest plugin loading changed",
+    H3: "Import-time harness file or shadowing module added",
+    H4: "Test selection narrowed in pytest configuration",
+    H5: "CI test step weakened",
+    H6: "Coverage requirement weakened",
+    H7: "Test dependency removed or pinned down",
+    T1: "Test inputs changed, expected value unchanged",
+    T2: "Check delegated to a helper that always passes",
+    T3: "Function under test patched in its own test",
+    T4: "Loop or parametrize cases emptied or reduced",
+    T5: "Exception check replaced by a value check",
 }
 
 BLOCKING = "blocking"
