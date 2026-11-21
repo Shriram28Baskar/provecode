@@ -99,6 +99,11 @@ def has_commits(repo: str) -> bool:
     return bool(_git(repo, "rev-list", "-n", "1", "--all").strip())
 
 
+def git_path(repo: str, rel: str) -> str:
+    """Where git keeps rel (e.g. hooks/pre-commit), honouring core.hooksPath and worktrees."""
+    return _git(repo, "rev-parse", "--git-path", rel).strip()
+
+
 def toplevel(repo: str) -> str:
     return _git(repo, "rev-parse", "--show-toplevel").strip()
 

@@ -3,6 +3,7 @@
   provecode check   --repo . --base REF --head REF --contract C.yaml [--contract-base C0.yaml]
   provecode record  ...same as check, plus contract checks and repo tests in Docker
   provecode guard   [--staged] [--base HEAD]   uncommitted/staged changes; pre-commit and agent hooks
+  provecode install-hooks --claude | --pre-commit   wire guard into Claude Code or git
   provecode approve C.yaml --by NAME [--at ISO8601]
   provecode compile C.yaml [-o C.json]
 
@@ -154,9 +155,10 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--checks-dir", required=True, help="trusted directory holding contract-owned checks")
             p.add_argument("--timeout", type=int, default=120)
         p.set_defaults(fn=fn)
-    from . import guard  # local and agent-loop gate (ADR 0010)
+    from . import guard, install  # local and agent-loop gate (ADR 0010)
 
     guard.add_parser(sub)
+    install.add_parser(sub)
     p = sub.add_parser("approve")
     p.add_argument("contract")
     p.add_argument("--by", required=True)
@@ -176,7 +178,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         return args.fn(args)
-    except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:
+    except (git_mod.GitError, contract_mod.ContractError, OSError) as exc:  # noqa: B014
         print(f"provecode: error: {exc}", file=sys.stderr)
         return 3
     except Exception as exc:  # noqa: BLE001 - any crash must exit 3, never 1 (1 means FAILED)
