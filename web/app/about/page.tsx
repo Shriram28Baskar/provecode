@@ -6,19 +6,19 @@ export const metadata: Metadata = { title: "How it works | PROVECODE" };
 
 const STEPS = [
   ["Read the change", "Git gives the exact base and head commits. Only test files are compared, and the repository is never checked out or modified."],
-  ["Compare each test", "Python's own parser reads both versions. Tests are matched by name, renames are recognised, and each assertion is compared by what it checks and how strictly."],
+  ["Compare each test", "Python's own parser reads both versions. pytest tests and unittest.TestCase methods are both recognised; tests are matched by name, renames are recognised, and each assert or self.assert* check is compared by what it checks and how strictly."],
   ["Link to the contract", "Every finding is tied to the approved requirement its test guards. Severity comes from that requirement: weakening a guard of a mandatory condition is blocking."],
   ["Run the reviewers' checks", "In recorded runs, contract-owned checks run against the candidate in a Docker sandbox with no network. The repository's own tests run too, as supporting evidence only."],
   ["Decide by rule", "A fixed function turns findings, evidence and gaps into one verdict. No language model takes part, and missing evidence never becomes a pass."],
 ] as const;
 
 const RULES = [
-  ["S1", "Comparison weakened", "== became >=, <, != and similar, or a pytest.approx tolerance grew"],
-  ["S2", "Expected value made trivial", "== 80.00 became >= 0, is not None, a bare truthiness or isinstance check"],
-  ["S3", "Exception widened", "pytest.raises(ValueError) became Exception or an ancestor, or match= was dropped"],
+  ["S1", "Comparison weakened", "== became >=, <, != and similar (assertEqual became assertGreaterEqual), or an approx / assertAlmostEqual tolerance grew"],
+  ["S2", "Expected value made trivial", "== 80.00 became >= 0, is not None, a bare truthiness or isinstance check, in assert or self.assert* form"],
+  ["S3", "Exception widened", "pytest.raises or self.assertRaises(ValueError) became Exception or an ancestor, or match= / assertRaisesRegex's message check was dropped"],
   ["S4", "Parametrize cases removed", "boundary cases quietly dropped from @pytest.mark.parametrize"],
   ["B1", "Test deleted", "a test function or file removed, and not just renamed"],
-  ["B2", "Skip or guard added", "skip or xfail markers, pytest.skip(), an early return or if False: before the checks"],
+  ["B2", "Skip or guard added", "skip or xfail markers, @unittest.skip, pytest.skip() or self.skipTest(), an early return or if False: before the checks"],
   ["B3", "Assertion removed", "fewer checks than before, with the removed ones unexplained"],
 ] as const;
 
@@ -138,7 +138,7 @@ export default function AboutPage() {
         <ul className="prose-measure list-disc space-y-2 pl-5">
           <li>It is not the first independent verifier of AI-written code, and it does not prove correctness.</li>
           <li>It does not catch every weakening. Tautologies, swallowed assertions and widened mocks are known blind spots.</li>
-          <li>Python and pytest only. Benchmark numbers are from injected cases; real-world measurement is pending.</li>
+          <li>Python only: pytest-style and unittest-style tests (test_*.py, *_test.py, tests.py and files under tests/). Benchmark numbers are from injected cases; real-world measurement is pending.</li>
           <li>Docker narrows what untrusted code can do but is not a complete security boundary.</li>
           <li>
             In recorded runs, a contract check counts as passed only with a test report showing tests that actually ran

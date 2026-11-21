@@ -109,6 +109,7 @@ export interface SplitMetrics {
 }
 
 export interface TierA {
+  tier: string;
   label: string;
   held_out: SplitMetrics;
   tuning: SplitMetrics;
@@ -146,6 +147,7 @@ export interface Parity {
   pyodide_python: string;
   cpython_reference: string;
   cases_compared: number;
+  tiers?: { tier: string; cases_compared: number }[];
   mismatches: unknown[];
   identical: boolean;
 }

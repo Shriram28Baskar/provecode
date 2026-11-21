@@ -15,6 +15,7 @@ const artifacts = join(root, "artifacts");
 
 const REQUIRED = [
   "benchmark/tierA.json",
+  "benchmark/tierA_u.json",
   "benchmark/perf.json",
   "presets/weakened.json",
   "presets/legit.json",

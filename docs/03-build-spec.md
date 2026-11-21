@@ -298,3 +298,12 @@ These are the places where the implementation departs from, or adds to, the sect
   - Any internal error exits with 3.
   - Git failures are never treated as an absent file.
   - JSON contracts stay JSON when approved.
+
+**unittest-style tests (ADR 0009, 2026-11-21; recorded in `tierA.json` under `revision_log`; no Tier A result changed)**
+- **Test files.** `test_*.py`, `*_test.py`, `tests.py`, and any `.py` file under a `tests/` or `test/` directory. `conftest.py` and `__init__.py` are excluded.
+- **Test classes.** `Test*` classes, plus any class with a base whose final name ends in `TestCase` (`TestCase`, `SimpleTestCase`, `test.TransactionTestCase`, ...). Bases are judged by name only, without import resolution. ADR 0009 also mentions bases ending in `Tests`; that part was **not** built, to keep the false-positive surface small.
+- **Checks.** `self.assert*` calls are mapped onto the existing check model: `assertEqual`→`==`, `assertGreaterEqual`→`>=`, `assertIs`→`is`, `assertIsNotNone`→not-None, `assertTrue`→truthy, `assertIsInstance`→isinstance, `assertAlmostEqual`→approx (`delta`, or `places` with a default of 7). Project helpers such as `assertMarkdownRenders` count only for B3: their strength is unknown, so argument changes are not judged.
+- **S3.** `self.assertRaises*` and `self.assertWarns*` are exception checks. The regex argument of `assertRaisesRegex` counts as `match=`.
+- **B2.** `@unittest.skip`, `@expectedFailure`, `@skipIf(<truthy constant>)`, `@skipUnless(<falsy constant>)` (as `unittest.X` or imported from `unittest`), and a leading `self.skipTest()`.
+- **Renames.** A rename from a name default runners collect (`test*.py`, `*_test.py`) to one they don't is B1, even inside `tests/`.
+- **Tier A-u.** A second injected benchmark (`benchmark/patterns_unittest.md`, `generate_cases_unittest.py`, `*_unittest.lock.json`) was frozen in `bb6f3d5`, before the detector change. `regenerate` writes `artifacts/benchmark/tierA_u.json`, with the same metrics, baseline and held-out split, and with `commit_order.detector_change` in provenance. Pyodide parity covers both tiers.

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IntervalChart } from "@/components/interval-chart";
-import { artifactIndex, parity, perf, tierA } from "@/lib/data";
+import { artifactIndex, parity, perf, tierA, tierAU } from "@/lib/data";
 import { ci, frac, pValue, pct } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Benchmark | PROVECODE" };
@@ -20,6 +20,8 @@ const PATTERN_TEXT: Record<string, string> = {
   W17: "assert A == B became assert A == A",
   W18: "the assert was wrapped in try / except AssertionError",
   W19: "assert A == B became assert A == B or True",
+  U13: "self.assertEqual(A, B) became self.assertEqual(A, A)",
+  U14: "the self.assert* call was wrapped in try / except AssertionError",
 };
 
 export default function BenchmarkPage() {
@@ -31,6 +33,10 @@ export default function BenchmarkPage() {
   const f = t.falsification;
   const misses = Object.entries(t.all.by_pattern).filter(([, v]) => v.kind === "weakening" && v.provecode_flagged < v.n);
   const order = t.provenance.commit_order;
+  const u = tierAU();
+  const uh = u.held_out;
+  const uMisses = Object.entries(u.all.by_pattern).filter(([, v]) => v.kind === "weakening" && v.provecode_flagged < v.n);
+  const uOrder = u.provenance.commit_order;
 
   return (
     <div className="space-y-16 pt-12">
@@ -176,6 +182,50 @@ export default function BenchmarkPage() {
         />
       </section>
 
+      <section aria-labelledby="tier-au" className="space-y-6">
+        <h2 id="tier-au" className="text-2xl font-bold tracking-tight">
+          Tier A-u: unittest-style tests
+        </h2>
+        <p className="prose-measure text-ink-soft">{u.label}</p>
+        <p className="prose-measure">
+          PROVECODE also reads <code>unittest.TestCase</code> classes, <code>self.assert*</code> checks and unittest
+          skips. To measure that, a second benchmark was built the same way from {u.provenance.sources.length} other
+          permissively licensed repositories: {u.all.n_cases} cases, {uh.n_cases} of them held out. Its patterns, cases
+          and split were committed ({uOrder.split_frozen?.commit.slice(0, 12)}) before the detector change (
+          {uOrder.detector_change?.commit.slice(0, 12)}). The pattern labels were written by the developer and await
+          the owner&apos;s confirmation.
+        </p>
+        <IntervalChart
+          caption={`Tier A-u held-out split, n = ${uh.n_weakening} weakenings.`}
+          rows={[
+            { label: "All weakenings", a: uh.recall.provecode, b: uh.recall.baseline },
+            { label: "Count-preserving", a: uh.recall_count_preserving.provecode, b: uh.recall_count_preserving.baseline },
+            { label: "Count-reducing", a: uh.recall_not_count_preserving.provecode, b: uh.recall_not_count_preserving.baseline },
+            { label: "Legitimate, flagged", a: uh.legit_flagged.provecode, b: uh.legit_flagged.baseline },
+          ]}
+        />
+        <ul className="prose-measure list-disc space-y-1 pl-5">
+          <li>
+            Count-preserving weakenings caught: PROVECODE {frac(uh.recall_count_preserving.provecode)}, baseline{" "}
+            {frac(uh.recall_count_preserving.baseline)} (exact McNemar{" "}
+            {pValue(uh.recall_count_preserving.paired.mcnemar_exact_p)}).
+          </li>
+          <li>
+            Legitimate held-out edits blocked: {frac(uh.legit_blocking.provecode)} ({ci(uh.legit_blocking.provecode)}).
+          </li>
+          {uMisses.map(([id, v]) => (
+            <li key={id}>
+              Missed, all splits: <strong>{id}</strong>, {PATTERN_TEXT[id] ?? CATEGORY[v.category]}: caught{" "}
+              {v.provecode_flagged} of {v.n} (baseline {v.baseline_flagged} of {v.n})
+            </li>
+          ))}
+        </ul>
+        <p className="prose-measure text-sm text-ink-soft">
+          Engine source sha256 <span className="break-all font-mono">{u.provenance.engine_source_sha256}</span>;
+          tierA_u.json sha256 <span className="break-all font-mono">{idx["benchmark/tierA_u.json"]?.sha256}</span>.
+        </p>
+      </section>
+
       <section aria-labelledby="perf" className="space-y-4">
         <h2 id="perf" className="text-2xl font-bold tracking-tight">
           Speed and the live path
@@ -190,7 +240,8 @@ export default function BenchmarkPage() {
         {par && (
           <p className="prose-measure">
             The browser runs the same engine in Pyodide {par.pyodide_version} (Python {par.pyodide_python}). All{" "}
-            {par.cases_compared} cases produced {par.identical ? "identical" : "different"} findings, severities and
+            {par.cases_compared} cases
+            {par.tiers ? ` (${par.tiers.map((x) => `Tier ${x.tier}: ${x.cases_compared}`).join(", ")})` : ""} produced {par.identical ? "identical" : "different"} findings, severities and
             verdicts compared with CPython {par.cpython_reference}
             {par.identical ? "." : `: ${par.mismatches.length} differences.`}
           </p>
