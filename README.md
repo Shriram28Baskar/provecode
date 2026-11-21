@@ -50,7 +50,16 @@ Tier A-b (vacuous and swallowed checks, ADR 0011), held-out split: 22 injected w
 |---|---|---|
 | Weakenings caught | 22/22 (100%, 95% CI 85% to 100%) | 0/22 (0%, 95% CI 0% to 15%) |
 | Legitimate edits flagged | 0/8 (0%, 95% CI 0% to 32%) | 0/8 (0%, 95% CI 0% to 32%) |
-Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 399 of 399 cases (Tier A: 168, Tier A-u: 132, Tier A-b: 99).
+
+Tier H (harness and test-body weakenings, ADR 0012), held-out split: 47 injected weakenings and 26 legitimate near-misses in 9 further repositories (conftest hooks, pytest config, CI workflows, coverage, dependencies, shadowing modules, and test bodies), frozen before the H1-H7/T1-T5 rule code. **Experimental, injected cases; the patterns mirror the rules' stated targets, so this shows the rules work as specified, not real-world recall.**
+
+| Held-out (Tier H) | PROVECODE | PROVECODE before ADR 0012 | "Harness file touched" | Count-based baseline |
+|---|---|---|---|---|
+| Weakenings caught | 47/47 (100%, 95% CI 92% to 100%) | 0/47 (0%, 95% CI 0% to 8%) | 37/47 (79%, 95% CI 65% to 88%) | 0/47 (0%, 95% CI 0% to 8%) |
+| Harness weakenings caught | 37/37 (100%, 95% CI 91% to 100%) | 0/37 (0%, 95% CI 0% to 9%) | 37/37 (100%, 95% CI 91% to 100%) | 0/37 (0%, 95% CI 0% to 9%) |
+| Test-body weakenings caught | 10/10 (100%, 95% CI 72% to 100%) | 0/10 (0%, 95% CI 0% to 28%) | 0/10 (0%, 95% CI 0% to 28%) | 0/10 (0%, 95% CI 0% to 28%) |
+| Legitimate edits flagged | 0/26 (0%, 95% CI 0% to 13%) | 0/26 (0%, 95% CI 0% to 13%) | 19/26 (73%, 95% CI 54% to 86%) | 0/26 (0%, 95% CI 0% to 13%) |
+Browser parity: Pyodide 314.0.8 (Python 3.14.2) matches CPython 3.11 on 642 of 642 cases (Tier A: 168, Tier A-u: 132, Tier A-b: 99, Tier H: 243).
 <!-- results:end -->
 
 Full benchmark, method and limitations: the site's **Benchmark** page, or `artifacts/benchmark/tierA.json`.
@@ -61,6 +70,8 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
 |---|---|
 | **Semantic weakening rules** | **S1** comparison weakened (`==` → `>=`, a looser `approx`). **S2** expected value made trivial (`== 80` → `>= 0`, `is not None`). **S3** exception widened, or `match=` dropped. **S4** parametrize cases removed. **S5** check made vacuous (`A == A`, `… or True`). |
 | **Standard rules** (prior art, credited) | **B1** test deleted (renames are recognised). **B2** skip, xfail or an early-exit guard added. **B3** assertion removed. **B4** assertion failure swallowed (`try/except AssertionError: pass`, `suppress`); Ruff has related single-file lints. |
+| **Test-body rules** (ADR 0012) | **T1** inputs changed while the asserted value stayed the same. **T2** a check delegated to an in-file helper that can never fail, or a helper hollowed out. **T3** the function under test monkeypatched or mocked in its own test. **T4** a loop or parametrize list emptied or cut down. **T5** an exception check replaced by a value check. T1, T3 and T5 are warnings only until their real-world flag rate is reviewed. |
+| **Harness rules** (ADR 0012) | **H1** a `conftest.py` hook that decides outcomes or collection (the published SWE-bench `pytest_runtest_makereport` exploit), `collect_ignore`, a process exit, or tampering with pytest internals. **H2** plugin loading changed. **H3** `.pth` / `sitecustomize.py`, or a module shadowing the stdlib, pytest or the package under test. **H4** test selection narrowed in pytest config (`-k`, `-m`, `--deselect`, `testpaths`, `python_files`, a new higher-precedence config file). **H5** CI weakened (`\|\| true`, `continue-on-error`, `if: false`, a test step removed or narrowed, `paths-ignore` over source). **H6** coverage weakened. **H7** a test dependency removed or pinned down. H1 and H3 block with or without a contract. |
 | **Contracts** | YAML, versioned and human-approved, with a SHA-256 content hash. Tampered or unapproved contracts are rejected. A candidate that edits the contract path is blocked. |
 | **Verdicts** | **FAILED > INCONCLUSIVE > VERIFIED**, decided by a pure function with no LLM. Missing evidence never becomes a pass, and static analysis alone never yields VERIFIED. |
 | **Recorded runs** | Contract-owned checks and the repo's tests run in Docker: `--network none`, read-only, non-root, all capabilities dropped, with memory, CPU, process and time limits. Every report carries its SHAs, contract hash and image digest. |
@@ -127,7 +138,7 @@ provecode guard --staged        # the index, i.e. what the next commit would con
   ```
 
   Existing settings are merged, never overwritten, and a second run changes nothing. `--uninstall` removes only what it added.
-- **Zero configuration.** It works without a contract: any S1–S5/B1–B4 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
+- **Zero configuration.** It works without a contract: any S1–S5, B1–B4, T1–T5 or H1–H7 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
 - **Pre-commit** (`.pre-commit-config.yaml`):
 
   ```yaml
@@ -186,6 +197,18 @@ CI runs the tests on Python 3.11 and 3.13. It also checks the Tier A regeneratio
 | `web/` | The Next.js static site and the Pyodide worker |
 | `docs/` | Competitive audit, PRD, architecture, build spec, research report, ADRs 0001–0010 |
 | `spike/` | The Gate 0 feasibility spike, paused by ADR 0007. Never imported by product code. |
+
+## Known blind spots
+
+These are kept current. Each is a way to make a broken change look green that PROVECODE does not see today.
+
+- **Weakenings in production code.** Special-casing the inputs the tests use, or overloading `__eq__` so comparisons always pass. Only an independent, executed check (a contract-owned check, or the base branch's tests in a sealed run) can catch these, and that run is not built yet (brief Phase 2).
+- **Dynamic test generation.** Tests produced at run time (custom collectors, `pytest_generate_tests` computing cases from data files, `load_tests`) are analyzed only as far as their source shows. Changes to the data files they read are not analyzed.
+- **Helpers in other files.** T2 resolves helpers in the same file only. A check that moves into an imported helper is reported as an `unresolved_helper` gap, never as a pass.
+- **CI outside GitHub Actions.** Only `.github/workflows/*.yml` is read. GitLab CI, Azure Pipelines, `tox.ini` `commands`, `noxfile.py` and Makefiles are not.
+- **Indirect test commands.** A workflow step that runs tests through a script (`run: scripts/test`) is not recognised as a test step.
+- **What the trusted tests never checked.** No rule can detect a weakening of a behaviour that no test guarded in the first place.
+- **Languages other than Python.**
 
 ## Honest scope
 

@@ -82,6 +82,9 @@ Three parts share one analyzer package.
 | `provecode.git` | Resolve refs to SHAs, list changed files, read base/head blobs **without** checking out or modifying the user's repo | CLI/CI only | `git` subprocess |
 | `provecode.exec` | Recorded runs: contract-owned pytest checks and repo tests in Docker (Gate 1b) | CI/dev machine only | Docker |
 | `provecode.cli` | `provecode check <base> <head> --contract …` | CLI | — |
+| `provecode.changeset` | **Core (ADR 0012).** `FileChange(path, status, base_text, head_text, old_path)` and `Changeset(files, base_sha, head_sha, base_paths)`; `classify(path)` → test, conftest, harness, config, ci, source or other | Everywhere | stdlib only |
+| `provecode.harness` | **Core (ADR 0012).** Rules H1–H7 over a Changeset: conftest hooks (`ast`), pytest config (`tomllib`, `configparser`, `shlex`), CI workflows, coverage config, dependency files | Everywhere | stdlib only |
+| `provecode.yamlsubset` | **Core (ADR 0012).** Fail-closed YAML subset parser for workflow files; scalars stay strings (PyYAML `BaseLoader` semantics). Anything outside the subset becomes an `unparseable` gap | Everywhere | stdlib only (`re`, `copy`) |
 
 **Host independence.** The core modules (`analyzer`, `limits`, `decide`, `report`, and the JSON path of `contract`) contain **no host-specific code**: no Vercel, Pyodide or FastAPI imports. The browser worker and the fallback API are thin wrappers that pass strings in and receive a report dict out. Moving hosts changes only the wrapper.
 
@@ -107,6 +110,23 @@ refs ─► git: SHAs, changed files, base/head blobs
           ▼
        report: JSON (canonical) + Markdown, with provenance
 ```
+
+**Changeset path (ADR 0012).** Every adapter produces a `Changeset`, and `pipeline.run` consumes one:
+- `provecode check` (git refs);
+- `provecode guard` (working tree or index);
+- later, the browser's GitHub adapter and `provecode pr`.
+
+The git collectors read every changed test, conftest, harness, config and CI file. They also read changed source files (for H6's `# pragma: no cover`, capped at 500 files, beyond which a gap is recorded), plus the root pytest configuration files that did not change. Those unchanged files come in as status `U` context, so a newly added, higher-precedence `pytest.ini` can be compared with the `pyproject.toml` it shadows. The parent commit's file list (`base_paths`) feeds H3's shadowing check. The original list of `(path, base, head)` test-file tuples is still accepted and analyzed exactly as before, which is how Tiers A, A-u and A-b keep their results.
+
+```
+Changeset ─► test files ─► analyzer: S1–S5, B1–B4, T1–T5 ─┐
+         └─► other files ─► harness: H1–H7 ───────────────┴─► contract.link_and_grade ─► decide ─► report
+```
+
+H findings are repository-wide (`test` is null), so they cannot be graded through `guarded_by`. Their severity comes from a policy in `provecode.model`:
+- H1 and H3 always block. An H3 module inside a test package is only an advisory warning.
+- H2 and H4–H6 block once an approved contract exists.
+- H7, T1, T3 and T5 never block.
 
 Interfaces, the report JSON schema, and how static-only live results map to the three outcomes (PRD §10a) are specified in `05-engine-design.md`. Contract hashing and protection (PRD §10c) are in `03-contract-spec.md`.
 

@@ -1,7 +1,7 @@
 """Regenerate every Tier A and Tier A-u benchmark result from pinned inputs (PRD section 5.4).
 
-  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,tierA_u,tierA_b,perf}.json and the manifest
-  python -m benchmark.regenerate --check       recompute tierA, tierA_u and tierA_b.json; fail if any differs
+  python -m benchmark.regenerate               write artifacts/benchmark/{tierA,tierA_u,tierA_b,tierH,perf}.json and the manifest
+  python -m benchmark.regenerate --check       recompute tierA, tierA_u, tierA_b and tierH.json; fail if any differs
   python -m benchmark.regenerate --tuning-only print tuning-split results only; writes nothing
 
 Inputs: benchmark/{cases,split,sources}.lock.json (Tier A, frozen in M1, before any
@@ -31,7 +31,7 @@ from provecode.limits import Limits
 from provecode.model import WEAKENING_RULES
 
 from . import (baseline_count, generate_cases, generate_cases_blindspots, generate_cases_unittest, manifest, presets,
-               readme_results)
+               readme_results, tier_h)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "artifacts" / "benchmark"
@@ -517,12 +517,17 @@ def main(argv: list[str] | None = None) -> int:
         cases, split_lock = load_cases(t["gen"])
         rows = [run_case(c, t["gen"].CASES_DIR) for c in cases]
         built[tier] = (dump(build_tier_a(rows, split_lock, tier)), rows)
+    tier_h_bytes = dump(tier_h.build(_approved, wilson, mcnemar_exact, ENGINE_VERSION,
+                                     ".".join(platform.python_version_tuple()[:2])))
     if args.check:
         problems = []
         for tier, t in TIERS.items():
             have = t["out"].read_bytes().replace(b"\r\n", b"\n") if t["out"].exists() else b""
             if have != built[tier][0]:
                 problems.append(f"artifacts/benchmark/{t['out'].name} differs from a fresh regeneration")
+        have = tier_h.TIER_H.read_bytes().replace(b"\r\n", b"\n") if tier_h.TIER_H.exists() else b""
+        if have != tier_h_bytes:
+            problems.append("artifacts/benchmark/tierH.json differs from a fresh regeneration")
         problems += presets.check() + readme_results.check() + manifest.verify()
         for p in problems:
             print(p, file=sys.stderr)
@@ -531,6 +536,7 @@ def main(argv: list[str] | None = None) -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     for tier, t in TIERS.items():
         t["out"].write_bytes(built[tier][0])
+    tier_h.TIER_H.write_bytes(tier_h_bytes)
     PERF.write_bytes(dump(perf(built["A"][1])))
     presets.write()
     manifest.write()
@@ -542,6 +548,11 @@ def main(argv: list[str] | None = None) -> int:
               f"count-preserving PC {h['recall_count_preserving']['provecode']['rate']} vs "
               f"BL {h['recall_count_preserving']['baseline']['rate']}; "
               f"legit blocking {h['legit_blocking']['provecode']['rate']}")
+    hh = json.loads(tier_h_bytes)["held_out"]
+    print(f"Tier H held-out: recall PC {hh['recall']['provecode']['rate']} vs freeze-engine "
+          f"{hh['recall']['engine_at_freeze']['rate']} vs touched {hh['recall']['harness_touched']['rate']}; "
+          f"legit flagged PC {hh['legit_flagged']['provecode']['rate']} vs touched "
+          f"{hh['legit_flagged']['harness_touched']['rate']}")
     return 0
 
 

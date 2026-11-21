@@ -95,6 +95,33 @@ def block() -> str:
             f"| Legitimate edits flagged | {_cell(bh['legit_flagged']['provecode'])} | "
             f"{_cell(bh['legit_flagged']['baseline'])} |",
         ]
+    h_path = ROOT / "artifacts/benchmark/tierH.json"
+    if h_path.exists():
+        th = json.loads(h_path.read_text(encoding="utf-8"))
+        hh = th["held_out"]
+        fam = hh["by_family"]
+        lines += [
+            "",
+            f"Tier H (harness and test-body weakenings, ADR 0012), held-out split: {hh['n_weakening']} injected "
+            f"weakenings and {hh['n_legit']} legitimate near-misses in {len(th['provenance']['sources'])} further "
+            "repositories (conftest hooks, pytest config, CI workflows, coverage, dependencies, shadowing modules, "
+            "and test bodies), frozen before the H1-H7/T1-T5 rule code. **Experimental, injected cases; the patterns "
+            "mirror the rules' stated targets, so this shows the rules work as specified, not real-world recall.**",
+            "",
+            "| Held-out (Tier H) | PROVECODE | PROVECODE before ADR 0012 | \"Harness file touched\" | Count-based baseline |",
+            "|---|---|---|---|---|",
+            f"| Weakenings caught | {_cell(hh['recall']['provecode'])} | {_cell(hh['recall']['engine_at_freeze'])} | "
+            f"{_cell(hh['recall']['harness_touched'])} | {_cell(hh['recall']['baseline'])} |",
+            f"| Harness weakenings caught | {_cell(fam['harness']['recall']['provecode'])} | "
+            f"{_cell(fam['harness']['recall']['engine_at_freeze'])} | {_cell(fam['harness']['recall']['harness_touched'])}"
+            f" | {_cell(fam['harness']['recall']['baseline'])} |",
+            f"| Test-body weakenings caught | {_cell(fam['test']['recall']['provecode'])} | "
+            f"{_cell(fam['test']['recall']['engine_at_freeze'])} | {_cell(fam['test']['recall']['harness_touched'])} | "
+            f"{_cell(fam['test']['recall']['baseline'])} |",
+            f"| Legitimate edits flagged | {_cell(hh['legit_flagged']['provecode'])} | "
+            f"{_cell(hh['legit_flagged']['engine_at_freeze'])} | {_cell(hh['legit_flagged']['harness_touched'])} | "
+            f"{_cell(hh['legit_flagged']['baseline'])} |",
+        ]
     if par:
         lines.append(
             f"Browser parity: Pyodide {par['pyodide_version']} (Python {par['pyodide_python']}) matches CPython "

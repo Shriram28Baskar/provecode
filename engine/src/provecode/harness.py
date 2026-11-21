@@ -580,10 +580,13 @@ def _num(v) -> float | None:
 def _config_findings(base_name, base_cfg, head_name, head_cfg, where: str) -> list[Finding]:
     out: list[Finding] = []
     if base_name and head_name and base_name != head_name and base_cfg:
+        order = list(PYTEST_CONFIG_NAMES)
+        why = (f"which takes precedence over {base_name}" if order.index(head_name) < order.index(base_name)
+               else f"because {base_name} no longer holds pytest settings")
         out.append(Finding(
-            H4, head_name, None, f"pytest now reads its settings from {head_name}, which takes precedence over "
-                                 f"{base_name}; the settings in {base_name} ({', '.join(sorted(base_cfg)[:8])}) no "
-                                 "longer apply.", detail={"from": base_name, "to": head_name}))
+            H4, head_name, None, f"pytest now reads its settings from {head_name}, {why}; the settings in {base_name} "
+                                 f"({', '.join(sorted(base_cfg)[:8])}) no longer apply.",
+            detail={"from": base_name, "to": head_name}))
     path = head_name or base_name or where
     diff = compare_args(_split_args(base_cfg.get("addopts")), _split_args(head_cfg.get("addopts")))
     if diff["select"]:

@@ -2672,7 +2672,7 @@
   },
   "label": "Injected vacuous and swallowed checks on real repositories (experimental, ADR 0011). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "c13f1bd9a357dc52d32162193f7a35dc5392e603853b5a0cb8f6a13b171d080e",
+    "benchmark_code_sha256": "d93fb853e19f4f16b27bb6737b0a1b9b2c75e2b87ce313fcadedf5e6659f6039",
     "case_ids_sha256": "16923a3e1edc3a317caf4b1fedcd4a3697912b9ebe625d51926f3ee7cea68cae",
     "cases_lock_sha256": "189411e505dab7ada22ebb80e9de3a40397eb11698aa3c3a087a6db059a90f90",
     "command": "python -m benchmark.regenerate",
@@ -2690,7 +2690,7 @@
         "committed_at": "2026-11-21T09:41:55+05:30"
       }
     },
-    "engine_source_sha256": "2b8ddfbd1ba1d0a16ae56597715b7727c964a598108682608d109b1df5b99151",
+    "engine_source_sha256": "fdd43f9a83a28967fc62483887f007194f9dadbe156f126cdadc407d4f8a1b82",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [

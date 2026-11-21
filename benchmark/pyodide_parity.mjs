@@ -1,6 +1,6 @@
-// Pyodide parity (build spec section 8): run every Tier A, A-u and A-b case through the engine
+// Pyodide parity (build spec section 8): run every Tier A, A-u, A-b and H case through the engine
 // inside Pyodide (the same runtime the browser uses) and diff against the CPython results in
-// artifacts/benchmark/tierA.json, tierA_u.json and tierA_b.json. Writes artifacts/benchmark/parity.json.
+// artifacts/benchmark/tierA.json, tierA_u.json, tierA_b.json and tierH.json. Writes artifacts/benchmark/parity.json.
 //
 //   node benchmark/pyodide_parity.mjs     (needs web/node_modules, benchmark/.cache/cases and cases_unittest)
 import { createRequire } from "node:module";
@@ -16,6 +16,7 @@ const TIERS = [
   { artifact: "artifacts/benchmark/tierA.json", cases: "benchmark/.cache/cases" },
   { artifact: "artifacts/benchmark/tierA_u.json", cases: "benchmark/.cache/cases_unittest" },
   { artifact: "artifacts/benchmark/tierA_b.json", cases: "benchmark/.cache/cases_blindspots" },
+  { artifact: "artifacts/benchmark/tierH.json", cases: "benchmark/.cache/cases_harness", changeset: true },
 ].map((t) => ({ ...t, data: JSON.parse(readFileSync(join(root, t.artifact), "utf8")) }));
 const py = await loadPyodide();
 py.FS.mkdirTree("/engine/provecode");
@@ -40,14 +41,28 @@ def run_case(meta_json, base, head):
     return json.dumps({"flagged": bool(weak), "rules": sorted({f["rule"] for f in r["findings"]}),
                        "outcome": r["outcome"], "blocking": any(f["severity"] == "blocking" for f in r["findings"])})
 `);
+py.runPython(`
+from provecode.changeset import Changeset, FileChange
+def run_changeset(meta_json, cs_json):
+    m, doc = json.loads(meta_json), json.loads(cs_json)
+    cs = Changeset([FileChange(f["path"], f["status"], f["base"], f["head"]) for f in doc["files"]],
+                   base_paths=tuple(doc["base_paths"]))
+    r = pipeline.run(cs, _approve(m["contract_head"]), _approve(m["contract_base"]), mode="static", limits=Limits.cli())
+    weak = [f for f in r["findings"] if f["rule"] in WEAKENING_RULES and f["severity"] != "info"]
+    return json.dumps({"flagged": bool(weak), "rules": sorted({f["rule"] for f in r["findings"]}),
+                       "outcome": r["outcome"], "blocking": any(f["severity"] == "blocking" for f in r["findings"])})
+`);
 const runCase = py.globals.get("run_case");
+const runChangeset = py.globals.get("run_changeset");
 const mismatches = [];
 const tiers = [];
 for (const t of TIERS) {
   for (const row of t.data.cases) {
     const d = join(root, t.cases, row.id);
     const meta = readFileSync(join(d, "meta.json"), "utf8");
-    const got = JSON.parse(runCase(meta, readFileSync(join(d, "base.py"), "utf8"), readFileSync(join(d, "head.py"), "utf8")));
+    const got = JSON.parse(t.changeset
+      ? runChangeset(meta, readFileSync(join(d, "changeset.json"), "utf8"))
+      : runCase(meta, readFileSync(join(d, "base.py"), "utf8"), readFileSync(join(d, "head.py"), "utf8")));
     const want = row.provecode;
     for (const k of ["flagged", "rules", "outcome", "blocking"]) {
       if (JSON.stringify(got[k]) !== JSON.stringify(want[k])) {

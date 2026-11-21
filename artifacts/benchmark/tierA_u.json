@@ -3827,7 +3827,7 @@
   },
   "label": "Injected unittest-style cases on real repositories (experimental, ADR 0009). Not real-world performance.",
   "provenance": {
-    "benchmark_code_sha256": "0e7390eb4e7cf615cf235b45184ba297a320ce250a318e0ca8357df5a54e0ece",
+    "benchmark_code_sha256": "45cfafe1f5a3cf8815d37d022f4d8021052e418567009c15bc2066e7cc6fd511",
     "case_ids_sha256": "acc756330c9f7bb680af820e9b9578e8f510b1dcb3830dff42073f99bc39be99",
     "cases_lock_sha256": "1989ceedec34e8d7e6fd6b8f222f587ee8bb829c92ec92ab9534933eb8cf035b",
     "command": "python -m benchmark.regenerate",
@@ -3845,7 +3845,7 @@
         "committed_at": "2026-11-20T23:00:44+05:30"
       }
     },
-    "engine_source_sha256": "2b8ddfbd1ba1d0a16ae56597715b7727c964a598108682608d109b1df5b99151",
+    "engine_source_sha256": "fdd43f9a83a28967fc62483887f007194f9dadbe156f126cdadc407d4f8a1b82",
     "engine_version": "0.1.0",
     "python": "3.11",
     "sources": [
