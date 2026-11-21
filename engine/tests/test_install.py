@@ -119,3 +119,22 @@ def test_interpreter_is_this_one():
     from provecode import install
 
     assert Path(install._python().strip('"')) == Path(sys.executable)
+
+
+# --- found by running the hook in a real Claude Code session: an interpreter that cannot import
+# provecode made every hook run fail before guard started, so the hook failed open silently.
+
+@pytest.mark.parametrize("flag", ["--claude", "--pre-commit"])
+def test_refuses_when_the_interpreter_cannot_import_provecode(repo, capsys, monkeypatch, flag):
+    from provecode import install
+    monkeypatch.setattr(install, "_PROBE", "import provecode_not_a_module")
+    assert cli.main(["install-hooks", "--repo", str(repo), flag]) == 3
+    assert "fail open" in capsys.readouterr().err
+    assert not (repo / ".claude").exists()
+    assert not (repo / ".git" / "hooks" / "pre-commit").exists()
+
+
+def test_shared_install_does_not_probe_this_interpreter(repo, monkeypatch):
+    from provecode import install
+    monkeypatch.setattr(install, "_PROBE", "import provecode_not_a_module")
+    assert cli.main(["install-hooks", "--repo", str(repo), "--claude", "--shared"]) == 0

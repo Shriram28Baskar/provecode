@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -23,6 +25,25 @@ PRECOMMIT_TAG = "# installed by provecode install-hooks"
 
 class InstallError(Exception):
     pass
+
+
+_PROBE = "import provecode.cli"
+
+
+def _require_importable(top: Path) -> None:
+    """The hooks run `<python> -m provecode.cli` from the repository root. If that interpreter cannot
+    import provecode there, every hook run fails before guard starts, and the hook fails open with no
+    message. Refuse to install such a hook."""
+    try:
+        r = subprocess.run([sys.executable, "-c", _PROBE], cwd=top, capture_output=True, text=True, timeout=60)
+        ok = r.returncode == 0
+    except (OSError, subprocess.SubprocessError):
+        ok = False
+    if not ok:
+        raise InstallError(
+            f"{sys.executable} cannot import provecode when run from {top}, so the hook would fail open "
+            "without checking anything. Install the engine into that interpreter first "
+            "(python -m pip install <path to provecode>/engine), then run install-hooks again; not changed")
 
 
 def _python() -> str:
@@ -65,6 +86,12 @@ def install_claude(top: Path, shared: bool) -> tuple[Path, bool]:
     hooks = data.setdefault("hooks", {})
     if not isinstance(hooks, dict):
         raise InstallError(f"{path}: 'hooks' is not an object; not changed")
+    if shared:
+        if shutil.which("provecode") is None:
+            print("provecode install-hooks: warning: `provecode` is not on PATH here; the shared hooks need it on "
+                  "every machine that uses them", file=sys.stderr)
+    else:
+        _require_importable(top)
     changed = False
     for event, command in _commands(shared).items():
         groups = hooks.setdefault(event, [])
@@ -123,6 +150,7 @@ def _precommit_path(top: Path) -> Path:
 
 def install_precommit(top: Path) -> tuple[Path, bool]:
     path = _precommit_path(top)
+    _require_importable(top)
     body = f"#!/bin/sh\n{PRECOMMIT_TAG}\nexec {_python()} -m provecode.cli guard --staged\n"
     if path.exists():
         current = path.read_text(encoding="utf-8", errors="replace")

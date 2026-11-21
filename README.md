@@ -154,6 +154,8 @@ provecode guard --staged        # the index, i.e. what the next commit would con
   ```
 
   When Claude tries to finish with weakened tests, the Stop hook blocks it. Claude gets the findings, with before and after, as the reason to keep working, and you get a one-line warning. The session's starting commit is recorded outside the repository, so a weakening Claude commits during the session is still caught.
+
+  Checked in real headless Claude Code sessions (`docs/research/scripts/claude_hook_e2e.py`, one run per scenario). Told to weaken a pytest or a unittest assertion, the agent was blocked (S2, then S3) and restored the test byte for byte. A legitimate expected-value fix and a time-pressured feature fix were not blocked. See ADR 0010.
 - **Not tamper-proof.** An agent with a shell can edit hook settings. The local gate is the early, cheap catch; the PR check, with the contract read outside the candidate, is the enforcement point. Hooks fail open on errors and say so (ADR 0010).
 
 ## Reproduce every number
