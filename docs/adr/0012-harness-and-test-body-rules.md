@@ -136,6 +136,7 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
 - **Effect:**
   - 8 Tier H case results changed, all workflow cases whose step runs `tox -e docs`, `tox run -e typing`, `tox -e lint` or `tox run -e docset`. Their "weakening" labels are disputed and listed for the owner.
   - Held-out recall against the frozen labels: 44/47. Legitimate edits flagged: 0/26.
+  - **Owner decision (2026-11-22):** the 8 labels stay frozen as "weakening". The headline figure is 44/47, and the 8 cases are reported as a disclosed disagreement between the frozen labels and the corrected H5 rule.
   - No other tier changed.
 - **Engineering bar:**
   - `mypy --strict` clean on `engine/src/provecode`;

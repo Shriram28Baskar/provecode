@@ -4729,8 +4729,8 @@
         "committed_at": "2026-11-20T20:08:41+05:30"
       }
     },
-    "engine_source_sha256": "899088490ae183a7e38c4f4fb7adf2d38dc8426e1fc867fb6eee0c47fa65eb8a",
-    "engine_version": "0.1.0",
+    "engine_source_sha256": "c426dd297d950f180e4158c333bdd751c9046d59b3b07b083becf82b5215f72e",
+    "engine_version": "0.2.0",
     "python": "3.11",
     "sources": [
       {

@@ -3,7 +3,19 @@
 # (never interpolated into the script), so PR-controlled values cannot inject shell.
 set -euo pipefail
 
-: "${PC_CONTRACT:?contract input is required}"
+CONTRACT="${PC_CONTRACT:-}"
+BLOCK_ON="${PC_BLOCK_ON:-}"
+if [[ -z "$BLOCK_ON" ]]; then
+  if [[ -n "$CONTRACT" ]]; then BLOCK_ON=failed; else BLOCK_ON=weakening; fi
+fi
+if [[ "$BLOCK_ON" != "weakening" && "$BLOCK_ON" != "failed" ]]; then
+  echo "::error::block-on must be 'weakening' or 'failed', not '$BLOCK_ON'."
+  exit 3
+fi
+if [[ -z "$CONTRACT" && "$BLOCK_ON" == "failed" ]]; then
+  echo "::error::block-on: failed needs a contract (a verdict is only FAILED against one). Set 'contract', or use block-on: weakening."
+  exit 3
+fi
 BASE="${PC_BASE:-}"
 HEAD="${PC_HEAD:-HEAD}"
 OUT="${RUNNER_TEMP:-$(mktemp -d)}/provecode"
@@ -28,10 +40,13 @@ fetch_contract() { # $1 = path in repo, $2 = destination
   fi
 }
 
-fetch_contract "$PC_CONTRACT" "$OUT/contract.yaml"
-args=(check --repo . --base "$BASE" --head "$HEAD" --contract "$OUT/contract.yaml"
-      --json "$OUT/report.json" --md "$OUT/report.md" --protect "$PC_CONTRACT")
-if [[ -n "${PC_CONTRACT_BASE:-}" ]]; then
+args=(check --repo . --base "$BASE" --head "$HEAD" --json "$OUT/report.json" --md "$OUT/report.md"
+      --block-on "$BLOCK_ON")
+if [[ -n "$CONTRACT" ]]; then
+  fetch_contract "$CONTRACT" "$OUT/contract.yaml"
+  args+=(--contract "$OUT/contract.yaml" --protect "$CONTRACT")
+fi
+if [[ -n "$CONTRACT" && -n "${PC_CONTRACT_BASE:-}" ]]; then
   fetch_contract "$PC_CONTRACT_BASE" "$OUT/contract-base.yaml"
   args+=(--contract-base "$OUT/contract-base.yaml")
 fi

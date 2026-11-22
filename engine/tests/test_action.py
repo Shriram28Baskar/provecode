@@ -96,6 +96,39 @@ def test_pr_that_edits_its_contract_is_judged_by_the_base_contract_and_fails(rep
     assert rep["contract"]["conditions"][0]["mandatory"] is True  # the base version was used
 
 
+def test_without_a_contract_a_weakened_pr_fails(repo, tmp_path):
+    r, base = repo
+    head = candidate(r, base, "weakened")
+    code, rep, summary = run_action(r, base, head, tmp_path, PC_CONTRACT="")
+    assert code == 1 and rep["outcome"] == "INCONCLUSIVE"
+    assert "S2" in summary
+
+
+def test_without_a_contract_a_legit_pr_passes(repo, tmp_path):
+    r, base = repo
+    head = candidate(r, base, "legit")
+    code, rep, _ = run_action(r, base, head, tmp_path, PC_CONTRACT="")
+    assert code == 0 and rep["outcome"] == "INCONCLUSIVE"
+
+
+@pytest.mark.parametrize("block_on", ["failed", "sometimes"])
+def test_without_a_contract_block_on_failed_or_a_bad_value_is_a_usage_error(repo, tmp_path, block_on):
+    r, base = repo
+    head = candidate(r, base, "weakened")
+    code, _, _ = run_action(r, base, head, tmp_path, PC_CONTRACT="", PC_BLOCK_ON=block_on)
+    assert code == 3
+
+
+def test_with_a_contract_block_on_weakening_fails_on_an_ungraded_warning(repo, tmp_path):
+    r, base = repo
+    head = candidate(r, base, "legit")
+    env = {"PC_CONTRACT": "contracts/checkout.v2.yaml", "PC_CONTRACT_BASE": "contracts/checkout.v1.yaml"}
+    code, rep, _ = run_action(r, base, head, tmp_path, **env)
+    weak = [f for f in rep["findings"] if f["severity"] in ("warning", "blocking") and f["rule"] not in ("V0", "R0")]
+    code2, _, _ = run_action(r, base, head, tmp_path, PC_BLOCK_ON="weakening", **env)
+    assert code == 0 and code2 == (1 if weak else 0)
+
+
 def test_missing_contract_at_base_is_a_usage_error(repo, tmp_path):
     r, base = repo
     head = candidate(r, base, "weakened")

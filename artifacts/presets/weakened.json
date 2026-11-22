@@ -212,7 +212,7 @@
     "provenance": {
       "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
       "demo_repo": "demo/build_demo.py (deterministic SHAs)",
-      "engine_version": "0.1.0",
+      "engine_version": "0.2.0",
       "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
       "limits": {
         "max_bracket_depth": 100,

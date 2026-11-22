@@ -1,0 +1,1342 @@
+{
+  "cases": [
+    {
+      "round": 1,
+      "id": "A01",
+      "kind": "weakening",
+      "what": "equality replaced by `is not None`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A02",
+      "kind": "weakening",
+      "what": "equality replaced by a trivial bound",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A03",
+      "kind": "weakening",
+      "what": "assert removed",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A04",
+      "kind": "weakening",
+      "what": "assert replaced by `assert True`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A05",
+      "kind": "weakening",
+      "what": "expected value made the actual value (x == x)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A06",
+      "kind": "weakening",
+      "what": "conjunct of `a and b` dropped",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A07",
+      "kind": "weakening",
+      "what": "conjunct of `a and b` loosened",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A08",
+      "kind": "weakening",
+      "what": "assert on a tuple (always true)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A09",
+      "kind": "weakening",
+      "what": "assert moved under `if False:`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A10",
+      "kind": "weakening",
+      "what": "early `return` before the assert",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A11",
+      "kind": "weakening",
+      "what": "assert wrapped in try/except AssertionError: pass",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A12",
+      "kind": "weakening",
+      "what": "body replaced with pass",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A13",
+      "kind": "weakening",
+      "what": "pytest.approx with a huge tolerance",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A14",
+      "kind": "weakening",
+      "what": "comparison flipped to !=",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A15",
+      "kind": "weakening",
+      "what": "list equality reduced to a length check",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "A16",
+      "kind": "weakening",
+      "what": "equality reduced to membership",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "X01",
+      "kind": "weakening",
+      "what": "pytest.raises widened to Exception",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "X02",
+      "kind": "weakening",
+      "what": "match= removed from pytest.raises",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "X03",
+      "kind": "weakening",
+      "what": "pytest.raises removed, call kept",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K01",
+      "kind": "weakening",
+      "what": "@pytest.mark.skip added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K02",
+      "kind": "weakening",
+      "what": "@pytest.mark.xfail added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K03",
+      "kind": "weakening",
+      "what": "pytest.skip() at the top of the test",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K04",
+      "kind": "weakening",
+      "what": "module-level pytestmark skip",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K05",
+      "kind": "weakening",
+      "what": "skipif(True)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K06",
+      "kind": "weakening",
+      "what": "test renamed so pytest no longer collects it",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K07",
+      "kind": "weakening",
+      "what": "test deleted",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K08",
+      "kind": "weakening",
+      "what": "parametrize cases removed",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K09",
+      "kind": "weakening",
+      "what": "parametrize emptied",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K10",
+      "kind": "weakening",
+      "what": "test file deleted",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K11",
+      "kind": "weakening",
+      "what": "test file renamed out of pytest's naming pattern",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "K13",
+      "kind": "weakening",
+      "what": "pytest.importorskip on a module that is never installed",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "M01",
+      "kind": "weakening",
+      "what": "function under test patched in its own test",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "T3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "M02",
+      "kind": "weakening",
+      "what": "function under test replaced via @mock.patch",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "T3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U01",
+      "kind": "weakening",
+      "what": "assertEqual replaced by assertTrue",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U02",
+      "kind": "weakening",
+      "what": "assertRaises widened",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U03",
+      "kind": "weakening",
+      "what": "places lowered in assertAlmostEqual",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U04",
+      "kind": "weakening",
+      "what": "@unittest.skip added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U05",
+      "kind": "weakening",
+      "what": "self.skipTest() added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "U06",
+      "kind": "weakening",
+      "what": "@unittest.expectedFailure added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "H01",
+      "kind": "weakening",
+      "what": "conftest skips every test",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H1"
+      ],
+      "outcome": "FAILED"
+    },
+    {
+      "round": 1,
+      "id": "H02",
+      "kind": "weakening",
+      "what": "conftest forces every report to pass",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H1"
+      ],
+      "outcome": "FAILED"
+    },
+    {
+      "round": 1,
+      "id": "H03",
+      "kind": "weakening",
+      "what": "collect_ignore in conftest",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H1"
+      ],
+      "outcome": "FAILED"
+    },
+    {
+      "round": 1,
+      "id": "H04",
+      "kind": "weakening",
+      "what": "sitecustomize.py added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H3"
+      ],
+      "outcome": "FAILED"
+    },
+    {
+      "round": 1,
+      "id": "C01",
+      "kind": "weakening",
+      "what": "addopts -k deselects tests",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C02",
+      "kind": "weakening",
+      "what": "addopts --deselect",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C03",
+      "kind": "weakening",
+      "what": "testpaths moved away from the tests",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C04",
+      "kind": "weakening",
+      "what": "xfail_strict turned off",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C05",
+      "kind": "weakening",
+      "what": "filterwarnings error removed",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C06",
+      "kind": "weakening",
+      "what": "higher-precedence empty pytest.ini added",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C07",
+      "kind": "weakening",
+      "what": "subproject config narrowed (engine/pyproject.toml)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "C08",
+      "kind": "weakening",
+      "what": "addopts --ignore of a test file",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I01",
+      "kind": "weakening",
+      "what": "CI test step made non-failing with `|| true`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I02",
+      "kind": "weakening",
+      "what": "continue-on-error on the test step",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I03",
+      "kind": "weakening",
+      "what": "coverage threshold lowered",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H6"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I04",
+      "kind": "weakening",
+      "what": "test step removed",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I05",
+      "kind": "weakening",
+      "what": "test step narrowed with -k",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "I06",
+      "kind": "weakening",
+      "what": "test step disabled with `if: false`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "P01",
+      "kind": "weakening",
+      "what": "`# pragma: no cover` added to source",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H6"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L01",
+      "kind": "legit",
+      "what": "assert split into two",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L02",
+      "kind": "legit",
+      "what": "new test added",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L03",
+      "kind": "legit",
+      "what": "assert strengthened (>= to ==)",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L04",
+      "kind": "legit",
+      "what": "parametrize case added",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L05",
+      "kind": "legit",
+      "what": "match= added to pytest.raises",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L06",
+      "kind": "legit",
+      "what": "test renamed, body unchanged",
+      "blocked": false,
+      "correct": true,
+      "rules": [
+        "R0"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L07",
+      "kind": "legit",
+      "what": "expected value updated (requirement change)",
+      "blocked": false,
+      "correct": true,
+      "rules": [
+        "V0"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L08",
+      "kind": "legit",
+      "what": "assertEquals -> assertEqual",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L09",
+      "kind": "legit",
+      "what": "helper fixture added to conftest",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L10",
+      "kind": "legit",
+      "what": "ruff settings added to pyproject",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L11",
+      "kind": "legit",
+      "what": "--strict-markers to stricter addopts",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L12",
+      "kind": "legit",
+      "what": "CI matrix gets a new Python version",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L13",
+      "kind": "legit",
+      "what": "coverage threshold raised",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L14",
+      "kind": "legit",
+      "what": "source change only",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L15",
+      "kind": "legit",
+      "what": "conjunct added to a compound assert",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L16",
+      "kind": "legit",
+      "what": "equality to [] written as `== []` kept, extra check added",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L17",
+      "kind": "legit",
+      "what": "test moved to a new file unchanged",
+      "blocked": false,
+      "correct": true,
+      "rules": [
+        "R0"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L19",
+      "kind": "legit",
+      "what": "flaky reruns added (a deterministic regression still fails every rerun)",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 1,
+      "id": "L18",
+      "kind": "legit",
+      "what": "assert message added",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R01",
+      "kind": "weakening",
+      "what": "equality widened to membership in a tuple of values",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R02",
+      "kind": "weakening",
+      "what": "equality replaced by a loose distance bound",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R03",
+      "kind": "weakening",
+      "what": "body wrapped in contextlib.suppress(Exception)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R04",
+      "kind": "weakening",
+      "what": "pytest.raises widened to a tuple",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R05",
+      "kind": "weakening",
+      "what": "skipif with an always-true version condition",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R06",
+      "kind": "weakening",
+      "what": "comparison with itself through >=",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R07",
+      "kind": "weakening",
+      "what": "parametrize removed, one case hard-coded",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R08",
+      "kind": "weakening",
+      "what": "test moved into a class pytest does not collect",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R09",
+      "kind": "weakening",
+      "what": "autouse conftest fixture patches the code under test",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R10",
+      "kind": "weakening",
+      "what": "addopts --collect-only (nothing runs)",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R11",
+      "kind": "weakening",
+      "what": "CI test result ignored with `|| echo`",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R12",
+      "kind": "weakening",
+      "what": "CI runs only one test file",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R13",
+      "kind": "weakening",
+      "what": "tox commands narrowed with -k",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R14",
+      "kind": "weakening",
+      "what": "assertEqual replaced by assertIsNotNone",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R15",
+      "kind": "weakening",
+      "what": "assertRaises replaced by try/except pass",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R16",
+      "kind": "weakening",
+      "what": "loop over an empty list around the assert",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R17",
+      "kind": "weakening",
+      "what": "`or True` appended",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R18",
+      "kind": "weakening",
+      "what": "match= made to match anything",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "S3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R19",
+      "kind": "weakening",
+      "what": "test made async without an async plugin (never awaited)",
+      "blocked": false,
+      "correct": false,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R20",
+      "kind": "weakening",
+      "what": "body replaced with a docstring",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R21",
+      "kind": "weakening",
+      "what": "conftest exits the process at import",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H1"
+      ],
+      "outcome": "FAILED"
+    },
+    {
+      "round": 2,
+      "id": "R22",
+      "kind": "weakening",
+      "what": "patch.object of the function under test inside the test",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "T3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R23",
+      "kind": "weakening",
+      "what": ".coveragerc omits the source module",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H6"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "R24",
+      "kind": "weakening",
+      "what": "pytest_plugins entry added in conftest",
+      "blocked": true,
+      "correct": true,
+      "rules": [
+        "H2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q01",
+      "kind": "legit",
+      "what": "unittest class renamed (still a TestCase)",
+      "blocked": false,
+      "correct": true,
+      "rules": [
+        "R0"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q02",
+      "kind": "legit",
+      "what": "compound assert replaced by one stronger equality",
+      "blocked": true,
+      "correct": false,
+      "rules": [
+        "B3"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q03",
+      "kind": "legit",
+      "what": "parametrize cases given ids",
+      "blocked": true,
+      "correct": false,
+      "rules": [
+        "S4"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q04",
+      "kind": "legit",
+      "what": "unittest assert migrated to a plain assert",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q05",
+      "kind": "legit",
+      "what": "assert extracted into a checking helper",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q06",
+      "kind": "legit",
+      "what": "addopts disables the cache plugin",
+      "blocked": true,
+      "correct": false,
+      "rules": [
+        "H2"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q07",
+      "kind": "legit",
+      "what": "CI switches to `python -m pytest`",
+      "blocked": true,
+      "correct": false,
+      "rules": [
+        "H5"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q08",
+      "kind": "legit",
+      "what": "CI runs tests in parallel (-n auto)",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q09",
+      "kind": "legit",
+      "what": "checkout action bumped",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q10",
+      "kind": "legit",
+      "what": "testpaths gains a directory",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q11",
+      "kind": "legit",
+      "what": "fixture scope changed",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q12",
+      "kind": "legit",
+      "what": "float equality made approx (default tolerance)",
+      "blocked": true,
+      "correct": false,
+      "rules": [
+        "S1"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q13",
+      "kind": "legit",
+      "what": "test file renamed, content unchanged",
+      "blocked": false,
+      "correct": true,
+      "rules": [
+        "R0"
+      ],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q14",
+      "kind": "legit",
+      "what": "type hints added to the test",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q15",
+      "kind": "legit",
+      "what": "deprecated assertEquals -> assertEqual",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    },
+    {
+      "round": 2,
+      "id": "Q16",
+      "kind": "legit",
+      "what": "two asserts merged into one `and`",
+      "blocked": false,
+      "correct": true,
+      "rules": [],
+      "outcome": "INCONCLUSIVE"
+    }
+  ]
+}

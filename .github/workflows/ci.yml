@@ -10,11 +10,12 @@ permissions:
 
 jobs:
   engine:
-    name: engine tests (Python ${{ matrix.python }})
-    runs-on: ubuntu-latest
+    name: engine tests (Python ${{ matrix.python }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python: ["3.11", "3.13"]
     steps:
       - uses: actions/checkout@v4

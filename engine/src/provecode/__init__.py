@@ -5,4 +5,4 @@ report) are standard library only, pure, and never import, eval or execute
 analyzed source. They run unchanged in CPython and in Pyodide.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

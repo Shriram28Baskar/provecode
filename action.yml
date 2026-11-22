@@ -6,8 +6,13 @@ branding:
 
 inputs:
   contract:
-    description: Path of the approved contract YAML. Read from the base commit by default.
-    required: true
+    description: Optional path of the approved contract YAML, read from the base commit by default. Without one, any test-weakening finding fails the check.
+    required: false
+    default: ""
+  block-on:
+    description: "weakening: fail on any test-weakening finding; failed: fail only on a FAILED verdict. Default: weakening without a contract, failed with one."
+    required: false
+    default: ""
   contract-base:
     description: Optional path of the contract version in effect at base, to recognise approved contract changes.
     required: false
@@ -55,6 +60,7 @@ runs:
       shell: bash
       env:
         PC_CONTRACT: ${{ inputs.contract }}
+        PC_BLOCK_ON: ${{ inputs.block-on }}
         PC_CONTRACT_BASE: ${{ inputs.contract-base }}
         PC_CONTRACT_FROM_BASE: ${{ inputs.contract-from-base }}
         PC_BASE: ${{ inputs.base || github.event.pull_request.base.sha }}

@@ -8466,8 +8466,8 @@
       }
     },
     "engine_at_freeze_commit": "9eca74a58a55bcc5b01dd16ce8f4712fa3853d56",
-    "engine_source_sha256": "899088490ae183a7e38c4f4fb7adf2d38dc8426e1fc867fb6eee0c47fa65eb8a",
-    "engine_version": "0.1.0",
+    "engine_source_sha256": "c426dd297d950f180e4158c333bdd751c9046d59b3b07b083becf82b5215f72e",
+    "engine_version": "0.2.0",
     "python": "3.11",
     "sources": [
       {

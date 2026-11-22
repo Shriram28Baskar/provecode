@@ -265,6 +265,9 @@ def _classify(node: ast.Assert) -> Check:
             left, right, op = right, left, _FLIP.get(op, op)
         if op in ("is not", "!=") and isinstance(right, ast.Constant) and right.value is None:
             return Check(node, _dump(left), "not_none", None)
+        diff = _abs_diff(t.left) if op in ("<", "<=") else None
+        if diff is not None:  # abs(a - b) < tol: pytest.approx(b, abs=tol, rel=0) under another name
+            return Check(node, _dump(diff[0]), "approx", diff[1], {"abs": _num(t.comparators[0]), "rel": 0.0})
         if op == "==" and isinstance(right, ast.Call) and _is_approx_call(right):
             tol = {k.arg: _num(k.value) for k in right.keywords if k.arg in ("rel", "abs")}
             for name, arg in zip(("rel", "abs"), right.args[1:3], strict=False):  # approx(expected, rel, abs)
@@ -278,7 +281,29 @@ def _classify(node: ast.Assert) -> Check:
         and len(t.args) == 2
     ):
         return Check(node, _dump(t.args[0]), "isinstance", t.args[1])
+    if isinstance(t, ast.Call) and len(t.args) == 2 and (
+            (isinstance(t.func, ast.Attribute) and t.func.attr == "isclose" and isinstance(t.func.value, ast.Name)
+             and t.func.value.id == "math") or (isinstance(t.func, ast.Name) and t.func.id == "isclose")):
+        a, b = t.args
+        if _is_literal(a) and not _is_literal(b):
+            a, b = b, a
+        iso: dict[str, Any] = {"rel": 1e-9, "abs": 0.0}  # math.isclose defaults
+        for k in t.keywords:
+            if k.arg in ("rel_tol", "abs_tol"):
+                iso[k.arg[:3]] = _num(k.value)
+        return Check(node, _dump(a), "approx", b, iso)
     return Check(node, _dump(t), "truthy", None)
+
+
+def _abs_diff(n: ast.AST) -> tuple[ast.expr, ast.expr] | None:
+    """(subject, expected) of abs(subject - expected), the literal side as expected."""
+    if not (isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "abs" and len(n.args) == 1
+            and not n.keywords and isinstance(n.args[0], ast.BinOp) and isinstance(n.args[0].op, ast.Sub)):
+        return None
+    a, b = n.args[0].left, n.args[0].right
+    if _is_literal(a) and not _is_literal(b):
+        a, b = b, a
+    return a, b
 
 
 # unittest assertion methods mapped onto the same model (ADR 0009). Two-argument comparisons:
@@ -336,12 +361,27 @@ def _classify_call(call: ast.Call) -> Check:
     return Check(call, _dump(call), f"custom:{name}", None)
 
 
+def _conjuncts(t: ast.expr) -> list[ast.expr]:
+    if isinstance(t, ast.BoolOp) and isinstance(t.op, ast.And):
+        return [c for v in t.values for c in _conjuncts(v)]
+    return [t]
+
+
+def _split_assert(n: ast.Assert) -> list[ast.Assert]:
+    """`assert a and b` checks exactly what `assert a` then `assert b` check, so each conjunct is
+    its own check (located at the conjunct, so findings cite it). Anything else is left whole."""
+    parts = _conjuncts(n.test)
+    if len(parts) == 1:
+        return [n]
+    return [ast.copy_location(ast.Assert(test=p, msg=n.msg), p) for p in parts]
+
+
 def _checks(fn: TestFn) -> list[Check]:
     """Every check in the test body, in source order: assert statements and self.assert* calls."""
     out = []
     for n in _walk_own(fn.node):
         if isinstance(n, ast.Assert):
-            out.append(_classify(n))
+            out += [_classify(a) for a in _split_assert(n)]
         elif _is_self_assert(n) and n.func.attr not in _UT_RAISES:
             out.append(_classify_call(n))
     return out
@@ -368,7 +408,15 @@ def _compare_pair(b: Check, h: Check) -> tuple[str, str] | None:
             if hv is not None and (hv == 0 or (bv is not None and hv < bv)):
                 return S2, f"Equality to a specific expected value was replaced by the bound '{h.op} {hv:g}'."
     if b.op == "==" and h.op == "approx" and b.expected_literal:
-        return S1, "Exact equality was relaxed to pytest.approx."
+        # pytest.approx at its default tolerance (rel 1e-6, abs 1e-12) is how floats are compared,
+        # not a relaxation; an explicit looser or non-literal tolerance is.
+        ht = _approx_tol(h)
+        loose = [k for k in ("rel", "abs") if ht[k] > _APPROX_DEFAULT[k] or (k in h.tol and h.tol[k] is None)]
+        if loose:
+            return S1, f"Exact equality was relaxed to pytest.approx with a looser tolerance ({', '.join(loose)})."
+        if _dump(b.expected) != _dump(h.expected):
+            return V0, "The expected value changed; comparison strength is unchanged."
+        return None
     if b.op == "approx" and h.op == "approx":
         bt, ht = _approx_tol(b), _approx_tol(h)
         widened = [k for k in ("rel", "abs") if ht[k] > bt[k]]
@@ -454,7 +502,11 @@ def _s3(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
         bn = _exc_names(cb.args[0]) if cb.args else None
         hn = _exc_names(ch.args[0]) if ch.args else None
         if bn and hn:
-            widened = [h for h in hn if h not in bn and any(_covers(h, b) for b in bn)]
+            # Widened: the head accepts something new while still accepting everything the base did
+            # (a broader class, or another exception added to the tuple). A swap is a changed expectation.
+            added = [h for h in hn if h not in bn]
+            still = all(b in hn or any(_covers(h, b) for h in hn) for b in bn)
+            widened = added if still else []
             if widened:
                 reasons.append(f"expected exception widened from {', '.join(bn)} to include {', '.join(widened)}")
         bm, hm = _match_of(cb), _match_of(ch)
@@ -482,17 +534,41 @@ def _parametrize(fn: TestFn) -> dict[str, ast.Call]:
     return out
 
 
+def _case_key(e: ast.AST) -> str:
+    """A parametrize case by what it runs: pytest.param(a, b, id=...) is the case (a, b), and
+    pytest.param(a, id=...) is a. A param with marks= (or other keywords) keeps its own key."""
+    if isinstance(e, ast.Call) and e.args and all(k.arg == "id" for k in e.keywords) and (
+            (isinstance(e.func, ast.Attribute) and e.func.attr == "param" and isinstance(e.func.value, ast.Name)
+             and e.func.value.id == "pytest") or (isinstance(e.func, ast.Name) and e.func.id == "param")):
+        return _dump(e.args[0] if len(e.args) == 1 else ast.Tuple(elts=list(e.args), ctx=ast.Load()))
+    return _dump(e)
+
+
 def _s4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out = []
     hp = _parametrize(th)
+    loops = [len(s.iter.elts) for s in ast.walk(th.node) if isinstance(s, ast.For)
+             and isinstance(s.iter, (ast.List, ast.Tuple))]
+    # Any parametrize decorator left in head, whatever its cases are (a literal, list(), a variable).
+    any_head = any(isinstance(d, ast.Call) and isinstance(d.func, ast.Attribute) and d.func.attr == "parametrize"
+                   for d in th.node.decorator_list)
     for names, db in _parametrize(tb).items():
         dh = hp.get(names)
+        n = len(getattr(db.args[1], "elts", []))
+        if dh is None and not any_head and n >= 2 and not any(k >= n for k in loops):
+            out.append(Finding(
+                S4, path, th.key, f"The parametrize decorator was removed, so the test runs once instead of for its "
+                                  f"{n} cases.", base_lines=_lines(db), before="@" + _seg(pb, db),
+                detail={"removed_cases": [_seg(pb, e) for e in getattr(db.args[1], "elts", [])], "base_count": n,
+                        "head_count": 1},
+            ))
+            continue
         if dh is None:
             continue
         bv: Any = db.args[1]  # a list or tuple literal: _parametrize checked it
         hv: Any = dh.args[1]
-        base_cases = {_dump(e): e for e in bv.elts}
-        head_cases = {_dump(e) for e in hv.elts}
+        base_cases = {_case_key(e): e for e in bv.elts}
+        head_cases = {_case_key(e) for e in hv.elts}
         removed = [base_cases[k] for k in base_cases if k not in head_cases]
         if removed:
             added = len(head_cases - set(base_cases))
@@ -571,6 +647,24 @@ def _is_pytest_stop(call: ast.Call, pytest_names: frozenset[str]) -> bool:
     return isinstance(f, ast.Name) and f.id in ("skip", "xfail") and f.id in pytest_names
 
 
+def _never_iterates(it: ast.expr) -> bool:
+    """An empty literal ([], (), {}, set()) or range(0) / range(n, n) with constant bounds."""
+    if isinstance(it, (ast.List, ast.Tuple, ast.Set)) and not it.elts:
+        return True
+    if isinstance(it, ast.Dict) and not it.keys:
+        return True
+    if isinstance(it, ast.Call) and isinstance(it.func, ast.Name) and not it.keywords:
+        if it.func.id == "set" and not it.args:
+            return True
+        vals: list[int] = [a.value for a in it.args if isinstance(a, ast.Constant) and isinstance(a.value, int)]
+        if it.func.id == "range" and it.args and len(vals) == len(it.args):
+            try:
+                return len(range(*vals)) == 0
+            except (TypeError, ValueError):
+                return False
+    return False
+
+
 def _guards(fn: TestFn, pytest_names: frozenset[str] = frozenset()) -> dict[str, ast.stmt]:
     """Top-level statements that stop the test before the rest of its body runs.
 
@@ -590,6 +684,10 @@ def _guards(fn: TestFn, pytest_names: frozenset[str] = frozenset()) -> dict[str,
                 is_guard = True
         elif isinstance(s, ast.If) and isinstance(s.test, ast.Constant) and not s.test.value and not s.orelse:
             is_guard = True
+        elif isinstance(s, ast.While) and isinstance(s.test, ast.Constant) and not s.test.value and not s.orelse:
+            is_guard = True  # while False: never runs its body
+        elif isinstance(s, ast.For) and _never_iterates(s.iter) and not s.orelse:
+            is_guard = True  # for _ in []: never runs its body
         if is_guard:
             out[_dump(s)] = s
     return out
@@ -611,13 +709,40 @@ def _b2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
             detail={"class_marks": sorted(new_class_marks)},
         ))
     base_guards = _guards(tb, pb.pytest_names)
+    # An existing loop whose iterable was emptied is T4's finding, not a new guard.
+    base_loops = {(_dump(s.target), _dump(ast.Module(body=s.body, type_ignores=[])))
+                  for s in _body_after_doc(tb) if isinstance(s, ast.For)}
     for k, s in _guards(th, ph.pytest_names).items():
+        if isinstance(s, ast.For) and (_dump(s.target), _dump(ast.Module(body=s.body, type_ignores=[]))) in base_loops:
+            continue
         if k not in base_guards:
             first = _seg(ph, s).splitlines()[0] if _seg(ph, s) else ""
             out.append(Finding(
                 B2, path, th.key, "A guard was added before the test's checks, so they no longer run.",
                 head_lines=(s.lineno, s.lineno), after=first,
             ))
+    base_ios = _importorskips(tb, pb.pytest_names)
+    for k, s in _importorskips(th, ph.pytest_names).items():
+        if k not in base_ios:
+            out.append(Finding(
+                B2, path, th.key, "pytest.importorskip(...) was added to a test that ran without it; if that import "
+                                  "fails, the test is skipped instead of failing.",
+                head_lines=(s.lineno, s.lineno), after=_seg(ph, s).splitlines()[0] if _seg(ph, s) else "",
+            ))
+    return out
+
+
+def _importorskips(fn: TestFn, pytest_names: frozenset[str]) -> dict[str, ast.stmt]:
+    """Top-level `pytest.importorskip(...)` statements (bare, or assigned) in the test body."""
+    out: dict[str, ast.stmt] = {}
+    for s in _body_after_doc(fn):
+        v = s.value if isinstance(s, (ast.Expr, ast.Assign, ast.AnnAssign)) else None
+        if isinstance(v, ast.Call):
+            f = v.func
+            if ((isinstance(f, ast.Attribute) and f.attr == "importorskip" and isinstance(f.value, ast.Name)
+                 and f.value.id == "pytest") or (isinstance(f, ast.Name) and f.id == "importorskip"
+                                                 and f.id in pytest_names)):
+                out[_dump(v)] = s
     return out
 
 
@@ -645,6 +770,8 @@ def _vacuous(c: Check) -> tuple[str, ast.expr | None] | None:
     if c.op in _REFLEXIVE_OPS and c.expected is not None and _dump(c.expected) == c.subject:
         return "self", None
     e = _checked_expr(c)
+    if e is not None and (_truthy_const(e) or (isinstance(e, (ast.Tuple, ast.List, ast.Set)) and e.elts)):
+        return "const", None  # `assert True`, `assert (x == 1, "msg")`: passes whatever the code does
     if isinstance(e, ast.BoolOp) and isinstance(e.op, ast.Or) and any(_truthy_const(v) for v in e.values):
         rest = [v for v in e.values if not _truthy_const(v)]
         if not rest:
@@ -681,14 +808,23 @@ def _s5_pairs(rem_base: list[Check], rem_head: list[Check]) -> list[tuple[Check,
             continue
         # A base self-comparison (`c == c`) still exercises a custom __eq__, so only an `or`-vacuous
         # base check is treated as already vacuous.
-        b = next((b for b in rem_base if (_vacuous(b) or ("",))[0] != "or" and _replaced_by_vacuous(b, h, v)), None)
+        if v[0] == "const":
+            # No subject to match on: take a removed base check whose subject is checked nowhere
+            # else in the head, so a reworded check is left for subject pairing (V0, S1, ...).
+            others = {x.subject for x in rem_head if x is not h}
+            b = next((b for b in rem_base if _vacuous(b) is None and b.subject not in others), None)
+        else:
+            b = next((b for b in rem_base if (_vacuous(b) or ("",))[0] != "or" and _replaced_by_vacuous(b, h, v)),
+                     None)
         if b is None:
             continue
         rem_base.remove(b)
         rem_head.remove(h)
-        why = ("The check now compares the value with itself instead of the expected value, so it no longer "
-               "checks the result." if v[0] == "self"
-               else "An `or` with a true constant was added to the check, so it always passes.")
+        why = {"self": "The check now compares the value with itself instead of the expected value, so it no longer "
+                       "checks the result.",
+               "const": "The check was replaced by one that is always true (a constant or a non-empty tuple or "
+                        "list), so it passes whatever the code does.",
+               }.get(v[0], "An `or` with a true constant was added to the check, so it always passes.")
         pairs.append((b, h, why))
     return pairs
 
@@ -807,6 +943,21 @@ def _b4(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
     return out
 
 
+def _length_replacement(b: Check, by_subject: dict[str, list[Check]]) -> Check | None:
+    """The unpaired head check on len(<b's subject>) that replaced b's equality to a literal
+    collection or string, taken out of by_subject; None if there is none."""
+    if b.op != "==" or not isinstance(b.expected, (ast.List, ast.Tuple, ast.Set, ast.Dict, ast.Constant)):
+        return None
+    if isinstance(b.expected, ast.Constant) and not isinstance(b.expected.value, (str, bytes)):
+        return None
+    for hs in by_subject.values():
+        n = _subject_node(hs[0]) if hs else None
+        if (isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "len" and len(n.args) == 1
+                and not n.keywords and _dump(n.args[0]) == b.subject):
+            return hs.pop(0)
+    return None
+
+
 def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Finding]:
     out: list[Finding] = []
     base = _checks(tb)
@@ -844,10 +995,21 @@ def _assert_rules(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> 
                     rule, path, th.key, why, base_lines=_lines(b.node), head_lines=_lines(h.node),
                     before=_seg(pb, b.node), after=_seg(ph, h.node),
                 ))
+        elif (lh := _length_replacement(b, by_subject)) is not None:
+            out.append(Finding(
+                S2, path, th.key, "Equality to a specific collection was replaced by a check on its length only.",
+                base_lines=_lines(b.node), head_lines=_lines(lh.node), before=_seg(pb, b.node),
+                after=_seg(ph, lh.node),
+            ))
         else:
             unpaired_base.append(b)
+    # 2b. A removed check whose subject is still checked inside a new head check was restructured,
+    # not removed: `assert a and b == 1` -> `assert (a, b) == (True, 1)`.
+    new_sub = {_dump(n) for lst in by_subject.values() for h in lst for n in ast.walk(h.node)}
+    merged = [b for b in unpaired_base if b.subject in new_sub]
+    unpaired_base = [b for b in unpaired_base if b.subject not in new_sub]
     # 3. B3: fewer checks (assert + pytest.raises) and unexplained removals.
-    deficit = (len(base) + len(_raises_calls(tb))) - (len(head) + len(_raises_calls(th)))
+    deficit = (len(base) + len(_raises_calls(tb))) - (len(head) + len(_raises_calls(th))) - len(merged)
     if deficit > 0:
         # A check moved into an in-file helper that still checks is not a removal (ADR 0012).
         helpers = _helpers(ph, th)
@@ -1421,6 +1583,48 @@ def is_test_path(path: str) -> bool:
     if name.startswith("test_") or name.endswith("_test.py") or name == "tests.py":
         return True
     return "tests" in parts[:-1]
+
+
+def moved_tests(entries: list[tuple[Any, ...]], lim: _limits.Limits) -> dict[tuple[str, str], str]:
+    """Tests deleted from one file whose body (decorators and enclosing-class skip marks included)
+    reappears unchanged as a new test in another test file of the same change, which default
+    runners collect and which is not skipped at module level: (base file, test id) -> new test id.
+    Each new test explains at most one deletion; matching is in sorted, deterministic order."""
+    deleted: list[tuple[str, str, tuple[str, frozenset[str]]]] = []
+    added: dict[tuple[str, frozenset[str]], list[tuple[str, str]]] = defaultdict(list)
+    for entry in sorted(entries, key=lambda x: x[0]):
+        path, b, h = entry[0], entry[1], entry[2]
+        src = entry[3] if len(entry) > 3 and entry[3] else path
+        pb = _parse(src, b, lim)[0] if b is not None and is_test_path(src) else None
+        ph = _parse(path, h, lim)[0] if h is not None and is_test_path(path) else None
+        base_tests = pb.tests if pb else {}
+        head_tests = ph.tests if ph else {}
+        head_names = {k.split("::", 1)[-1] for k in head_tests}
+        base_names = {k.split("::", 1)[-1] for k in base_tests}
+        in_file: dict[str, int] = defaultdict(int)  # renamed within this file: already R0 (analyze_file)
+        for key, t in head_tests.items():
+            if key.split("::", 1)[-1] not in base_names:
+                in_file[_body_dump(t)] += 1
+        for key, t in sorted(base_tests.items()):
+            if key.split("::", 1)[-1] not in head_names:
+                if in_file[_body_dump(t)]:
+                    in_file[_body_dump(t)] -= 1
+                    continue
+                deleted.append((src, key, (_body_dump(t), t.class_marks)))
+        if ph is None or ph.module_skip or not is_collected_name(path):
+            continue
+        for key, t in sorted(head_tests.items()):
+            if key.split("::", 1)[-1] not in base_names:
+                added[(_body_dump(t), t.class_marks)].append((path, key))
+    out: dict[tuple[str, str], str] = {}
+    for src, key, sig in deleted:
+        dests = added.get(sig, [])
+        for i, (dpath, dkey) in enumerate(dests):
+            if dpath != src:
+                out[(src, key)] = dkey
+                del dests[i]
+                break
+    return out
 
 
 def is_collected_name(path: str) -> bool:

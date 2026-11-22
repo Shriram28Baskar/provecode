@@ -83,6 +83,14 @@ def run(
         results.append(r)
         findings.extend(r.findings)
         gaps.extend(r.gaps)
+    moves = analyzer.moved_tests(list(entries), limits) if any(f.rule == "B1" for f in findings) else {}
+    for f in findings:
+        dest = moves.get((f.file, f.test or "")) if f.rule == "B1" else None
+        if dest is not None:
+            f.rule = "R0"
+            f.rationale = f"Moved to {dest}; the body is unchanged."
+            f.detail = {**f.detail, "moved_to": dest}
+            f.detail.pop("file_deleted", None)
     if changeset is not None:
         h_findings, h_gaps, analyzed = harness.analyze(changeset, limits)
         findings.extend(h_findings)

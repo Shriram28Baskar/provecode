@@ -69,15 +69,26 @@ def harness_changes(repo: str, base: str, changes: list[git_mod.Change], read_he
             continue
         out.append(cs_mod.FileChange(ch.path, ch.status, b, h, ch.old_path))
         seen.add(ch.path)
-    for name in cs_mod.PYTEST_CONFIG_NAMES:
-        if name in seen:
-            continue
-        try:
-            text = git_mod.show(repo, base, name)
-        except git_mod.DecodeError:
-            continue
-        if text is not None:
-            out.append(cs_mod.FileChange(name, "U", text, text))
+    # Context: the unchanged pytest config files at the root and, for a changed config file in a
+    # subdirectory (a subproject such as engine/), in that directory and every one above it.
+    dirs = {""}
+    for p in seen:
+        if p.rsplit("/", 1)[-1] in cs_mod.PYTEST_CONFIG_NAMES and "/" in p:
+            d = p.rsplit("/", 1)[0]
+            while d:
+                dirs.add(d)
+                d = d.rsplit("/", 1)[0] if "/" in d else ""
+    for d in sorted(dirs):
+        for name in cs_mod.PYTEST_CONFIG_NAMES:
+            path = f"{d}/{name}" if d else name
+            if path in seen:
+                continue
+            try:
+                text = git_mod.show(repo, base, path)
+            except git_mod.DecodeError:
+                continue
+            if text is not None:
+                out.append(cs_mod.FileChange(path, "U", text, text))
     return out, gaps
 
 
@@ -164,15 +175,23 @@ def cmd_check(args: argparse.Namespace) -> int:
                   "for contract-owned checks", file=sys.stderr)
             return 3
         return cmd_rerun(args)
-    if not args.contract:
-        print("provecode: error: --contract is required (or use --execute to judge against the base branch's tests)",
-              file=sys.stderr)
+    block_on = getattr(args, "block_on", None)
+    if not args.contract and block_on != "weakening":
+        print("provecode: error: --contract is required (or use --block-on weakening to block any test weakening "
+              "without one, or --execute to judge against the base branch's tests)", file=sys.stderr)
         return 3
     files, touched, prov, gaps = _collect(args)
-    head, base, cgaps = _contracts(args)
+    head, base, cgaps = _contracts(args) if args.contract else (None, None, [])
     rep = pipeline.run(files, head, base, mode="static", touched_protected=touched,
                        extra_gaps=gaps + cgaps, provenance=prov)
-    return _emit(rep, args)
+    code = _emit(rep, args)
+    if block_on == "weakening" and code != EXIT["FAILED"]:
+        from .guard import blocks  # same zero-config rule as `provecode guard` (ADR 0010)
+
+        if blocks(rep, "weakening"):
+            print("provecode: blocking: the change weakens tests (--block-on weakening)", file=sys.stderr)
+            return EXIT["FAILED"]
+    return code
 
 
 def cmd_record(args: argparse.Namespace) -> int:
@@ -236,6 +255,9 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--image", help="Docker image with Python and pytest, for --execute")
             p.add_argument("--timeout", type=int, default=600, help="seconds per sealed test run")
             p.add_argument("--deps-timeout", type=int, default=900, help="seconds for building the wheelhouse")
+            p.add_argument("--block-on", choices=["weakening", "failed"],
+                           help="weakening: exit 1 on any test-weakening finding, contract or not (no contract "
+                                "needed); failed: exit 1 only on a FAILED verdict (the default)")
         p.set_defaults(fn=fn)
     p = sub.add_parser("rerun", help="trusted re-run: runs A/B/C in sealed containers, base tests as the contract")
     p.add_argument("--repo", default=".")

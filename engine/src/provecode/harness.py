@@ -13,8 +13,10 @@ import ast
 import configparser
 import difflib
 import fnmatch
+import io
 import re
 import shlex
+import tokenize
 import tomllib
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
@@ -280,7 +282,82 @@ def _multiset_new(base: list[tuple[str, Any]], head: list[tuple[str, Any]]) -> l
     return out
 
 
-def _h1_h2(fc: FileChange, lim: _limits.Limits) -> tuple[list[Finding], list[Gap]]:
+def _dotted(n: ast.AST) -> str | None:
+    if isinstance(n, ast.Name):
+        return n.id
+    if isinstance(n, ast.Attribute):
+        inner = _dotted(n.value)
+        return f"{inner}.{n.attr}" if inner else None
+    return None
+
+
+def _import_roots(tree: ast.Module) -> dict[str, str]:
+    """Module-level bound name -> top-level module it comes from."""
+    out = {}
+    for n in tree.body:
+        if isinstance(n, ast.Import):
+            for a in n.names:
+                out[a.asname or a.name.split(".")[0]] = a.name.split(".")[0]
+        elif isinstance(n, ast.ImportFrom) and n.module and not n.level:
+            for a in n.names:
+                out[a.asname or a.name] = n.module.split(".")[0]
+    return out
+
+
+def _is_autouse_fixture(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> bool:
+    return any(isinstance(d, ast.Call) and (_dotted(d.func) or "").split(".")[-1] == "fixture"
+               and any(k.arg == "autouse" and isinstance(k.value, ast.Constant) and k.value.value is True
+                       for k in d.keywords)
+               for d in fn.decorator_list)
+
+
+def _patched_targets(fn: ast.AST, roots: dict[str, str]) -> list[tuple[str, ast.Call]]:
+    """(top-level module, call) for monkeypatch.setattr / mock.patch / mocker.patch / patch.object calls."""
+    out = []
+    for c in ast.walk(fn):
+        if not isinstance(c, ast.Call) or not c.args:
+            continue
+        name = _dotted(c.func) or ""
+        last = name.split(".")[-1]
+        if not (last in ("setattr", "patch") or name.endswith("patch.object")):
+            continue
+        t = c.args[0]
+        if isinstance(t, ast.Constant) and isinstance(t.value, str):
+            top = t.value.split(".")[0]
+        else:
+            dotted = _dotted(t)
+            if dotted is None:
+                continue
+            top = roots.get(dotted.split(".")[0], dotted.split(".")[0])
+        out.append((top, c))
+    return out
+
+
+def _autouse_patches(fc: FileChange, base: ast.Module | None, head: ast.Module, pkgs: set[str]) -> list[Finding]:
+    """H1: a new or changed autouse fixture that patches the project's own code, for every test."""
+    if not pkgs:
+        return []
+    old = {n.name: ast.dump(n) for n in (base.body if base else []) if isinstance(n, (ast.FunctionDef,
+                                                                                          ast.AsyncFunctionDef))}
+    roots = _import_roots(head)
+    out = []
+    for n in head.body:
+        if not isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) or not _is_autouse_fixture(n):
+            continue
+        if old.get(n.name) == ast.dump(n):
+            continue
+        hits = [c for top, c in _patched_targets(n, roots) if top in pkgs]
+        if hits:
+            out.append(Finding(
+                H1, fc.path, None, f"The autouse fixture {n.name} patches the project's own code "
+                                   f"({_clip(ast.unparse(hits[0]), 120)}) for every test, so tests check the "
+                                   "replacement instead of the real code.",
+                head_lines=(n.lineno, n.end_lineno or n.lineno), after=_clip(ast.unparse(hits[0])),
+                detail={"impact": "patches_code_under_test", "fixture": n.name}))
+    return out
+
+
+def _h1_h2(fc: FileChange, lim: _limits.Limits, pkgs: set[str] | None = None) -> tuple[list[Finding], list[Gap]]:
     if fc.head_text is None:
         return [], []
     head, gap = _parse_py(fc.path, fc.head_text, lim)
@@ -346,6 +423,7 @@ def _h1_h2(fc: FileChange, lim: _limits.Limits) -> tuple[list[Finding], list[Gap
             H2, p, None, "pytest_plugins now loads " + (", ".join(added_plugins) or "plugins computed at run time")
                          + "; a plugin runs inside pytest and can change collection and results.",
             detail={"plugins": added_plugins}))
+    out += _autouse_patches(fc, base, head, pkgs or set())
     return out, []
 
 
@@ -481,6 +559,14 @@ def _split_list(value: Any) -> list[str]:
     return []
 
 
+def _error_filters(cfg: dict[str, Any]) -> list[str]:
+    """filterwarnings entries that make warnings fail ("error", "error::Category", ...). The ini
+    form is one filter per line, and a filter may contain spaces."""
+    v = cfg.get("filterwarnings")
+    items = [str(x) for x in v] if isinstance(v, list) else str(v).splitlines() if isinstance(v, str) else []
+    return [s.strip() for s in items if s.strip() == "error" or s.strip().startswith("error:")]
+
+
 def _truthy(value: Any) -> bool:
     if isinstance(value, bool):
         return value
@@ -559,16 +645,37 @@ def _fmt(opt: tuple[str, str]) -> str:
     return f"{opt[0]} {opt[1]}".strip()
 
 
+# Disabling these changes caching, parallelism or output only, never which tests run or whether they
+# fail. (Not no:warnings, which drops filterwarnings=error; not no:cov, which drops --cov-fail-under;
+# not no:randomly, whose random order exposes order-dependent tests.)
+_HARMLESS_DISABLES = frozenset({"no:cacheprovider", "no:pastebin", "no:xdist", "no:sugar", "no:html"})
+
+_INTERPRETER = r"(?:.*[/\\])?(?:python[0-9.]*|py)(?:\.exe)?"  # matched with re.fullmatch
+
+
+def _without_module_runner(args: list[str]) -> list[str]:
+    """`python -m pytest ...` -> `pytest ...`: the interpreter's -m names the module to run; it is
+    not pytest's -m marker filter."""
+    out, i = [], 0
+    while i < len(args):
+        if re.fullmatch(_INTERPRETER, args[i]) and args[i + 1:i + 2] == ["-m"]:
+            i += 2
+            continue
+        out.append(args[i])
+        i += 1
+    return out
+
+
 def compare_args(base_args: list[str], head_args: list[str]) -> dict[str, list[str]]:
     """Weakening changes between two pytest argument lists, by rule bucket."""
-    b, h = _opts(base_args), _opts(head_args)
+    b, h = _opts(_without_module_runner(base_args)), _opts(_without_module_runner(head_args))
     added = _new(b, h)
     removed = _new(h, b)
     out: dict[str, list[str]] = {"select": [], "plugin": [], "doctest_removed": [], "cov_lowered": []}
     for o in added:
         if o[0] in _SELECT_VALUE or o[0] in _SELECT_FLAG:
             out["select"].append(_fmt(o))
-        elif o[0] == "-p":
+        elif o[0] == "-p" and o[1].strip() not in _HARMLESS_DISABLES:
             out["plugin"].append(_fmt(o))
     for o in removed:
         if o[0] in _DOCTEST:
@@ -705,28 +812,83 @@ def _config_findings(base_name: str | None, base_cfg: dict[str, Any], head_name:
             out.append(Finding(H4, path, None, f"{key} no longer matches {', '.join(gone)}, so tests named that way "
                                                "are no longer collected.", before=" ".join(b), after=" ".join(h),
                                detail={"key": key, "removed": gone}))
+    gone = [w for w in _error_filters(base_cfg) if w not in _error_filters(head_cfg)]
+    if gone:
+        out.append(Finding(H4, path, None, "filterwarnings no longer turns warnings into errors (" + ", ".join(gone)
+                                           + " removed), so code that warns no longer fails the tests.",
+                           before=", ".join(gone), detail={"key": "filterwarnings", "removed": gone}))
     if _truthy(base_cfg.get("xfail_strict", False)) and not _truthy(head_cfg.get("xfail_strict", False)):
         out.append(Finding(H4, path, None, "xfail_strict was turned off, so a test marked xfail that unexpectedly "
                                            "passes no longer fails the run.", detail={"key": "xfail_strict"}))
     return out
 
 
+def _join(d: str, name: str) -> str:
+    return f"{d}/{name}" if d else name
+
+
+def _governing(files: dict[str, str | None], d: str) -> tuple[str | None, dict[str, Any]]:
+    """(path, settings) of the pytest config that governs tests in directory d: the nearest
+    directory, d itself or an ancestor, holding one, by pytest's per-directory precedence."""
+    while True:
+        name, cfg = _active({n: files.get(_join(d, n)) for n in PYTEST_CONFIG_NAMES})
+        if name is not None:
+            return _join(d, name), cfg
+        if not d:
+            return None, {}
+        d = _dir(d)
+
+
+def _prefixed(f: Finding, d: str) -> Finding:
+    f.file = _join(d, f.file)
+    if "lost_files" in f.detail:
+        f.detail["lost_files"] = [_join(d, p) for p in f.detail["lost_files"]]
+    for k in ("from", "to"):
+        if k in f.detail:
+            f.detail[k] = _join(d, f.detail[k])
+    return f
+
+
 def _h4(cs: Changeset) -> tuple[list[Finding], list[Gap]]:
-    roots = {f.path: f for f in cs.files if _is_root(f.path) and f.path in PYTEST_CONFIG_NAMES}
-    if not any(f.status != "U" and f.base_text != f.head_text for f in roots.values()):
-        return [], []
-    base_files = {p: f.base_text for p, f in roots.items()}
-    head_files = {p: f.head_text for p, f in roots.items()}
+    """Per directory holding a changed pytest config file (the root, or a subproject such as
+    engine/), compare the config governing that directory at base and at head."""
+    cfgs = {f.path: f for f in cs.files if _name(f.path) in PYTEST_CONFIG_NAMES}
+    dirs = sorted({_dir(p) for p, f in cfgs.items() if f.status != "U" and f.base_text != f.head_text})
+    base_files = {p: f.base_text for p, f in cfgs.items()}
+    head_files = {p: f.head_text for p, f in cfgs.items()}
+    out: list[Finding] = []
     gaps: list[Gap] = []
-    try:
-        bn, bc = _active(base_files)
-    except ConfigError as exc:
-        return [], [Gap("unparseable", f"pytest configuration at base: {exc}")]
-    try:
-        hn, hc = _active(head_files)
-    except ConfigError as exc:
-        return [], [Gap("unparseable", f"pytest configuration at head: {exc}")]
-    return _config_findings(bn, bc, hn, hc, "pytest configuration", cs.base_paths), gaps
+    for d in dirs:
+        where = f" ({d}/)" if d else ""
+        try:
+            bn, bc = _governing(base_files, d)
+        except ConfigError as exc:
+            gaps.append(Gap("unparseable", f"pytest configuration{where} at base: {exc}"))
+            continue
+        try:
+            hn, hc = _governing(head_files, d)
+        except ConfigError as exc:
+            gaps.append(Gap("unparseable", f"pytest configuration{where} at head: {exc}"))
+            continue
+        root = _dir(bn) if bn else _dir(hn) if hn else d
+        if bn and hn and _dir(bn) != _dir(hn):
+            if bc:  # every inherited setting stops applying; that one finding covers selection too
+                bd, hd = _dir(bn), _dir(hn)
+                why = ("which is closer to the tests" if bd == "" or hd.startswith(bd + "/")
+                       else f"because {bn} no longer holds pytest settings")
+                out.append(Finding(
+                    H4, hn, None, f"pytest now reads its settings from {hn}, {why}; the settings in {bn} "
+                                  f"({', '.join(sorted(bc)[:8])}) no longer apply.", detail={"from": bn, "to": hn}))
+            else:  # nothing was inherited: judge what the new config adds (paths resolve elsewhere: no file list)
+                out += _config_findings(None, {}, None, hc, hn, ())
+            continue
+        paths: Iterable[str] | None = cs.base_paths
+        if paths is not None and root:
+            paths = [p[len(root) + 1:] for p in paths if p.startswith(root + "/")]
+        found = _config_findings(_name(bn) if bn else None, bc, _name(hn) if hn else None, hc,
+                                 "pytest configuration", paths)
+        out += [_prefixed(f, root) for f in found] if root else found
+    return out, gaps
 
 
 # --------------------------------------------------------------------------- H5 (CI workflows)
@@ -885,6 +1047,73 @@ def _cmd_diff(b: str, h: str) -> list[str]:
     return why
 
 
+def _tox_commands(text: str | None) -> dict[str, list[str]]:
+    """[testenv] / [testenv:name] -> logical command lines (backslash continuations joined)."""
+    if text is None:
+        return {}
+    cp = configparser.ConfigParser(interpolation=None, strict=False)
+    cp.read_string(text)
+    out: dict[str, list[str]] = {}
+    for sec in cp.sections():
+        if (sec == "testenv" or sec.startswith("testenv:")) and cp.has_option(sec, "commands"):
+            lines, cur = [], ""
+            for raw in cp.get(sec, "commands").splitlines():
+                s = raw.strip()
+                if s.endswith("\\"):
+                    cur += s[:-1] + " "
+                    continue
+                if (cur + s).strip():
+                    lines.append(" ".join((cur + s).split()))
+                cur = ""
+            out[sec] = lines
+    return out
+
+
+def _tox_ignores_status(line: str) -> bool:
+    """tox runs a command prefixed with `-` but ignores its exit status."""
+    return line.startswith("-")
+
+
+def _tox(fc: FileChange) -> tuple[list[Finding], list[Gap]]:
+    """H5 for tox.ini: a test command in a [testenv] narrowed, its exit status ignored (a leading
+    `-`), its coverage threshold lowered, or replaced by commands that run no tests."""
+    try:
+        base, head = _tox_commands(fc.base_text), _tox_commands(fc.head_text)
+    except configparser.Error as exc:
+        return [], [Gap("unparseable", f"{fc.path}: {type(exc).__name__}: {exc}", file=fc.path)]
+    out: list[Finding] = []
+    for env in sorted(set(base) & set(head)):
+        def tests(lines: list[str]) -> list[tuple[str, bool]]:
+            res = []
+            for ln in lines:
+                ignored = _tox_ignores_status(ln)
+                cmd = ln[1:].strip() if ignored else ln
+                if is_test_command(cmd):
+                    res.append((cmd, ignored))
+            return res
+        bt, ht = tests(base[env]), tests(head[env])
+        where = f"tox env [{env}]"
+        if bt and not ht:
+            out.append(Finding(H5, fc.path, None, f"{where} no longer runs its test command.",
+                               before=bt[0][0], detail={"env": env, "change": "test_command_removed"}))
+            continue
+        for (bc, bi), (hc, hi) in zip(bt, ht, strict=False):
+            if hi and not bi:
+                out.append(Finding(H5, fc.path, None, f"{where}: a leading `-` was added to the test command, so tox "
+                                                      "ignores its exit status and failing tests no longer fail.",
+                                   before=bc, after="- " + hc, detail={"env": env, "change": "status_ignored"}))
+            if bc != hc:
+                why = _cmd_diff(bc, hc)
+                if why:
+                    out.append(Finding(H5, fc.path, None, f"{where} now runs fewer tests: " + ", ".join(why) + ".",
+                                       before=bc, after=hc, detail={"env": env, "change": "narrowed"}))
+                cov = compare_args(_split_args(bc), _split_args(hc))["cov_lowered"]
+                if cov:
+                    out.append(Finding(H6, fc.path, None, f"{where}: the coverage threshold was lowered: {cov[0]}.",
+                                       before=bc, after=hc, detail={"env": env, "key": "--cov-fail-under"}))
+    return out, []
+
+
 def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[Finding], list[Gap]]:
     p = fc.path
     docs: list[Any] = []
@@ -968,6 +1197,10 @@ def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[
                     if why:
                         out.append(Finding(H5, p, None, f"{where} now runs fewer tests: " + ", ".join(why) + ".",
                                            before=bt, after=ht, detail={"job": jid, "change": "narrowed"}))
+                    cov = compare_args(_split_args(bt), _split_args(ht))["cov_lowered"]
+                    if cov:
+                        out.append(Finding(H6, p, None, f"{where}: the coverage threshold was lowered: {cov[0]}.",
+                                           before=bt, after=ht, detail={"job": jid, "key": "--cov-fail-under"}))
             # GitHub applies workflow, then job, then step env; PYTEST_ADDOPTS can narrow the run from any of them.
             benv = {**_env(base), **_env(bjob), **bs.env}
             henv = {**_env(head), **_env(hjob), **hs.env}
@@ -1095,14 +1328,25 @@ def _h6_config(fc: FileChange) -> tuple[list[Finding], list[Gap]]:
     return out, []
 
 
+def _pragma_lines(text: str) -> set[int] | None:
+    """1-based lines holding a real `# pragma: no cover` comment (not text inside a string), or
+    None if the source does not tokenize (callers then fall back to matching the text)."""
+    try:
+        return {t.start[0] for t in tokenize.generate_tokens(io.StringIO(text).readline)
+                if t.type == tokenize.COMMENT and re.search(_PRAGMA, t.string)}
+    except (tokenize.TokenError, SyntaxError, ValueError):
+        return None
+
+
 def _h6_pragma(fc: FileChange) -> list[Finding]:
     if fc.head_text is None:
         return []
     b = (fc.base_text or "").splitlines()
     h = fc.head_text.splitlines()
+    bl, hl = _pragma_lines(fc.base_text or ""), _pragma_lines(fc.head_text)
     base_pragmas: dict[str, int] = {}
-    for line in b:
-        if re.search(_PRAGMA, line):
+    for i, line in enumerate(b, start=1):
+        if (i in bl) if bl is not None else re.search(_PRAGMA, line):
             k = line.split("#", 1)[0].strip()
             base_pragmas[k] = base_pragmas.get(k, 0) + 1
     added = []
@@ -1112,7 +1356,7 @@ def _h6_pragma(fc: FileChange) -> list[Finding]:
             continue
         for j in range(j1, j2):
             line = h[j]
-            if not re.search(_PRAGMA, line):
+            if not ((j + 1 in hl) if hl is not None else re.search(_PRAGMA, line)):
                 continue
             code = line.split("#", 1)[0].strip()
             if re.match(_TRIVIAL_CODE, code):
@@ -1310,7 +1554,7 @@ def analyze(cs: Changeset, lim: _limits.Limits) -> tuple[list[Finding], list[Gap
             continue
         kind = fc.kind
         if kind == CONFTEST:
-            f, g = _h1_h2(fc, lim)
+            f, g = _h1_h2(fc, lim, pkgs)
         elif kind == TEST:
             f, g = _h2_module(fc, lim)
         elif kind == CI:
@@ -1319,6 +1563,9 @@ def analyze(cs: Changeset, lim: _limits.Limits) -> tuple[list[Finding], list[Gap
             f, g = _h6_config(fc)
             if _is_root(fc.path) and fc.path in ("pyproject.toml", "setup.cfg"):
                 f = f + _pytest11(fc)
+            if _name(fc.path) == "tox.ini":
+                tf, tg = _tox(fc)
+                f, g = f + tf, g + tg
         elif kind == SOURCE:
             f, g = _h6_pragma(fc), []
         else:

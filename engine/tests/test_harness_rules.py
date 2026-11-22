@@ -101,12 +101,60 @@ def test_h2_pytest_plugins_added():
     assert found(rep)[0]["severity"] == "warning"
 
 
+@pytest.mark.parametrize("opt,expect", [
+    ("-p no:cacheprovider", False), ("-p no:xdist", False), ("-p no:randomly", True),
+    ("-p no:warnings", True), ("-p no:cov", True), ("-p myplugin", True),
+])
+def test_h2_disabling_a_plugin_that_cannot_change_results_is_fine(opt, expect):
+    base = "[pytest]\naddopts = -ra\n"
+    rep = run(FileChange("pytest.ini", "M", base, base.replace("-ra", f"-ra {opt}")))
+    assert bool(found(rep, "H2")) is expect
+
+
 def test_h2_addopts_plugin_and_pytest11_entry_point():
     rep = run(FileChange("pytest.ini", "M", "[pytest]\n", "[pytest]\naddopts = -p no:randomly\n"))
     assert [f["rule"] for f in found(rep)] == ["H2"]
     base = "[project]\nname = 'x'\n"
     head = base + "\n[project.entry-points.pytest11]\nx = 'x.plugin'\n"
     assert [f["rule"] for f in found(run(FileChange("pyproject.toml", "M", base, head)))] == ["H2"]
+
+
+PKG_TREE = ("src/shop/__init__.py", "src/shop/core.py", "tests/test_core.py", "tests/conftest.py")
+AUTOUSE = "import pytest\n\n\n@pytest.fixture(autouse=True)\ndef _fake(monkeypatch):\n    {body}\n"
+
+
+@pytest.mark.parametrize("body", [
+    "monkeypatch.setattr('shop.core.price', lambda *a: 80)",
+    "monkeypatch.setattr(shop.core, 'price', lambda *a: 80)",
+    "mocker.patch('shop.core.price', return_value=80)",
+])
+def test_h1_autouse_fixture_patching_the_code_under_test(body):
+    head = "import shop.core\n" + AUTOUSE.format(body=body)
+    rep = run(FileChange("tests/conftest.py", "A", None, head), base_paths=PKG_TREE)
+    h1 = found(rep, "H1")
+    assert h1 and h1[0]["detail"]["impact"] == "patches_code_under_test"
+
+
+@pytest.mark.parametrize("body", [
+    "monkeypatch.setenv('SHOP_ENV', 'test')",
+    "monkeypatch.setattr('time.time', lambda: 0)",
+    "monkeypatch.setattr('requests.get', lambda *a, **k: None)",
+])
+def test_h1_autouse_fixture_patching_environment_or_third_party_is_fine(body):
+    rep = run(FileChange("tests/conftest.py", "A", None, AUTOUSE.format(body=body)), base_paths=PKG_TREE)
+    assert found(rep) == []
+
+
+def test_h1_non_autouse_fixture_patching_the_code_under_test_is_fine():
+    head = AUTOUSE.format(body="monkeypatch.setattr('shop.core.price', lambda *a: 80)").replace("(autouse=True)", "")
+    assert found(run(FileChange("tests/conftest.py", "A", None, head), base_paths=PKG_TREE)) == []
+
+
+def test_h1_existing_autouse_patch_unchanged_is_fine():
+    text = AUTOUSE.format(body="monkeypatch.setattr('shop.core.price', lambda *a: 80)")
+    rep = run(FileChange("tests/conftest.py", "M", text, text + "\n\ndef helper():\n    return 1\n"),
+              base_paths=PKG_TREE)
+    assert found(rep) == []
 
 
 # --------------------------------------------------------------------------- H3
@@ -174,6 +222,66 @@ def test_h4_higher_precedence_config_file_shadows_the_old_one():
 
 def test_h4_new_config_without_an_older_one_is_fine():
     assert found(run(FileChange("pytest.ini", "A", None, "[pytest]\naddopts = -ra\n"))) == []
+
+
+@pytest.mark.parametrize("base,head", [
+    ('[tool.pytest.ini_options]\nfilterwarnings = ["error"]\n', '[tool.pytest.ini_options]\nfilterwarnings = []\n'),
+    ('[tool.pytest.ini_options]\nfilterwarnings = ["error", "ignore::UserWarning"]\n',
+     '[tool.pytest.ini_options]\nfilterwarnings = ["ignore::UserWarning"]\n'),
+    ('[tool.pytest.ini_options]\nfilterwarnings = ["error::DeprecationWarning"]\n', '[tool.pytest.ini_options]\n'),
+])
+def test_h4_warnings_as_errors_removed(base, head):
+    h4 = found(run(FileChange("pyproject.toml", "M", base, head)), "H4")
+    assert h4 and "warnings" in h4[0]["rationale"]
+
+
+def test_h4_warnings_as_errors_removed_in_ini_line_list():
+    base = "[pytest]\nfilterwarnings =\n    error\n    ignore:some message here:UserWarning\n"
+    head = "[pytest]\nfilterwarnings =\n    ignore:some message here:UserWarning\n"
+    assert found(run(FileChange("pytest.ini", "M", base, head)), "H4")
+
+
+@pytest.mark.parametrize("head", [
+    '[tool.pytest.ini_options]\nfilterwarnings = ["error", "ignore::DeprecationWarning:thirdparty"]\n',
+    '[tool.pytest.ini_options]\nfilterwarnings = ["error"]\nmarkers = ["slow: slow"]\n',
+])
+def test_h4_warning_filter_near_misses(head):
+    base = '[tool.pytest.ini_options]\nfilterwarnings = ["error"]\n'
+    assert found(run(FileChange("pyproject.toml", "M", base, head))) == []
+
+
+SUB = "engine/pyproject.toml"
+
+
+def test_h4_reads_pytest_config_in_a_subdirectory():
+    rep = run(FileChange(SUB, "M", PYPROJECT, PYPROJECT.replace('"-ra"', '"-ra -k \'not action\'"')))
+    h4 = found(rep, "H4")
+    assert h4 and h4[0]["file"] == SUB and "-k not action" in h4[0]["rationale"]
+
+
+def test_h4_subdirectory_config_change_unrelated_to_pytest_is_fine():
+    rep = run(FileChange(SUB, "M", PYPROJECT, PYPROJECT + "\n[tool.ruff]\nline-length = 120\n"))
+    assert found(rep) == []
+
+
+def test_h4_new_nested_config_shadows_the_parent_directory_config():
+    rep = run(FileChange("engine/tests/pytest.ini", "A", None, "[pytest]\n"),
+              FileChange(SUB, "U", PYPROJECT, PYPROJECT))
+    h4 = found(rep, "H4")
+    assert h4 and h4[0]["file"] == "engine/tests/pytest.ini" and SUB in h4[0]["rationale"]
+
+
+def test_h4_nested_config_with_its_own_settings_is_fine_when_none_were_inherited():
+    rep = run(FileChange("engine/tests/pytest.ini", "A", None, "[pytest]\naddopts = -ra\n"))
+    assert found(rep) == []
+
+
+def test_h4_subdirectory_testpaths_change_names_lost_files_by_full_path():
+    tree = ("engine/pyproject.toml", "engine/tests/test_core.py", "engine/tests/slow/test_big.py", "tests/test_top.py")
+    rep = run(FileChange(SUB, "M", _cfg('testpaths = ["tests"]\n'), _cfg('testpaths = ["tests/slow"]\n')),
+              base_paths=tree)
+    h4 = found(rep, "H4")
+    assert len(h4) == 1 and h4[0]["detail"]["lost_files"] == ["engine/tests/test_core.py"]
 
 
 def test_h4_unparseable_config_is_a_gap():
@@ -286,9 +394,76 @@ def test_h6_pragma_on_non_trivial_source_line():
     assert found(run(FileChange("src/pkg/core.py", "M", base, trivial))) == []
 
 
+@pytest.mark.parametrize("line", [
+    'MSG = "add `# pragma: no cover` to skip"\n',
+    "DOC = '''\nx = 1  # pragma: no cover\n'''\n",
+])
+def test_h6_pragma_text_inside_a_string_is_not_a_pragma(line):
+    base = "def f(x):\n    return x * 2\n"
+    assert found(run(FileChange("src/pkg/core.py", "M", base, base + line))) == []
+
+
+def test_h6_pragma_still_found_when_the_file_does_not_tokenize():
+    base = "def f(x):\n    return x * 2\n"
+    head = "def f(x):\n    return x * 2  # pragma: no cover\n    '''unterminated\n"
+    assert found(run(FileChange("src/pkg/core.py", "M", base, head)), "H6")
+
+
 def test_h6_cov_fail_under_lowered_in_addopts():
     base = "[pytest]\naddopts = --cov=pkg --cov-fail-under=99\n"
     assert found(run(FileChange("tox.ini", "M", base, base.replace("99", "50"))), "H6")
+
+
+CI_PY = "on: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest --cov=pkg\n"
+
+
+@pytest.mark.parametrize("head,expect", [
+    (CI_PY.replace("run: pytest", "run: python -m pytest"), False),
+    (CI_PY.replace("run: pytest", "run: python3.12 -m pytest"), False),
+    (CI_PY.replace("run: pytest", "run: python -m pytest -m 'not slow'"), True),
+])
+def test_h5_python_dash_m_is_the_runner_not_a_marker_filter(head, expect):
+    assert bool(found(run(FileChange(WF, "M", CI_PY, head)), "H5")) is expect
+
+
+TOX = "[tox]\nenv_list = py, lint\n\n[testenv]\ndeps = pytest\ncommands =\n    pytest --cov=pkg --cov-fail-under=90 {posargs}\n\n[testenv:lint]\ncommands = ruff check .\n"
+
+
+@pytest.mark.parametrize("head,what", [
+    (TOX.replace("pytest --cov", "pytest -k 'not slow' --cov"), "fewer tests"),
+    (TOX.replace("    pytest --cov", "    - pytest --cov"), "exit status"),
+    (TOX.replace("    pytest --cov=pkg --cov-fail-under=90 {posargs}\n", "    python -c 'print(1)'\n"), "no longer runs"),
+    (TOX.replace("--cov-fail-under=90", "--cov-fail-under=10"), "coverage threshold"),
+])
+def test_h5_tox_test_command_weakened(head, what):
+    fs = found(run(FileChange("tox.ini", "M", TOX, head)))
+    assert fs and any(what in f["rationale"] for f in fs), fs
+
+
+@pytest.mark.parametrize("head", [
+    TOX.replace("pytest --cov", "pytest -n auto --cov"),
+    TOX.replace("ruff check .", "ruff check --fix ."),
+    TOX.replace("deps = pytest", "deps =\n    pytest\n    pytest-xdist"),
+    TOX + "\n[testenv:docs]\ncommands = sphinx-build docs out\n",
+    TOX.replace("pytest --cov", "python -m pytest --cov"),
+])
+def test_h5_tox_near_misses(head):
+    assert found(run(FileChange("tox.ini", "M", TOX, head))) == []
+
+
+CI_COV = ("on: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n"
+          "      - run: pytest --cov=pkg --cov-fail-under=90\n")
+
+
+@pytest.mark.parametrize("head,expect", [
+    (CI_COV.replace("=90", "=10"), True),
+    (CI_COV.replace(" --cov-fail-under=90", ""), True),
+    (CI_COV.replace("=90", "=95"), False),
+    (CI_COV, False),
+])
+def test_h6_cov_fail_under_lowered_in_a_ci_test_command(head, expect):
+    rep = run(FileChange(WF, "M", CI_COV, head))
+    assert bool(found(rep, "H6")) is expect
 
 
 # --------------------------------------------------------------------------- H7

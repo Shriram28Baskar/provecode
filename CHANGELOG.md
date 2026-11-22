@@ -1,0 +1,44 @@
+# Changelog
+
+All notable changes to PROVECODE. Versions follow [Semantic Versioning](https://semver.org/); while the major version is 0, a minor release may change behaviour.
+
+## 0.2.0 — 2026-11-22 (beta)
+
+First release meant for use outside this repository. Real-world precision is not yet measured (see README, "Honest scope").
+
+### Added
+- **Zero-config pull-request gate.** The GitHub Action's `contract` input is optional. Without a contract, any test-weakening finding fails the check (`block-on: weakening`). `provecode check --block-on weakening` does the same from the CLI.
+- **Rules (ADR 0014):**
+  - pytest config in any directory (`engine/pyproject.toml`), including a closer config that shadows a parent's;
+  - `filterwarnings = error` removed;
+  - `assert a and b` judged per conjunct;
+  - always-true asserts (`assert True`, `assert (x, "msg")`);
+  - equality reduced to a `len()` check;
+  - `abs(a - b) < t` and `math.isclose` read as tolerances;
+  - an exception added alongside the expected one;
+  - the parametrize decorator removed;
+  - `pytest.importorskip` added to an existing test;
+  - checks moved into a loop that never runs;
+  - autouse conftest fixtures that patch the package under test;
+  - `tox.ini` test commands narrowed, `-`-prefixed or removed;
+  - `--cov-fail-under` lowered in CI and tox commands.
+- Trusted re-run (`provecode rerun`, `check --execute`): base tests against head code in sealed containers (ADR 0013).
+- Harness and test-body rules H1–H7 and T1–T5 (ADR 0012).
+- `provecode guard` and `install-hooks` for pre-commit and Claude Code (ADR 0010).
+- `docs/research/scripts/cheat_catalog.py`: a regression catalog of weakenings and legitimate near-misses.
+- `LICENSE` (MIT).
+
+### Changed
+- `pytest.approx` and `math.isclose` at their default tolerances no longer count as a weakening of `==`. A looser tolerance still does.
+- Disabling `cacheprovider`, `pastebin`, `xdist`, `sugar` or `html` with `-p no:` is no longer a plugin finding.
+
+### Fixed (false alarms)
+- A test moved unchanged to another test file is recorded as a move (R0), not a deletion (B1).
+- `python -m pytest` is no longer read as a marker filter.
+- Parametrize cases given `pytest.param(..., id=...)` are the same cases.
+- An assert restructured into one equality (`assert (a, b) == (...)`) is not a removal.
+- `# pragma: no cover` inside a string is not a coverage exclusion.
+
+## 0.1.0
+
+Hackathon release: static rules S1–S5 and B1–B4, contracts, recorded runs, the GitHub Action, and the web demo.

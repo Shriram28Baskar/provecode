@@ -74,6 +74,28 @@ def test_candidate_touching_contract_path_fails(repo, tmp_path):
     assert r["findings"][0]["rule"] == "CONTRACT_TOUCHED"
 
 
+def _check_zero_config(repo, head, tmp):
+    out = tmp / f"{head}-zc.json"
+    code = cli.main(["check", "--repo", str(repo), "--base", "main", "--head", head, "--block-on", "weakening",
+                     "--json", str(out)])
+    return code, json.loads(out.read_text(encoding="utf-8"))
+
+
+def test_check_without_a_contract_blocks_a_weakening_with_block_on_weakening(repo, tmp_path):
+    code, rep = _check_zero_config(repo[0], "candidate-weakened", tmp_path)
+    assert code == 1
+    assert "S2" in {f["rule"] for f in rep["findings"]}
+
+
+def test_check_without_a_contract_passes_a_legit_change_with_block_on_weakening(repo, tmp_path):
+    code, rep = _check_zero_config(repo[0], "candidate-legit", tmp_path)
+    assert code == 2 and rep["outcome"] == "INCONCLUSIVE"
+
+
+def test_check_without_a_contract_or_block_on_is_still_a_usage_error(repo, capsys):
+    assert cli.main(["check", "--repo", str(repo[0]), "--base", "main", "--head", "candidate-legit"]) == 3
+
+
 def test_bad_ref_is_usage_error(repo, capsys):
     assert cli.main(["check", "--repo", str(repo[0]), "--base", "main", "--head", "nope",
                      "--contract", str(DEMO / "contracts/checkout.v1.yaml")]) == 3

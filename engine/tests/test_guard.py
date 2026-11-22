@@ -93,6 +93,29 @@ def test_clean_working_tree_passes(repo):
     assert code == 0 and rep["findings"] == []
 
 
+NESTED_CFG = '[tool.pytest.ini_options]\naddopts = "-ra --strict-markers"\ntestpaths = ["tests"]\n'
+
+
+def test_nested_pytest_config_shadowing_a_committed_subdirectory_config_blocks(repo):
+    write(repo, "engine/pyproject.toml", NESTED_CFG)
+    write(repo, "engine/tests/test_e.py", "def test_e():\n    assert 1 == 1\n")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "engine")
+    write(repo, "engine/tests/pytest.ini", "[pytest]\n")
+    code, rep = run_guard(repo)
+    assert code == 1 and rules(rep) == ["H4"]
+    assert rep["findings"][0]["file"] == "engine/tests/pytest.ini"
+
+
+def test_nested_addopts_narrowing_blocks(repo):
+    write(repo, "engine/pyproject.toml", NESTED_CFG)
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "engine")
+    write(repo, "engine/pyproject.toml", NESTED_CFG.replace('"-ra --strict-markers"', '"-ra -k \'not slow\'"'))
+    code, rep = run_guard(repo)
+    assert code == 1 and rules(rep) == ["H4"]
+
+
 def test_strengthened_test_passes(repo):
     write(repo, TEST, BASE_SRC.replace("    assert cap(100) == 80\n", "    assert cap(100) == 80\n    assert cap(5) == 5\n"))
     code, _ = run_guard(repo)

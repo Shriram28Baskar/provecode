@@ -70,6 +70,40 @@ def test_s1_equality_to_approx():
     assert rules(base, base.replace("== 3.0", "== pytest.approx(3.0, rel=0.5)")) == ["S1"]
 
 
+@pytest.mark.parametrize("head", ["pytest.approx(3.0)", "pytest.approx(3.0, rel=1e-6)", "pytest.approx(3.0, abs=1e-12)",
+                                  "pytest.approx(3.0, rel=1e-9)"])
+def test_s1_negative_equality_to_approx_at_default_tolerance(head):
+    base = "import pytest\ndef test_a():\n    assert f() == 3.0\n"
+    assert rules(base, base.replace("== 3.0", f"== {head}")) == []
+
+
+def test_s1_equality_to_approx_with_an_explicit_loose_abs():
+    base = "import pytest\ndef test_a():\n    assert f() == 80\n"
+    assert rules(base, base.replace("== 80", "== pytest.approx(80, abs=100)")) == ["S1"]
+
+
+def test_equality_to_approx_of_a_different_value_is_v0():
+    base = "import pytest\ndef test_a():\n    assert f() == 3.0\n"
+    assert rules(base, base.replace("== 3.0", "== pytest.approx(3.1)")) == ["V0"]
+
+
+@pytest.mark.parametrize("head,expect", [
+    ("assert abs(f() - 80) < 50", ["S1"]),
+    ("assert abs(80 - f()) <= 50", ["S1"]),
+    ("assert math.isclose(f(), 80, abs_tol=50)", ["S1"]),
+    ("assert math.isclose(f(), 80)", []),
+    ("assert abs(f() - 80) < 1e-12", []),
+])
+def test_tolerance_spellings_are_approx(head, expect):
+    base = "import math\ndef test_a():\n    assert f() == 80\n"
+    assert rules(base, base.replace("assert f() == 80", head)) == expect
+
+
+def test_s1_abs_tolerance_widened():
+    base = "def test_a():\n    assert abs(f() - 3.0) < 1e-9\n"
+    assert rules(base, base.replace("1e-9", "0.5")) == ["S1"]
+
+
 def test_s1_approx_tolerance_increase():
     base = "import pytest\ndef test_a():\n    assert f() == pytest.approx(3.0, rel=0.01)\n"
     assert rules(base, base.replace("rel=0.01", "rel=0.2")) == ["S1"]
@@ -124,6 +158,130 @@ def test_s2_negative_extra_weak_assert_added():
     assert rules(base, head) == []
 
 
+# ---------------------------------------------------------------- compound `assert a and b`
+# `assert a and b` checks exactly what `assert a` then `assert b` check, so each conjunct is a check.
+
+AND_BASE = "def test_a():\n    assert code == 1 and f(x) == 'FAILED'\n"
+
+
+def test_and_conjunct_weakened_to_not_none_is_s2():
+    res = run(AND_BASE, AND_BASE.replace("f(x) == 'FAILED'", "f(x) is not None"))
+    assert [f.rule for f in res.findings] == ["S2"]
+    assert res.findings[0].before == "f(x) == 'FAILED'" and res.findings[0].after == "f(x) is not None"
+
+
+def test_and_conjunct_dropped_is_b3():
+    assert rules(AND_BASE, AND_BASE.replace(" and f(x) == 'FAILED'", "")) == ["B3"]
+
+
+def test_and_split_into_two_asserts_is_not_a_finding():
+    head = "def test_a():\n    assert code == 1\n    assert f(x) == 'FAILED'\n"
+    assert rules(AND_BASE, head) == []
+
+
+def test_and_conjuncts_reordered_is_not_a_finding():
+    assert rules(AND_BASE, "def test_a():\n    assert f(x) == 'FAILED' and code == 1\n") == []
+
+
+def test_and_conjunct_added_is_not_a_finding():
+    assert rules(AND_BASE, AND_BASE.replace("'FAILED'\n", "'FAILED' and g() == 2\n")) == []
+
+
+def test_and_merged_into_one_tuple_equality_is_not_a_removal():
+    assert rules(AND_BASE, "def test_a():\n    assert (code, f(x)) == (1, 'FAILED')\n") == []
+
+
+def test_and_conjunct_dropped_while_another_check_changes_is_still_b3():
+    head = "def test_a():\n    assert code >= 0\n"
+    assert "B3" in rules(AND_BASE, head)
+
+
+def test_nested_and_is_flattened():
+    base = "def test_a():\n    assert a == 1 and (b == 2 and c == 3)\n"
+    assert rules(base, base.replace("c == 3", "c is not None")) == ["S2"]
+
+
+def test_or_is_left_whole():
+    base = "def test_a():\n    assert a == 1 or b == 2\n"
+    assert rules(base, base.replace(" or b == 2", "")) == []
+
+
+# ---------------------------------------------------------------- B2: importorskip added to an existing test
+
+IOS = "import pytest\n\ndef test_a():\n    assert f(x) == 42\n"
+
+
+@pytest.mark.parametrize("line", ["    pytest.importorskip('nonexistent_mod')\n",
+                                  "    np = pytest.importorskip('numpy')\n"])
+def test_b2_importorskip_added_to_an_existing_test(line):
+    head = IOS.replace("def test_a():\n", "def test_a():\n" + line)
+    res = run(IOS, head)
+    assert [f.rule for f in res.findings] == ["B2"]
+    assert "import fails" in res.findings[0].rationale
+
+
+def test_importorskip_in_a_new_test_is_not_a_finding():
+    assert rules(IOS, IOS + "\ndef test_b():\n    np = pytest.importorskip('numpy')\n    assert np\n") == []
+
+
+def test_importorskip_kept_is_not_a_finding():
+    base = IOS.replace("def test_a():\n", "def test_a():\n    np = pytest.importorskip('numpy')\n")
+    assert rules(base, base.replace("== 42", "== 42\n    assert f(y) == 1")) == []
+
+
+# ---------------------------------------------------------------- S2: equality reduced to a length check
+
+COLL = "def test_a():\n    assert c.items == ['a', 'a']\n"
+
+
+@pytest.mark.parametrize("head", ["assert len(c.items) == 2", "assert len(c.items) > 0",
+                                  "self.assertEqual(len(c.items), 2)"])
+def test_s2_collection_equality_reduced_to_its_length(head):
+    if head.startswith("self."):
+        base = ("import unittest\n\nclass T(unittest.TestCase):\n    def test_a(self):\n"
+                "        self.assertEqual(c.items, ['a', 'a'])\n")
+        assert rules(base, base.replace("self.assertEqual(c.items, ['a', 'a'])", head)) == ["S2"]
+    else:
+        assert rules(COLL, COLL.replace("assert c.items == ['a', 'a']", head)) == ["S2"]
+
+
+def test_length_check_added_next_to_the_equality_is_not_a_finding():
+    assert rules(COLL, COLL + "    assert len(c.items) == 2\n") == []
+
+
+def test_length_of_something_else_is_not_paired():
+    assert "S2" not in rules(COLL, COLL.replace("assert c.items == ['a', 'a']", "assert len(c.other) == 2"))
+
+
+# ---------------------------------------------------------------- S5: always-true replacements
+
+ONE = "def test_a():\n    assert f(x) == 42\n"
+
+
+@pytest.mark.parametrize("head", ["assert True", "assert 1", "assert 'ok'", "assert (f(x) == 42, 'msg')",
+                                  "assert [f(x) == 42]"])
+def test_s5_check_replaced_by_an_always_true_assert(head):
+    assert rules(ONE, ONE.replace("assert f(x) == 42", head)) == ["S5"]
+
+
+def test_s5_unittest_assert_true_constant():
+    base = "import unittest\n\nclass T(unittest.TestCase):\n    def test_a(self):\n        self.assertEqual(f(x), 42)\n"
+    assert rules(base, base.replace("self.assertEqual(f(x), 42)", "self.assertTrue(True)")) == ["S5"]
+
+
+def test_s5_always_true_assert_added_alongside_is_not_a_finding():
+    assert rules(ONE, ONE + "    assert True\n") == []
+
+
+def test_s5_always_true_does_not_steal_a_reworded_check():
+    head = "def test_a():\n    assert f(x) == 43\n    assert True\n"
+    assert rules(ONE, head) == ["V0"]
+
+
+def test_assert_false_and_empty_tuple_are_not_always_true():
+    assert "S5" not in rules(ONE, ONE.replace("assert f(x) == 42", "assert ()"))
+
+
 # ---------------------------------------------------------------- S3
 
 
@@ -140,6 +298,17 @@ def test_s3_widened_to_builtin_ancestor():
 def test_s3_tuple_widened():
     base = "import pytest\ndef test_a():\n    with pytest.raises(ValueError):\n        f()\n"
     assert rules(base, base.replace("ValueError", "(ValueError, Exception)")) == ["S3"]
+
+
+@pytest.mark.parametrize("head", ["(ValueError, TypeError)", "(ValueError, BarError)"])
+def test_s3_unrelated_exception_added_alongside_the_expected_one(head):
+    base = "import pytest\ndef test_a():\n    with pytest.raises(ValueError):\n        f()\n"
+    assert rules(base, base.replace("ValueError", head)) == ["S3"]
+
+
+def test_s3_negative_tuple_narrowed():
+    base = "import pytest\ndef test_a():\n    with pytest.raises((ValueError, TypeError)):\n        f()\n"
+    assert rules(base, base.replace("(ValueError, TypeError)", "ValueError")) == []
 
 
 def test_s3_match_removed():
@@ -183,6 +352,34 @@ def test_s4_case_swapped_for_another_is_still_a_removal():
     res = run(PARAM, PARAM.replace("(-1, -2)", "(-2, -4)"))
     assert [f.rule for f in res.findings] == ["S4"]
     assert "1 new case(s) were added" in res.findings[0].rationale
+
+
+def test_s4_parametrize_removed_and_one_case_hard_coded():
+    head = "\ndef test_a():\n    x, y = 1, 2\n    assert f(x) == y\n"
+    res = run(PARAM, PARAM[:PARAM.index("@pytest.mark.parametrize")] + head.lstrip("\n"))
+    assert [f.rule for f in res.findings] == ["S4"]
+    assert "3" in res.findings[0].rationale
+
+
+def test_s4_negative_parametrize_moved_into_a_loop_over_the_same_cases():
+    head = "def test_a():\n    for x, y in [(1, 2), (0, 0), (-1, -2)]:\n        assert f(x) == y\n"
+    assert "S4" not in rules(PARAM, PARAM[:PARAM.index("@pytest.mark.parametrize")] + head)
+
+
+def test_s4_cases_given_ids_are_the_same_cases():
+    head = PARAM.replace("[(1, 2), (0, 0), (-1, -2)]",
+                         "[pytest.param(1, 2, id='pos'), pytest.param(0, 0, id='zero'), (-1, -2)]")
+    assert rules(PARAM, head) == []
+
+
+def test_s4_single_argument_case_given_an_id_is_the_same_case():
+    base = "import pytest\n\n@pytest.mark.parametrize('x', [1, 2])\ndef test_a(x):\n    assert f(x)\n"
+    assert rules(base, base.replace("[1, 2]", "[pytest.param(1, id='one'), 2]")) == []
+
+
+def test_s4_case_given_a_skip_mark_is_a_removal():
+    head = PARAM.replace("(-1, -2)]", "pytest.param(-1, -2, marks=pytest.mark.skip)]")
+    assert rules(PARAM, head) == ["S4"]
 
 
 # ---------------------------------------------------------------- B1 / R0
@@ -247,6 +444,17 @@ def test_b2_negative_conditional_skipif():
 def test_b2_guard_added(head_body):
     base = "import pytest\ndef test_a():\n    assert f() == 1\n"
     assert rules(base, "import pytest\ndef test_a():\n" + head_body) == ["B2"]
+
+
+@pytest.mark.parametrize("wrap", ["for _ in []:", "for _ in ():", "for _ in range(0):", "while False:"])
+def test_b2_checks_moved_into_a_loop_that_never_runs(wrap):
+    base = "import pytest\ndef test_a():\n    assert f() == 1\n"
+    assert rules(base, f"import pytest\ndef test_a():\n    {wrap}\n        assert f() == 1\n") == ["B2"]
+
+
+def test_b2_negative_checks_moved_into_a_loop_that_runs():
+    base = "import pytest\ndef test_a():\n    assert f() == 1\n"
+    assert "B2" not in rules(base, "import pytest\ndef test_a():\n    for _ in range(3):\n        assert f() == 1\n")
 
 
 @pytest.mark.parametrize("guard", ['pytest.skip("x")', "return"])

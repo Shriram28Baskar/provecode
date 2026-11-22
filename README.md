@@ -68,16 +68,56 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
 
 | | |
 |---|---|
-| **Semantic weakening rules** | **S1** comparison weakened (`==` → `>=`, a looser `approx`). **S2** expected value made trivial (`== 80` → `>= 0`, `is not None`). **S3** exception widened, or `match=` dropped. **S4** parametrize cases removed. **S5** check made vacuous (`A == A`, `… or True`). |
-| **Standard rules** (prior art, credited) | **B1** test deleted (renames are recognised). **B2** skip, xfail or an early-exit guard added. **B3** assertion removed. **B4** assertion failure swallowed (`try/except AssertionError: pass`, `suppress`); Ruff has related single-file lints. |
+| **Semantic weakening rules** | **S1** comparison weakened (`==` → `>=`; `approx`, `abs(a - b) < t` or `math.isclose` looser than default). **S2** expected value made trivial (`== 80` → `>= 0`, `is not None`, `len(…) == 2`). **S3** exception widened (a broader class, or another one added), or `match=` dropped. **S4** parametrize cases removed, or the decorator dropped. **S5** check made vacuous (`A == A`, `… or True`, `assert True`, `assert (x, "msg")`). `assert a and b` is judged per conjunct. |
+| **Standard rules** (prior art, credited) | **B1** test deleted (renames, and moves to another test file in the same change, are recognised). **B2** skip, xfail, `importorskip` or an early-exit guard added (including `for _ in []:`). **B3** assertion removed. **B4** assertion failure swallowed (`try/except AssertionError: pass`, `suppress`); Ruff has related single-file lints. |
 | **Test-body rules** (ADR 0012) | **T1** inputs changed while the asserted value stayed the same. **T2** a check delegated to an in-file helper that can never fail, or a helper hollowed out. **T3** the function under test monkeypatched or mocked in its own test. **T4** a loop or parametrize list emptied or cut down. **T5** an exception check replaced by a value check. T1, T3 and T5 are warnings only until their real-world flag rate is reviewed. |
-| **Harness rules** (ADR 0012) | **H1** a `conftest.py` hook that decides outcomes or collection (the published SWE-bench `pytest_runtest_makereport` exploit), `collect_ignore`, a process exit, or tampering with pytest internals. **H2** plugin loading changed. **H3** `.pth` / `sitecustomize.py`, or a module shadowing the stdlib, pytest or the package under test. **H4** test selection narrowed in pytest config (`-k`, `-m`, `--deselect`, `testpaths`, `python_files`, a new higher-precedence config file). **H5** CI weakened (`\|\| true`, `continue-on-error`, `if: false`, a test step removed or narrowed, `paths-ignore` over source). **H6** coverage weakened. **H7** a test dependency removed or pinned down. H1 and H3 block with or without a contract. |
+| **Harness rules** (ADR 0012) | **H1** a `conftest.py` hook that decides outcomes or collection (the published SWE-bench `pytest_runtest_makereport` exploit), `collect_ignore`, a process exit, tampering with pytest internals, or an autouse fixture patching the package under test. **H2** plugin loading changed. **H3** `.pth` / `sitecustomize.py`, or a module shadowing the stdlib, pytest or the package under test. **H4** test selection narrowed in pytest config in any directory (`-k`, `-m`, `--deselect`, `testpaths`, `python_files`, a new higher-precedence or closer config file, `filterwarnings = error` removed). **H5** CI or tox weakened (`\|\| true`, `continue-on-error`, `if: false`, a tox `-` prefix, a test step removed or narrowed, `paths-ignore` over source). **H6** coverage weakened. **H7** a test dependency removed or pinned down. H1 and H3 block with or without a contract. |
 | **Contracts** | YAML, versioned and human-approved, with a SHA-256 content hash. Tampered or unapproved contracts are rejected. A candidate that edits the contract path is blocked. |
 | **Verdicts** | **FAILED > INCONCLUSIVE > VERIFIED**, decided by a pure function with no LLM. Missing evidence never becomes a pass, and static analysis alone never yields VERIFIED. |
 | **Recorded runs** | Contract-owned checks and the repo's tests run in Docker: `--network none`, read-only, non-root, all capabilities dropped, with memory, CPU, process and time limits. Every report carries its SHAs, contract hash and image digest. |
 | **Live in the browser** | The same engine runs in Pyodide in a Web Worker, served from the site itself. Code typed into the page is only parsed, never imported or executed, and analysis is stopped after 2 s. |
 
-## Quickstart
+## Use it in your repository (5 minutes, no contract needed)
+
+**Status: beta (0.2.0).** It works without any configuration, but real-world precision is not yet measured, so expect some false alarms and please report them. Python projects using pytest or unittest only. Needs Python 3.11 or later and git.
+
+1. **Install** (from GitHub; the `v0.2.0` tag is published together with this release):
+
+   ```bash
+   uv tool install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   # or, in a virtual environment:
+   pip install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   ```
+
+2. **Check your uncommitted changes** before you commit:
+
+   ```bash
+   provecode guard            # exit 0 = ok, exit 1 = blocked, with each finding's before and after
+   provecode guard --staged   # only what the next commit contains
+   ```
+
+3. **Gate your coding agent** (Claude Code): `provecode install-hooks --claude`. When the agent tries to finish with weakened tests, it is told what it weakened and asked to restore it.
+
+4. **Gate pull requests** (GitHub Action). Without a contract, any test-weakening finding fails the check:
+
+   ```yaml
+   # .github/workflows/provecode.yml
+   on: pull_request
+   permissions:
+     contents: read
+   jobs:
+     provecode:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v4
+           with:
+             fetch-depth: 0
+         - uses: Shriram28Baskar/provecode@v0.2.0
+   ```
+
+**When it blocks.** Each finding names a rule (`S2`, `B3`, `H4`, ...), the test or file, and the exact lines before and after. If the change is a deliberate requirement change (a test removed on purpose, an expected value changed), say so in review: the finding is a prompt for a human decision, not proof of a bug. To switch the local hooks off: `provecode install-hooks --claude --uninstall`. For a stricter, requirement-linked verdict, add an approved contract (below).
+
+## Quickstart (demo)
 
 Requires Python 3.11 or later and git. Docker is needed only for `record`.
 
@@ -141,12 +181,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: Shriram28Baskar/provecode@main   # pin to a commit SHA in production
+      - uses: Shriram28Baskar/provecode@v0.2.0   # or pin to a commit SHA
         with:
-          contract: contracts/checkout.yaml   # read from the PR's base commit, so the PR cannot edit it
+          contract: contracts/checkout.yaml   # optional; read from the PR's base commit, so the PR cannot edit it
 ```
 
-- **Failing the PR:** a FAILED verdict fails the check. Set `fail-on-inconclusive: "true"` to fail on INCONCLUSIVE as well.
+- **Failing the PR:** without a contract, any test-weakening finding fails the check (`block-on: weakening`). With a contract, a FAILED verdict fails it (`block-on: failed`); set `block-on: weakening` to also fail on ungraded findings, or `fail-on-inconclusive: "true"` to fail on INCONCLUSIVE.
 - **Where the report appears:** the Markdown report is written to the job summary.
 - **Static only:** the Action runs static analysis and never executes PR code.
 - **Protecting the contract:** pair it with CODEOWNERS and branch protection on `contracts/`.
@@ -225,7 +265,7 @@ CI runs the tests on Python 3.11 and 3.13. It also checks the Tier A regeneratio
 | `docker/` | The recorded-run image, with its base pinned by digest |
 | `artifacts/` | Generated reports, benchmark results, presets and the manifest. Never edited by hand. |
 | `web/` | The Next.js static site and the Pyodide worker |
-| `docs/` | Competitive audit, PRD, architecture, build spec, research report, ADRs 0001–0010 |
+| `docs/` | Competitive audit, PRD, architecture, build spec, research report, ADRs 0001–0014 |
 | `spike/` | The Gate 0 feasibility spike, paused by ADR 0007. Never imported by product code. |
 
 ## Known blind spots
@@ -235,7 +275,9 @@ These are kept current. Each is a way to make a broken change look green that PR
 - **Weakenings in production code.** Special-casing the inputs the tests use, or overloading `__eq__` so comparisons always pass. Only an independent, executed check (a contract-owned check, or the base branch's tests in a sealed run) can catch these, and that run is not built yet (brief Phase 2).
 - **Dynamic test generation.** Tests produced at run time (custom collectors, `pytest_generate_tests` computing cases from data files, `load_tests`) are analyzed only as far as their source shows. Changes to the data files they read are not analyzed.
 - **Helpers in other files.** T2 resolves helpers in the same file only. A check that moves into an imported helper is reported as an `unresolved_helper` gap, never as a pass.
-- **CI outside GitHub Actions.** Only `.github/workflows/*.yml` is read. GitLab CI, Azure Pipelines, `tox.ini` `commands`, `noxfile.py` and Makefiles are not.
+- **CI outside GitHub Actions and tox.** `.github/workflows/*.yml` and `tox.ini` `[testenv]` commands are read (ADR 0014). GitLab CI, Azure Pipelines, `noxfile.py` and Makefiles are not.
+- **Conditions only a run can judge.** A `skipif` whose condition is always true without being a constant (`sys.version_info < (9,)`), or a test made `async def` with no async plugin installed.
+- **Subdirectory configs in the trusted re-run.** Static H4 reads pytest config in any directory (ADR 0014), but the run-B overlay still copies base config files only at the root.
 - **Indirect test commands.** A workflow step that runs tests through a script (`run: scripts/test`) is not recognised as a test step.
 - **What the trusted tests never checked.** No rule can detect a weakening of a behaviour that no test guarded in the first place.
 - **Languages other than Python.**
