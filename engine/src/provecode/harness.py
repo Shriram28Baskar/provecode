@@ -656,20 +656,62 @@ def _fmt(opt: tuple[str, str]) -> str:
 # not no:randomly, whose random order exposes order-dependent tests.)
 _HARMLESS_DISABLES = frozenset({"no:cacheprovider", "no:pastebin", "no:xdist", "no:sugar", "no:html"})
 
-_INTERPRETER = r"(?:.*[/\\])?(?:python[0-9.]*|py)(?:\.exe)?"  # matched with re.fullmatch
+_INTERPRETER = r"(?:.*[/\\])?(?:python[0-9.]*|py)(?:\.exe)?|\{envpython\}"  # matched with re.fullmatch
+# Value-taking options of the interpreter and of `coverage run` that may sit before its -m.
+_RUNNER_VALUE_OPTS = frozenset({"-W", "-X", "--source", "--rcfile", "--omit", "--include", "--context",
+                                "--data-file", "--concurrency"})
 
 
 def _without_module_runner(args: list[str]) -> list[str]:
     """`python -m pytest ...` -> `pytest ...`: the interpreter's -m names the module to run; it is
-    not pytest's -m marker filter."""
-    out, i = [], 0
+    not pytest's -m marker filter. The same holds for `coverage run -m`, `{envpython}` (tox), and
+    runner options before the -m (`python -b -m`, `coverage run --branch -m`), which are dropped."""
+    out: list[str] = []
+    i = 0
     while i < len(args):
-        if re.fullmatch(_INTERPRETER, args[i]) and args[i + 1:i + 2] == ["-m"]:
-            i += 2
-            continue
-        out.append(args[i])
+        a = args[i]
+        if re.fullmatch(_INTERPRETER, a) or (a == "run" and out[-1:] == ["coverage"]):
+            j = i + 1
+            while j < len(args) and args[j].startswith("-") and args[j] != "-m":
+                j += 2 if args[j] in _RUNNER_VALUE_OPTS else 1
+            if j < len(args) and args[j] == "-m":
+                i = j + 1  # the module name is kept as the next argument
+                continue
+        out.append(a)
         i += 1
     return out
+
+
+_PYTEST_RUNNERS = ("pytest", "py.test")
+# pytest options whose value is the next argument, so that value is not a test path.
+_PYTEST_VALUE_OPTS = _SELECT_VALUE | {
+    "-p", "-n", "-W", "-o", "-r", "--cov", "--cov-report", "--cov-config", "--cov-context", "--cov-fail-under",
+    "--junitxml", "--junit-prefix", "--tb", "--dist", "--maxfail", "--durations", "--basetemp", "--import-mode",
+    "--log-level", "--log-cli-level", "--log-file", "--timeout", "--reruns", "--html", "--color", "--capture",
+    "--override-ini", "--numprocesses", "--max-worker-restart", "--hypothesis-profile", "--hypothesis-seed",
+    "--randomly-seed", "--doctest-glob"}
+
+
+def _command_tokens(cmd: str) -> list[str]:
+    """A CI or tox command line as arguments. A GitHub `${{ ... }}` expression stays one token, and tox's
+    `{posargs:default}` becomes its default (`{posargs}` becomes nothing): what runs when no arguments are given."""
+    cmd = re.sub(r"\$\{\{\s*(.*?)\s*\}\}", lambda m: "${{" + "".join(m.group(1).split()) + "}}", cmd)
+    cmd = re.sub(r"\{posargs(?::((?:[^{}]|\{[^{}]*\})*))?\}", lambda m: m.group(1) or "", cmd)
+    return _split_args(cmd)
+
+
+def _norm_cmd_path(p: str) -> str:
+    for prefix in ("{toxinidir}/", "{toxinidir}\\"):
+        if p.startswith(prefix):
+            p = p[len(prefix):]
+    p = _norm_path(p)
+    return "" if p == "." else p
+
+
+def _covered(path: str, head_paths: list[str]) -> bool:
+    """A base test path is still run if a head path is it, a directory containing it, or its file."""
+    x = _norm_cmd_path(path)
+    return any(h == "" or x == h or x.startswith((h + "/", h + "::")) for h in map(_norm_cmd_path, head_paths))
 
 
 def compare_args(base_args: list[str], head_args: list[str]) -> dict[str, list[str]]:
@@ -967,7 +1009,7 @@ def _test_lines(run: str) -> list[str]:
         cur = ""
     if cur:
         logical.append(" ".join(cur.split()))
-    return [x for x in logical if is_test_command(x)]
+    return [x for x in logical if not x.startswith("#") and is_test_command(x)]  # a shell comment runs nothing
 
 
 @dataclass
@@ -1017,39 +1059,41 @@ def _covers_python(pattern: str, pkgs: set[str]) -> bool:
     return top == "src" or top in pkgs
 
 
+def _pytest_paths(args: list[str]) -> list[str] | None:
+    """The positional test paths of the first pytest call, or None if the command runs no pytest."""
+    at = next((k for k, t in enumerate(args) if t in _PYTEST_RUNNERS), None)
+    if at is None:
+        return None
+    out, skip = [], False
+    for a in args[at + 1:]:
+        if skip:
+            skip = False
+            continue
+        if a in ("&&", "||", ";", "|"):
+            break
+        if a.startswith("-"):
+            skip = a in _PYTEST_VALUE_OPTS
+            continue
+        out.append(a)
+    return out
+
+
 def _cmd_diff(b: str, h: str) -> list[str]:
-    try:
-        ba, ha = shlex.split(b), shlex.split(h)
-    except ValueError:
-        ba, ha = b.split(), h.split()
+    ba, ha = _command_tokens(b), _command_tokens(h)
     why = []
     d = compare_args(ba, ha)
     why += d["select"]
     for flag in ("-e", "-s", "--session", "--sessions", "-t", "--tags"):
         bv = [ba[i + 1] for i, a in enumerate(ba[:-1]) if a == flag]
         hv = [ha[i + 1] for i, a in enumerate(ha[:-1]) if a == flag]
+        if any("${{" in v for v in hv):
+            continue  # chosen by a workflow expression (a matrix value, an input): not known statically
         if hv and hv != bv and not (bv and set(hv) >= set(bv)):
             why.append(f"{flag} {' '.join(hv)}")
-    if "pytest" in " ".join(ha):
-        def positional(args: list[str]) -> list[str]:
-            if "pytest" not in args:
-                return []
-            rest = args[args.index("pytest") + 1:]
-            out, skip = [], False
-            for a in rest:
-                if skip:
-                    skip = False
-                    continue
-                if a.startswith("-"):
-                    skip = a in _SELECT_VALUE or a in ("-p", "-n", "-W", "-o", "--cov", "--junitxml", "--tb", "-r")
-                    continue
-                if a in ("&&", "||", ";", "|"):
-                    break
-                out.append(a)
-            return out
-        bp, hp = positional(ba), positional(ha)
-        if hp and (not bp or any(x not in hp for x in bp)):
-            why.append("paths " + " ".join(hp))
+    bp, hp = _pytest_paths(ba), _pytest_paths(ha)
+    # Paths are compared only when both sides run pytest; another runner's arguments mean something else.
+    if bp is not None and hp and (not bp or any(not _covered(x, hp) for x in bp)):
+        why.append("paths " + " ".join(hp))
     return why
 
 
@@ -1089,6 +1133,9 @@ def _tox(fc: FileChange) -> tuple[list[Finding], list[Gap]]:
         return [], [Gap("unparseable", f"{fc.path}: {type(exc).__name__}: {exc}", file=fc.path)]
     out: list[Finding] = []
     for env in sorted(set(base) & set(head)):
+        name = env.split(":", 1)[1] if ":" in env else ""
+        if name and _non_test_env(name):
+            continue  # [testenv:lint], [testenv:flake8], ...: the same policy as tox envs selected in CI
         def tests(lines: list[str]) -> list[tuple[str, bool]]:
             res = []
             for ln in lines:
@@ -1113,7 +1160,7 @@ def _tox(fc: FileChange) -> tuple[list[Finding], list[Gap]]:
                 if why:
                     out.append(Finding(H5, fc.path, None, f"{where} now runs fewer tests: " + ", ".join(why) + ".",
                                        before=bc, after=hc, detail={"env": env, "change": "narrowed"}))
-                cov = compare_args(_split_args(bc), _split_args(hc))["cov_lowered"]
+                cov = compare_args(_command_tokens(bc), _command_tokens(hc))["cov_lowered"]
                 if cov:
                     out.append(Finding(H6, fc.path, None, f"{where}: the coverage threshold was lowered: {cov[0]}.",
                                        before=bc, after=hc, detail={"env": env, "key": "--cov-fail-under"}))
@@ -1203,7 +1250,7 @@ def _h5_file(fc: FileChange, pkgs: set[str], lim: _limits.Limits) -> tuple[list[
                     if why:
                         out.append(Finding(H5, p, None, f"{where} now runs fewer tests: " + ", ".join(why) + ".",
                                            before=bt, after=ht, detail={"job": jid, "change": "narrowed"}))
-                    cov = compare_args(_split_args(bt), _split_args(ht))["cov_lowered"]
+                    cov = compare_args(_command_tokens(bt), _command_tokens(ht))["cov_lowered"]
                     if cov:
                         out.append(Finding(H6, p, None, f"{where}: the coverage threshold was lowered: {cov[0]}.",
                                            before=bt, after=ht, detail={"job": jid, "key": "--cov-fail-under"}))

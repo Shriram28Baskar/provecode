@@ -45,6 +45,18 @@
 ### Performance fix found by the guard timing eval
 - **T2 hollowed helpers** rebuilt the in-file helper table for every test, which is quadratic in the number of tests. One `provecode guard` run on `kjd/idna`'s 1.5 MB test file (about 6,300 tests) took about 107 s under the Phase 1 rules. The table is now built once per file and class, and that run takes about 5 s, mostly parsing. **H2 in a test module** skips parsing the module twice when `pytest_plugins` does not occur in its NFKC-normalised text. Neither change alters a finding. Regression tests in `test_t_rules.py` and `test_harness_rules.py` count the calls instead of timing them.
 
+### H5 command-parsing fixes found by the real-history scan
+The 0.2.0 rescan (`real_history_scan_v2.py`) flagged 18 more Population H commits for H5 than the `f7f87ed` scan. Reading the rule output (not labeling) showed most came from misreading commands, not from weakenings. Each fix has a regression test shaped like the real commit, and a test that the same spelling still fires when it does narrow:
+- tox `{posargs}` / `{posargs:default}` read as paths (python-attrs/attrs `6879ffd11d`, pytest-dev/pluggy `e413c70d01`). Now replaced by what tox runs without arguments.
+- `coverage run -m unittest`, `{envpython} -b -m coverage` read as pytest's `-m` (Python-Markdown `49249b3fb6`, jpadilla/pyjwt `97cd403154`, hukkin/tomli `f0d053f0a9`).
+- `--cov-report xml` values read as paths (Delgan/loguru `37104c8be0`). A larger list of value-taking pytest options is used.
+- A path widened to its directory reported as narrowed (pluggy `e413c70d01`). A base path is still run if a head path is it or contains it.
+- Paths compared when the base ran another runner (pyparsing `567aa9e805`, unittest → `pytest tests`). Now compared only when both sides run pytest.
+- `tox -e ${{ matrix.toxenv }}` split mid-expression (marshmallow `fb49a6671c`). An expression is one token, and an env chosen by one is not judged.
+- A shell comment mentioning `python -m pytest` paired with the base command, so an unchanged `--cov-fail-under=100` looked removed (tomli `c5045f4778`).
+- **(policy, consistent with ADR 0012's amendment)** `[testenv:<name>]` sections whose name is a non-test env (lint, flake8, docs, bench, …) are skipped, as tox envs selected in CI already were (scrapy/w3lib `6c23d82b0d`).
+- Not changed, left for the owner: `[testenv:check]` (pluggy `8e0c74dac3`) and `tox -e mypy-test` still count as test envs.
+
 ### Known limits, not fixed
 - **Needs runtime knowledge:** a `skipif` whose condition is always true but not a constant (`sys.version_info < (9,)`), and a test turned `async def` with no async plugin installed. The trusted re-run covers both.
 - **Module-level `pytest.importorskip`** is not flagged: it is the usual way to handle an optional dependency.

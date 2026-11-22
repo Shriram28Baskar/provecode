@@ -38,6 +38,15 @@ First release meant for use outside this repository. Real-world precision is not
 - Parametrize cases given `pytest.param(..., id=...)` are the same cases.
 - An assert restructured into one equality (`assert (a, b) == (...)`) is not a removal.
 - `# pragma: no cover` inside a string is not a coverage exclusion.
+- CI and tox test commands (H5, H6), found by the real-history scan:
+  - tox's `{posargs}` is read as nothing and `{posargs:default}` as its default, which is what runs when no arguments are given;
+  - `coverage run -m`, `{envpython} -m`, and runner options before `-m` (`python -b -m`) name the module to run, not a marker filter;
+  - values of options such as `--cov-report xml` are not test paths;
+  - a test path widened to its directory is not fewer tests;
+  - paths are compared only when both commands run pytest;
+  - a GitHub `${{ ... }}` expression is one value and, when it selects tox envs, unknown rather than narrowed;
+  - a shell comment that mentions pytest is not a test command;
+  - `[testenv:lint]`, `[testenv:flake8]` and the other non-test env names already exempt in CI are exempt in `tox.ini` too.
 
 ### Fixed (performance)
 - The hollowed-helper check (T2) rebuilt its table of in-file helpers once per test, so its cost grew with the square of the number of tests. On `kjd/idna`'s 1.5 MB test file (about 6,300 tests) one `provecode guard` run took about 107 s; it now takes about 5 s, most of it parsing the file. Findings are unchanged.

@@ -653,3 +653,83 @@ def test_regression_h2_module_does_not_parse_non_ascii_data_without_pytest_plugi
     head = "def test_a():\n    assert decode('" + chr(0x1E906) + "') == '" + chr(0x1E928) + "'\n"
     fc = FileChange("tests/test_a.py", "M", "def test_a():\n    pass\n", head)
     assert harness._h2_module(fc, Limits.cli()) == ([], [])
+
+
+# --------------------------------------------------------------------------- H5 command parsing (real history)
+# Each near-miss is the shape of a real commit that the 0.2.0 real-history scan flagged
+# (docs/research/data/real_history_scan_v2.json). The engine reads them as fewer tests only by misparsing.
+
+def _tox(cmd: str, env: str = "testenv") -> str:
+    return f"[tox]\nenv_list = py\n\n[{env}]\ndeps = pytest\ncommands =\n    {cmd}\n"
+
+
+@pytest.mark.parametrize("before,after", [
+    # python-attrs/attrs 6879ffd11d: a {posargs} default of options, not paths
+    ("pytest {posargs}", "pytest {posargs:-n auto}"),
+    ("coverage run -m pytest {posargs}", "coverage run -m pytest {posargs:-n auto}"),
+    # pytest-dev/pluggy e413c70d01: the default path widened to its directory
+    ("py.test {posargs:testing/test_pluggy.py}", "py.test {posargs:testing/}"),
+    ("pytest tests", "pytest {posargs:tests}"),
+    # jpadilla/pyjwt 97cd403154: {envpython} and an interpreter flag before -m
+    ("coverage run -m pytest {posargs}", "{envpython} -b -m coverage run -m pytest {posargs}"),
+    # Python-Markdown 49249b3fb6: coverage run's -m names the module
+    ("coverage run --source=markdown {toxinidir}/run-tests.py {posargs}",
+     "coverage run --source=markdown -m unittest discover {toxinidir}/tests"),
+    # Delgan/loguru 37104c8be0: option values are not paths
+    ("pytest --cov loguru/ --cov-report=xml", "pytest --cov loguru/ --cov-report xml --cov-report term-missing"),
+    # pyparsing 567aa9e805: the base did not run pytest, so its paths cannot be compared
+    ("coverage run --parallel --branch -m unittest", "pytest tests"),
+])
+def test_regression_h5_tox_command_rewrites_that_run_the_same_tests(before, after):
+    assert found(run(FileChange("tox.ini", "M", _tox(before), _tox(after))), "H5") == []
+
+
+def test_regression_h5_tox_lint_env_is_not_a_test_env():
+    # scrapy/w3lib 6c23d82b0d: [testenv:flake8] moved from `pytest --flake8` to plain flake8.
+    base, head = _tox("pytest --flake8", "testenv:flake8"), _tox("flake8 w3lib tests", "testenv:flake8")
+    assert found(run(FileChange("tox.ini", "M", base, head)), "H5") == []
+
+
+@pytest.mark.parametrize("before,after", [
+    ("pytest {posargs:tests}", "pytest {posargs:tests/unit}"),
+    ("pytest tests", "pytest {posargs:tests/test_a.py}"),
+    ("coverage run -m pytest {posargs}", "coverage run -m pytest -k 'not slow' {posargs}"),
+    ("{envpython} -m pytest {posargs}", "{envpython} -m pytest -m 'not slow' {posargs}"),
+    ("pytest --cov-report xml tests", "pytest --cov-report xml tests/test_a.py"),
+])
+def test_h5_tox_narrowing_through_the_same_spellings_still_fires(before, after):
+    fs = found(run(FileChange("tox.ini", "M", _tox(before), _tox(after))), "H5")
+    assert fs and "fewer tests" in fs[0]["rationale"], fs
+
+
+def test_h5_tox_test_env_named_like_a_test_is_still_a_test_env():
+    base, head = _tox("pytest", "testenv:py3{9,10}-tests"), _tox("python -c 'print(1)'", "testenv:py3{9,10}-tests")
+    assert found(run(FileChange("tox.ini", "M", base, head)), "H5")
+
+
+def test_regression_h5_workflow_coverage_run_unittest_is_not_a_marker_filter():
+    # hukkin/tomli f0d053f0a9: `python -m pytest` replaced by `coverage run -m unittest`.
+    wf = "on: [push]\njobs:\n  t:\n    runs-on: ubuntu-latest\n    steps:\n      - run: {}\n"
+    rep = run(FileChange(WF, "M", wf.format("python -m pytest --cov"), wf.format("coverage run -m unittest")))
+    assert [f for f in found(rep, "H5") if "fewer tests" in f["rationale"]] == []
+
+
+def test_regression_h5_workflow_matrix_expression_is_one_unknown_value():
+    # marshmallow-code/marshmallow fb49a6671c: `tox -e ${{ matrix.toxenv }}` was split mid-expression.
+    wf = "on: [push]\njobs:\n  t:\n    runs-on: ubuntu-latest\n    steps:\n      - run: {}\n"
+    rep = run(FileChange(WF, "M", wf.format("tox -e py311"), wf.format("tox -e ${{ matrix.toxenv }}")))
+    assert found(rep, "H5") == []
+    rep = run(FileChange(WF, "M", wf.format("tox -e py311,py312"), wf.format("tox -e py311")))
+    assert found(rep, "H5")  # a literal narrowing still fires
+
+
+def test_regression_a_shell_comment_is_not_a_test_command():
+    # hukkin/tomli c5045f4778: a comment mentioning `python -m pytest` was paired with the base command,
+    # so the unchanged --cov-fail-under=100 looked removed.
+    wf = "on: [push]\njobs:\n  t:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Test\n        run: |\n{}"
+    base = wf.format("          pytest --cov --cov-fail-under=100\n")
+    head = wf.format("          # Use 'python -m pytest' to add CWD to sys.path\n"
+                     "          python -m pytest --cov --cov-fail-under=100\n")
+    assert found(run(FileChange(WF, "M", base, head))) == []
+    lowered = head.replace("=100", "=50")
+    assert found(run(FileChange(WF, "M", base, lowered)), "H6")
