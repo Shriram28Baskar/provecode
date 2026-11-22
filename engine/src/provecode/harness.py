@@ -18,6 +18,7 @@ import re
 import shlex
 import tokenize
 import tomllib
+import unicodedata
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
 from typing import Any
@@ -430,6 +431,11 @@ def _h1_h2(fc: FileChange, lim: _limits.Limits, pkgs: set[str] | None = None) ->
 def _h2_module(fc: FileChange, lim: _limits.Limits) -> tuple[list[Finding], list[Gap]]:
     """pytest_plugins in a test module (pytest honours it there too)."""
     if fc.head_text is None:
+        return [], []
+    text = fc.head_text if fc.head_text.isascii() else unicodedata.normalize("NFKC", fc.head_text)
+    if "pytest_plugins" not in text:
+        # Without the identifier no assignment to it can exist, so skip parsing a large module twice. The search
+        # runs on NFKC-normalised text because Python normalises identifiers that way (a look-alike spelling).
         return [], []
     head, gap = _parse_py(fc.path, fc.head_text, lim)
     if gap or head is None:

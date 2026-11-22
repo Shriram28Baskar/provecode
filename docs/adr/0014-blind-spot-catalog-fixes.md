@@ -42,6 +42,9 @@
 - **`# pragma: no cover` inside a string:** H6 counts only real comment tokens (via `tokenize`), falling back to the text match when a file does not tokenize. Found live: the Claude Code Stop hook blocked this session over the catalog script, whose probe P01 holds that text in a string.
 - **Default approx:** `== x` → `pytest.approx(x)` at default tolerance (rel ≤ 1e-6, abs ≤ 1e-12), or `math.isclose` at its defaults, is no longer S1. **(policy)** A looser or non-literal tolerance still is. No frozen benchmark case has a default-tolerance approx: the generator's pattern uses `rel=0.5`.
 
+### Performance fix found by the guard timing eval
+- **T2 hollowed helpers** rebuilt the in-file helper table for every test, which is quadratic in the number of tests. One `provecode guard` run on `kjd/idna`'s 1.5 MB test file (about 6,300 tests) took about 107 s under the Phase 1 rules. The table is now built once per file and class, and that run takes about 5 s, mostly parsing. **H2 in a test module** skips parsing the module twice when `pytest_plugins` does not occur in its NFKC-normalised text. Neither change alters a finding. Regression tests in `test_t_rules.py` and `test_harness_rules.py` count the calls instead of timing them.
+
 ### Known limits, not fixed
 - **Needs runtime knowledge:** a `skipif` whose condition is always true but not a constant (`sys.version_info < (9,)`), and a test turned `async def` with no async plugin installed. The trusted re-run covers both.
 - **Module-level `pytest.importorskip`** is not flagged: it is the usual way to handle an optional dependency.

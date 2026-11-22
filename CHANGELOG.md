@@ -39,6 +39,10 @@ First release meant for use outside this repository. Real-world precision is not
 - An assert restructured into one equality (`assert (a, b) == (...)`) is not a removal.
 - `# pragma: no cover` inside a string is not a coverage exclusion.
 
+### Fixed (performance)
+- The hollowed-helper check (T2) rebuilt its table of in-file helpers once per test, so its cost grew with the square of the number of tests. On `kjd/idna`'s 1.5 MB test file (about 6,300 tests) one `provecode guard` run took about 107 s; it now takes about 5 s, most of it parsing the file. Findings are unchanged.
+- The `pytest_plugins`-in-a-test-module check (H2) no longer parses a test module twice when the name does not occur in it. The search runs on NFKC-normalised text, so a look-alike spelling is still parsed and found.
+
 ## 0.1.0
 
 Hackathon release: static rules S1–S5 and B1–B4, contracts, recorded runs, the GitHub Action, and the web demo.

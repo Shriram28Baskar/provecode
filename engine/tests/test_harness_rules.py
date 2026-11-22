@@ -611,3 +611,45 @@ def test_regression_a_malformed_base_job_is_not_a_crash():
     base = "on: [push]\njobs:\n  a: oops\n  t:\n    steps:\n      - run: pytest\n"
     head = "on: [push]\njobs:\n  a: oops\n  t:\n    steps:\n      - run: pytest || true\n"
     assert found(run(FileChange(WF, "M", base, head)), "H5")
+
+
+def test_h2_pytest_plugins_added_in_a_test_module():
+    base = "def test_a():\n    assert 1 == 1\n"
+    rep = run(FileChange("tests/test_a.py", "M", base, base + "pytest_plugins = ['tests.evil']\n"))
+    assert "H2" in [f["rule"] for f in found(rep)]
+
+
+def test_regression_h2_module_does_not_parse_a_module_without_pytest_plugins(monkeypatch):
+    # Found by the guard timing eval: parsing a 1.5 MB test module twice only to look for pytest_plugins cost 11 s.
+    # Without the identifier in the head text no assignment to it can exist, so the rule cannot fire.
+    from provecode import harness
+    from provecode.limits import Limits
+
+    def boom(*a, **k):
+        raise AssertionError("parsed")
+
+    monkeypatch.setattr(harness, "_parse_py", boom)
+    fc = FileChange("tests/test_a.py", "M", "def test_a():\n    pass\n", "def test_a():\n    assert 1\n")
+    assert harness._h2_module(fc, Limits.cli()) == ([], [])
+
+
+def test_regression_h2_module_still_parses_a_non_ascii_spelling():
+    # Python NFKC-normalises identifiers, so a full-width first letter is the same name in the AST.
+    base = "def test_a():\n    assert 1 == 1\n"
+    head = base + chr(0xFF50) + "ytest_plugins = ['tests.evil']\n"
+    rep = run(FileChange("tests/test_a.py", "M", base, head))
+    assert "H2" in [f["rule"] for f in found(rep)]
+
+
+def test_regression_h2_module_does_not_parse_non_ascii_data_without_pytest_plugins(monkeypatch):
+    # kjd/idna's large test module is full of non-ASCII test data; that alone must not force the double parse.
+    from provecode import harness
+    from provecode.limits import Limits
+
+    def boom(*a, **k):
+        raise AssertionError("parsed")
+
+    monkeypatch.setattr(harness, "_parse_py", boom)
+    head = "def test_a():\n    assert decode('" + chr(0x1E906) + "') == '" + chr(0x1E928) + "'\n"
+    fc = FileChange("tests/test_a.py", "M", "def test_a():\n    pass\n", head)
+    assert harness._h2_module(fc, Limits.cli()) == ([], [])

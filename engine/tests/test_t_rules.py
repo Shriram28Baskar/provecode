@@ -175,3 +175,20 @@ def test_regression_t3_resolves_imports_inside_the_test_function():
     head = ("def test_a(monkeypatch):\n    monkeypatch.setattr('pkg.mod.f', lambda x: 2)\n    from pkg import mod\n"
             "    assert mod.f(1) == 2\n")
     assert rules(run(base, head)) == ["T3"]
+
+
+def test_regression_t2_helper_table_is_built_once_per_class_not_per_test(monkeypatch):
+    # Found by the guard timing eval: kjd/idna's 1.5 MB test file (about 6,300 tests) took 107 s, because the
+    # hollowed-helper check rebuilt the helper table for every test. It depends only on the file and the class.
+    from provecode import analyzer
+
+    calls = []
+    real = analyzer._helpers
+    monkeypatch.setattr(analyzer, "_helpers", lambda p, fn: calls.append(fn.key) or real(p, fn))
+    tests = "".join(f"def test_{i}():\n    _check(f({i}), {i})\n\n\n" for i in range(60))
+    klass = "class TestK:\n" + "".join(f"    def test_m{i}(self):\n        _check(f({i}), {i})\n\n" for i in range(5))
+    base = "def _check(a, b):\n    assert a == b\n\n\n" + tests + klass
+    head = base.replace("    assert a == b\n", "    return True\n")
+    rep = run(base, head)
+    assert len([f for f in rep["findings"] if f["rule"] == "T2"]) == 65  # every caller is still flagged
+    assert len(calls) <= 8

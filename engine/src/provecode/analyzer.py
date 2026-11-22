@@ -1239,11 +1239,21 @@ def _t2(pb: Parsed, ph: Parsed, tb: TestFn, th: TestFn, path: str) -> list[Findi
 def _hollowed(pb: Parsed, ph: Parsed, path: str) -> list[Finding]:
     """Helpers that checked something at base and can never fail at head, for every test calling them."""
     out = []
+    memo: dict[tuple[int, str], dict[str, ast.AST]] = {}
+
+    def helpers(p: Parsed, fn: TestFn) -> dict[str, ast.AST]:
+        # The table depends only on the file and the test's class; building it per test is quadratic.
+        parts = fn.key.split("::")
+        k = (id(p), parts[1] if len(parts) == 3 else "")
+        if k not in memo:
+            memo[k] = _helpers(p, fn)
+        return memo[k]
+
     for key, th in sorted(ph.tests.items()):
         tb = pb.tests.get(key)
         if tb is None:
             continue
-        hb, hh = _helpers(pb, tb), _helpers(ph, th)
+        hb, hh = helpers(pb, tb), helpers(ph, th)
         calls = {name for name, _ in _delegations(th)}
         for name in sorted(calls):
             if name in hb and name in hh and _does_check(hb[name]) and _always_passes(hh[name]):
