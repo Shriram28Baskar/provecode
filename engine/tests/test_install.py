@@ -138,3 +138,34 @@ def test_shared_install_does_not_probe_this_interpreter(repo, monkeypatch):
     from provecode import install
     monkeypatch.setattr(install, "_PROBE", "import provecode_not_a_module")
     assert cli.main(["install-hooks", "--repo", str(repo), "--claude", "--shared"]) == 0
+
+
+# --------------------------------------------------------------------------- pre-commit framework
+# A hook repository is installed by pre-commit with `pip install .` from its root, so the root
+# pyproject.toml must build the same package as engine/pyproject.toml.
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def test_root_packaging_builds_the_engine_package():
+    import tomllib
+
+    root = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    engine = tomllib.loads((REPO_ROOT / "engine" / "pyproject.toml").read_text(encoding="utf-8"))
+    assert root["project"]["name"] == engine["project"]["name"] == "provecode"
+    assert root["project"]["scripts"] == engine["project"]["scripts"]
+    assert root["project"]["dependencies"] == engine["project"]["dependencies"] == []
+    assert root["project"]["requires-python"] == engine["project"]["requires-python"]
+    assert root["tool"]["setuptools"]["packages"]["find"]["where"] == ["engine/src"]
+    assert root["tool"]["setuptools"]["dynamic"]["version"] == {"attr": "provecode.__version__"}
+    assert "tool" not in root or set(root["tool"]) == {"setuptools"}  # no pytest/ruff config at the root
+
+
+def test_pre_commit_hook_definition_runs_guard_on_the_index():
+    yaml = pytest.importorskip("yaml")
+    hooks = yaml.safe_load((REPO_ROOT / ".pre-commit-hooks.yaml").read_text(encoding="utf-8"))
+    assert [h["id"] for h in hooks] == ["provecode"]
+    h = hooks[0]
+    assert h["entry"] == "provecode guard --staged"
+    assert h["language"] == "python"
+    assert h["pass_filenames"] is False and h["always_run"] is True

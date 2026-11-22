@@ -112,3 +112,23 @@ def test_compile_emits_canonical_json(tmp_path):
     assert cli.main(["compile", str(DEMO / "contracts/checkout.v1.yaml"), "-o", str(out)]) == 0
     data = json.loads(out.read_text(encoding="utf-8"))
     assert data["approval"]["content_hash"].startswith("sha256:")
+
+
+def test_version_flag_prints_the_engine_version(capsys):
+    import provecode
+
+    with pytest.raises(SystemExit) as exc:
+        cli.main(["--version"])
+    assert exc.value.code == 0
+    assert capsys.readouterr().out.strip() == f"provecode {provecode.__version__}"
+
+
+def test_package_versions_agree():
+    # engine/pyproject.toml carries the version for pip; __init__ carries it for reports and --version.
+    import tomllib
+
+    import provecode
+
+    root = Path(__file__).resolve().parents[2]
+    engine = tomllib.loads((root / "engine" / "pyproject.toml").read_text(encoding="utf-8"))
+    assert engine["project"]["version"] == provecode.__version__

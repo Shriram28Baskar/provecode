@@ -1,0 +1,24 @@
+# Packaging for the pre-commit framework only. pre-commit installs a hook repository with
+# `pip install .` from its root, and the engine lives in engine/. This builds the same package
+# from engine/src, with the version read from provecode/__init__.py. Development, CI and the
+# documented installs use engine/pyproject.toml. See .pre-commit-hooks.yaml.
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "provecode"
+dynamic = ["version"]
+description = "Detects test weakening in Python changes (pre-commit packaging of engine/)."
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+provecode = "provecode.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["engine/src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "provecode.__version__" }

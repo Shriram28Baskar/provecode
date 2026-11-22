@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 from collections.abc import Callable
 
+from . import __version__
 from . import contract as contract_mod
 from . import git as git_mod
 from . import changeset as cs_mod
@@ -233,6 +234,7 @@ def cmd_compile(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="provecode", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--version", action="version", version=f"provecode {__version__}")
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name, fn in (("check", cmd_check), ("record", cmd_record)):
         p = sub.add_parser(name)

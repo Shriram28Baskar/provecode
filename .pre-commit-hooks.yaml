@@ -1,0 +1,10 @@
+- id: provecode
+  name: provecode guard (test weakening)
+  description: Blocks a commit whose staged changes weaken tests, test harness or CI test steps.
+  entry: provecode guard --staged
+  language: python
+  additional_dependencies: ["PyYAML>=6"]
+  pass_filenames: false
+  always_run: true
+  require_serial: true
+  stages: [pre-commit]
