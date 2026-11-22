@@ -29,7 +29,7 @@ Where the project stands, so it can be picked up later. Numbers are from runs on
 - **Untracked files from before 2026-11-22, not touched:** `PROVECODE_V2_BUILD_BRIEF.md`, `spike/labeling/relabel_tool.py`, `spike/labeling/test_relabel_tool.py`.
 
 ## Next, in order of value
-1. Label a sample of about 10 commits per rule (H1–H7, T1–T5), then compute per-rule precision with Wilson CIs (brief Phase 6). A small labeling CLI would speed this up.
+1. Label a sample: `python docs/research/scripts/label.py --sample 10` (75 commits, about 10 per rule), then `--summary` for per-rule precision with Wilson 95% intervals (brief Phase 6). Labels go to `docs/research/labels/real_history_scan_v2.jsonl`; the tool resumes where you stopped.
 2. Brief Phase 3 (live web analysis of real GitHub PRs) and Phase 4 (PyPI trusted publishing, SARIF, PR comments, `provecode pr`).
 
 ## Known limits (README "Known blind spots", ADR 0014)

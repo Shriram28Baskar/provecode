@@ -2,6 +2,12 @@
 
 All notable changes to PROVECODE. Versions follow [Semantic Versioning](https://semver.org/); while the major version is 0, a minor release may change behaviour.
 
+## Unreleased
+
+### Added
+- `docs/research/scripts/label.py`: a terminal tool for the owner to label the commits the real-history scan flagged. It shows each commit's findings and the diff of the flagged files, and records weakening / legit / unsure with an optional reason in `docs/research/labels/real_history_scan_v2.jsonl` (append-only; resumable). `--sample N` gives a fixed, reproducible sample per rule (75 commits for N = 10). `--summary` reports per-rule precision with Wilson 95% intervals. It writes a label only after a keypress at an interactive terminal, and refuses piped or scripted input.
+- CI: a Linux job installs the pre-commit hook from this repository with `pre-commit try-repo` and checks that it blocks a staged weakening and passes an honest change (`.github/scripts/precommit_smoke.sh`).
+
 ## 0.2.1 — 2026-11-22 (beta)
 
 ### Added

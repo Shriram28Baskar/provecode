@@ -301,7 +301,7 @@ These are kept current. Each is a way to make a broken change look green that PR
 ## Honest scope
 
 - Python only: pytest-style and unittest-style tests.
-- **Real-world precision: not yet measured.** Tier A, A-u, A-b and H cases are injected. Real-world recall (Tier B) and precision (Tier C) need owner labels. How often PROVECODE fires on real, mostly human, commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10 and `docs/research/data/real_history_scan_v2.json` (ADR 0012); every flagged commit awaits an owner label.
+- **Real-world precision: not yet measured.** Tier A, A-u, A-b and H cases are injected. Real-world recall (Tier B) and precision (Tier C) need owner labels. How often PROVECODE fires on real, mostly human, commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10 and `docs/research/data/real_history_scan_v2.json` (ADR 0012); every flagged commit awaits an owner label (`docs/research/scripts/label.py`).
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
 - VERIFIED means no mandatory condition failed within the declared scope. It is not a proof of correctness.
