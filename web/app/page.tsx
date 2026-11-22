@@ -9,7 +9,11 @@ export default function Home() {
   const recorded = run("checkout-weakened");
   const repoTests = recorded.evidence.find((e) => e.owner === "repo")!;
   const capCheck = recorded.evidence.find((e) => e.check_id === "chk-cap")!;
-  const t = tierA().held_out;
+  const a = tierA();
+  const t = a.held_out;
+  // The release tag comes from the engine version the benchmark artifacts record, never typed by hand.
+  const tag = `v${a.provenance.engine_version}`;
+  const install = `git+https://github.com/Shriram28Baskar/provecode@${tag}#subdirectory=engine`;
 
   return (
     <div className="space-y-24 pt-14">
@@ -122,6 +126,73 @@ export default function Home() {
           .
         </p>
       </section>
+
+      <section aria-labelledby="use" className="space-y-6">
+        <h2 id="use" className="text-2xl font-bold tracking-tight">
+          Use it on your own code
+        </h2>
+        <p className="prose-measure text-ink-soft">
+          Beta, {tag}. It works with no configuration on Python projects that use pytest or unittest: any finding that
+          weakens a test blocks. Real-world precision is not yet measured, so expect some false alarms.
+        </p>
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="min-w-0 space-y-3 md:col-span-2">
+            <h3 className="text-lg font-bold">On your machine</h3>
+            <Code
+              label="Install, then check uncommitted changes"
+              text={`pipx install "provecode[cli] @ ${install}"\nprovecode guard`}
+            />
+            <p className="text-sm text-ink-soft">
+              <code className="whitespace-nowrap font-mono">uv tool install</code> and <code className="whitespace-nowrap font-mono">pip install</code> take
+              the same argument.
+            </p>
+          </div>
+          <div className="min-w-0 space-y-3">
+            <h3 className="text-lg font-bold">On pull requests</h3>
+            <Code
+              label=".github/workflows/provecode.yml"
+              text={`on: pull_request\npermissions:\n  contents: read\njobs:\n  provecode:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n      - uses: Shriram28Baskar/provecode@${tag}`}
+            />
+            <p className="text-sm text-ink-soft">
+              <a className="link" href="https://github.com/Shriram28Baskar/provecode-action-demo/pulls">
+                See it on a real repository
+              </a>
+              : the pull request that loosens a test fails the check, and an honest refactor passes it.
+            </p>
+          </div>
+          <div className="min-w-0 space-y-3">
+            <h3 className="text-lg font-bold">Before each commit</h3>
+            <Code
+              label=".pre-commit-config.yaml"
+              text={`repos:\n  - repo: https://github.com/Shriram28Baskar/provecode\n    rev: ${tag}\n    hooks:\n      - id: provecode`}
+            />
+            <p className="text-sm text-ink-soft">
+              For coding agents: <code className="whitespace-nowrap font-mono">provecode install-hooks --claude</code> stops Claude Code
+              from finishing with weakened tests.
+            </p>
+          </div>
+        </div>
+        <p className="text-sm">
+          <a className="link" href="https://github.com/Shriram28Baskar/provecode#use-it-in-your-repository-5-minutes-no-contract-needed">
+            Full setup, contracts and the trusted re-run
+          </a>{" "}
+          ·{" "}
+          <a className="link" href={`https://github.com/Shriram28Baskar/provecode/releases/tag/${tag}`}>
+            Release notes for {tag}
+          </a>
+        </p>
+      </section>
     </div>
+  );
+}
+
+function Code({ label, text }: { label: string; text: string }) {
+  return (
+    <figure className="min-w-0 rounded-md border border-rule bg-sheet">
+      <figcaption className="border-b border-rule px-3 py-1.5 font-mono text-[0.8rem] text-ink-soft">{label}</figcaption>
+      <pre className="overflow-x-auto px-3 py-2 font-mono text-[0.8rem] leading-relaxed">
+        <code>{text}</code>
+      </pre>
+    </figure>
   );
 }
