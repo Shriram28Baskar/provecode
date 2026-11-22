@@ -9,15 +9,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 476 collected, 476 passed, 0 failed, 0 skipped, 30.95s"
+          "summary": "run A: base code, base tests: 476 collected, 476 passed, 0 failed, 0 skipped, 19.5s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 476 collected, 476 passed, 0 failed, 0 skipped, 33.16s"
+          "summary": "run B: head code, base tests and harness: 476 collected, 476 passed, 0 failed, 0 skipped, 19.5s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 476 collected, 476 passed, 0 failed, 0 skipped, 33.17s"
+          "summary": "run C: head code, head tests: 476 collected, 476 passed, 0 failed, 0 skipped, 19.91s"
         }
       },
       "findings": [],
@@ -28,10 +28,18 @@
         "deleted": [],
         "replaced": 0
       },
-      "pytest_seconds_mean": 13.64,
+      "previous_attempts": [
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 193.1
+        }
+      ],
+      "pytest_seconds_mean": 9.06,
       "repo": "tkem/cachetools",
-      "sealed_run_seconds_mean": 32.46,
-      "seconds": 193.1,
+      "sealed_run_seconds_mean": 19.3,
+      "seconds": 112.5,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -48,18 +56,18 @@
         "plugins": []
       },
       "timings": {
-        "A1_pytest_s": 11.99,
-        "A1_s": 30.95,
-        "A2_pytest_s": 13.89,
-        "A2_s": 32.88,
-        "B1_pytest_s": 13.63,
-        "B1_s": 33.16,
-        "B2_pytest_s": 14.59,
-        "B2_s": 32.16,
-        "C_pytest_s": 14.1,
-        "C_s": 33.17,
-        "total_s": 191.84,
-        "wheelhouse_s": 13.03
+        "A1_pytest_s": 9.01,
+        "A1_s": 19.5,
+        "A2_pytest_s": 9.08,
+        "A2_s": 18.41,
+        "B1_pytest_s": 9.06,
+        "B1_s": 19.5,
+        "B2_pytest_s": 8.8,
+        "B2_s": 19.19,
+        "C_pytest_s": 9.36,
+        "C_s": 19.91,
+        "total_s": 111.66,
+        "wheelhouse_s": 5.69
       }
     },
     {
@@ -68,15 +76,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 6442 collected, 6441 passed, 0 failed, 1 skipped, 179.19s"
+          "summary": "run A: base code, base tests: 6442 collected, 6441 passed, 0 failed, 1 skipped, 126.5s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 6442 collected, 6441 passed, 0 failed, 1 skipped, 183.3s"
+          "summary": "run B: head code, base tests and harness: 6442 collected, 6441 passed, 0 failed, 1 skipped, 124.84s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 6445 collected, 6444 passed, 0 failed, 1 skipped, 176.81s"
+          "summary": "run C: head code, head tests: 6445 collected, 6444 passed, 0 failed, 1 skipped, 126.56s"
         }
       },
       "findings": [],
@@ -117,12 +125,18 @@
           ],
           "outcome": "INCONCLUSIVE",
           "seconds": 37.5
+        },
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 943.5
         }
       ],
-      "pytest_seconds_mean": 162.93,
+      "pytest_seconds_mean": 116.84,
       "repo": "kjd/idna",
-      "sealed_run_seconds_mean": 181.31,
-      "seconds": 943.5,
+      "sealed_run_seconds_mean": 126.18,
+      "seconds": 660.2,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -141,18 +155,18 @@
         ]
       },
       "timings": {
-        "A1_pytest_s": 162.14,
-        "A1_s": 179.19,
-        "A2_pytest_s": 167.88,
-        "A2_s": 185.73,
-        "B1_pytest_s": 164.42,
-        "B1_s": 183.3,
-        "B2_pytest_s": 161.63,
-        "B2_s": 181.5,
-        "C_pytest_s": 158.58,
-        "C_s": 176.81,
-        "total_s": 941.34,
-        "wheelhouse_s": 16.05
+        "A1_pytest_s": 117.32,
+        "A1_s": 126.5,
+        "A2_pytest_s": 117.66,
+        "A2_s": 126.81,
+        "B1_pytest_s": 114.88,
+        "B1_s": 124.84,
+        "B2_pytest_s": 116.83,
+        "B2_s": 126.17,
+        "C_pytest_s": 117.53,
+        "C_s": 126.56,
+        "total_s": 659.12,
+        "wheelhouse_s": 18.72
       }
     },
     {
@@ -161,15 +175,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 772 collected, 772 passed, 0 failed, 0 skipped, 604.23s"
+          "summary": "run A: base code, base tests: 772 collected, 772 passed, 0 failed, 0 skipped, 481.08s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 772 collected, 772 passed, 0 failed, 0 skipped, 673.28s"
+          "summary": "run B: head code, base tests and harness: 772 collected, 772 passed, 0 failed, 0 skipped, 479.34s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 772 collected, 772 passed, 0 failed, 0 skipped, 759.88s"
+          "summary": "run C: head code, head tests: 772 collected, 772 passed, 0 failed, 0 skipped, 480.67s"
         }
       },
       "findings": [],
@@ -195,12 +209,18 @@
           ],
           "outcome": "INCONCLUSIVE",
           "seconds": 906.1
+        },
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 3488.7
         }
       ],
-      "pytest_seconds_mean": 668.03,
+      "pytest_seconds_mean": 458.41,
       "repo": "more-itertools/more-itertools",
-      "sealed_run_seconds_mean": 691.31,
-      "seconds": 3488.7,
+      "sealed_run_seconds_mean": 479.83,
+      "seconds": 2418.6,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -217,18 +237,18 @@
         "plugins": []
       },
       "timings": {
-        "A1_pytest_s": 585.96,
-        "A1_s": 604.23,
-        "A2_pytest_s": 684.71,
-        "A2_s": 703.11,
-        "B1_pytest_s": 646.9,
-        "B1_s": 673.28,
-        "B2_pytest_s": 691.92,
-        "B2_s": 716.06,
-        "C_pytest_s": 730.64,
-        "C_s": 759.88,
-        "total_s": 3485.83,
-        "wheelhouse_s": 12.84
+        "A1_pytest_s": 462.88,
+        "A1_s": 481.08,
+        "A2_pytest_s": 458.28,
+        "A2_s": 478.72,
+        "B1_pytest_s": 457.25,
+        "B1_s": 479.34,
+        "B2_pytest_s": 456.32,
+        "B2_s": 479.33,
+        "C_pytest_s": 457.31,
+        "C_s": 480.67,
+        "total_s": 2416.94,
+        "wheelhouse_s": 7.0
       }
     },
     {
@@ -237,15 +257,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 18 collected, 17 passed, 0 failed, 1 skipped, 47.19s"
+          "summary": "run A: base code, base tests: 18 collected, 17 passed, 0 failed, 1 skipped, 40.47s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 18 collected, 17 passed, 0 failed, 1 skipped, 56.48s"
+          "summary": "run B: head code, base tests and harness: 18 collected, 17 passed, 0 failed, 1 skipped, 49.12s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 18 collected, 17 passed, 0 failed, 1 skipped, 54.19s"
+          "summary": "run C: head code, head tests: 18 collected, 17 passed, 0 failed, 1 skipped, 40.25s"
         }
       },
       "findings": [],
@@ -256,10 +276,18 @@
         "deleted": [],
         "replaced": 0
       },
-      "pytest_seconds_mean": 17.49,
+      "previous_attempts": [
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 298.2
+        }
+      ],
+      "pytest_seconds_mean": 14.83,
       "repo": "hukkin/tomli",
-      "sealed_run_seconds_mean": 50.48,
-      "seconds": 298.2,
+      "sealed_run_seconds_mean": 40.67,
+      "seconds": 240.2,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -276,18 +304,18 @@
         "plugins": []
       },
       "timings": {
-        "A1_pytest_s": 18.03,
-        "A1_s": 47.19,
-        "A2_pytest_s": 16.72,
-        "A2_s": 45.28,
-        "B1_pytest_s": 17.49,
-        "B1_s": 56.48,
-        "B2_pytest_s": 16.43,
-        "B2_s": 49.27,
-        "C_pytest_s": 18.77,
-        "C_s": 54.19,
-        "total_s": 297.34,
-        "wheelhouse_s": 5.09
+        "A1_pytest_s": 15.18,
+        "A1_s": 40.47,
+        "A2_pytest_s": 14.52,
+        "A2_s": 37.84,
+        "B1_pytest_s": 14.55,
+        "B1_s": 49.12,
+        "B2_pytest_s": 14.75,
+        "B2_s": 35.67,
+        "C_pytest_s": 15.14,
+        "C_s": 40.25,
+        "total_s": 239.62,
+        "wheelhouse_s": 6.38
       }
     },
     {
@@ -296,15 +324,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 908 collected, 762 passed, 0 failed, 146 skipped, 36.88s"
+          "summary": "run A: base code, base tests: 908 collected, 762 passed, 0 failed, 146 skipped, 34.8s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 908 collected, 762 passed, 0 failed, 146 skipped, 40.81s"
+          "summary": "run B: head code, base tests and harness: 908 collected, 762 passed, 0 failed, 146 skipped, 33.14s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 908 collected, 762 passed, 0 failed, 146 skipped, 38.28s"
+          "summary": "run C: head code, head tests: 908 collected, 762 passed, 0 failed, 146 skipped, 31.11s"
         }
       },
       "findings": [],
@@ -315,10 +343,18 @@
         "deleted": [],
         "replaced": 1
       },
-      "pytest_seconds_mean": 21.38,
+      "previous_attempts": [
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 265.2
+        }
+      ],
+      "pytest_seconds_mean": 17.66,
       "repo": "python-humanize/humanize",
-      "sealed_run_seconds_mean": 38.58,
-      "seconds": 265.2,
+      "sealed_run_seconds_mean": 32.39,
+      "seconds": 189.6,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -339,18 +375,18 @@
         ]
       },
       "timings": {
-        "A1_pytest_s": 21.99,
-        "A1_s": 36.88,
-        "A2_pytest_s": 22.44,
-        "A2_s": 39.75,
-        "B1_pytest_s": 19.63,
-        "B1_s": 40.81,
-        "B2_pytest_s": 20.81,
-        "B2_s": 37.19,
-        "C_pytest_s": 22.01,
-        "C_s": 38.28,
-        "total_s": 264.12,
-        "wheelhouse_s": 56.14
+        "A1_pytest_s": 18.33,
+        "A1_s": 34.8,
+        "A2_pytest_s": 17.58,
+        "A2_s": 32.11,
+        "B1_pytest_s": 17.67,
+        "B1_s": 33.14,
+        "B2_pytest_s": 17.34,
+        "B2_s": 30.81,
+        "C_pytest_s": 17.38,
+        "C_s": 31.11,
+        "total_s": 188.72,
+        "wheelhouse_s": 14.3
       }
     },
     {
@@ -359,15 +395,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 342 collected, 342 passed, 0 failed, 0 skipped, 16.62s"
+          "summary": "run A: base code, base tests: 342 collected, 342 passed, 0 failed, 0 skipped, 19.89s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 342 collected, 342 passed, 0 failed, 0 skipped, 19.0s"
+          "summary": "run B: head code, base tests and harness: 342 collected, 342 passed, 0 failed, 0 skipped, 17.51s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 342 collected, 342 passed, 0 failed, 0 skipped, 19.2s"
+          "summary": "run C: head code, head tests: 342 collected, 342 passed, 0 failed, 0 skipped, 17.09s"
         }
       },
       "findings": [],
@@ -378,10 +414,33 @@
         "deleted": [],
         "replaced": 1
       },
-      "pytest_seconds_mean": 7.03,
+      "previous_attempts": [
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 130.6
+        },
+        {
+          "error": null,
+          "gaps": [
+            {
+              "detail": "building the wheelhouse from the base dependencies failed: File \"C:\\Users\\Saish\\provecode\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\response.py\", line 621, in stream\n    data = self.read(amt=amt, decode_content=decode_content)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:",
+              "reason": "deps_failed"
+            },
+            {
+              "detail": "BASE-TESTS is verified by execution (run-B); static analysis cannot provide passing evidence.",
+              "reason": "requires_execution"
+            }
+          ],
+          "outcome": "INCONCLUSIVE",
+          "seconds": 532.9
+        }
+      ],
+      "pytest_seconds_mean": 7.7,
       "repo": "jazzband/prettytable",
-      "sealed_run_seconds_mean": 18.07,
-      "seconds": 130.6,
+      "sealed_run_seconds_mean": 18.75,
+      "seconds": 456.0,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -401,18 +460,18 @@
         ]
       },
       "timings": {
-        "A1_pytest_s": 7.16,
-        "A1_s": 16.62,
-        "A2_pytest_s": 6.74,
-        "A2_s": 16.45,
-        "B1_pytest_s": 7.32,
-        "B1_s": 19.0,
-        "B2_pytest_s": 7.01,
-        "B2_s": 19.06,
-        "C_pytest_s": 6.91,
-        "C_s": 19.2,
-        "total_s": 128.62,
-        "wheelhouse_s": 27.55
+        "A1_pytest_s": 6.77,
+        "A1_s": 19.89,
+        "A2_pytest_s": 7.66,
+        "A2_s": 22.09,
+        "B1_pytest_s": 7.85,
+        "B1_s": 17.51,
+        "B2_pytest_s": 8.12,
+        "B2_s": 17.16,
+        "C_pytest_s": 8.08,
+        "C_s": 17.09,
+        "total_s": 454.39,
+        "wheelhouse_s": 348.17
       }
     },
     {
@@ -421,15 +480,15 @@
       "evidence": {
         "E-A": {
           "result": "pass",
-          "summary": "run A: base code, base tests: 297 collected, 297 passed, 0 failed, 0 skipped, 23.17s"
+          "summary": "run A: base code, base tests: 297 collected, 297 passed, 0 failed, 0 skipped, 13.69s"
         },
         "E-B": {
           "result": "pass",
-          "summary": "run B: head code, base tests and harness: 297 collected, 297 passed, 0 failed, 0 skipped, 19.64s"
+          "summary": "run B: head code, base tests and harness: 297 collected, 297 passed, 0 failed, 0 skipped, 14.03s"
         },
         "E-C": {
           "result": "pass",
-          "summary": "run C: head code, head tests: 297 collected, 297 passed, 0 failed, 0 skipped, 20.91s"
+          "summary": "run C: head code, head tests: 297 collected, 297 passed, 0 failed, 0 skipped, 13.41s"
         }
       },
       "findings": [],
@@ -455,12 +514,18 @@
           ],
           "outcome": "INCONCLUSIVE",
           "seconds": 639.8
+        },
+        {
+          "error": null,
+          "gaps": [],
+          "outcome": "VERIFIED",
+          "seconds": 126.0
         }
       ],
-      "pytest_seconds_mean": 7.05,
+      "pytest_seconds_mean": 5.23,
       "repo": "pallets/itsdangerous",
-      "sealed_run_seconds_mean": 21.11,
-      "seconds": 126.0,
+      "sealed_run_seconds_mean": 13.58,
+      "seconds": 95.4,
       "summary": {
         "baseline": "ok",
         "baseline_failing": 0,
@@ -477,18 +542,18 @@
         "plugins": []
       },
       "timings": {
-        "A1_pytest_s": 6.37,
-        "A1_s": 23.17,
-        "A2_pytest_s": 7.66,
-        "A2_s": 21.26,
-        "B1_pytest_s": 6.63,
-        "B1_s": 19.64,
-        "B2_pytest_s": 7.15,
-        "B2_s": 20.55,
-        "C_pytest_s": 7.43,
-        "C_s": 20.91,
-        "total_s": 124.84,
-        "wheelhouse_s": 4.83
+        "A1_pytest_s": 5.15,
+        "A1_s": 13.69,
+        "A2_pytest_s": 5.27,
+        "A2_s": 13.2,
+        "B1_pytest_s": 5.17,
+        "B1_s": 14.03,
+        "B2_pytest_s": 5.27,
+        "B2_s": 13.55,
+        "C_pytest_s": 5.27,
+        "C_s": 13.41,
+        "total_s": 94.58,
+        "wheelhouse_s": 18.58
       }
     }
   ],

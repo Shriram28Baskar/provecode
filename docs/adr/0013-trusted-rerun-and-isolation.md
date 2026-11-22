@@ -115,3 +115,22 @@ VERIFIED then means: no blocking finding, and every judged base test passed in B
   - pip `--retries 5 --timeout 60`, plus up to 3 attempts on network errors only.
   - A failed plugin discovery is now INCONCLUSIVE, where before it silently ran without plugins and could fail tests for the wrong reason.
 - **Report schema v2:** `engine/schema/report.v2.json`. Every report produced anywhere in the test suite is validated against it (`engine/tests/conftest.py`).
+
+## Results on the 0.2.0 engine, 2026-11-22 (engine commit `5a6d11d`, Docker Desktop on Windows 11, `--deps-timeout 2400`)
+
+- **Real repositories** (`rerun_real_repos.py`; base = first parent of the pinned SHA, head = the pinned SHA). Every attempt is kept in `rerun_real_repos.json` under `previous_attempts`:
+
+  | Repository | Outcome | Total s | Mean sealed run s | pytest s |
+  |---|---|---|---|---|
+  | tkem/cachetools | VERIFIED | 112.5 | 19.3 | 9.1 |
+  | kjd/idna | VERIFIED | 660.2 | 126.2 | 116.8 |
+  | more-itertools/more-itertools | VERIFIED | 2,418.6 | 479.8 | 458.4 |
+  | hukkin/tomli | VERIFIED | 240.2 | 40.7 | 14.8 |
+  | python-humanize/humanize | VERIFIED | 189.6 | 32.4 | 17.7 |
+  | jazzband/prettytable | VERIFIED (2nd attempt) | 456.0 | 18.8 | 7.7 |
+  | pallets/itsdangerous | VERIFIED | 95.4 | 13.6 | 5.2 |
+
+  - **One failed attempt, kept:** prettytable's first attempt was INCONCLUSIVE (`deps_failed`). It hit a network read error while the wheelhouse downloaded the base dependencies (530 s). That is the specified behaviour: a failed install never becomes a pass or a FAILED. A retry a few minutes later was VERIFIED.
+  - **Overhead:** a sealed run costs a roughly fixed 9–25 s over pytest's own time (container start, install from the wheelhouse). Building the wheelhouse is a one-off per base (up to about 350 s here, network-bound). For the slowest suite (more-itertools, about 458 s of pytest) the overhead is under 5%.
+- **Docker tests:** `PROVECODE_DOCKER=1 pytest engine/tests/test_exec_docker.py engine/tests/test_rerun_docker.py`: 15 passed. They cover the planted-conftest, input-change, helper, monkeypatch and deselect probes, and isolation against a forged `_pytest.reports`.
+- **Recorded demo runs**, re-recorded with this engine: checkout-weakened FAILED, checkout-legit VERIFIED, as expected.

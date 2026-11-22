@@ -146,6 +146,8 @@ provecode check --repo . --base main --head HEAD --execute --image provecode-run
 
 Three sealed runs answer one question: does the change still pass the tests that were trusted before it?
 
+Tested on 7 pinned real repositories with the 0.2.0 engine: all VERIFIED, after one network failure during dependency download, which correctly gave INCONCLUSIVE and passed when retried. A sealed run adds about 9–25 s to pytest's own time, plus a one-off dependency download per base. Details and every attempt: ADR 0013, `docs/research/data/rerun_real_repos.json`.
+
 - **A** runs base code with base tests: the reference.
 - **B** runs head code with the **base** tests and harness: the trusted result. Head-only conftests, test modules, `.pth` and `sitecustomize.py` files are removed first.
 - **C** runs head code with head tests: what CI would say.
