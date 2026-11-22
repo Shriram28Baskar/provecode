@@ -68,7 +68,7 @@
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.45,
+      "duration_s": 1.84,
       "exit_code": 1,
       "id": "E1",
       "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:21: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.23s",
@@ -85,8 +85,8 @@
       "duration_s": 1.33,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.14s",
-      "output_sha256": "82dfe86e268d20b6db1dda7628657da4a4ce4f8f7378b221085a5e05a649abf3",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.15s",
+      "output_sha256": "41feba5434e280b2e41faece2bf093b707db7e707e2aa9a90313c32460318b65",
       "owner": "contract",
       "result": "pass"
     },
@@ -96,11 +96,11 @@
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.31,
+      "duration_s": 1.47,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.18s",
-      "output_sha256": "aeb643e9966842a4ec79586f91fed64d3e806b9e783e8a1c7a15e07a56111df9",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.25s",
+      "output_sha256": "a9e30d7bcdf45156397977edc0b93deb820f82a67f702e4485a298f7797bb672",
       "owner": "contract",
       "result": "pass"
     },
@@ -110,11 +110,11 @@
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.28,
+      "duration_s": 1.3,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.16s",
-      "output_sha256": "048f4d37c2e343b4b50bbc30b0074e850584634924b3a8c2329422e6aa1aa61b",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.25s",
+      "output_sha256": "bfb8d6848ec5a3d5e04b30c41bdb5e3a4cb44b6efb19b1b0c4bf9f56292832db",
       "owner": "contract",
       "result": "pass"
     },
@@ -122,11 +122,11 @@
       "check_id": "repo-tests",
       "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.38,
+      "duration_s": 1.3,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.13s",
-      "output_sha256": "b5ba777af2c2a711e5071cd8ee5c583105d8163576cb89ba118bca68419d2d62",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.15s",
+      "output_sha256": "9c0d6aaba4922498b90989f24763c3ef7eef5632bc272ac3f026774f108fbc24",
       "owner": "repo",
       "result": "pass"
     }
@@ -174,11 +174,11 @@
   "provenance": {
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
-    "engine_version": "0.2.0",
-    "generated_at": "2026-11-22T12:40:46+00:00",
+    "engine_version": "0.2.1",
+    "generated_at": "2026-11-22T16:01:39+00:00",
     "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
     "image": "provecode-run:local",
-    "image_id": "sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6",
+    "image_id": "sha256:6d95e12900d2d17e6a524156d922b828618e30892cf491e66a7ebf56fbf0f047",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -187,7 +187,7 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6\"]",
+    "repo_digests": "[\"provecode-run@sha256:6d95e12900d2d17e6a524156d922b828618e30892cf491e66a7ebf56fbf0f047\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",

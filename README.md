@@ -79,16 +79,16 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
 
 ## Use it in your repository (5 minutes, no contract needed)
 
-**Status: beta (0.2.0).** It works without any configuration, but real-world precision is not yet measured, so expect some false alarms and please report them. Python projects using pytest or unittest only. Needs Python 3.11 or later and git.
+**Status: beta (0.2.1).** It works without any configuration, but real-world precision is not yet measured, so expect some false alarms and please report them. Python projects using pytest or unittest only. Needs Python 3.11 or later and git.
 
-1. **Install** (from GitHub; the `v0.2.0` tag is published together with this release):
+1. **Install** (from GitHub; the `v0.2.1` tag):
 
    ```bash
-   uv tool install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   uv tool install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.1#subdirectory=engine"
    # or with pipx:
-   pipx install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   pipx install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.1#subdirectory=engine"
    # or, in a virtual environment:
-   pip install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   pip install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.1#subdirectory=engine"
    ```
 
 2. **Check your uncommitted changes** before you commit:
@@ -114,7 +114,19 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
          - uses: actions/checkout@v4
            with:
              fetch-depth: 0
-         - uses: Shriram28Baskar/provecode@v0.2.0
+         - uses: Shriram28Baskar/provecode@v0.2.1
+   ```
+
+   See it on a real repository: [provecode-action-demo](https://github.com/Shriram28Baskar/provecode-action-demo/pulls). The PR that loosens the discount-cap test fails the check, and an honest refactor passes it. The repository's own tests pass on both.
+
+5. **Or block weakening commits with the [pre-commit](https://pre-commit.com) framework** (`.pre-commit-config.yaml`):
+
+   ```yaml
+   repos:
+     - repo: https://github.com/Shriram28Baskar/provecode
+       rev: v0.2.1
+       hooks:
+         - id: provecode
    ```
 
 **When it blocks.** Each finding names a rule (`S2`, `B3`, `H4`, ...), the test or file, and the exact lines before and after. If the change is a deliberate requirement change (a test removed on purpose, an expected value changed), say so in review: the finding is a prompt for a human decision, not proof of a bug. To switch the local hooks off: `provecode install-hooks --claude --uninstall`. For a stricter, requirement-linked verdict, add an approved contract (below).
@@ -185,7 +197,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: Shriram28Baskar/provecode@v0.2.0   # or pin to a commit SHA
+      - uses: Shriram28Baskar/provecode@v0.2.1   # or pin to a commit SHA
         with:
           contract: contracts/checkout.yaml   # optional; read from the PR's base commit, so the PR cannot edit it
 ```
@@ -213,7 +225,7 @@ provecode guard --staged        # the index, i.e. what the next commit would con
 
   Existing settings are merged, never overwritten, and a second run changes nothing. `--uninstall` removes only what it added.
 - **Zero configuration.** It works without a contract: any S1–S5, B1–B4, T1–T5 or H1–H7 finding blocks (`--block-on weakening`, the default). If `.provecode/contract.yaml` exists, it is read from the **base commit**, so editing it in the working tree cannot relax it, and the edit itself blocks. Use `--block-on failed` to block only on contract-graded FAILED.
-- **Pre-commit** (`.pre-commit-config.yaml`):
+- **Pre-commit** (`.pre-commit-config.yaml`). The simplest form is `repo: https://github.com/Shriram28Baskar/provecode` with `rev: v0.2.1` and `id: provecode` (step 5 above); pre-commit installs PROVECODE into its own environment. If `provecode` is already installed, a local hook avoids that install:
 
   ```yaml
   repos:

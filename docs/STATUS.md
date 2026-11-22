@@ -1,16 +1,18 @@
-# Status: 2026-11-22 (release 0.2.0, beta)
+# Status: 2026-11-22 (release 0.2.1, beta)
 
 Where the project stands, so it can be picked up later. Numbers are from runs on the release code; the ADRs hold the details.
 
 ## Released
-- **`v0.2.0`**: a tag and a GitHub pre-release on commit `45fff08`. PR #1 (`v2/phase-2-trusted-rerun` into `main`) is open, with CI green on every push. **It is not merged:** merging was not part of the release plan. Merge it when ready, so that `main` and its README match the release.
-- **Install from the tag works with pip, `uv tool install` and pipx.** Each was tested in a clean environment, and the installed CLI blocked a weakening, allowed an honest change, and installed a pre-commit hook that blocked a weakening commit.
+- **`v0.2.1`** (current) and **`v0.2.0`**: tags and GitHub pre-releases, both on `main`. `main` was fast-forwarded to the 0.2.0 release, so PR #1 shows as merged and every commit SHA, including the tag's, is unchanged. 0.2.1 followed through PR #2.
+- **0.2.1 adds** `provecode --version`, a pre-commit framework hook (`repo: https://github.com/Shriram28Baskar/provecode`, `rev: v0.2.1`, `id: provecode`) and an SPDX license expression. No rule changed.
+- **Install from the tag works with pip, `uv tool install` and pipx.** Each was tested in a clean environment. The installed CLI blocked a weakening, allowed an honest change, and installed a pre-commit hook that blocked a weakening commit. The pre-commit framework hook was checked with `pre-commit try-repo`: a staged weakening was blocked and an honest refactor passed.
+- **The GitHub Action was run on a real repository:** [provecode-action-demo](https://github.com/Shriram28Baskar/provecode-action-demo/pulls). The weakening PR fails the check, and the honest refactor passes it. The repository's own tests pass on both.
 - **Phase 1** (ADR 0012) and **Phase 2** (ADR 0013) are complete. ADR 0014 adds the catalog fixes, a zero-config gate, and the fixes found during release verification.
 
 ## Verified on the release code
 | Check | Result |
 |---|---|
-| Engine tests (local) | 656 passed, 14 skipped (Docker opt-in, Windows symlink) |
+| Engine tests (local, 0.2.1) | 660 passed, 14 skipped (Docker opt-in, Windows symlink) |
 | CI engine jobs (Linux and Windows × 3.11, 3.13) | 655/654 passed, the rest skipped |
 | Docker tests (`PROVECODE_DOCKER=1`) | 15 passed |
 | `mypy --strict`, `ruff check src` | clean |
@@ -27,10 +29,8 @@ Where the project stands, so it can be picked up later. Numbers are from runs on
 - **Untracked files from before 2026-11-22, not touched:** `PROVECODE_V2_BUILD_BRIEF.md`, `spike/labeling/relabel_tool.py`, `spike/labeling/test_relabel_tool.py`.
 
 ## Next, in order of value
-1. Merge PR #1.
-2. Label a sample of about 10 commits per rule (H1–H7, T1–T5), then compute per-rule precision with Wilson CIs (brief Phase 6). A small labeling CLI would speed this up.
-3. 0.2.1 polish: `provecode --version`; a root-level package so the pre-commit framework can use `repo: .../provecode` with `rev: v0.2.x` (today only a `repo: local` hook works, as in the README).
-4. Brief Phase 3 (live web analysis of real GitHub PRs) and Phase 4 (PyPI trusted publishing, SARIF, PR comments, `provecode pr`).
+1. Label a sample of about 10 commits per rule (H1–H7, T1–T5), then compute per-rule precision with Wilson CIs (brief Phase 6). A small labeling CLI would speed this up.
+2. Brief Phase 3 (live web analysis of real GitHub PRs) and Phase 4 (PyPI trusted publishing, SARIF, PR comments, `provecode pr`).
 
 ## Known limits (README "Known blind spots", ADR 0014)
 - The re-run overlay copies pytest config only from the root.

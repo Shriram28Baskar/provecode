@@ -2,6 +2,20 @@
 
 All notable changes to PROVECODE. Versions follow [Semantic Versioning](https://semver.org/); while the major version is 0, a minor release may change behaviour.
 
+## 0.2.1 — 2026-11-22 (beta)
+
+### Added
+- `provecode --version`.
+- **pre-commit framework hook:** `repo: https://github.com/Shriram28Baskar/provecode`, `rev: v0.2.1`, `id: provecode` runs `provecode guard --staged`. A root `pyproject.toml` builds the same package from `engine/src`, because pre-commit installs a hook repository from its root. Checked with `pre-commit try-repo`: a staged weakening is blocked (S2) and a staged honest refactor passes.
+
+### Changed
+- Packaging uses an SPDX license expression (`license = "MIT"`, setuptools ≥ 77). The old table form is deprecated, and setuptools stops building it after 2027-02-18.
+
+### Verified
+- The GitHub Action (`@v0.2.0`, no contract) on a real repository, [provecode-action-demo](https://github.com/Shriram28Baskar/provecode-action-demo/pulls): the PR that loosens a test fails the check, and an honest refactor passes it.
+
+No rule changed. Every benchmark case result is identical to 0.2.0.
+
 ## 0.2.0 — 2026-11-22 (beta)
 
 First release meant for use outside this repository. Real-world precision is not yet measured (see README, "Honest scope").
