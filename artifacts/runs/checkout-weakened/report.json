@@ -68,11 +68,11 @@
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 2.01,
+      "duration_s": 1.45,
       "exit_code": 1,
       "id": "E1",
-      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:21: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.33s",
-      "output_sha256": "1e65bc6da0c4ce5ccf152d333ac80eeaf874bbb8eb68e412c1ff5b8ae6eafdcd",
+      "output_excerpt": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________________ test_chk_cap _________________________________\n\n    def test_chk_cap():\n        # C1: the discount never exceeds the cap, across a sweep of requested discounts.\n        for pct in range(0, 101, 5):\n            d = pct / 100\n            price = apply_discount(100, d)\n>           assert price >= round(100 * (1 - CAP), 2), f\"discount {d} gave {price}\"\nE           AssertionError: discount 0.25 gave 75.0\nE           assert 75.0 >= 80.0\nE            +  where 80.0 = round((100 * (1 - 0.2)), 2)\n\ntest_contract_checkout.py:21: AssertionError\n------------------- generated xml file: /work/results/E1.xml -------------------\n=========================== short test summary info ============================\nFAILED test_contract_checkout.py::test_chk_cap - AssertionError: discount 0.2...\n1 failed in 0.23s",
+      "output_sha256": "a03c39131f845991c7335419c7879a7700306d7df472136e76a0a319549b5d30",
       "owner": "contract",
       "result": "fail"
     },
@@ -82,11 +82,11 @@
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.72,
+      "duration_s": 1.33,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.16s",
-      "output_sha256": "29fedad6fca0a39b87bfabc8af67a8cb3ec83f63452f5def4287641583b907af",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.14s",
+      "output_sha256": "82dfe86e268d20b6db1dda7628657da4a4ce4f8f7378b221085a5e05a649abf3",
       "owner": "contract",
       "result": "pass"
     },
@@ -96,7 +96,7 @@
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.45,
+      "duration_s": 1.31,
       "exit_code": 0,
       "id": "E3",
       "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.18s",
@@ -110,11 +110,11 @@
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.34,
+      "duration_s": 1.28,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.19s",
-      "output_sha256": "7ddc6e3b1e75b1965d163bc81c0c36a42999d1cddbbad1d04bb2214be9b9a9e1",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.16s",
+      "output_sha256": "048f4d37c2e343b4b50bbc30b0074e850584634924b3a8c2329422e6aa1aa61b",
       "owner": "contract",
       "result": "pass"
     },
@@ -122,11 +122,11 @@
       "check_id": "repo-tests",
       "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.44,
+      "duration_s": 1.38,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.19s",
-      "output_sha256": "be7ef4b3daa060008935d457c5eac40431c696d6db065dfa95bc40e167b8f2d5",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.13s",
+      "output_sha256": "b5ba777af2c2a711e5071cd8ee5c583105d8163576cb89ba118bca68419d2d62",
       "owner": "repo",
       "result": "pass"
     }
@@ -174,11 +174,11 @@
   "provenance": {
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
-    "engine_version": "0.1.0",
-    "generated_at": "2026-11-21T18:39:36+00:00",
+    "engine_version": "0.2.0",
+    "generated_at": "2026-11-22T12:40:46+00:00",
     "head_sha": "b1ae7fe6ff3a3cb0e7c9fac9249ded5b8b1ab9c0",
     "image": "provecode-run:local",
-    "image_id": "sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf",
+    "image_id": "sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -187,7 +187,7 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf\"]",
+    "repo_digests": "[\"provecode-run@sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",

@@ -16,4 +16,4 @@ Contract `checkout-pricing` v1 `sha256:a993720462a9…`, approved by Shriram28Ba
 + assert apply_discount(100, 0.50) >= 0
 ```
 
-<sub>base `8653281964fe` · head `b1ae7fe6ff3a` · provecode 0.1.0 · Python 3.11.3</sub>
+<sub>base `8653281964fe` · head `b1ae7fe6ff3a` · provecode 0.2.0 · Python 3.11.3</sub>

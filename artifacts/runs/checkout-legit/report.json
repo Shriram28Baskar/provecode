@@ -71,11 +71,11 @@
       "condition_ids": [
         "C1"
       ],
-      "duration_s": 1.41,
+      "duration_s": 1.42,
       "exit_code": 0,
       "id": "E1",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E1.xml -------------------\n1 passed in 0.20s",
-      "output_sha256": "d70878e1e014844a1bf9856f41230160723d90725ce0550863eed3646de37721",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E1.xml -------------------\n1 passed in 0.18s",
+      "output_sha256": "dc919e8994c3a3bd317caeabd1dd4d09a70b515c891f4b8794d1fc838788d568",
       "owner": "contract",
       "result": "pass"
     },
@@ -85,11 +85,11 @@
       "condition_ids": [
         "C2"
       ],
-      "duration_s": 1.7,
+      "duration_s": 1.27,
       "exit_code": 0,
       "id": "E2",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.28s",
-      "output_sha256": "2e213e7dd402df42e2947c7814fe59abd509cca7221c8e1cd275a8a24c15b34c",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E2.xml -------------------\n1 passed in 0.13s",
+      "output_sha256": "1a5b85e0425c000c1db1e9a3efd6c8a502dd365837756732395122fc54490993",
       "owner": "contract",
       "result": "pass"
     },
@@ -99,11 +99,11 @@
       "condition_ids": [
         "C3"
       ],
-      "duration_s": 1.59,
+      "duration_s": 1.42,
       "exit_code": 0,
       "id": "E3",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.21s",
-      "output_sha256": "b10abc374f8e5d0f8ce17c1aaaa5e1e813e5aa8142fa369a1bdbe3607b8010f8",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E3.xml -------------------\n1 passed in 0.14s",
+      "output_sha256": "744a8997450702440fa9ee128240ab773c935dce959ec447510273d9b82f87dd",
       "owner": "contract",
       "result": "pass"
     },
@@ -113,11 +113,11 @@
       "condition_ids": [
         "C4"
       ],
-      "duration_s": 1.58,
+      "duration_s": 1.42,
       "exit_code": 0,
       "id": "E4",
-      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.20s",
-      "output_sha256": "25f2ee149e41253741ee897450d9b875cac88f068ccb93f090aed09fbc5eded0",
+      "output_excerpt": ".                                                                        [100%]\n------------------- generated xml file: /work/results/E4.xml -------------------\n1 passed in 0.23s",
+      "output_sha256": "9f9231ccfef23444007e817e43717ecc19797bdcb5ceccd42b564bcb92c1a5bd",
       "owner": "contract",
       "result": "pass"
     },
@@ -125,11 +125,11 @@
       "check_id": "repo-tests",
       "command": "pytest (the repository's own suite)",
       "condition_ids": [],
-      "duration_s": 1.41,
+      "duration_s": 1.25,
       "exit_code": 0,
       "id": "E5",
-      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.17s",
-      "output_sha256": "4b91523f94e91831aab681fca8e72624a9cee08eef3080372f0bbb61b86367d2",
+      "output_excerpt": "...                                                                      [100%]\n------------------- generated xml file: /work/results/E5.xml -------------------\n3 passed in 0.13s",
+      "output_sha256": "b5ba777af2c2a711e5071cd8ee5c583105d8163576cb89ba118bca68419d2d62",
       "owner": "repo",
       "result": "pass"
     }
@@ -181,11 +181,11 @@
   "provenance": {
     "base_image": "python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535",
     "base_sha": "8653281964fe5be36ee96cdd788b2b4f29e274dd",
-    "engine_version": "0.1.0",
-    "generated_at": "2026-11-21T18:39:45+00:00",
+    "engine_version": "0.2.0",
+    "generated_at": "2026-11-22T12:40:54+00:00",
     "head_sha": "08ca7f23363ccbccd81ef64522de61367057d5fb",
     "image": "provecode-run:local",
-    "image_id": "sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf",
+    "image_id": "sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6",
     "limits": {
       "max_bracket_depth": 100,
       "max_bytes": 2097152,
@@ -194,7 +194,7 @@
     },
     "python": "3.11.3",
     "repo": "checkout",
-    "repo_digests": "[\"provecode-run@sha256:07badc95a50a0e504045a5527a8bfc5a1d933348b59241166911ebea049d5edf\"]",
+    "repo_digests": "[\"provecode-run@sha256:ea9f6a3ea90147c6c793220ccea1ec24fa4e93c382e641b3dc5c5ae59e3a9da6\"]",
     "sandbox": {
       "cpus": 1,
       "memory": "512m",
