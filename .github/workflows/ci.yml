@@ -53,6 +53,18 @@ jobs:
       - name: Generated artifacts unchanged
         run: git diff --exit-code -- artifacts/benchmark/tierA.json artifacts/benchmark/tierA_u.json artifacts/benchmark/parity.json artifacts/presets
 
+  precommit:
+    name: pre-commit hook installs from this repository and blocks a weakening
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install pre-commit
+      - name: pre-commit try-repo on a staged weakening and on an honest change
+        run: bash .github/scripts/precommit_smoke.sh "$GITHUB_WORKSPACE"
+
   web:
     name: site builds and the demo story passes in Chrome
     runs-on: ubuntu-latest
