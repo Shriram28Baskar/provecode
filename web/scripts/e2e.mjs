@@ -1,5 +1,6 @@
 // End-to-end check of the demo story in real Chrome, under the vercel.json CSP.
 //   node scripts/e2e.mjs [screenshot_dir]      (expects scripts/serve.mjs on :4317)
+import { readFileSync } from "node:fs";
 import { chromium } from "playwright-core";
 
 const BASE = process.env.E2E_BASE ?? "http://localhost:4317";
@@ -24,6 +25,19 @@ for (const path of ["/", "/benchmark/", "/about/", "/runs/checkout-weakened/", "
   check(res.status() === 200, `${path} returns 200`);
   await shot(path.replaceAll("/", "_") || "home");
 }
+// Home page "Use it on your own code": the tag shown must be the engine version the artifacts record.
+const version = JSON.parse(readFileSync(new URL("../../artifacts/benchmark/tierA.json", import.meta.url), "utf8"))
+  .provenance.engine_version;
+await page.goto(BASE + "/", { waitUntil: "networkidle" });
+const use = page.locator("section[aria-labelledby='use']");
+check(await use.getByRole("heading", { name: "Use it on your own code" }).isVisible(), "home page shows the install section");
+const useText = (await use.textContent()) ?? "";
+check(useText.includes(`provecode@v${version}#subdirectory=engine`), `install line pins the v${version} tag`);
+check(useText.includes(`uses: Shriram28Baskar/provecode@v${version}`), `Action snippet uses @v${version}`);
+check(useText.includes(`rev: v${version}`), `pre-commit snippet uses rev v${version}`);
+check((await use.locator("a[href='https://github.com/Shriram28Baskar/provecode-action-demo/pulls']").count()) === 1,
+  "install section links the live Action demo");
+
 await page.goto(BASE + "/runs/checkout-weakened/");
 check((await stamp()) === "FAILED", "recorded weakened run shows FAILED");
 await page.goto(BASE + "/runs/checkout-legit/");
