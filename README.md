@@ -2,6 +2,8 @@
 
 **Live demo: https://provecode.vercel.app**
 
+> **Status: beta, v0.2.1. Maintenance is paused for a while:** issues are read, but replies may be slow. Real-world precision is not yet measured, so a [false-alarm report](https://github.com/Shriram28Baskar/provecode/issues/new?template=false_alarm.yml) or a [missed-weakening report](https://github.com/Shriram28Baskar/provecode/issues/new?template=missed_weakening.yml) is the most useful contribution.
+
 **Tests passed. The 20% cap is gone.**
 
 When the same AI agent writes the code *and* edits the tests that judge it, "all tests pass" stops meaning much. PROVECODE catches the test edits that make a broken change look green. That includes the count-preserving ones, which assertion-counting tools miss. Each edit it catches is tied to the approved requirement that the test was guarding.
@@ -129,7 +131,7 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
          - id: provecode
    ```
 
-**When it blocks.** Each finding names a rule (`S2`, `B3`, `H4`, ...), the test or file, and the exact lines before and after. If the change is a deliberate requirement change (a test removed on purpose, an expected value changed), say so in review: the finding is a prompt for a human decision, not proof of a bug. To switch the local hooks off: `provecode install-hooks --claude --uninstall`. For a stricter, requirement-linked verdict, add an approved contract (below).
+**When it blocks.** Each finding names a rule (`S2`, `B3`, `H4`, ...), the test or file, and the exact lines before and after. If the change is a deliberate requirement change (a test removed on purpose, an expected value changed), say so in review: the finding is a prompt for a human decision, not proof of a bug. If you think a finding is wrong, please [report the false alarm](https://github.com/Shriram28Baskar/provecode/issues/new?template=false_alarm.yml). To switch the local hooks off: `provecode install-hooks --claude --uninstall`. For a stricter, requirement-linked verdict, add an approved contract (below).
 
 ## Quickstart (demo)
 
@@ -301,7 +303,7 @@ These are kept current. Each is a way to make a broken change look green that PR
 ## Honest scope
 
 - Python only: pytest-style and unittest-style tests.
-- **Real-world precision: not yet measured.** Tier A, A-u, A-b and H cases are injected. Real-world recall (Tier B) and precision (Tier C) need owner labels. How often PROVECODE fires on real, mostly human, commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10 and `docs/research/data/real_history_scan_v2.json` (ADR 0012); every flagged commit awaits an owner label (`docs/research/scripts/label.py`).
+- **Real-world precision: not yet measured.** Tier A, A-u, A-b and H cases are injected. Real-world recall (Tier B) and precision (Tier C) need owner labels. How often PROVECODE fires on real, mostly human, commits is measured, as a flag rate rather than precision, in `docs/research/landscape-2026-11.md` §1.10 and `docs/research/data/real_history_scan_v2.json` (ADR 0012); every flagged commit awaits an owner label (`docs/research/scripts/label.py`). Reports of [false alarms](https://github.com/Shriram28Baskar/provecode/issues/new?template=false_alarm.yml) and [missed weakenings](https://github.com/Shriram28Baskar/provecode/issues/new?template=missed_weakening.yml) from real use are welcome.
 - One author wrote the patterns, the cases and the detector. The patterns and split were committed before the detector; the commit order is recorded in `tierA.json`.
 - The baseline is a reimplementation of published rules, not the original tools.
 - VERIFIED means no mandatory condition failed within the declared scope. It is not a proof of correctness.

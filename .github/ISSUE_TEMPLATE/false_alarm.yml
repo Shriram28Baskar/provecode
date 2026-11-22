@@ -1,0 +1,55 @@
+name: False alarm
+description: PROVECODE blocked or flagged a change that did not weaken verification.
+title: "False alarm: <rule> on <short description>"
+labels: ["false alarm"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Real-world precision is not yet measured, so every report like this is evidence.
+        Please do not paste private code; a link to a public commit or PR, or a minimal snippet, is ideal.
+  - type: input
+    id: rule
+    attributes:
+      label: Rule ID
+      description: The rule in the finding, e.g. S2, B3, H5, T1.
+      placeholder: H5
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What PROVECODE reported
+      description: The finding as printed (rule, file or test, before and after).
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: The change
+      description: A link to the public commit or PR, or a minimal before/after snippet.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it is legitimate
+      description: Why this change does not make the tests or CI check less.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `provecode --version`, or the Action tag.
+      placeholder: provecode 0.2.1
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: How it ran
+      options: ["provecode guard", "provecode check", "GitHub Action", "pre-commit hook", "Claude Code hook", "website"]
+    validations:
+      required: true
