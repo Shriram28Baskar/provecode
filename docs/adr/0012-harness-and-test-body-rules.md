@@ -153,4 +153,9 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
     - Population H: 186 of 2,815 (6.6%), 131 with an H or T finding; H5 44 → 62;
     - 195 commits with an H or T finding.
     - Reading the new H5 flags (not labeling them) found command-parsing errors, which were fixed in `5a6d11d` (ADR 0014, "H5 command-parsing fixes"). No frozen benchmark case changed.
-  - **Final 0.2.0 engine (`5a6d11d`): not yet measured.** The 42-minute scan was stopped twice by the development machine's low-memory guard. `real_history_scan_v2.json` therefore still holds the `f7f87ed` scan, and its 175 commits remain the owner's labeling list. Run `python docs/research/scripts/real_history_scan_v2.py` on an otherwise idle machine to refresh it.
+  - **Final 0.2.0 engine (`5a6d11d`, the `v0.2.0` tag's engine):**
+    - Population T: 497 of 3,032 flagged (16.4%), 100 with an H or T finding;
+    - Population H: 172 of 2,815 (6.1%), 116 with an H or T finding;
+    - by rule against `f7f87ed`: H5 44 → 47 (Population H), 9 → 12 (Population T); S4 76 → 84 and B1 299 → 293 (Population T; ADR 0014's parametrize-removal and moved-test rules). Every other rule is within one commit.
+    - **179 commits** are listed for the owner to label (`owner_label: null`). Claude labeled nothing.
+    - **How it was run:** the 42-minute single run was stopped twice by the development machine's low-memory guard. So the scan ran in seven parts (`--repos ... --out part.json`) that were then merged (`--merge`). The merge was checked first: two repositories scanned together and scanned separately, then merged, gave identical output apart from `seconds`.

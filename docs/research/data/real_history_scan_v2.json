@@ -1151,7 +1151,7 @@
         },
         {
           "file": ".github/workflows/tests.yaml",
-          "rationale": "In job 'tests', the step that ran `# Use 'python -m pytest' to add CWD to sys.path` was removed.",
+          "rationale": "In job 'tests', the step that ran `python -m pytest --cov --cov-fail-under=100` was removed.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -1382,6 +1382,13 @@
         {
           "file": "pyproject.toml",
           "rationale": "pytest now reads its settings from pyproject.toml, which takes precedence over tox.ini; the settings in tox.ini (addopts, filterwarnings, testpaths) no longer apply.",
+          "rule": "H4",
+          "severity": "warning",
+          "test": null
+        },
+        {
+          "file": "pyproject.toml",
+          "rationale": "filterwarnings no longer turns warnings into errors (error removed), so code that warns no longer fails the tests.",
           "rule": "H4",
           "severity": "warning",
           "test": null
@@ -3432,14 +3439,7 @@
         },
         {
           "file": ".github/workflows/build-release.yml",
-          "rationale": "In job 'mypy', the test step now runs fewer tests: -m tox, -e mypy-test.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        },
-        {
-          "file": ".github/workflows/build-release.yml",
-          "rationale": "In job 'tests', the test step now runs fewer tests: -m tox, -e ${{.",
+          "rationale": "In job 'mypy', the test step now runs fewer tests: -e mypy-test.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -3674,6 +3674,27 @@
     },
     {
       "ai_trailer": false,
+      "commit": "fce76f254b142dff6a494473039111daa2a14441",
+      "findings": [
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv] no longer runs its test command.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "H"
+      ],
+      "repo": "more-itertools/more-itertools",
+      "rules": [
+        "H5"
+      ]
+    },
+    {
+      "ai_trailer": false,
       "commit": "64fcb8776193a7b67c0038f98455376e6643993b",
       "findings": [
         {
@@ -3712,6 +3733,28 @@
       "repo": "pallets/itsdangerous",
       "rules": [
         "H7"
+      ]
+    },
+    {
+      "ai_trailer": false,
+      "commit": "b738f972c7a81410ac671a154c996b0c339f33d6",
+      "findings": [
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv] now runs fewer tests: paths {}.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "T",
+        "H"
+      ],
+      "repo": "pallets/itsdangerous",
+      "rules": [
+        "H5"
       ]
     },
     {
@@ -3934,6 +3977,34 @@
     },
     {
       "ai_trailer": false,
+      "commit": "4389d1b701478a1e0a8cc8268fbf5684092c7f49",
+      "findings": [
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv:pypy] now runs fewer tests: paths tests.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        },
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv:pypy3] now runs fewer tests: paths tests.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "H"
+      ],
+      "repo": "pypa/packaging",
+      "rules": [
+        "H5"
+      ]
+    },
+    {
+      "ai_trailer": false,
       "commit": "491af5d517cdf6d72c2cf754f6eafd247ab8f559",
       "findings": [
         {
@@ -4039,27 +4110,6 @@
     },
     {
       "ai_trailer": false,
-      "commit": "63f4cfe679fb3d9322e56d8569207ecff4735238",
-      "findings": [
-        {
-          "file": ".github/workflows/test.yml",
-          "rationale": "In job 'test', the test step 'Run nox' now runs fewer tests: -s tests-${{.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "pypa/packaging",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
       "commit": "64d7d16d2a30aa31e0ae94b8fffa3673e6ad256c",
       "findings": [
         {
@@ -4151,11 +4201,11 @@
     },
     {
       "ai_trailer": false,
-      "commit": "705d1743ca94ba31af9828ec83f5dca77ee1b238",
+      "commit": "7028f5dc739d606bae00eff3bd3904a253bf4377",
       "findings": [
         {
-          "file": ".github/workflows/test.yml",
-          "rationale": "In job 'test', the test step 'Run nox' now runs fewer tests: -s tests-${{.",
+          "file": "tox.ini",
+          "rationale": "tox env [testenv] now runs fewer tests: paths tests.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -4671,6 +4721,78 @@
     },
     {
       "ai_trailer": false,
+      "commit": "60d81f25bf86c5fe39fc24f0d4cd5d7e5f63998b",
+      "findings": [
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv] now runs fewer tests: paths testing/test_pluggy.py.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        },
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv:check] now runs fewer tests: paths pluggy.py testing/test_pluggy.py.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "T",
+        "H"
+      ],
+      "repo": "pytest-dev/pluggy",
+      "rules": [
+        "H5"
+      ]
+    },
+    {
+      "ai_trailer": true,
+      "commit": "7c9d0fa7c994f5f52585f47ac40ba9bb8dc5970e",
+      "findings": [
+        {
+          "file": "downstream/recipes/pytest.toml",
+          "rationale": "pytest now reads its settings from downstream/recipes/pytest.toml, which is closer to the tests; the settings in tox.ini (addopts, filterwarnings, minversion, testpaths) no longer apply.",
+          "rule": "H4",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "H"
+      ],
+      "repo": "pytest-dev/pluggy",
+      "rules": [
+        "H4"
+      ]
+    },
+    {
+      "ai_trailer": false,
+      "commit": "8e0c74dac3b4bda53359c38d92ce31c40ce4f03d",
+      "findings": [
+        {
+          "file": "tox.ini",
+          "rationale": "tox env [testenv:check] no longer runs its test command.",
+          "rule": "H5",
+          "severity": "warning",
+          "test": null
+        }
+      ],
+      "owner_label": null,
+      "populations": [
+        "T",
+        "H"
+      ],
+      "repo": "pytest-dev/pluggy",
+      "rules": [
+        "H5"
+      ]
+    },
+    {
+      "ai_trailer": false,
       "commit": "d52233200b2c0aa40a42f7c45820be58db03c795",
       "findings": [
         {
@@ -5065,13 +5187,6 @@
       "findings": [
         {
           "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'ci', the test step 'Run the sanity checks' now runs fewer tests: -m tox.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        },
-        {
-          "file": ".github/workflows/ci.yml",
           "rationale": "Job 'list', which ran the tests, was removed.",
           "rule": "H5",
           "severity": "warning",
@@ -5092,13 +5207,6 @@
       "ai_trailer": false,
       "commit": "2317eb8670e8f2076397159164c240dee846681c",
       "findings": [
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'ci', the test step 'Run the sanity checks' now runs fewer tests: -m tox.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        },
         {
           "file": ".github/workflows/ci.yml",
           "rationale": "Job 'list', which ran the tests, was removed.",
@@ -5299,27 +5407,6 @@
         {
           "file": ".github/workflows/coverage.yml",
           "rationale": "In job 'coverage', the test step 'Collect & Upload Coverage' now runs fewer tests: -e py310-format-codecov.",
-          "rule": "H5",
-          "severity": "warning",
-          "test": null
-        }
-      ],
-      "owner_label": null,
-      "populations": [
-        "H"
-      ],
-      "repo": "python-jsonschema/jsonschema",
-      "rules": [
-        "H5"
-      ]
-    },
-    {
-      "ai_trailer": false,
-      "commit": "c8584e7f21fa4b25bab47cfa95e7db8160d41b46",
-      "findings": [
-        {
-          "file": ".github/workflows/ci.yml",
-          "rationale": "In job 'ci', the test step 'Run nox' now runs fewer tests: -s ${{ matrix.noxenv }}.",
           "rule": "H5",
           "severity": "warning",
           "test": null
@@ -6022,13 +6109,13 @@
           "T1": 1
         },
         "T": {
-          "B1": 27,
+          "B1": 26,
           "B2": 2,
           "B3": 4,
           "H4": 1,
           "H5": 1,
           "S3": 1,
-          "S4": 11,
+          "S4": 15,
           "T1": 2,
           "T5": 1
         }
@@ -6087,7 +6174,7 @@
       "commits_by_rule": {
         "H": {
           "B1": 2,
-          "B3": 2,
+          "B3": 1,
           "H5": 1,
           "H6": 1,
           "H7": 2,
@@ -6095,9 +6182,9 @@
         },
         "T": {
           "B1": 11,
-          "B3": 4,
+          "B3": 3,
           "H7": 1,
-          "S4": 14
+          "S4": 13
         }
       },
       "taken": {
@@ -6114,6 +6201,7 @@
           "H5": 1,
           "H6": 3,
           "H7": 1,
+          "S3": 1,
           "T4": 1
         },
         "T": {
@@ -6122,7 +6210,7 @@
           "H4": 2,
           "H5": 1,
           "H7": 1,
-          "S3": 2,
+          "S3": 3,
           "S4": 2,
           "T4": 1
         }
@@ -6161,12 +6249,13 @@
           "S4": 4
         },
         "T": {
-          "B1": 36,
+          "B1": 35,
           "B3": 16,
           "H4": 1,
           "H5": 1,
+          "S1": 1,
           "S3": 1,
-          "S4": 9,
+          "S4": 13,
           "T1": 3
         }
       },
@@ -6180,7 +6269,7 @@
         "H": {
           "B1": 3,
           "B3": 1,
-          "H5": 1,
+          "H5": 2,
           "S1": 1
         },
         "T": {
@@ -6201,11 +6290,13 @@
         "H": {
           "B1": 1,
           "H4": 1,
+          "H5": 1,
           "H7": 1,
           "S4": 1
         },
         "T": {
           "B1": 6,
+          "H5": 1,
           "S4": 1
         }
       },
@@ -6252,7 +6343,7 @@
           "H4": 1,
           "H6": 10,
           "S1": 1,
-          "S4": 9,
+          "S4": 8,
           "T1": 3,
           "T4": 1
         }
@@ -6283,13 +6374,16 @@
         "H": {
           "B1": 2,
           "H3": 1,
-          "H5": 1,
+          "H4": 1,
+          "H5": 3,
           "H6": 2
         },
         "T": {
-          "B1": 27,
-          "B3": 8,
+          "B1": 25,
+          "B2": 1,
+          "B3": 7,
           "H3": 1,
+          "H5": 2,
           "H6": 2,
           "S4": 1
         }
@@ -6310,13 +6404,13 @@
           "S4": 1
         },
         "T": {
-          "B1": 20,
+          "B1": 18,
           "B3": 5,
           "H1": 3,
           "H4": 1,
           "H5": 2,
           "H6": 1,
-          "S4": 4
+          "S4": 6
         }
       },
       "taken": {
@@ -6347,7 +6441,7 @@
       "commits_by_rule": {
         "H": {
           "B1": 3,
-          "H5": 5,
+          "H5": 4,
           "H6": 1
         },
         "T": {
@@ -6419,16 +6513,16 @@
       "commits_by_rule": {
         "B1": 47,
         "B2": 2,
-        "B3": 10,
+        "B3": 9,
         "H1": 10,
         "H2": 2,
         "H3": 1,
-        "H4": 12,
-        "H5": 44,
+        "H4": 13,
+        "H5": 47,
         "H6": 31,
         "H7": 12,
         "S1": 2,
-        "S3": 1,
+        "S3": 2,
         "S4": 18,
         "T1": 5,
         "T4": 2,
@@ -6438,24 +6532,24 @@
         "ai_trailer_commits": 17,
         "commits_scanned": 2815,
         "commits_with_gaps": 6,
-        "flagged_commits": 168,
-        "new_rule_flagged_commits": 112
+        "flagged_commits": 172,
+        "new_rule_flagged_commits": 116
       }
     },
     "T": {
       "commits_by_rule": {
-        "B1": 299,
-        "B2": 3,
-        "B3": 77,
+        "B1": 293,
+        "B2": 4,
+        "B3": 75,
         "H1": 4,
         "H3": 1,
         "H4": 7,
-        "H5": 9,
+        "H5": 12,
         "H6": 41,
         "H7": 4,
-        "S1": 5,
-        "S3": 4,
-        "S4": 76,
+        "S1": 6,
+        "S3": 5,
+        "S4": 84,
         "T1": 27,
         "T4": 10,
         "T5": 6
@@ -6464,11 +6558,11 @@
         "ai_trailer_commits": 55,
         "commits_scanned": 3032,
         "commits_with_gaps": 13,
-        "flagged_commits": 495,
-        "new_rule_flagged_commits": 97
+        "flagged_commits": 497,
+        "new_rule_flagged_commits": 100
       }
     }
   },
   "schema_version": "1",
-  "seconds": 2517.5
+  "seconds": 1004.6
 }

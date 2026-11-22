@@ -18,10 +18,13 @@ analyzed repositories. Third-party code stays in the git-ignored cache.
   only; owner_label null). Claude labels nothing.
 
 Run:  python docs/research/scripts/real_history_scan_v2.py  ->  docs/research/data/real_history_scan_v2.json
+In parts (e.g. on a low-memory machine): `--repos A B --out part1.json`, then
+`--merge part1.json part2.json ...`. The merged result equals a single run except for `seconds`.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import subprocess
 import sys
@@ -135,10 +138,49 @@ def build(repo: Path, blobs: Blobs, parent: str, sha: str, changes) -> cs_mod.Ch
     return cs_mod.Changeset(files, parent, sha, paths)
 
 
-def main() -> int:
+def merge(parts: list[Path], out: Path) -> int:
+    """Combine scans of disjoint repository subsets (--repos ... --out part.json) into one result. Every count
+    is a per-commit sum, so the merge equals a single full run except for `seconds` (summed)."""
+    docs = [json.loads(p.read_text(encoding="utf-8")) for p in parts]
+    pops = {k: {"totals": Counter(), "commits_by_rule": Counter()} for k in ("T", "H")}
+    per_repo, candidates, seconds = {}, [], 0.0
+    for d in docs:
+        for k, v in d["populations"].items():
+            pops[k]["totals"].update(v["totals"])
+            pops[k]["commits_by_rule"].update(v["commits_by_rule"])
+        dup = set(per_repo) & set(d["per_repo"])
+        if dup:
+            raise SystemExit(f"repositories scanned twice: {sorted(dup)}")
+        per_repo.update(d["per_repo"])
+        candidates += d["candidates_for_owner_labeling"]
+        seconds += d["seconds"]
+    result = {**docs[0], "per_repo": per_repo, "seconds": round(seconds, 1),
+              "populations": {k: {"totals": dict(sorted(v["totals"].items())),
+                                  "commits_by_rule": dict(sorted(v["commits_by_rule"].items()))}
+                              for k, v in pops.items()},
+              "candidates_for_owner_labeling": sorted(candidates, key=lambda c: f"{c['repo']}@{c['commit']}")}
+    out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(result["populations"], indent=1))
+    print("commits with H/T findings for owner labeling:", len(candidates))
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description="Real-history flag rate; see the module docstring.")
+    ap.add_argument("--repos", nargs="*", help="scan only these repositories (to run the scan in parts)")
+    ap.add_argument("--out", type=Path, default=OUT, help="output file (default: the committed data file)")
+    ap.add_argument("--merge", nargs="+", type=Path, help="merge partial outputs into --out instead of scanning")
+    a = ap.parse_args(argv)
+    if a.merge:
+        return merge(a.merge, a.out)
     sources = []
     for lock in LOCKS:
         sources += json.loads((ROOT / lock).read_text(encoding="utf-8"))["sources"]
+    if a.repos:
+        unknown = set(a.repos) - {s["repo"] for s in sources}
+        if unknown:
+            raise SystemExit(f"unknown repositories: {sorted(unknown)}")
+        sources = [s for s in sources if s["repo"] in a.repos]
     t0 = time.perf_counter()
     pops = {"T": {"totals": Counter(), "by_rule": Counter()}, "H": {"totals": Counter(), "by_rule": Counter()}}
     candidates: dict[str, dict] = {}
@@ -202,8 +244,8 @@ def main() -> int:
         "seconds": round(time.perf_counter() - t0, 1),
         "command": "python docs/research/scripts/real_history_scan_v2.py",
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    a.out.parent.mkdir(parents=True, exist_ok=True)
+    a.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(result["populations"], indent=1))
     print("commits with H/T findings for owner labeling:", len(candidates))
     return 0
