@@ -147,3 +147,10 @@ All parsing is `ast`, `tomllib`, `configparser`, `shlex`, or the YAML subset bel
   - Population T: 495 of 3,032 flagged (16.3%), 97 with an H or T finding (was 502 and 106).
   - Population H: 168 of 2,815 (6.0%), 112 with an H or T finding (was 197 and 143). By rule: H4 25 → 12, H5 55 → 44, H6 40 → 31.
   - **175 commits** are listed for the owner to label (was 210).
+- **Rescan with the 0.2.0 rules (2026-11-22; a flag rate, not precision):**
+  - **Intermediate engine `e2991a6`** (ADR 0014's rules, before its H5 command-parsing fixes):
+    - Population T: 499 of 3,032 flagged (16.5%), 103 with an H or T finding;
+    - Population H: 186 of 2,815 (6.6%), 131 with an H or T finding; H5 44 → 62;
+    - 195 commits with an H or T finding.
+    - Reading the new H5 flags (not labeling them) found command-parsing errors, which were fixed in `5a6d11d` (ADR 0014, "H5 command-parsing fixes"). No frozen benchmark case changed.
+  - **Final 0.2.0 engine (`5a6d11d`): not yet measured.** The 42-minute scan was stopped twice by the development machine's low-memory guard. `real_history_scan_v2.json` therefore still holds the `f7f87ed` scan, and its 175 commits remain the owner's labeling list. Run `python docs/research/scripts/real_history_scan_v2.py` on an otherwise idle machine to refresh it.
