@@ -85,6 +85,8 @@ Full benchmark, method and limitations: the site's **Benchmark** page, or `artif
 
    ```bash
    uv tool install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
+   # or with pipx:
+   pipx install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
    # or, in a virtual environment:
    pip install "provecode[cli] @ git+https://github.com/Shriram28Baskar/provecode@v0.2.0#subdirectory=engine"
    ```
