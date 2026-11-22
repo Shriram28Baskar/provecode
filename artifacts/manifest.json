@@ -1,11 +1,11 @@
 {
   "artifacts": [
     {
-      "bytes": 1505,
+      "bytes": 1504,
       "deterministic": false,
       "generator": "python -m benchmark.guard_eval",
       "path": "benchmark/guard.json",
-      "sha256": "0b7d000a2bdb241892c066377dcb0dc075b25f5499589e22f4fdb4b80c1cda59"
+      "sha256": "5e8dc4c764a4f46015c0598f4fbdad610b56c6650e6a3d7e226715f2e656bbe4"
     },
     {
       "bytes": 583,
