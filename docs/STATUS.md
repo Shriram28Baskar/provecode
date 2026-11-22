@@ -24,6 +24,7 @@ Where the project stands, so it can be picked up later. Numbers are from runs on
 | Cheat catalog | 58/58 and 22/24 blocked; 0/19 and 0/16 false alarms |
 
 ## Waiting on the owner
+- **Issues filed while paused:** the `false alarm` and `missed weakening` labels collect user reports (issue forms in `.github/ISSUE_TEMPLATE/`). Read them together with your own labels.
 - **Labels: 179 real commits** in `docs/research/data/real_history_scan_v2.json` (`owner_label: null`). They are needed for a real-world precision figure. The older backlog is still there too: 422 v1 flags and 7 real agent edits. Claude has labeled nothing.
 - **Decisions left open in ADR 0014:** whether `[testenv:check]` and `tox -e mypy-test` count as test envs.
 - **Untracked files from before 2026-11-22, not touched:** `PROVECODE_V2_BUILD_BRIEF.md`, `spike/labeling/relabel_tool.py`, `spike/labeling/test_relabel_tool.py`.

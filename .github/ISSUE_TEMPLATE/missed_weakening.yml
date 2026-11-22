@@ -1,0 +1,45 @@
+name: Missed weakening
+description: A change made tests or CI check less, and PROVECODE did not flag it.
+title: "Missed weakening: <short description>"
+labels: ["missed weakening"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Check the README's "Known blind spots" first: some misses are documented limits.
+        Please do not paste private code; a link to a public commit or PR, or a minimal snippet, is ideal.
+  - type: textarea
+    id: change
+    attributes:
+      label: The change
+      description: A link to the public commit or PR, or a minimal before/after snippet.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it weakens verification
+      description: What the tests or CI no longer check after the change.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What PROVECODE reported
+      description: The full output, even if it found nothing.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `provecode --version`, or the Action tag.
+      placeholder: provecode 0.2.1
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: How it ran
+      options: ["provecode guard", "provecode check", "GitHub Action", "pre-commit hook", "Claude Code hook", "website"]
+    validations:
+      required: true
